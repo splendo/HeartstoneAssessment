@@ -1,6 +1,6 @@
 ## Introduction
 
-Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps [iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en)
+Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
 
 He wants you to build a web app that has similar UI/UX. Similar way to go from the grid view to detail view, and also being able to scroll through the detail views like a carousel (hint: download the Houses app and have a look at how it works) but he wants the app to show Hearthstone card images.
 
