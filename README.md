@@ -82,9 +82,16 @@ and
 
 You are free to choose the patterns and architectures to create this web app, the requirements are :
 
-* Create an API using a Java backend allowing you to get card information for legendary deathrattle cards
-  * Since Hsiao's preferences might change, the API should not return those cards hard-coded, allow filtering on
-  at least the `type`, `rarity`, `classes`, and `mechanics` fields
+### Backend
+
+* Create an API using a Java (plain java or Groovy/Cotlin) backend allowing you to get card information for at least legendary deathrattle cards
+* The API should also support filtering based on relevant request parameters. Ideally, the API should enable the following, listed from easy to hard:
+  * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`
+  * return sorted results (for example, alphabetically sorted), supporting both ascending and descending
+  * (optional) return the results by pages (based on a page size request parameter), iterating over the pages are maintained by a cursor which is included in the response, this cursor is used in the subsequent request
+
+### Web Application
+
 * Create the web app using JavaScript. You can use either plain JavaScript or a Framework of your choice
 * Show the card images in a grid like the houses app
 * when user click on a grid item , navigate to the card detail view where you can display more information regarding the card ( what you would like to show and how is up to you ), when in detail view the navigation to the next and previous card should be the same as the Houses App
