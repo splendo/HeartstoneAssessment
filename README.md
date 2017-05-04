@@ -83,22 +83,22 @@ and
 You are free to choose the patterns and architectures to create this web app, the requirements are :
 
 * Create an API using a Java backend allowing you to get card information for legendary deathrattle cards
-* Create the web app using JavaScript. You can use either plain JavaScript or a Framework of your choice.
-* how the card images in a grid like the houses app
+* Create the web app using JavaScript. You can use either plain JavaScript or a Framework of your choice
+* Show the card images in a grid like the houses app
 * when user click on a grid item , navigate to the card detail view where you can display more information regarding the card ( what you would like to show and how is up to you ), when in detail view the navigation to the next and previous card should be the same as the Houses App
-* The user should be able to set a card as favourite and this info should be persisted when the app closes, how to show cards that tagged as favourite and persist the information is up to you
+* The user should be able to set a card as favourite and this info should be persisted when the app closes, how to show cards that are tagged as favourites and how to persist that information is up to you
 
 
 ## What we would like to see
 
-* Proper handling of asynchonous calls.
+* Proper handling of asynchonous calls
 * Clean code
 * Relevant design patterns
-* Javascript best practices  
+* Javascript best practices
 * UI should remain responsive during content loading
 * Should you use 3rd party libraries and frameworks please motivate your choice
 * Unit tests
-* Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls.
+* Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls
 
 ## Finally
 
