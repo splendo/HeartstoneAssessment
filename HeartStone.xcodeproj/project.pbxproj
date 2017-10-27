@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		240F5BC11F9A575600203634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F5BC01F9A575600203634 /* AppDelegate.swift */; };
+		240F5BC81F9A575600203634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 240F5BC71F9A575600203634 /* Assets.xcassets */; };
+		240F5BDE1F9A593900203634 /* CardTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F5BDD1F9A593900203634 /* CardTimelineViewController.swift */; };
+		240F5BEA1F9A59DE00203634 /* CardTimeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240F5BE81F9A59DE00203634 /* CardTimeline.storyboard */; };
+		240F5BED1F9A59E900203634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240F5BEB1F9A59E900203634 /* LaunchScreen.storyboard */; };
+		241770451FA34FCC00C47EF6 /* CardMechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241770441FA34FCC00C47EF6 /* CardMechanic.swift */; };
+		241770471FA350EF00C47EF6 /* CardMechanicFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241770461FA350EF00C47EF6 /* CardMechanicFactory.swift */; };
+		241770491FA355B400C47EF6 /* CardFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241770481FA355B400C47EF6 /* CardFilterViewController.swift */; };
+		24607DB41FA365C400308AC4 /* CardTypeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24607DB31FA365C400308AC4 /* CardTypeSelectorViewController.swift */; };
+		24607DB61FA365D100308AC4 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24607DB51FA365D100308AC4 /* CardType.swift */; };
+		24736F431F9B39CD006C7187 /* HeartStoneCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24736F421F9B39CD006C7187 /* HeartStoneCardCollectionViewCell.swift */; };
+		24D50CFF1F9A5BCB00B7CAC5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D50CFE1F9A5BCB00B7CAC5 /* APIManager.swift */; };
+		24D50D031F9A5E2B00B7CAC5 /* HeartStoneCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D50D021F9A5E2B00B7CAC5 /* HeartStoneCardFactory.swift */; };
+		24D50D071F9A626900B7CAC5 /* HeartStoneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D50D061F9A626900B7CAC5 /* HeartStoneCard.swift */; };
+		24E6CC4B1FA20CF1009A0F18 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6CC4A1FA20CF1009A0F18 /* CardDetailViewController.swift */; };
+		24E6CC4E1FA20D29009A0F18 /* CardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E6CC4C1FA20D29009A0F18 /* CardDetail.storyboard */; };
+		24E6CC591FA212DF009A0F18 /* AppScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6CC571FA212DF009A0F18 /* AppScreens.swift */; };
+		24E6CC5A1FA212DF009A0F18 /* AppURLRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6CC581FA212DF009A0F18 /* AppURLRoutes.swift */; };
+		24E6CC5D1FA21984009A0F18 /* CardDetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6CC5C1FA21984009A0F18 /* CardDetailHeaderTableViewCell.swift */; };
+		24E6CC5F1FA219A6009A0F18 /* CardDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6CC5E1FA219A6009A0F18 /* CardDetailInfoTableViewCell.swift */; };
+		71E85661827689CF1CE056C2 /* Pods_HeartStone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58896F427E2D86CF135B3783 /* Pods_HeartStone.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		240F5BBD1F9A575600203634 /* HeartStone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartStone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		240F5BC01F9A575600203634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		240F5BC71F9A575600203634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		240F5BCC1F9A575600203634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		240F5BDD1F9A593900203634 /* CardTimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTimelineViewController.swift; sourceTree = "<group>"; };
+		240F5BE91F9A59DE00203634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HeartStone/Base.lproj/CardTimeline.storyboard; sourceTree = SOURCE_ROOT; };
+		240F5BEC1F9A59E900203634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		241770441FA34FCC00C47EF6 /* CardMechanic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMechanic.swift; sourceTree = "<group>"; };
+		241770461FA350EF00C47EF6 /* CardMechanicFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMechanicFactory.swift; sourceTree = "<group>"; };
+		241770481FA355B400C47EF6 /* CardFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFilterViewController.swift; sourceTree = "<group>"; };
+		24607DB31FA365C400308AC4 /* CardTypeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeSelectorViewController.swift; sourceTree = "<group>"; };
+		24607DB51FA365D100308AC4 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		24736F421F9B39CD006C7187 /* HeartStoneCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		24D50CFE1F9A5BCB00B7CAC5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		24D50D021F9A5E2B00B7CAC5 /* HeartStoneCardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCardFactory.swift; sourceTree = "<group>"; };
+		24D50D061F9A626900B7CAC5 /* HeartStoneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCard.swift; sourceTree = "<group>"; };
+		24E6CC4A1FA20CF1009A0F18 /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
+		24E6CC4D1FA20D29009A0F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardDetail.storyboard; sourceTree = "<group>"; };
+		24E6CC571FA212DF009A0F18 /* AppScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScreens.swift; sourceTree = "<group>"; };
+		24E6CC581FA212DF009A0F18 /* AppURLRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppURLRoutes.swift; sourceTree = "<group>"; };
+		24E6CC5C1FA21984009A0F18 /* CardDetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		24E6CC5E1FA219A6009A0F18 /* CardDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		58896F427E2D86CF135B3783 /* Pods_HeartStone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartStone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F26BEF8858491EF1C979992 /* Pods-HeartStone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartStone.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartStone/Pods-HeartStone.release.xcconfig"; sourceTree = "<group>"; };
+		BA877A0F659C81B17DBA9378 /* Pods-HeartStone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartStone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartStone/Pods-HeartStone.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		240F5BBA1F9A575600203634 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71E85661827689CF1CE056C2 /* Pods_HeartStone.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		240F5BB41F9A575600203634 = {
+			isa = PBXGroup;
+			children = (
+				240F5BBF1F9A575600203634 /* HeartStone */,
+				240F5BBE1F9A575600203634 /* Products */,
+				DB2B98EF91C980D90C84FACA /* Pods */,
+				41A7553BE1E0AC40FCC8D1A0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		240F5BBE1F9A575600203634 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				240F5BBD1F9A575600203634 /* HeartStone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		240F5BBF1F9A575600203634 /* HeartStone */ = {
+			isa = PBXGroup;
+			children = (
+				24D50D001F9A5BD700B7CAC5 /* Extensions */,
+				24E7100B1FA366FA00A60129 /* Enumerations */,
+				240F5BD71F9A579900203634 /* Structs */,
+				240F5BD51F9A578E00203634 /* Models */,
+				24D50D011F9A5E1C00B7CAC5 /* Factories */,
+				240F5BD41F9A578A00203634 /* Managers */,
+				24736F411F9B39B6006C7187 /* CollectionViewCells */,
+				24E6CC5B1FA21971009A0F18 /* TableViewCells */,
+				240F5BD21F9A576900203634 /* ViewControllers */,
+				240F5BE41F9A599400203634 /* Storyboards */,
+				240F5BC01F9A575600203634 /* AppDelegate.swift */,
+				240F5BC71F9A575600203634 /* Assets.xcassets */,
+				240F5BCC1F9A575600203634 /* Info.plist */,
+			);
+			path = HeartStone;
+			sourceTree = "<group>";
+		};
+		240F5BD21F9A576900203634 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC491FA20CE4009A0F18 /* CardDetail */,
+				240F5BDB1F9A583400203634 /* CardTimeline */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		240F5BD41F9A578A00203634 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				24D50CFE1F9A5BCB00B7CAC5 /* APIManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		240F5BD51F9A578E00203634 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24D50D061F9A626900B7CAC5 /* HeartStoneCard.swift */,
+				241770441FA34FCC00C47EF6 /* CardMechanic.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		240F5BD71F9A579900203634 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC571FA212DF009A0F18 /* AppScreens.swift */,
+				24E6CC581FA212DF009A0F18 /* AppURLRoutes.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		240F5BDB1F9A583400203634 /* CardTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				240F5BDD1F9A593900203634 /* CardTimelineViewController.swift */,
+				241770481FA355B400C47EF6 /* CardFilterViewController.swift */,
+				24607DB31FA365C400308AC4 /* CardTypeSelectorViewController.swift */,
+			);
+			path = CardTimeline;
+			sourceTree = "<group>";
+		};
+		240F5BE41F9A599400203634 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC511FA20D3C009A0F18 /* CardDetail */,
+				240F5BE51F9A59B100203634 /* CardTimeline */,
+				240F5BE71F9A59BF00203634 /* LaunchScreen */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		240F5BE51F9A59B100203634 /* CardTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				240F5BE81F9A59DE00203634 /* CardTimeline.storyboard */,
+			);
+			path = CardTimeline;
+			sourceTree = "<group>";
+		};
+		240F5BE71F9A59BF00203634 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				240F5BEB1F9A59E900203634 /* LaunchScreen.storyboard */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		24736F411F9B39B6006C7187 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				24736F421F9B39CD006C7187 /* HeartStoneCardCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		24D50D001F9A5BD700B7CAC5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		24D50D011F9A5E1C00B7CAC5 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				24D50D021F9A5E2B00B7CAC5 /* HeartStoneCardFactory.swift */,
+				241770461FA350EF00C47EF6 /* CardMechanicFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		24E6CC491FA20CE4009A0F18 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC4A1FA20CF1009A0F18 /* CardDetailViewController.swift */,
+			);
+			path = CardDetail;
+			sourceTree = "<group>";
+		};
+		24E6CC511FA20D3C009A0F18 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC4C1FA20D29009A0F18 /* CardDetail.storyboard */,
+			);
+			name = CardDetail;
+			sourceTree = "<group>";
+		};
+		24E6CC5B1FA21971009A0F18 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				24E6CC5C1FA21984009A0F18 /* CardDetailHeaderTableViewCell.swift */,
+				24E6CC5E1FA219A6009A0F18 /* CardDetailInfoTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		24E7100B1FA366FA00A60129 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				24607DB51FA365D100308AC4 /* CardType.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		41A7553BE1E0AC40FCC8D1A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58896F427E2D86CF135B3783 /* Pods_HeartStone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB2B98EF91C980D90C84FACA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA877A0F659C81B17DBA9378 /* Pods-HeartStone.debug.xcconfig */,
+				8F26BEF8858491EF1C979992 /* Pods-HeartStone.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		240F5BBC1F9A575600203634 /* HeartStone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 240F5BCF1F9A575600203634 /* Build configuration list for PBXNativeTarget "HeartStone" */;
+			buildPhases = (
+				B85EF83A6E04C027BAEA482A /* [CP] Check Pods Manifest.lock */,
+				240F5BB91F9A575600203634 /* Sources */,
+				240F5BBA1F9A575600203634 /* Frameworks */,
+				240F5BBB1F9A575600203634 /* Resources */,
+				EED1A52197BF78E89A6E28BF /* [CP] Embed Pods Frameworks */,
+				B26FBD51BFFE00E4E85FAA0C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeartStone;
+			productName = HeartStone;
+			productReference = 240F5BBD1F9A575600203634 /* HeartStone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		240F5BB51F9A575600203634 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Amberglass;
+				TargetAttributes = {
+					240F5BBC1F9A575600203634 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 240F5BB81F9A575600203634 /* Build configuration list for PBXProject "HeartStone" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 240F5BB41F9A575600203634;
+			productRefGroup = 240F5BBE1F9A575600203634 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				240F5BBC1F9A575600203634 /* HeartStone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		240F5BBB1F9A575600203634 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240F5BED1F9A59E900203634 /* LaunchScreen.storyboard in Resources */,
+				240F5BC81F9A575600203634 /* Assets.xcassets in Resources */,
+				240F5BEA1F9A59DE00203634 /* CardTimeline.storyboard in Resources */,
+				24E6CC4E1FA20D29009A0F18 /* CardDetail.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B26FBD51BFFE00E4E85FAA0C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartStone/Pods-HeartStone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B85EF83A6E04C027BAEA482A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartStone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EED1A52197BF78E89A6E28BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeartStone/Pods-HeartStone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartStone/Pods-HeartStone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		240F5BB91F9A575600203634 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24607DB61FA365D100308AC4 /* CardType.swift in Sources */,
+				241770451FA34FCC00C47EF6 /* CardMechanic.swift in Sources */,
+				24D50CFF1F9A5BCB00B7CAC5 /* APIManager.swift in Sources */,
+				24E6CC591FA212DF009A0F18 /* AppScreens.swift in Sources */,
+				24E6CC5D1FA21984009A0F18 /* CardDetailHeaderTableViewCell.swift in Sources */,
+				24D50D071F9A626900B7CAC5 /* HeartStoneCard.swift in Sources */,
+				241770471FA350EF00C47EF6 /* CardMechanicFactory.swift in Sources */,
+				240F5BDE1F9A593900203634 /* CardTimelineViewController.swift in Sources */,
+				24E6CC4B1FA20CF1009A0F18 /* CardDetailViewController.swift in Sources */,
+				240F5BC11F9A575600203634 /* AppDelegate.swift in Sources */,
+				24E6CC5F1FA219A6009A0F18 /* CardDetailInfoTableViewCell.swift in Sources */,
+				24607DB41FA365C400308AC4 /* CardTypeSelectorViewController.swift in Sources */,
+				24D50D031F9A5E2B00B7CAC5 /* HeartStoneCardFactory.swift in Sources */,
+				241770491FA355B400C47EF6 /* CardFilterViewController.swift in Sources */,
+				24736F431F9B39CD006C7187 /* HeartStoneCardCollectionViewCell.swift in Sources */,
+				24E6CC5A1FA212DF009A0F18 /* AppURLRoutes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		240F5BE81F9A59DE00203634 /* CardTimeline.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				240F5BE91F9A59DE00203634 /* Base */,
+			);
+			name = CardTimeline.storyboard;
+			sourceTree = "<group>";
+		};
+		240F5BEB1F9A59E900203634 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				240F5BEC1F9A59E900203634 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		24E6CC4C1FA20D29009A0F18 /* CardDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24E6CC4D1FA20D29009A0F18 /* Base */,
+			);
+			name = CardDetail.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		240F5BCD1F9A575600203634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		240F5BCE1F9A575600203634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		240F5BD01F9A575600203634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA877A0F659C81B17DBA9378 /* Pods-HeartStone.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BU44GWREFM;
+				INFOPLIST_FILE = HeartStone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.amberglass.HeartStone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		240F5BD11F9A575600203634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F26BEF8858491EF1C979992 /* Pods-HeartStone.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BU44GWREFM;
+				INFOPLIST_FILE = HeartStone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.amberglass.HeartStone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		240F5BB81F9A575600203634 /* Build configuration list for PBXProject "HeartStone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				240F5BCD1F9A575600203634 /* Debug */,
+				240F5BCE1F9A575600203634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		240F5BCF1F9A575600203634 /* Build configuration list for PBXNativeTarget "HeartStone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				240F5BD01F9A575600203634 /* Debug */,
+				240F5BD11F9A575600203634 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 240F5BB51F9A575600203634 /* Project object */;
+}
