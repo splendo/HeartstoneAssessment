@@ -18,7 +18,6 @@ class CardDetailHeaderTableViewCell: UITableViewCell
     //MARK: IBOutlets
     
     @IBOutlet weak var scrollView   : UIScrollView!
-    @IBOutlet weak var nameLabel    : UILabel!
     
     //MARK: IBActions
     
@@ -48,9 +47,9 @@ class CardDetailHeaderTableViewCell: UITableViewCell
     
     //MARK: Functions
     
-    func setupCell(forHeartStoneCard newHeartStoneCard: HeartStoneCard)
+    func setupCell(forHeartStoneCard newHeartStoneCard: HeartStoneCard, withCellHeight: CGFloat = 150)
     {
-        let imageView           = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150))
+        let imageView           = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: withCellHeight))
         imageView.contentMode   = .scaleAspectFit
         
         if newHeartStoneCard.img.characters.count > 0
@@ -64,7 +63,6 @@ class CardDetailHeaderTableViewCell: UITableViewCell
         }
         
         scrollView.addSubview(imageView)
-        nameLabel.text          = newHeartStoneCard.name
     }
 }
 

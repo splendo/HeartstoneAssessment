@@ -34,32 +34,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KC-tr-0ac">
-                                                    <rect key="frame" x="40" y="115" width="295" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="oRC-Dl-7a4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwb-ao-VKe">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                                 </scrollView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Vwb-ao-VKe" secondAttribute="bottom" id="47E-Vb-Hsd"/>
-                                                <constraint firstItem="1KC-tr-0ac" firstAttribute="leading" secondItem="K1s-kk-lOC" secondAttribute="leading" constant="40" id="7RX-a3-6Lm"/>
-                                                <constraint firstAttribute="bottom" secondItem="1KC-tr-0ac" secondAttribute="bottom" constant="10" id="BgI-23-oQB"/>
                                                 <constraint firstItem="Vwb-ao-VKe" firstAttribute="top" secondItem="K1s-kk-lOC" secondAttribute="top" id="JHQ-m8-h4F"/>
                                                 <constraint firstItem="Vwb-ao-VKe" firstAttribute="leading" secondItem="K1s-kk-lOC" secondAttribute="leading" id="LGx-1s-f4R"/>
-                                                <constraint firstAttribute="trailing" secondItem="1KC-tr-0ac" secondAttribute="trailing" constant="40" id="UmF-dj-1e6"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vwb-ao-VKe" secondAttribute="trailing" id="iQi-Gr-DEY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="nameLabel" destination="1KC-tr-0ac" id="XZD-Vd-ts9"/>
                                             <outlet property="scrollView" destination="Vwb-ao-VKe" id="olT-MA-pGL"/>
                                         </connections>
                                     </tableViewCell>
@@ -72,7 +59,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whc-mt-uYh">
                                                     <rect key="frame" x="20" y="10" width="335" height="130"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

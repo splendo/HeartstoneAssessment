@@ -18,7 +18,7 @@ class CardDetailViewController: UIViewController
     fileprivate var headerImageCellHeight   : CGFloat = 250
     
     fileprivate let cardInfoCellId          = "CardDetailInfoTableViewCell"
-    fileprivate let cardInfoCellHeight      : CGFloat = 100
+    fileprivate let cardInfoCellHeight      : CGFloat = 170
     
     //MARK: Enums
     
@@ -135,7 +135,7 @@ extension CardDetailViewController: UITableViewDataSource
                 
                 if let strongSelectedHeartStoneCard = selectedHeartStoneCard
                 {
-                    cell!.setupCell(forHeartStoneCard: strongSelectedHeartStoneCard)
+                    cell!.setupCell(forHeartStoneCard: strongSelectedHeartStoneCard, withCellHeight: headerImageCellHeight)
                 }
             
                 return cell!
