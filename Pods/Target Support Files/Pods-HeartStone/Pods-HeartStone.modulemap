@@ -1,0 +1,6 @@
+framework module Pods_HeartStone {
+  umbrella header "Pods-HeartStone-umbrella.h"
+
+  export *
+  module * { export * }
+}
