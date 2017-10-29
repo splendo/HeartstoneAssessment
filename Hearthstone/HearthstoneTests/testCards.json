@@ -1,0 +1,31 @@
+{
+    "Basic": [{
+              "cardId": "HERO_09",
+              "name": "Anduin Wrynn",
+              "cardSet": "Basic",
+              "type": "Hero",
+              "faction": "Neutral",
+              "rarity": "Free",
+              "health": 30,
+              "collectible": true,
+              "playerClass": "Priest",
+              "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/HERO_09.png",
+              "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/HERO_09_premium.gif",
+              "locale": "enUS"
+              },
+              {
+              "cardId": "HERO_01",
+              "name": "Garrosh Hellscream",
+              "cardSet": "Basic",
+              "type": "Hero",
+              "faction": "Neutral",
+              "rarity": "Free",
+              "health": 30,
+              "collectible": true,
+              "playerClass": "Warrior",
+              "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/HERO_01.png",
+              "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/HERO_01_premium.gif",
+              "locale": "enUS"
+
+              }]
+}
