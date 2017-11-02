@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/measure_dp_medium"
+    android:layout_marginTop="@dimen/measure_dp_medium"
+    android:layout_marginLeft="@dimen/measure_dp_medium">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginBottom="@dimen/measure_dp_small"
+        android:padding="@dimen/measure_dp_medium"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/measure_dp_large" />
+
+</FrameLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="nl.splendo.assignment.posytive.ui.cards.CardGridFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/items_lister"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/empty_list"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/empty_list_error_msg"
+        tools:text="@string/empty_list_error_msg"
+        android:background="@color/cardview_dark_background"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textAllCaps="true"
+        tools:ignore="MissingPrefix"
+        fontPath="fonts/Orbitron-Black.ttf" />
+
+    <include layout="@layout/view_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+</FrameLayout>

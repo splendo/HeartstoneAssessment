@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="measure_sp_smallest">8sp</dimen>
+    <dimen name="measure_sp_smaller">10sp</dimen>
+    <dimen name="measure_sp_small">13sp</dimen>
+    <dimen name="measure_sp_medium">16sp</dimen>
+    <dimen name="measure_sp_large">20sp</dimen>
+    <dimen name="measure_sp_larger">24sp</dimen>
+    <dimen name="measure_sp_largest">48sp</dimen>
+
+    <dimen name="measure_dp_smallest">1dp</dimen> <!-- for spacing -->
+    <dimen name="measure_dp_smaller">2dp</dimen> <!-- for round corners -->
+    <dimen name="measure_dp_small">4dp</dimen> <!-- margins between small objects -->
+    <dimen name="measure_dp_medium">8dp</dimen> <!-- margins between medium objects -->
+    <dimen name="measure_dp_large">16dp</dimen> <!-- margins between fragments -->
+    <dimen name="measure_dp_larger">32dp</dimen> <!-- margins between fragments -->
+    <dimen name="measure_dp_largest">48dp</dimen><!-- margins between fragments -->
+
+    <dimen name="detailed_view_header_height">240dp</dimen>
+    <dimen name="detailed_view_header_min_margin">48dp</dimen>
+    <dimen name="detailed_view_header_max_margin">64dp</dimen>
+    <dimen name="detailed_view_header_fav_margin">80dp</dimen>
+
+    <dimen name="grid_item_fav_icon_size">20dp</dimen>
+
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_cardset_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/measure_dp_large"
+        android:layout_marginLeft="@dimen/measure_dp_large"
+        android:layout_marginTop="@dimen/measure_dp_medium"
+        android:layout_marginBottom="@dimen/measure_dp_medium"
+        app:cardElevation="@dimen/measure_dp_small">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_card_cardset"
+                android:textColor="@color/black"
+                android:textSize="@dimen/measure_sp_medium"
+                android:layout_margin="@dimen/measure_dp_large"
+                tools:text="@string/label_publisher"/>
+
+            <TextView
+                android:id="@+id/card_cardset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text=""
+                android:textSize="@dimen/measure_sp_large"
+                android:layout_margin="@dimen/measure_dp_large"
+                tools:text="race"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</merge>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="300dp"
+        android:scaleType="fitXY"
+        android:gravity="center_horizontal|top"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/card_back_default"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/measure_sp_small"
+        android:gravity="bottom|center_horizontal"
+        android:layout_gravity="bottom|center_horizontal"
+        android:padding="@dimen/measure_dp_small"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        tools:text="Andrea Nigido"
+        tools:ignore="MissingPrefix"
+        fontPath="fonts/Orbitron-Black.ttf" />
+
+        <View
+            android:id="@+id/fav_indicator"
+            android:layout_width="@dimen/grid_item_fav_icon_size"
+            android:layout_height="@dimen/grid_item_fav_icon_size"
+            android:layout_gravity="right|top"
+            android:layout_margin="@dimen/measure_dp_small"
+            android:background="@drawable/ic_favorite_white_selected"
+            android:backgroundTint="@color/color_fav"
+            android:visibility="gone"/>
+
+</FrameLayout>

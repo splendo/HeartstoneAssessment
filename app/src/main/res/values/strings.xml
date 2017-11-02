@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AN Splendo Assignment</string>
+
+    <!-- Errors -->
+    <string name="card_data_error_msg">Cannot load cards :(</string>
+    <string name="card_title_error_msg">Using placeholders to show errors, for dummies</string>
+    <string name="empty_list_error_msg">Nothing to see here!\n Please move on</string>
+
+    <!-- Splash Screen labels -->
+    <string name="data_loading">..loading data..</string>
+    <string name="data_loading_card">..loading card..</string>
+    <string name="splash_screen_title">Splash!</string>
+
+    <string name="list_label_designed_by">designed by %s</string>
+    <string name="title_back_to" formatted="false">Back to %s</string>
+
+    <!-- Card Details screen's labels -->
+    <string name="label_card_cardset">Cardset: </string>
+    <string name="label_card_flavor">Flavor: </string>
+    <string name="label_card_race">Race: </string>
+    <string name="label_card_text">Text: </string>
+</resources>
