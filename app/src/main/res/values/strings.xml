@@ -1,0 +1,20 @@
+<resources xmlns:hint="http://schemas.android.com/tools">
+    <string name="app_name"
+            hint:description="Application title">Heartstone
+    </string>
+    <string name="empty_state_description">No local data available\nSwipe to load data.</string>
+    <string name="error_state_description">Oh… snap!\nThere was an vError!\nBut you can always try
+        again.
+    </string>
+    <string name="cell_card_title_loading">…</string>
+    <string name="main_menu_filter_list">Filters</string>
+
+    <string name="filter_option_favourites">Favourites</string>
+    <string name="filter_option_rarity">Rarity</string>
+    <string name="filter_option_classes">Classes</string>
+    <string name="filter_option_types">Types</string>
+    <string name="filter_option_mechanics">Mechanics</string>
+    <string name="main_menu_filter_sorting_ascending">Ascending</string>
+    <string name="main_menu_filter_sorting_descending">Descending</string>
+
+</resources>

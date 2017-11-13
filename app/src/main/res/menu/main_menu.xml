@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter_sorting_ascending"
+        android:icon="@drawable/ic_sort_ascending"
+        android:title="@string/main_menu_filter_sorting_ascending"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/action_filter_sorting_descending"
+        android:icon="@drawable/ic_sort_descending"
+        android:title="@string/main_menu_filter_sorting_descending"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/action_filter_show_list"
+        android:icon="@drawable/ic_filter"
+        android:title="@string/main_menu_filter_list"
+        app:showAsAction="ifRoom"/>
+
+</menu>
