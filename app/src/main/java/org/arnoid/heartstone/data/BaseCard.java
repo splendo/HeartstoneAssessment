@@ -5,27 +5,16 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = Card.Scheme.NAME)
-public class Card {
+import org.arnoid.heartstone.data.relations.CardToCardClass;
+import org.arnoid.heartstone.data.relations.CardToCardMechanic;
+import org.arnoid.heartstone.data.relations.CardToCardRarity;
+import org.arnoid.heartstone.data.relations.CardToCardType;
 
-    public enum Rarity {
-        UNKNOWN,
-        BASIC,
-        COMMON,
-        RARE,
-        EPIC,
-        LEGENDARY;
-
-        public static Rarity parse(String strRarity) {
-            for (Rarity rarity : Rarity.values()) {
-                if (rarity.name().equalsIgnoreCase(strRarity)) {
-                    return rarity;
-                }
-            }
-
-            return UNKNOWN;
-        }
-    }
+/**
+ * This class represents base card data.
+ */
+@Entity(tableName = BaseCard.Scheme.NAME)
+public class BaseCard {
 
     public interface Scheme {
         String NAME = "cards";
@@ -34,11 +23,44 @@ public class Card {
             String CARD_ID = "cardId";
             String NAME = "name";
             String IMAGE = "img";
+            String FAVOURITE = "favourite";
         }
 
         interface Queries {
-            String ALL = "SELECT * FROM " + Scheme.NAME + " ORDER BY " + Properties.CARD_ID;
-            String ALL_CARD_ID = "SELECT " + Properties.CARD_ID + " FROM " + Scheme.NAME + " ORDER BY " + Properties.CARD_ID;
+            //FIXME: This query is HORRIBLE!!! Change it to query-builder
+            String FILTER_OPTIONS =
+                    //Card rarity construct
+                    " LEFT JOIN " + CardToCardRarity.Scheme.NAME + " ON " + Scheme.NAME + "." + Properties.CARD_ID + " = " + CardToCardRarity.Scheme.NAME + "." + CardToCardRarity.Scheme.Properties.CARD_ID +
+                            " LEFT JOIN " + CardRarity.Scheme.NAME + " ON " + CardToCardRarity.Scheme.NAME + "." + CardToCardRarity.Scheme.Properties.CARD_RARITY_ID + " = " + CardRarity.Scheme.NAME + "." + CardRarity.Scheme.Properties.ID +
+                            //Card type construct
+                            " LEFT JOIN " + CardToCardType.Scheme.NAME + " ON " + Scheme.NAME + "." + Properties.CARD_ID + " = " + CardToCardType.Scheme.NAME + "." + CardToCardType.Scheme.Properties.CARD_ID +
+                            " LEFT JOIN " + CardType.Scheme.NAME + " ON " + CardToCardType.Scheme.NAME + "." + CardToCardType.Scheme.Properties.CARD_TYPE_ID + " = " + CardType.Scheme.NAME + "." + CardType.Scheme.Properties.ID +
+                            //Card classes construct
+                            " LEFT JOIN " + CardToCardClass.Scheme.NAME + " ON " + Scheme.NAME + "." + Properties.CARD_ID + " = " + CardToCardClass.Scheme.NAME + "." + CardToCardClass.Scheme.Properties.CARD_ID +
+                            " LEFT JOIN " + CardClass.Scheme.NAME + " ON " + CardToCardClass.Scheme.NAME + "." + CardToCardClass.Scheme.Properties.CARD_CLASS_ID + " = " + CardClass.Scheme.NAME + "." + CardClass.Scheme.Properties.ID +
+                            //Card mechanics construct
+                            " LEFT JOIN " + CardToCardMechanic.Scheme.NAME + " ON " + Scheme.NAME + "." + Properties.CARD_ID + " = " + CardToCardMechanic.Scheme.NAME + "." + CardToCardMechanic.Scheme.Properties.CARD_ID +
+                            " LEFT JOIN " + CardMechanic.Scheme.NAME + " ON " + CardToCardMechanic.Scheme.NAME + "." + CardToCardMechanic.Scheme.Properties.CARD_MECHANIC_ID + " = " + CardMechanic.Scheme.NAME + "." + CardMechanic.Scheme.Properties.ID +
+                            //Search options
+                            " WHERE "
+                            + CardClass.Scheme.NAME + "." + CardClass.Scheme.Properties.NAME + " IN (:cardClasses)" +
+                            " AND " +
+                            CardMechanic.Scheme.NAME + "." + CardMechanic.Scheme.Properties.NAME + " IN (:cardMechanics)" +
+                            " AND " +
+                            CardRarity.Scheme.NAME + "." + CardRarity.Scheme.Properties.NAME + " IN (:cardRarities)" +
+                            " AND " +
+                            CardType.Scheme.NAME + "." + CardType.Scheme.Properties.NAME + " IN (:cardTypes)" +
+                            " AND " +
+                            BaseCard.Scheme.NAME + "." + Properties.FAVOURITE + " IN (:favourites)" +
+                            "GROUP BY " + Scheme.NAME + "." + Properties.CARD_ID;
+
+            String ALL = "SELECT * FROM " + Scheme.NAME + FILTER_OPTIONS + " ORDER BY " + Scheme.NAME + "." + Properties.NAME + " ASC";
+            String ALL_CARD_ID = "SELECT " + Scheme.NAME + "." + Properties.CARD_ID + " FROM " + Scheme.NAME + FILTER_OPTIONS + " ORDER BY " + Scheme.NAME + "." + Properties.NAME + " ASC";
+
+            //Unfortunately there's no supper for annotated order parameter querry
+            String ALL_DESC = "SELECT * FROM " + Scheme.NAME + FILTER_OPTIONS + " ORDER BY " + Scheme.NAME + "." + Properties.NAME + " DESC";
+            String ALL_CARD_ID_DESC = "SELECT " + Scheme.NAME + "." + Properties.CARD_ID + " FROM " + Scheme.NAME + FILTER_OPTIONS + " ORDER BY " + Scheme.NAME + "." + Properties.NAME + " DESC";
+
             String CARD_BY_ID = "SELECT * FROM " + Scheme.NAME + " WHERE " + Properties.CARD_ID + " = :cardId LIMIT 1";
         }
     }
@@ -64,6 +86,7 @@ public class Card {
     private String img;
     private String imgGold;
     private String locale;
+    @ColumnInfo(name = Scheme.Properties.FAVOURITE)
     private boolean favourite;
 
     public String getCardId() {
@@ -205,9 +228,9 @@ public class Card {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Card)) return false;
+        if (!(o instanceof BaseCard)) return false;
 
-        Card card = (Card) o;
+        BaseCard card = (BaseCard) o;
 
         if (cost != card.cost) return false;
         if (attack != card.attack) return false;
@@ -254,7 +277,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
+        return "BaseCard{" +
                 "cardId='" + cardId + '\'' +
                 ", name='" + name + '\'' +
                 ", cardSet='" + cardSet + '\'' +

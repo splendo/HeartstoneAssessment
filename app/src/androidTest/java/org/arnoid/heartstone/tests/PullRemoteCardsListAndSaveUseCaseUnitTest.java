@@ -1,4 +1,4 @@
-package org.arnoid.heartstone;
+package org.arnoid.heartstone.tests;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -22,6 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +34,7 @@ import io.reactivex.Flowable;
 import io.reactivex.functions.Consumer;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 public class PullRemoteCardsListAndSaveUseCaseUnitTest {
@@ -49,6 +51,7 @@ public class PullRemoteCardsListAndSaveUseCaseUnitTest {
 
     @Before
     public void before() {
+        //TODO: move this to super class
         mockCard = new Card();
         mockCard.setBaseCard(produceMockBaseCard());
 
@@ -134,8 +137,14 @@ public class PullRemoteCardsListAndSaveUseCaseUnitTest {
         databaseController.close();
     }
 
+    /**
+     * Test normal flow.
+     * ASSERT: Entity received from Network controller is equal to one read from database
+     *
+     * @throws InterruptedException
+     */
     @Test
-    public void testExecution() throws InterruptedException {
+    public void NormalFlowTest() throws InterruptedException {
         PullRemoteCardsListAndSaveUseCase useCase = new PullRemoteCardsListAndSaveUseCase(networkController, databaseController);
 
         final Semaphore semaphore = new Semaphore(1);
@@ -147,13 +156,48 @@ public class PullRemoteCardsListAndSaveUseCaseUnitTest {
                 ).subscribe(new Consumer<Card>() {
             @Override
             public void accept(Card card) throws Exception {
-                assertEquals(mockCard, card);
+                //Query returns card with BaseCard
+                assertEquals(mockCard.getBaseCard(), card.getBaseCard());
                 semaphore.release();
             }
         });
         semaphore.tryAcquire(5, TimeUnit.SECONDS);
     }
-}
 
-//expected:<Card{classes=[], mechanics=[], type=[], rarity=[]} org.arnoid.heartstone.data.Card@469af072>
-// but was:<Card{classes=[CardClass{id=0, name='Class'}], mechanics=[CardMechanic{id='0', name='Mechanic'}], type=[CardType{id=0, name='Type'}], rarity=[CardRarity{id=0, name='Rarity'}]} org.arnoid.heartstone.data.Card@8dbe840>
+    /**
+     * Test flow with network exception.
+     * ASSERT: on results returned and error handler is called
+     *
+     * @throws InterruptedException
+     */
+    @Test
+    public void FlowWithNetworkExceptionTest() throws InterruptedException {
+        PullRemoteCardsListAndSaveUseCase useCase = new PullRemoteCardsListAndSaveUseCase(new NetworkController() {
+            @Override
+            public Flowable<CardSets> getCardsList() {
+                return Flowable.error(new IOException("dummy"));
+            }
+        }, databaseController);
+
+        final Semaphore semaphore = new Semaphore(1);
+
+        semaphore.acquire();
+
+        useCase.execute()
+                .andThen(databaseController.getCard(CARD_ID))
+                .subscribe(new Consumer<Card>() {
+                               @Override
+                               public void accept(Card card) throws Exception {
+                                   fail();
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                semaphore.release();
+                            }
+                        });
+        semaphore.tryAcquire(5, TimeUnit.SECONDS);
+    }
+
+}

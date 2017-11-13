@@ -1,49 +1,47 @@
 package org.arnoid.heartstone.view.util;
 
-import android.content.res.ColorStateList;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
+
 import org.arnoid.heartstone.R;
-import org.arnoid.heartstone.data.Card;
+import org.arnoid.heartstone.data.BaseCard;
 
-public class CardRarityProcessorUtil {
+/**
+ * Helper class for image loading.
+ */
+public class CardImageProcessorUtil {
 
-    private static final String TAG = CardRarityProcessorUtil.class.getSimpleName();
-
-    public static void updateRarity(ImageView imageView, Card card) {
-        Card.Rarity rarity = Card.Rarity.parse(card.getRarity());
-
-        switch (rarity) {
-            case COMMON:
-                updateRarityIcon(imageView, R.drawable.ic_diamond_white, -1);
-                break;
-            case RARE:
-                updateRarityIcon(imageView, R.drawable.ic_diamond, R.color.material_color_light_blue_accent_700);
-                break;
-            case EPIC:
-                updateRarityIcon(imageView, R.drawable.ic_diamond, R.color.material_color_purple_900);
-                break;
-            case LEGENDARY:
-                updateRarityIcon(imageView, R.drawable.ic_diamond, R.color.material_color_orange_900);
-                break;
-            case UNKNOWN:
-                Log.w(TAG, "Unknown rarity type :[" + card.getRarity() + "]");
-            case BASIC:
-            default:
-                imageView.setVisibility(View.INVISIBLE);
-        }
+    public static void updateCardImage(ImageView imageView, BaseCard card) {
+        updateCardImage(imageView, card, true);
     }
 
-    private static void updateRarityIcon(ImageView imageView, int diamondResource, int diamondColorResource) {
-        imageView.setVisibility(View.VISIBLE);
-        imageView.setImageResource(diamondResource);
-        if (diamondColorResource > 0) {
-            imageView.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(imageView.getContext(), diamondColorResource)));
-        } else {
-            imageView.setImageTintList(null);
+    public static void updateCardImage(ImageView imageView, BaseCard card, boolean showPlaceHolder) {
+        cancelPendingImageLoad(imageView);
+
+        RequestCreator requestCreator = Picasso.with(imageView.getContext()).load(card.getImg());
+
+        if (showPlaceHolder) {
+            requestCreator.placeholder(R.drawable.ic_cards_stack);
         }
+
+        requestCreator
+                .error(R.drawable.ic_cards_stack)
+                .into(imageView);
+    }
+
+    public static void cancelPendingImageLoad(ImageView imageView) {
+        Picasso.with(imageView.getContext())
+                .cancelRequest(imageView);
+    }
+
+    public static void onLoading(ImageView imageView) {
+
+        cancelPendingImageLoad(imageView);
+
+        Picasso.with(imageView.getContext())
+                .load(R.drawable.ic_cards_stack)
+                .into(imageView);
     }
 }

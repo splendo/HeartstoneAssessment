@@ -1,22 +1,60 @@
 package org.arnoid.heartstone.data;
 
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Relation;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Set;
 
-public class CardComplete extends Card {
-    @Relation(parentColumn = Card.Scheme.Properties.NAME,
-            entityColumn = CardClass.Scheme.Properties.NAME)
+/**
+ * Composite class to represent complete card data.
+ *
+ * Filtering options like Rarity, Classes, Types, Mechanics are Sets to comply the @Relation
+ * requirements.
+ */
+public class Card {
+
+    public interface Scheme {
+        interface Properties {
+            String CLASSES = "classes";
+            String MECHANICS = "mechanics";
+            String TYPE = "type";
+            String RARITY = "rarity";
+        }
+    }
+
+    @Embedded
+    private BaseCard baseCard;
+
+    @Relation(parentColumn = BaseCard.Scheme.Properties.CARD_ID,
+            entityColumn = CardClass.Scheme.Properties.ID,
+            entity = CardClass.class)
+    @SerializedName(Scheme.Properties.CLASSES)
     private Set<CardClass> classes;
-    @Relation(parentColumn = Card.Scheme.Properties.NAME,
-            entityColumn = Mechanic.Scheme.Properties.NAME)
-    private Set<Mechanic> mechanics;
-    @Relation(parentColumn = Card.Scheme.Properties.NAME,
-            entityColumn = CardType.Scheme.Properties.NAME)
+    @Relation(parentColumn = BaseCard.Scheme.Properties.CARD_ID,
+            entityColumn = CardMechanic.Scheme.Properties.ID,
+            entity = CardMechanic.class)
+    @SerializedName(Scheme.Properties.MECHANICS)
+    private Set<CardMechanic> mechanics;
+    @Relation(parentColumn = BaseCard.Scheme.Properties.CARD_ID,
+            entityColumn = CardType.Scheme.Properties.ID,
+            entity = CardType.class)
+    @SerializedName(Scheme.Properties.TYPE)
     private Set<CardType> type;
-    @Relation(parentColumn = Card.Scheme.Properties.NAME,
-            entityColumn = CardRarity.Scheme.Properties.NAME)
+    @Relation(parentColumn = BaseCard.Scheme.Properties.CARD_ID,
+            entityColumn = CardRarity.Scheme.Properties.ID,
+            entity = CardRarity.class)
+    @SerializedName(Scheme.Properties.RARITY)
     private Set<CardRarity> rarity;
+
+    public BaseCard getBaseCard() {
+        return baseCard;
+    }
+
+    public void setBaseCard(BaseCard baseCard) {
+        this.baseCard = baseCard;
+    }
 
     public Set<CardClass> getClasses() {
         return classes;
@@ -26,11 +64,11 @@ public class CardComplete extends Card {
         this.classes = classes;
     }
 
-    public Set<Mechanic> getMechanics() {
+    public Set<CardMechanic> getMechanics() {
         return mechanics;
     }
 
-    public void setMechanics(Set<Mechanic> mechanics) {
+    public void setMechanics(Set<CardMechanic> mechanics) {
         this.mechanics = mechanics;
     }
 
@@ -53,10 +91,10 @@ public class CardComplete extends Card {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CardComplete)) return false;
+        if (!(o instanceof Card)) return false;
         if (!super.equals(o)) return false;
 
-        CardComplete that = (CardComplete) o;
+        Card that = (Card) o;
 
         if (classes != null ? !classes.equals(that.classes) : that.classes != null) return false;
         if (mechanics != null ? !mechanics.equals(that.mechanics) : that.mechanics != null)
@@ -77,11 +115,12 @@ public class CardComplete extends Card {
 
     @Override
     public String toString() {
-        return "CardComplete{" +
-                "classes=" + classes +
+        return "Card{" +
+                "baseCard=" + baseCard +
+                ", classes=" + classes +
                 ", mechanics=" + mechanics +
                 ", type=" + type +
                 ", rarity=" + rarity +
-                "} " + super.toString();
+                '}';
     }
 }

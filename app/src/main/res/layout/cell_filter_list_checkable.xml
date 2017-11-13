@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<CheckBox
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MaterialTypography.Regular.Caption"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</android.support.constraint.ConstraintLayout>
+    android:layout_height="@dimen/material_baseline_grid_4x"
+    android:gravity="center_vertical|start"/>

@@ -2,22 +2,48 @@ package org.arnoid.heartstone.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = Mechanic.Scheme.NAME)
-public class Mechanic {
+import org.arnoid.heartstone.data.util.CardsFilter;
+
+/**
+ * Entity to represent card class.
+ */
+@Entity(tableName = CardClass.Scheme.NAME,
+        indices = {@Index(value = CardClass.Scheme.Properties.NAME, unique = true)})
+public class CardClass implements CardsFilter.Filterable {
+
+    public static final String NONE = "none";
 
     public interface Scheme {
-        String NAME = "mechanics";
+        String NAME = "classes";
+
+        interface Queries {
+            String ALL = "select * from " + CardClass.Scheme.NAME;
+            String ALL_FILER_BY_NAME = "select * from " + CardClass.Scheme.NAME + " WHERE " + CardClass.Scheme.Properties.NAME + " IN (:names)";
+        }
 
         interface Properties {
+            String ID = "id";
             String NAME = "name";
         }
     }
 
-    @PrimaryKey
+    public CardClass(String name) {
+        this.name = name;
+    }
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = Scheme.Properties.ID)
+    private long id;
     @ColumnInfo(name = Scheme.Properties.NAME)
+    @NonNull
     private String name;
+    @Ignore
+    private boolean checked;
 
     public String getName() {
         return name;
@@ -27,25 +53,45 @@ public class Mechanic {
         this.name = name;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Mechanic)) return false;
+        if (!(o instanceof CardClass)) return false;
 
-        Mechanic mechanic = (Mechanic) o;
+        CardClass cardClass = (CardClass) o;
 
-        return name != null ? name.equals(mechanic.name) : mechanic.name == null;
+        if (id != cardClass.id) return false;
+        return name.equals(cardClass.name);
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + name.hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Mechanic{" +
-                "name='" + name + '\'' +
+        return "CardClass{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

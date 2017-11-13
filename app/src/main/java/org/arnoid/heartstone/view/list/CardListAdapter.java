@@ -8,18 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.arnoid.heartstone.R;
-import org.arnoid.heartstone.data.CardComplete;
+import org.arnoid.heartstone.data.Card;
 
-public class CardListAdapter extends PagedListAdapter<CardComplete, CardListViewHolder> {
+/**
+ * Shows list of cards.
+ */
+public class CardListAdapter extends PagedListAdapter<Card, CardListViewHolder> {
 
-    static final DiffCallback<CardComplete> DIFF_CALLBACK = new DiffCallback<CardComplete>() {
+    static final DiffCallback<Card> DIFF_CALLBACK = new DiffCallback<Card>() {
         @Override
-        public boolean areItemsTheSame(@NonNull CardComplete oldCard, @NonNull CardComplete newCard) {
-            return oldCard.getCardId().equals(newCard.getCardId());
+        public boolean areItemsTheSame(@NonNull Card oldCard, @NonNull Card newCard) {
+            return oldCard.getBaseCard().getCardId().equals(newCard.getBaseCard().getCardId());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull CardComplete oldCard, @NonNull CardComplete newCard) {
+        public boolean areContentsTheSame(@NonNull Card oldCard, @NonNull Card newCard) {
             return oldCard.equals(newCard);
         }
     };
@@ -42,7 +45,7 @@ public class CardListAdapter extends PagedListAdapter<CardComplete, CardListView
 
     @Override
     public void onBindViewHolder(CardListViewHolder holder, int position) {
-        CardComplete card = getItem(position);
+        Card card = getItem(position);
         if (card != null) {
             holder.onBind(card);
         } else {

@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CardTypeTypeConverter implements JsonDeserializer<Set<CardType>> {
+public class CardTypeDeserializer implements JsonDeserializer<Set<CardType>> {
 
     @Override
     public Set<CardType> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {

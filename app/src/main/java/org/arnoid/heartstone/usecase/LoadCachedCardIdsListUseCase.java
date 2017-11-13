@@ -5,47 +5,25 @@ import android.arch.paging.LivePagedListProvider;
 import android.arch.paging.PagedList;
 
 import org.arnoid.heartstone.controller.DatabaseController;
-import org.arnoid.heartstone.data.CardComplete;
 
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
 
-public class LoadCachedCardsListUseCase implements UseCase<Flowable<LiveData<PagedList<CardComplete>>>> {
+/**
+ * Use case to represent loading cached card id list.
+ */
+public class LoadCachedCardIdsListUseCase extends LoadCachedUseCase<Flowable<LiveData<PagedList<String>>>> {
 
-    public static final int DEFAULT_PAGE_SIZE = 100;
-    public static final int DEFAULT_PREFETCH_SIZE = 100;
-
-    private final DatabaseController databaseController;
-    private int pageSize = DEFAULT_PAGE_SIZE;
-    private int prefetchDistance = DEFAULT_PREFETCH_SIZE;
-
-    public LoadCachedCardsListUseCase(DatabaseController databaseController) {
-        this.databaseController = databaseController;
+    public LoadCachedCardIdsListUseCase(DatabaseController databaseController) {
+        super(databaseController);
     }
 
-    public LoadCachedCardsListUseCase setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-        return this;
-    }
-
-    public LoadCachedCardsListUseCase setPrefetchDistance(int prefetchDistance) {
-        this.prefetchDistance = prefetchDistance;
-
-        return this;
-    }
-
-    @Override
-    public Flowable<LiveData<PagedList<CardComplete>>> execute() {
-        return databaseController.getCardsList()
-                .map(new Function<LivePagedListProvider<Integer, CardComplete>, LiveData<PagedList<CardComplete>>>() {
+    public Flowable<LiveData<PagedList<String>>> execute() {
+        return getDatabaseController().getCardIdsList(getFilter())
+                .map(new Function<LivePagedListProvider<Integer, String>, LiveData<PagedList<String>>>() {
                     @Override
-                    public LiveData<PagedList<CardComplete>> apply(LivePagedListProvider<Integer, CardComplete> livePagedListProvider) throws Exception {
-                        PagedList.Config config = new PagedList.Config.Builder()
-                                .setPageSize(pageSize)
-                                .setPrefetchDistance(prefetchDistance)
-                                .build();
-
-                        return livePagedListProvider.create(null, config);
+                    public LiveData<PagedList<String>> apply(LivePagedListProvider<Integer, String> livePagedListProvider) throws Exception {
+                        return livePagedListProvider.create(getInitialPosition(), producePagedListConfig());
                     }
                 });
     }

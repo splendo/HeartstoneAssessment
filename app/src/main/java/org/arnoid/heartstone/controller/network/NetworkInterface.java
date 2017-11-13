@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 /**
  * Network interface
  */
-public interface BackendInterface {
+public interface NetworkInterface {
 
     @GET("/cards.json")
     Flowable<CardSets> getCardsList();

@@ -1,24 +1,32 @@
 package org.arnoid.heartstone.usecase;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.LivePagedListProvider;
 import android.arch.paging.PagedList;
 
 import org.arnoid.heartstone.controller.DatabaseController;
-import org.arnoid.heartstone.data.CardComplete;
+import org.arnoid.heartstone.data.Card;
 
 import io.reactivex.Flowable;
+import io.reactivex.functions.Function;
 
-public class CachedCardsListUseCase implements UseCase<Flowable<LiveData<PagedList<CardComplete>>>> {
+/**
+ * Use case to represent loading cached card list.
+ */
+public class LoadCachedCardsListUseCase extends LoadCachedUseCase<Flowable<LiveData<PagedList<Card>>>> {
 
-    private final DatabaseController databaseController;
-
-    public CachedCardsListUseCase(DatabaseController databaseController) {
-        this.databaseController = databaseController;
+    public LoadCachedCardsListUseCase(DatabaseController databaseController) {
+        super(databaseController);
     }
 
-    @Override
-    public Flowable<LiveData<PagedList<CardComplete>>> execute() {
-        return databaseController.getCardsList();
+    public Flowable<LiveData<PagedList<Card>>> execute() {
+        return getDatabaseController().getCardsList(getFilter())
+                .map(new Function<LivePagedListProvider<Integer, Card>, LiveData<PagedList<Card>>>() {
+                    @Override
+                    public LiveData<PagedList<Card>> apply(LivePagedListProvider<Integer, Card> livePagedListProvider) throws Exception {
+                        return livePagedListProvider.create(getInitialPosition(), producePagedListConfig());
+                    }
+                });
     }
 
 }
