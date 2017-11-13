@@ -1,3 +1,39 @@
+## Results
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kdytbSfTa7U/0.jpg)](https://www.youtube.com/watch?v=kdytbSfTa7U)
+
+# WARNING:
+- I was unable to do the backend in time so paged data loading from backend is not implemented.
+- I have used this assignment as chance to learn the Android Room persistence library, but it seems i've done it wrong:
+    - Initial import can take **3 minutes**, because insert of ALL items is really not optimised and not paged.
+    - I was unable to find the right way to fetch composite data objects from "joined" requests.
+    
+## General concept
+![Concept](https://github.com/arnoid/HeartstoneAssessment/blob/master/concept.png?raw=true)
+
+We have several definitions:
+- UI: represents actors which consume data.
+- Controllers: provide set of domain specific simple actions.
+- UseCase: set of actions required by actor to be permormed and result.
+
+So, for example, PullDataFromBackEndAndSave use case incorporates following actions:
+- NetworkController:
+    - Load data from backend
+- Database controller
+    - Save cards data
+    - Map relations
+    
+Such approach helps us to follow SOLID principles. Also this helps us to concentrate on use-case testing, because controllers can be easily mocked and injected.
+
+## 3rd Party libraries
+
+Database - I have picked Android Room, because i see this assignment as perfect chance to learn something new. But it seems that I was far to unprepared for this. So it was a mistake. Next time I'd rather pick realm.io .
+
+Network - Retrofit, simple stupid plus support of Rx.
+
+Image loading - Picasso, simple stupid and fits for this case.
+
+P.S. I wanted to use dependency injection, but it seems a bit an overkill for this project.
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
