@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>HeartstoneAssessment UI</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.css" integrity="sha256-dcJvQZDbm+YriXhKxI2hO+D2WGU/cu2YQeSVU6WbY5U=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/simple.css" />
+    
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js" integrity="sha256-j2fSUXSx7aab6LM9Rhktwi08KATeQeYqfrLrUS3c56Y=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+  <div id="app">
+	<nav class="navbar navbar-light bg-light">
+		<form class="px-3">
+		  <span class="navbar-text">
+		    HeartstoneAssessment UI
+		  </span>
+<!-- 			<button class="btn btn-outline-success" type="button" @click="addMore">Add</button> -->
+<!-- 			<button class="btn btn-sm align-middle btn-outline-secondary" -->
+<!-- 				type="button">Smaller button</button> -->
+		</form>
+	</nav>
+		<modal v-if="showModal" @close="showModal = false" 
+		@prev="stepDetail(-1)" @next="stepDetail(1)" 
+		:prevcond="detailIndex > 0" :nextcond="detailIndex < downloadedList.length-1">
+		    <h3 slot="header">Card #{{ detailIndex }}: {{ detailModel.name }}
+		    <button @click="fav">{{ isFav ? '&#9829;' : '&#9825;' }}</button>
+		    </h3>
+		    <div slot="body">
+		    <div class="row">
+		    	<div class="lg-4">
+		    		<img height="450" :src="detailModel.img"/>
+		    	</div>
+		    	<div class="lg-6">
+			    	<p><b>Card set:</b> {{ detailModel.cardSet }}</p>
+			    	<p><b>Type:</b> {{ detailModel.type }}</p>
+			    	<p><b>Rarity:</b> {{ detailModel.rarity }}</p>
+			    	<p><b>Classes:</b>
+			    	 {{ detailModel.classes == null ? "-" : detailModel.classes.join(", ") }}</p>
+			    	<p><b>Mechanics:</b>
+			    	<ul>
+			    		<li v-for="m in detailModel.mechanics">{{m.name}}</li>
+			    	</ul>
+		    	</div>
+		    </div>
+		    </div>
+		    
+		    "classes":null,"mechanics":[{"name":"Deathrattle"}]}
+		  </modal>
+
+		<div class="clusterize">
+			<div id="scrollArea" class="clusterize-scroll" style="max-height: 700px">
+				<table border="1" class="scrolltable">
+					<tbody id="contentArea" class="clusterize-content">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+    <script src="js/hstone.js"></script>
+<script type="text/x-template" id="list-row-template">
+<tr>
+  <td v-for="it in m"><img height="300" :src="it.src" :onclick="it.clk" alt="Loading..." onerror="app.imgError(this)"/></td>
+</tr>
+</script>
+
+<script type="text/x-template" id="modal-template">
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+
+          <div class="modal-header">
+            <slot name="header">
+              default header
+            </slot>
+          </div>
+
+          <div class="modal-body">
+            <slot name="body">
+              default body
+            </slot>
+          </div>
+
+          <div class="modal-footer">
+            <slot name="footer">
+              <button v-if="prevcond" class="modal-default-button" @click="$emit('prev')">
+               &laquo; Prev
+              </button>
+              <button class="modal-default-button" @click="$emit('close')">
+                Close
+              </button>
+              <button v-if="nextcond" class="modal-default-button" @click="$emit('next')">
+                Next &raquo;
+              </button>
+            </slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</script>
+
+</body>
+</html>
