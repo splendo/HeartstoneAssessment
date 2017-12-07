@@ -6,7 +6,7 @@ He wants you to build a web app that has similar UI/UX. Similar way to go from t
 
 We have supplied you with a json file (`cards.json`) containing all the Heartstone cards currently available.
 
-Hsiao is especially interested in the app showing `Legendary` cards with the `Deathrattle Mechanic`, below are examples of such a cards :
+Hsiao is especially interested in the app showing `Legendary` cards with the `Deathrattle Mechanic`, below are examples of such cards:
 
 ```json
 {
@@ -84,7 +84,7 @@ You are free to choose the patterns and architectures to create this web app, th
 
 ### Backend
 
-* Create an API using a Java (plain java or Groovy/Cotlin) backend allowing you to get card information for at least legendary deathrattle cards
+* Create an API using a Java (plain java or Groovy/Kotlin) backend allowing you to get card information for at least legendary deathrattle cards
 * The API should also support filtering based on relevant request parameters. Ideally, the API should enable the following, listed from easy to hard:
   * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`
   * return sorted results (for example, alphabetically sorted), supporting both ascending and descending

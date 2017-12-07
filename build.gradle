@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'
+	}
+}
+
+apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.google.cloud.tools.appengine'
+
+group = 'nl.tom'
+version = '0.0.2-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {   // repositories for Jar's you access in your code
+  mavenCentral()
+}
+
+configurations {
+	providedCompile
+	// comment for local
+	//compile.exclude module: "spring-boot-starter-tomcat"
+	compile.exclude module: "org.slf4j:jul-to-slf4j"
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+	
+	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
+	//FIXME: providedCompile group: 'org.slf4j', name: 'jul-to-slf4j'
+  	
+	//compile('org.springframework.boot:spring-boot-devtools')
+	
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	//TODO: testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+}
