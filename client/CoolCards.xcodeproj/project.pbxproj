@@ -1,0 +1,942 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33DEB054239F2A45A6B20EE6 /* Pods_CoolCardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496693E06508045040F7BBD2 /* Pods_CoolCardsTests.framework */; };
+		A4C7A93FC85D28869A4D0DD9 /* Pods_CoolCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFE2BE2A9B29FA28364EC59 /* Pods_CoolCards.framework */; };
+		B48DBA8730F3B864DD510637 /* Pods_CoolCardsIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9AB3BD82F8BCB55DF50B29 /* Pods_CoolCardsIntegrationTests.framework */; };
+		CD31CE321FE73377008748BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE311FE73377008748BB /* AppDelegate.swift */; };
+		CD31CE341FE73377008748BB /* CoolCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE331FE73377008748BB /* CoolCardsViewController.swift */; };
+		CD31CE371FE73377008748BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31CE351FE73377008748BB /* Main.storyboard */; };
+		CD31CE391FE73377008748BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD31CE381FE73377008748BB /* Assets.xcassets */; };
+		CD31CE3C1FE73377008748BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD31CE3A1FE73377008748BB /* LaunchScreen.storyboard */; };
+		CD31CE471FE73377008748BB /* CoolCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE461FE73377008748BB /* CoolCardsTests.swift */; };
+		CD31CE581FE73461008748BB /* CoolCardsIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE571FE73461008748BB /* CoolCardsIntegrationTests.swift */; };
+		CD31CE651FE74AC4008748BB /* CoolCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE641FE74AC4008748BB /* CoolCardsAPI.swift */; };
+		CD31CE681FE750B0008748BB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE671FE750B0008748BB /* Card.swift */; };
+		CD31CE6A1FE7D364008748BB /* CoolCardAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE691FE7D364008748BB /* CoolCardAPIRequest.swift */; };
+		CD31CE741FE7E3D5008748BB /* BaseFlowCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE731FE7E3D5008748BB /* BaseFlowCollectionViewController.swift */; };
+		CD31CE781FE7E49D008748BB /* CoolCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE771FE7E49D008748BB /* CoolCardsViewModel.swift */; };
+		CD31CE801FE7E7BB008748BB /* CoolCardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE7E1FE7E7BB008748BB /* CoolCardsCollectionViewCell.swift */; };
+		CD31CE811FE7E7BB008748BB /* CoolCardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD31CE7F1FE7E7BB008748BB /* CoolCardsCollectionViewCell.xib */; };
+		CD31CE841FE7E897008748BB /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE831FE7E897008748BB /* UIView+Extensions.swift */; };
+		CD31CE861FE7E8CF008748BB /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE851FE7E8CF008748BB /* UICollectionView+Extensions.swift */; };
+		CD31CE881FE7EABE008748BB /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD31CE871FE7EABE008748BB /* UIImageView+Extensions.swift */; };
+		CD3CAE631FE80A6A002B53D2 /* CoolCardsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CAE621FE80A6A002B53D2 /* CoolCardsDetailViewModel.swift */; };
+		CD3CAE721FE8162C002B53D2 /* CoolCardsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CAE701FE8162C002B53D2 /* CoolCardsDetailViewController.swift */; };
+		CD3CAE731FE8162C002B53D2 /* CoolCardsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3CAE711FE8162C002B53D2 /* CoolCardsDetailViewController.xib */; };
+		CD3CAE751FE8263F002B53D2 /* FavoritesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3CAE741FE8263F002B53D2 /* FavoritesProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD31CE431FE73377008748BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD31CE261FE73377008748BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD31CE2D1FE73377008748BB;
+			remoteInfo = CoolCards;
+		};
+		CD31CE5A1FE73461008748BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD31CE261FE73377008748BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD31CE2D1FE73377008748BB;
+			remoteInfo = CoolCards;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F9AB3BD82F8BCB55DF50B29 /* Pods_CoolCardsIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoolCardsIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		496693E06508045040F7BBD2 /* Pods_CoolCardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoolCardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		606513159A8D933437500FAE /* Pods-CoolCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCardsTests/Pods-CoolCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		64F33BC23C651CF8B05B57C1 /* Pods-CoolCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCards/Pods-CoolCards.release.xcconfig"; sourceTree = "<group>"; };
+		69F28CB427824E0A14F2C526 /* Pods-CoolCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCardsTests/Pods-CoolCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		7AFE2BE2A9B29FA28364EC59 /* Pods_CoolCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoolCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A946D1D6CD979BDE9AC5B987 /* Pods-CoolCardsIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCardsIntegrationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCardsIntegrationTests/Pods-CoolCardsIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6FF43D8E279DAD47C322C11 /* Pods-CoolCardsIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCardsIntegrationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCardsIntegrationTests/Pods-CoolCardsIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		C3877B914B75742D7B94A243 /* Pods-CoolCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoolCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoolCards/Pods-CoolCards.debug.xcconfig"; sourceTree = "<group>"; };
+		CD31CE2E1FE73377008748BB /* CoolCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD31CE311FE73377008748BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD31CE331FE73377008748BB /* CoolCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsViewController.swift; sourceTree = "<group>"; };
+		CD31CE361FE73377008748BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD31CE381FE73377008748BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD31CE3B1FE73377008748BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD31CE3D1FE73377008748BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD31CE421FE73377008748BB /* CoolCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD31CE461FE73377008748BB /* CoolCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsTests.swift; sourceTree = "<group>"; };
+		CD31CE481FE73377008748BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD31CE551FE73461008748BB /* CoolCardsIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoolCardsIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD31CE571FE73461008748BB /* CoolCardsIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsIntegrationTests.swift; sourceTree = "<group>"; };
+		CD31CE591FE73461008748BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD31CE641FE74AC4008748BB /* CoolCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsAPI.swift; sourceTree = "<group>"; };
+		CD31CE671FE750B0008748BB /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CD31CE691FE7D364008748BB /* CoolCardAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardAPIRequest.swift; sourceTree = "<group>"; };
+		CD31CE731FE7E3D5008748BB /* BaseFlowCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCollectionViewController.swift; sourceTree = "<group>"; };
+		CD31CE771FE7E49D008748BB /* CoolCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsViewModel.swift; sourceTree = "<group>"; };
+		CD31CE7E1FE7E7BB008748BB /* CoolCardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD31CE7F1FE7E7BB008748BB /* CoolCardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoolCardsCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD31CE831FE7E897008748BB /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		CD31CE851FE7E8CF008748BB /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		CD31CE871FE7EABE008748BB /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		CD3CAE621FE80A6A002B53D2 /* CoolCardsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsDetailViewModel.swift; sourceTree = "<group>"; };
+		CD3CAE701FE8162C002B53D2 /* CoolCardsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolCardsDetailViewController.swift; sourceTree = "<group>"; };
+		CD3CAE711FE8162C002B53D2 /* CoolCardsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoolCardsDetailViewController.xib; sourceTree = "<group>"; };
+		CD3CAE741FE8263F002B53D2 /* FavoritesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProvider.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD31CE2B1FE73377008748BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4C7A93FC85D28869A4D0DD9 /* Pods_CoolCards.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE3F1FE73377008748BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33DEB054239F2A45A6B20EE6 /* Pods_CoolCardsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE521FE73461008748BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B48DBA8730F3B864DD510637 /* Pods_CoolCardsIntegrationTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4620D0E4E46EF22F2262893B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C3877B914B75742D7B94A243 /* Pods-CoolCards.debug.xcconfig */,
+				64F33BC23C651CF8B05B57C1 /* Pods-CoolCards.release.xcconfig */,
+				A946D1D6CD979BDE9AC5B987 /* Pods-CoolCardsIntegrationTests.debug.xcconfig */,
+				B6FF43D8E279DAD47C322C11 /* Pods-CoolCardsIntegrationTests.release.xcconfig */,
+				606513159A8D933437500FAE /* Pods-CoolCardsTests.debug.xcconfig */,
+				69F28CB427824E0A14F2C526 /* Pods-CoolCardsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		54910C098E905AAA9B3AFB88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AFE2BE2A9B29FA28364EC59 /* Pods_CoolCards.framework */,
+				0F9AB3BD82F8BCB55DF50B29 /* Pods_CoolCardsIntegrationTests.framework */,
+				496693E06508045040F7BBD2 /* Pods_CoolCardsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD31CE251FE73377008748BB = {
+			isa = PBXGroup;
+			children = (
+				CD31CE301FE73377008748BB /* CoolCards */,
+				CD31CE451FE73377008748BB /* CoolCardsTests */,
+				CD31CE561FE73461008748BB /* CoolCardsIntegrationTests */,
+				CD31CE2F1FE73377008748BB /* Products */,
+				4620D0E4E46EF22F2262893B /* Pods */,
+				54910C098E905AAA9B3AFB88 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD31CE2F1FE73377008748BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE2E1FE73377008748BB /* CoolCards.app */,
+				CD31CE421FE73377008748BB /* CoolCardsTests.xctest */,
+				CD31CE551FE73461008748BB /* CoolCardsIntegrationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD31CE301FE73377008748BB /* CoolCards */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE311FE73377008748BB /* AppDelegate.swift */,
+				CD31CE751FE7E463008748BB /* UI */,
+				CD31CE701FE7DA0A008748BB /* Resources */,
+				CD31CE631FE74AA6008748BB /* CoolCardsAPI */,
+				CD31CE6C1FE7D6F1008748BB /* Suporting Files */,
+				CD31CE3D1FE73377008748BB /* Info.plist */,
+			);
+			path = CoolCards;
+			sourceTree = "<group>";
+		};
+		CD31CE451FE73377008748BB /* CoolCardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE461FE73377008748BB /* CoolCardsTests.swift */,
+				CD31CE481FE73377008748BB /* Info.plist */,
+			);
+			path = CoolCardsTests;
+			sourceTree = "<group>";
+		};
+		CD31CE561FE73461008748BB /* CoolCardsIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE571FE73461008748BB /* CoolCardsIntegrationTests.swift */,
+				CD31CE591FE73461008748BB /* Info.plist */,
+			);
+			path = CoolCardsIntegrationTests;
+			sourceTree = "<group>";
+		};
+		CD31CE631FE74AA6008748BB /* CoolCardsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE641FE74AC4008748BB /* CoolCardsAPI.swift */,
+				CD31CE691FE7D364008748BB /* CoolCardAPIRequest.swift */,
+				CD31CE661FE7508A008748BB /* DataEntities */,
+			);
+			path = CoolCardsAPI;
+			sourceTree = "<group>";
+		};
+		CD31CE661FE7508A008748BB /* DataEntities */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE671FE750B0008748BB /* Card.swift */,
+			);
+			path = DataEntities;
+			sourceTree = "<group>";
+		};
+		CD31CE6B1FE7D6D4008748BB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE351FE73377008748BB /* Main.storyboard */,
+				CD31CE3A1FE73377008748BB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CD31CE6C1FE7D6F1008748BB /* Suporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Suporting Files";
+			sourceTree = "<group>";
+		};
+		CD31CE6E1FE7D9CE008748BB /* CoolCardsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE331FE73377008748BB /* CoolCardsViewController.swift */,
+				CD31CE771FE7E49D008748BB /* CoolCardsViewModel.swift */,
+				CD31CE791FE7E652008748BB /* CoolCardsCollectionViewCell */,
+			);
+			path = CoolCardsViewController;
+			sourceTree = "<group>";
+		};
+		CD31CE6F1FE7D9DE008748BB /* CoolCardsDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD3CAE701FE8162C002B53D2 /* CoolCardsDetailViewController.swift */,
+				CD3CAE711FE8162C002B53D2 /* CoolCardsDetailViewController.xib */,
+				CD3CAE621FE80A6A002B53D2 /* CoolCardsDetailViewModel.swift */,
+				CD3CAE741FE8263F002B53D2 /* FavoritesProvider.swift */,
+			);
+			path = CoolCardsDetailViewController;
+			sourceTree = "<group>";
+		};
+		CD31CE701FE7DA0A008748BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE381FE73377008748BB /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CD31CE721FE7E3B7008748BB /* BaseFlowCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE731FE7E3D5008748BB /* BaseFlowCollectionViewController.swift */,
+			);
+			path = BaseFlowCollectionViewController;
+			sourceTree = "<group>";
+		};
+		CD31CE751FE7E463008748BB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE6B1FE7D6D4008748BB /* Storyboards */,
+				CD31CE721FE7E3B7008748BB /* BaseFlowCollectionViewController */,
+				CD31CE6E1FE7D9CE008748BB /* CoolCardsViewController */,
+				CD31CE6F1FE7D9DE008748BB /* CoolCardsDetailViewController */,
+				CD31CE821FE7E809008748BB /* Extension */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CD31CE791FE7E652008748BB /* CoolCardsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE7E1FE7E7BB008748BB /* CoolCardsCollectionViewCell.swift */,
+				CD31CE7F1FE7E7BB008748BB /* CoolCardsCollectionViewCell.xib */,
+			);
+			path = CoolCardsCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		CD31CE821FE7E809008748BB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD31CE831FE7E897008748BB /* UIView+Extensions.swift */,
+				CD31CE851FE7E8CF008748BB /* UICollectionView+Extensions.swift */,
+				CD31CE871FE7EABE008748BB /* UIImageView+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD31CE2D1FE73377008748BB /* CoolCards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD31CE4B1FE73377008748BB /* Build configuration list for PBXNativeTarget "CoolCards" */;
+			buildPhases = (
+				3CF1E9609FE3E78E5887DE92 /* [CP] Check Pods Manifest.lock */,
+				CD31CE2A1FE73377008748BB /* Sources */,
+				CD31CE2B1FE73377008748BB /* Frameworks */,
+				CD31CE2C1FE73377008748BB /* Resources */,
+				11EF348550C63DDFC75F44E1 /* [CP] Embed Pods Frameworks */,
+				61589AD07BDA68A11B46DC64 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoolCards;
+			productName = CoolCards;
+			productReference = CD31CE2E1FE73377008748BB /* CoolCards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD31CE411FE73377008748BB /* CoolCardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD31CE4E1FE73377008748BB /* Build configuration list for PBXNativeTarget "CoolCardsTests" */;
+			buildPhases = (
+				4E413E2ED9629D81578F351E /* [CP] Check Pods Manifest.lock */,
+				CD31CE3E1FE73377008748BB /* Sources */,
+				CD31CE3F1FE73377008748BB /* Frameworks */,
+				CD31CE401FE73377008748BB /* Resources */,
+				BF47530E8C88B98F91E22304 /* [CP] Embed Pods Frameworks */,
+				17A1771A32F931B8214BA9E3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD31CE441FE73377008748BB /* PBXTargetDependency */,
+			);
+			name = CoolCardsTests;
+			productName = CoolCardsTests;
+			productReference = CD31CE421FE73377008748BB /* CoolCardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CD31CE541FE73461008748BB /* CoolCardsIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD31CE5E1FE73461008748BB /* Build configuration list for PBXNativeTarget "CoolCardsIntegrationTests" */;
+			buildPhases = (
+				BC285006D1E3636D8B20CE4E /* [CP] Check Pods Manifest.lock */,
+				CD31CE511FE73461008748BB /* Sources */,
+				CD31CE521FE73461008748BB /* Frameworks */,
+				CD31CE531FE73461008748BB /* Resources */,
+				5EED6232B7289B1DC6F82310 /* [CP] Embed Pods Frameworks */,
+				25C248E72BD821E65F45FA68 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD31CE5B1FE73461008748BB /* PBXTargetDependency */,
+			);
+			name = CoolCardsIntegrationTests;
+			productName = CoolCardsIntegrationTests;
+			productReference = CD31CE551FE73461008748BB /* CoolCardsIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD31CE261FE73377008748BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Chatterjee, Sumeru";
+				TargetAttributes = {
+					CD31CE2D1FE73377008748BB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					CD31CE411FE73377008748BB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD31CE2D1FE73377008748BB;
+					};
+					CD31CE541FE73461008748BB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD31CE2D1FE73377008748BB;
+					};
+				};
+			};
+			buildConfigurationList = CD31CE291FE73377008748BB /* Build configuration list for PBXProject "CoolCards" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD31CE251FE73377008748BB;
+			productRefGroup = CD31CE2F1FE73377008748BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD31CE2D1FE73377008748BB /* CoolCards */,
+				CD31CE411FE73377008748BB /* CoolCardsTests */,
+				CD31CE541FE73461008748BB /* CoolCardsIntegrationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD31CE2C1FE73377008748BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD31CE3C1FE73377008748BB /* LaunchScreen.storyboard in Resources */,
+				CD31CE811FE7E7BB008748BB /* CoolCardsCollectionViewCell.xib in Resources */,
+				CD3CAE731FE8162C002B53D2 /* CoolCardsDetailViewController.xib in Resources */,
+				CD31CE391FE73377008748BB /* Assets.xcassets in Resources */,
+				CD31CE371FE73377008748BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE401FE73377008748BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE531FE73461008748BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11EF348550C63DDFC75F44E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoolCards/Pods-CoolCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCards/Pods-CoolCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		17A1771A32F931B8214BA9E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsTests/Pods-CoolCardsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25C248E72BD821E65F45FA68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsIntegrationTests/Pods-CoolCardsIntegrationTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CF1E9609FE3E78E5887DE92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoolCards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E413E2ED9629D81578F351E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoolCardsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EED6232B7289B1DC6F82310 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsIntegrationTests/Pods-CoolCardsIntegrationTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsIntegrationTests/Pods-CoolCardsIntegrationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61589AD07BDA68A11B46DC64 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCards/Pods-CoolCards-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC285006D1E3636D8B20CE4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoolCardsIntegrationTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF47530E8C88B98F91E22304 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsTests/Pods-CoolCardsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoolCardsTests/Pods-CoolCardsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD31CE2A1FE73377008748BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD31CE651FE74AC4008748BB /* CoolCardsAPI.swift in Sources */,
+				CD31CE781FE7E49D008748BB /* CoolCardsViewModel.swift in Sources */,
+				CD31CE881FE7EABE008748BB /* UIImageView+Extensions.swift in Sources */,
+				CD31CE861FE7E8CF008748BB /* UICollectionView+Extensions.swift in Sources */,
+				CD31CE341FE73377008748BB /* CoolCardsViewController.swift in Sources */,
+				CD31CE841FE7E897008748BB /* UIView+Extensions.swift in Sources */,
+				CD3CAE751FE8263F002B53D2 /* FavoritesProvider.swift in Sources */,
+				CD31CE681FE750B0008748BB /* Card.swift in Sources */,
+				CD3CAE721FE8162C002B53D2 /* CoolCardsDetailViewController.swift in Sources */,
+				CD31CE741FE7E3D5008748BB /* BaseFlowCollectionViewController.swift in Sources */,
+				CD3CAE631FE80A6A002B53D2 /* CoolCardsDetailViewModel.swift in Sources */,
+				CD31CE321FE73377008748BB /* AppDelegate.swift in Sources */,
+				CD31CE6A1FE7D364008748BB /* CoolCardAPIRequest.swift in Sources */,
+				CD31CE801FE7E7BB008748BB /* CoolCardsCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE3E1FE73377008748BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD31CE471FE73377008748BB /* CoolCardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD31CE511FE73461008748BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD31CE581FE73461008748BB /* CoolCardsIntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD31CE441FE73377008748BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD31CE2D1FE73377008748BB /* CoolCards */;
+			targetProxy = CD31CE431FE73377008748BB /* PBXContainerItemProxy */;
+		};
+		CD31CE5B1FE73461008748BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD31CE2D1FE73377008748BB /* CoolCards */;
+			targetProxy = CD31CE5A1FE73461008748BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD31CE351FE73377008748BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD31CE361FE73377008748BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD31CE3A1FE73377008748BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD31CE3B1FE73377008748BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD31CE491FE73377008748BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD31CE4A1FE73377008748BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD31CE4C1FE73377008748BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3877B914B75742D7B94A243 /* Pods-CoolCards.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCards/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD31CE4D1FE73377008748BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64F33BC23C651CF8B05B57C1 /* Pods-CoolCards.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCards/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CD31CE4F1FE73377008748BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 606513159A8D933437500FAE /* Pods-CoolCardsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolCards.app/CoolCards";
+			};
+			name = Debug;
+		};
+		CD31CE501FE73377008748BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69F28CB427824E0A14F2C526 /* Pods-CoolCardsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolCards.app/CoolCards";
+			};
+			name = Release;
+		};
+		CD31CE5C1FE73461008748BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A946D1D6CD979BDE9AC5B987 /* Pods-CoolCardsIntegrationTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCardsIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCardsIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolCards.app/CoolCards";
+			};
+			name = Debug;
+		};
+		CD31CE5D1FE73461008748BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6FF43D8E279DAD47C322C11 /* Pods-CoolCardsIntegrationTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WBF45A68AX;
+				INFOPLIST_FILE = CoolCardsIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nodemaker.CoolCardsIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoolCards.app/CoolCards";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD31CE291FE73377008748BB /* Build configuration list for PBXProject "CoolCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD31CE491FE73377008748BB /* Debug */,
+				CD31CE4A1FE73377008748BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD31CE4B1FE73377008748BB /* Build configuration list for PBXNativeTarget "CoolCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD31CE4C1FE73377008748BB /* Debug */,
+				CD31CE4D1FE73377008748BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD31CE4E1FE73377008748BB /* Build configuration list for PBXNativeTarget "CoolCardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD31CE4F1FE73377008748BB /* Debug */,
+				CD31CE501FE73377008748BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD31CE5E1FE73461008748BB /* Build configuration list for PBXNativeTarget "CoolCardsIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD31CE5C1FE73461008748BB /* Debug */,
+				CD31CE5D1FE73461008748BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD31CE261FE73377008748BB /* Project object */;
+}

@@ -1,0 +1,21 @@
+{
+  "cardId": "FP1_014",
+  "name": "Stalagg",
+  "cardSet": "Naxxramas",
+  "type": "Minion",
+  "rarity": "Legendary",
+  "cost": 5,
+  "attack": 7,
+  "health": 4,
+  "text": "<b>Deathrattle:</b> If Feugen also died this game, summon Thaddius.",
+  "flavor": "Stalagg want to write own flavor text.  \"STALAGG AWESOME!\"",
+  "artist": "Dany Orizio",
+  "collectible": true,
+  "elite": true,
+  "playerClass": "Neutral",
+  "howToGet": "Unlocked in The Construct Quarter, in the Naxxramas adventure.",
+  "howToGetGold": "Crafting unlocked in The Construct Quarter, in the Naxxramas adventure.",
+  "img": "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png",
+  "imgGold": "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/FP1_014_premium.gif",
+  "locale": "enUS"
+}
