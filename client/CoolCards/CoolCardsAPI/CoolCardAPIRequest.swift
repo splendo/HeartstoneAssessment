@@ -17,6 +17,8 @@ enum CoolCardsAPIRequest {
 extension CoolCardsAPIRequest: TargetType {
     
     var baseURL: URL {
+        // The server is running on google app engine in a docker container and the code is also in the repository
+
         return URL(string: "http://35.205.213.172:5000")!
     }
     
