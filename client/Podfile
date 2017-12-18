@@ -1,0 +1,22 @@
+platform :ios, '10.0'
+use_frameworks!
+
+project 'CoolCards.xcodeproj'
+
+def core_pods
+    pod 'Moya'
+    pod 'SDWebImage'
+    pod 'FontAwesome.swift'
+end
+
+target 'CoolCards' do
+    core_pods
+end
+
+target 'CoolCardsTests' do
+    core_pods
+end
+
+target 'CoolCardsIntegrationTests' do
+    core_pods
+end

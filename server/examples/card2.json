@@ -1,0 +1,20 @@
+{
+  "cardId": "CFM_902",
+  "name": "Aya Blackpaw",
+  "cardSet": "Mean Streets of Gadgetzan",
+  "type": "Minion",
+  "rarity": "Legendary",
+  "cost": 6,
+  "attack": 5,
+  "health": 3,
+  "text": " <b>Battlecry and Deathrattle:</b> Summon a <b>Jade Golem</b>.",
+  "flavor": "Though young, Aya took over as the leader of Jade Lotus through her charisma and strategic acumen when her predecessor was accidentally crushed by a jade golem.",
+  "artist": "Glenn Rane",
+  "collectible": true,
+  "elite": true,
+  "playerClass": "Neutral",
+  "multiClassGroup": "Jade Lotus",
+  "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/CFM_902.png",
+  "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/CFM_902_premium.gif",
+  "locale": "enUS"
+}
