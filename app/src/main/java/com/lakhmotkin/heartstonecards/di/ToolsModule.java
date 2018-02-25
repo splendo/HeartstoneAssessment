@@ -2,12 +2,11 @@ package com.lakhmotkin.heartstonecards.di;
 
 import android.content.Context;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jakewharton.picasso.OkHttp3Downloader;
 import com.lakhmotkin.heartstonecards.App;
-import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,15 +33,6 @@ class ToolsModule {
         return new OkHttpClient.Builder()
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
-                .build();
-    }
-
-    @Provides
-    @Singleton
-    Picasso providePicasso(Context context, OkHttpClient client) {
-        return new Picasso.Builder(context)
-                .downloader(new OkHttp3Downloader(client))
-                .indicatorsEnabled(true)
                 .build();
     }
 

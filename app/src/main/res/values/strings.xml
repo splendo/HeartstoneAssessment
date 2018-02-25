@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">HeartstoneCards</string>
+    <string name="app_name">Heartstone Cards</string>
+    <string name="detailed_image_description">Heartstone card full-size image</string>
+    <string name="heartstone_card_thumbnail_description">Heartstone card image</string>
+    <string name="description_card_name">Name of the card</string>
+    <string name="description_card_text">Card description text</string>
+    <string name="description_card_set">Card set</string>
+    <string name="desription_card_class">Card class</string>
 </resources>

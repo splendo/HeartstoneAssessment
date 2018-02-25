@@ -10,7 +10,7 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module
-public abstract class BrodjeListActivityModule {
+public abstract class CardsGridActivityModule {
     @ContributesAndroidInjector(modules = FragmentBuildersModule.class)
-    abstract CardsGridActivity contributeProductsListActivity();
+    abstract CardsGridActivity cardsGridActivity();
 }

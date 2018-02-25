@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="grid_span_count">2</integer>
+    <dimen name="card_big_popping_height">200dp</dimen>
+    <dimen name="card_image_big_max_height">500dp</dimen>
+</resources>

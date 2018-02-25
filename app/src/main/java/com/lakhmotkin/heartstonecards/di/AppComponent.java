@@ -16,7 +16,7 @@ import dagger.android.AndroidInjectionModule;
 @Component(modules = {
         AndroidInjectionModule.class,
         AppModule.class,
-        BrodjeListActivityModule.class,
+        CardsGridActivityModule.class,
         ToolsModule.class
 })
 public interface AppComponent {
