@@ -48,7 +48,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
 
     public void setCardList(final List<Card> cards) {
         mCards = cards;
-        notifyItemRangeInserted(0, mCards.size());
+        notifyDataSetChanged();
     }
 
     @Override

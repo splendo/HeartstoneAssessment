@@ -33,11 +33,33 @@ public class CardsListViewModel extends ViewModel {
 
     public void prepare() {
         if (mCards.getValue() == null) {
-            fetchFavorites();
+            fetchLocal();
         }
     }
 
-    public void fetchRemote() {
+    public void fetchAllCards() {
+        fetchLocal();
+    }
+
+    public void fetchAllCardsByMechanic(String mechanic, String rarity) {
+        mProgress.postValue(true);
+        mCardsRepository
+                .getAllCardsByMechanic(mechanic, rarity)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onQueriedCardList, this::onError);
+    }
+
+    public void fetchAllCardsByText(String text) {
+        mProgress.postValue(true);
+        mCardsRepository
+                .getAllCardsByText(text)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onQueriedCardList, this::onError);
+    }
+
+    private void fetchRemote() {
         mProgress.postValue(true);
         mCardsRepository
                 .fetchRemoteCards()
@@ -61,7 +83,7 @@ public class CardsListViewModel extends ViewModel {
                 .getFavoriteCards()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onFavoriteCardList, this::onError);
+                .subscribe(this::onQueriedCardList, this::onError);
     }
 
     private void onErrorLocal(Throwable throwable) {
@@ -83,7 +105,7 @@ public class CardsListViewModel extends ViewModel {
         }
     }
 
-    private void onFavoriteCardList(List<Card> cards) {
+    private void onQueriedCardList(List<Card> cards) {
         mProgress.postValue(false);
         this.mCards.postValue(cards);
     }

@@ -35,6 +35,26 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
+    public Observable<List<Card>> getAllCardsByMechanic(String mechanic, String rarity) {
+        return Observable.fromCallable(new Callable<List<Card>>() {
+            @Override
+            public List<Card> call() throws Exception {
+                return mAppDatabase.cardDao().loadAllByMechanic(mechanic, rarity);
+            }
+        });
+    }
+
+    @Override
+    public Observable<List<Card>> getAllCardsByText(String text) {
+        return Observable.fromCallable(new Callable<List<Card>>() {
+            @Override
+            public List<Card> call() throws Exception {
+                return mAppDatabase.cardDao().loadAllByText(text);
+            }
+        });
+    }
+
+    @Override
     public Observable<List<Card>> getAllFavoriteCards() {
         return Observable.fromCallable(new Callable<List<Card>>() {
             @Override

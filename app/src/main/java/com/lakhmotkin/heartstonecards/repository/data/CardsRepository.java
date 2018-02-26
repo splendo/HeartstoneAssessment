@@ -7,14 +7,11 @@ import com.lakhmotkin.heartstonecards.repository.model.Card;
 import com.lakhmotkin.heartstonecards.repository.service.CardsClientType;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.reactivex.Completable;
 import io.reactivex.Observable;
-import timber.log.Timber;
 
 /**
  * Created by Igor Lakhmotkin on 23.02.2018
@@ -57,6 +54,16 @@ public class CardsRepository implements CardsRepositoryType {
     @Override
     public Observable<List<Card>> getAllCards() {
         return mDbHelper.getAllCards();
+    }
+
+    @Override
+    public Observable<List<Card>> getAllCardsByMechanic(String mechanic, String rarity) {
+        return mDbHelper.getAllCardsByMechanic(mechanic, rarity);
+    }
+
+    @Override
+    public Observable<List<Card>> getAllCardsByText(String text) {
+        return mDbHelper.getAllCardsByText(text);
     }
 
     @Override

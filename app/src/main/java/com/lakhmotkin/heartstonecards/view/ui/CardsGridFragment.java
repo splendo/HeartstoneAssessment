@@ -1,24 +1,7 @@
-/*
- * Copyright 2018 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.lakhmotkin.heartstonecards.view.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +10,9 @@ import android.support.v4.app.SharedElementCallback;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
@@ -47,7 +33,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
-import timber.log.Timber;
 
 /**
  * A fragment for displaying a grid of images.
@@ -71,6 +56,7 @@ public class CardsGridFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grid, container, false);
+        setHasOptionsMenu(true);
         mCardsRecyclerView = (RecyclerView) view.findViewById(R.id.cards_recycler_grid);
         mGridAdapter = new GridAdapter(this);
         mCardsRecyclerView.setAdapter(mGridAdapter);
@@ -104,16 +90,34 @@ public class CardsGridFragment extends Fragment {
         mViewModel.error().observe(this, this::onError);
         mViewModel.cards().observe(this, this::onCards);
         mViewModel.progress().observe(this, this::onProgress);
-        fetchCards();
+        prepare();
     }
 
-    private void fetchCards() {
-        mErrorContainer.setVisibility(View.INVISIBLE);
+    private void prepare() {
         mViewModel.prepare();
     }
 
+    private void fetchFavoriteCards() {
+        mErrorContainer.setVisibility(View.INVISIBLE);
+        mViewModel.fetchFavorites();
+    }
+
+    private void fetchAllCards() {
+        mErrorContainer.setVisibility(View.INVISIBLE);
+        mViewModel.fetchAllCards();
+    }
+
+    private void fetchByMechanic(String mechanic, String rarity) {
+        mErrorContainer.setVisibility(View.INVISIBLE);
+        mViewModel.fetchAllCardsByMechanic(mechanic, rarity);
+    }
+
+    private void fetchByText(String text) {
+        mErrorContainer.setVisibility(View.INVISIBLE);
+        mViewModel.fetchAllCardsByText(text);
+    }
+
     private void onProgress(Boolean aBoolean) {
-        Timber.d("onProgress " + aBoolean);
         if (aBoolean) {
             mLoadingContainer.setVisibility(View.VISIBLE);
         } else {
@@ -126,6 +130,7 @@ public class CardsGridFragment extends Fragment {
         mErrorContainer.setVisibility(View.VISIBLE);
     }
 
+
     private void onCards(List<Card> cards){
         mGridAdapter.setCardList(cards);
     }
@@ -134,6 +139,31 @@ public class CardsGridFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         scrollToPosition();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_all:
+                fetchAllCards();
+                break;
+            case R.id.menu_item_favorites:
+                fetchFavoriteCards();
+                break;
+            case R.id.menu_item_deathrattle:
+                fetchByMechanic("Deathrattle", "Legendary");
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void scrollToPosition() {

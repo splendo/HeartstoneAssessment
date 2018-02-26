@@ -1,19 +1,3 @@
-/*
- * Copyright 2018 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.lakhmotkin.heartstonecards.view.ui;
 
 import android.content.res.ColorStateList;
@@ -54,6 +38,8 @@ public class CardFragment extends Fragment {
     private TextView mCardTitle;
     private TextView mCardSet;
     private TextView mCardText;
+    private TextView mCardMechanics;
+    private TextView mRarityText;
     private ImageView mFavoritesButton;
     private ImageView mGoldButton;
     private TextView mCardClass;
@@ -83,8 +69,12 @@ public class CardFragment extends Fragment {
         mCardSet.setText(mCard.getCardSet());
         mCardClass = view.findViewById(R.id.card_class);
         mCardClass.setText(mCard.getPlayerClass());
+        mRarityText = view.findViewById(R.id.card_rarity);
+        mRarityText.setText(mCard.getRarity());
         mCardText = view.findViewById(R.id.card_text);
         mCardText.setText(mCard.getText());
+        mCardMechanics = view.findViewById(R.id.card_mechanics);
+        mCardMechanics.setText(mCard.getMechanicsString());
 
 
         mFavoritesButton = view.findViewById(R.id.favorite_card_button);

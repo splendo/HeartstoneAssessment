@@ -31,9 +31,10 @@ public class Card implements Serializable{
     private Boolean collectible;
     private Integer health;
     private String faction;
+    private String rarity;
     private boolean favorite = false;
 
-    public Card(@Nonnull String cardId, String name, String cardSet, String type, String text, String playerClass, String locale, ArrayList<Mechanic> mechanics, String img, String imgGold, Boolean collectible, Integer health, String faction, boolean favorite) {
+    public Card(@Nonnull String cardId, String name, String cardSet, String type, String text, String playerClass, String locale, ArrayList<Mechanic> mechanics, String img, String imgGold, Boolean collectible, Integer health, String faction, String rarity, boolean favorite) {
         this.cardId = cardId;
         this.name = name;
         this.cardSet = cardSet;
@@ -47,6 +48,7 @@ public class Card implements Serializable{
         this.collectible = collectible;
         this.health = health;
         this.faction = faction;
+        this.rarity = rarity;
         this.favorite = favorite;
     }
 
@@ -63,6 +65,17 @@ public class Card implements Serializable{
     }
 
     public Card() {
+    }
+
+    public String getMechanicsString() {
+        if (this.mechanics == null) {
+            return "";
+        }
+        StringBuilder mechanicsString = new StringBuilder();
+        for (Mechanic mechanic: this.mechanics) {
+            mechanicsString.append(mechanic.getName()).append("\n");
+        }
+        return mechanicsString.toString();
     }
 
     @NonNull
@@ -177,4 +190,13 @@ public class Card implements Serializable{
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
+
+    public String getRarity() {
+        return rarity;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
 }

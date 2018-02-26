@@ -6,8 +6,13 @@
     <string name="description_card_text">Card description text</string>
     <string name="description_card_set">Card set</string>
     <string name="desription_card_class">Card class</string>
-    <string name="loading_text">Learning spells...</string>
+    <string name="loading_text">Casting spells...</string>
     <string name="description_loading_text">Loading indicator text</string>
     <string name="description_error">Error text</string>
-    <string name="error_message_with_message">An error occured: %s</string>
+    <string name="error_message_with_message">An error occurred: %s</string>
+    <string name="menu_favorites">Show favorites</string>
+    <string name="menu_show_all">Show all cards</string>
+    <string name="menu_deathrattle">Legendary Deathrattles</string>
+    <string name="description_card_mechanics">Card mechanics list</string>
+    <string name="description_rarity">Rarity of the card</string>
 </resources>

@@ -12,7 +12,7 @@ import com.lakhmotkin.heartstonecards.repository.model.Card;
  * Created by Igor Lakhmotkin on 25.02.2018, for HeartstoneAssessment.
  */
 
-@Database(entities = {Card.class}, version = 3)
+@Database(entities = {Card.class}, version = 4)
 @TypeConverters({CardConverters.class})
 public abstract class AppDatabase extends RoomDatabase {
 

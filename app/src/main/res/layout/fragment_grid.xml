@@ -16,6 +16,44 @@
             android:scaleType="centerCrop" />
 
         <LinearLayout
+            android:id="@+id/cards_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/error_mage" />
+
+            <TextView
+                android:id="@+id/cards_error_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/description_error"
+                android:text="@string/error_message_with_message"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cards_recycler_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="?attr/actionBarSize"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            app:layoutManager="GridLayoutManager"
+            app:spanCount="@integer/grid_span_count" />
+
+        <LinearLayout
             android:id="@+id/cards_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,43 +91,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cards_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="invisible">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/error_mage" />
-
-            <TextView
-                android:id="@+id/cards_error_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/description_error"
-                android:text="@string/error_message_with_message"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/cards_recycler_grid"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
-            android:paddingTop="?attr/actionBarSize"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical"
-            app:layoutManager="GridLayoutManager"
-            app:spanCount="@integer/grid_span_count" />
 
     </RelativeLayout>
 

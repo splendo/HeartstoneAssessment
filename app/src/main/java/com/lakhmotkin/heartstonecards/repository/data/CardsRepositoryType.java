@@ -19,6 +19,10 @@ public interface CardsRepositoryType {
 
     Observable<List<Card>> getAllCards();
 
+    Observable<List<Card>> getAllCardsByMechanic(String mechanic, String rarity);
+
+    Observable<List<Card>> getAllCardsByText(String text);
+
     Observable<List<Card>> getFavoriteCards();
 
 }

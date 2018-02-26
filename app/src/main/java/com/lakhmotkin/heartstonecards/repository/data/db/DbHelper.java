@@ -14,6 +14,10 @@ public interface DbHelper {
 
     Observable<List<Card>> getAllCards();
 
+    Observable<List<Card>> getAllCardsByMechanic(String mechanic, String rarity);
+
+    Observable<List<Card>> getAllCardsByText(String text);
+
     Observable<List<Card>> getAllFavoriteCards();
 
     Observable<Boolean> saveCardsList(List<Card> cardsList);

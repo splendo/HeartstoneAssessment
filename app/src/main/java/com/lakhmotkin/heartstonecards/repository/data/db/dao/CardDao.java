@@ -31,6 +31,12 @@ public interface CardDao {
     @Query("SELECT * FROM cards WHERE cardId = :cardId")
     List<Card> loadAllByCardId(String cardId);
 
+    @Query("SELECT * FROM cards WHERE mechanics LIKE '%' || :mechanic || '%' AND rarity = :rarity ORDER BY name")
+    List<Card> loadAllByMechanic(String mechanic, String rarity);
+
+    @Query("SELECT * FROM cards WHERE text LIKE '%' || :text || '%' ORDER BY name")
+    List<Card> loadAllByText(String text);
+
     @Query("DELETE FROM cards")
     void deleteAllCards();
 }
