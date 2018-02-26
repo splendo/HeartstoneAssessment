@@ -18,6 +18,10 @@ public class CardsPagerAdapter extends FragmentStatePagerAdapter {
         mCardsList = cards;
     }
 
+    public void setCardsList(List<Card> list){
+        mCardsList = list;
+    }
+
     @Override
     public int getCount() {
         return mCardsList.size();

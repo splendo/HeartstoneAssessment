@@ -2,6 +2,7 @@ package com.lakhmotkin.heartstonecards.viewmodel;
 
 import com.lakhmotkin.heartstonecards.repository.data.CardsRepository;
 import com.lakhmotkin.heartstonecards.repository.data.CardsRepositoryType;
+import com.lakhmotkin.heartstonecards.repository.data.db.DbHelper;
 import com.lakhmotkin.heartstonecards.repository.model.Card;
 import com.lakhmotkin.heartstonecards.repository.service.CardsApiClient;
 import com.lakhmotkin.heartstonecards.repository.service.CardsClient;
@@ -37,6 +38,9 @@ public class CardsListViewModelTest {
     private CardsRepositoryType mRepository;
 
     @Mock
+    private DbHelper dbHelper;
+
+    @Mock
     private CardsApiClient mProductsApiClient;
 
     private CardsListViewModel mViewModel;
@@ -52,10 +56,10 @@ public class CardsListViewModelTest {
 
     @Test
     public void shouldPassProducts() {
-        when(mRepository.fetchCards()).thenReturn(Observable.just(MANY_CARDS));
+        when(mRepository.fetchRemoteCards()).thenReturn(Observable.just(MANY_CARDS));
 
         TestObserver<List<Card>> subscriber = mRepository
-                .fetchCards()
+                .fetchRemoteCards()
                 .test();
 
         subscriber.awaitTerminalEvent();
@@ -70,10 +74,10 @@ public class CardsListViewModelTest {
         when(mProductsApiClient.fetchCardSets()).thenReturn(Observable.error(new SocketTimeoutException()));
         CardsClientType testProductsClient = new CardsClient(mProductsApiClient);
 
-        CardsRepositoryType testRepository = new CardsRepository(testProductsClient);
+        CardsRepositoryType testRepository = new CardsRepository(testProductsClient, dbHelper);
 
         TestObserver<List<Card>> subscriber = testRepository
-                .fetchCards()
+                .fetchRemoteCards()
                 .test();
 
         subscriber.assertNotComplete();

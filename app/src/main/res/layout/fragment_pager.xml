@@ -19,6 +19,7 @@
         android:layout_gravity="bottom"
         android:clipToPadding="false"
         android:overScrollMode="never"
+        android:paddingTop="?attr/actionBarSize"
         android:paddingBottom="30dp"
         android:paddingEnd="60dp"
         android:paddingLeft="60dp"

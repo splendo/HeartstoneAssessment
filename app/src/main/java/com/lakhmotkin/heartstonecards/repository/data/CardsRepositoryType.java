@@ -11,5 +11,14 @@ import io.reactivex.Observable;
  */
 
 public interface CardsRepositoryType {
-    Observable<List<Card>> fetchCards();
+    Observable<List<Card>> fetchRemoteCards();
+
+    Observable<Boolean> insertCards(List<Card> cards);
+
+    Observable<Boolean> updateCard(Card card);
+
+    Observable<List<Card>> getAllCards();
+
+    Observable<List<Card>> getFavoriteCards();
+
 }

@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -46,6 +47,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
+import timber.log.Timber;
 
 /**
  * A fragment for displaying a grid of images.
@@ -58,6 +60,11 @@ public class CardsGridFragment extends Fragment {
     private RecyclerView mCardsRecyclerView;
     private GridAdapter mGridAdapter;
     private ImageView mCardsGridBg;
+    private ViewGroup mLoadingContainer;
+    private ViewGroup mErrorContainer;
+    private TextView mErrorText;
+
+    private CardsListViewModel mViewModel;
 
     @Nullable
     @Override
@@ -68,7 +75,7 @@ public class CardsGridFragment extends Fragment {
         mGridAdapter = new GridAdapter(this);
         mCardsRecyclerView.setAdapter(mGridAdapter);
 
-        mCardsGridBg = (ImageView) view.findViewById(R.id.cards_bg);
+        mCardsGridBg = view.findViewById(R.id.cards_bg);
         Glide.with(this)
                 .load(R.drawable.grid_bg)
                 .into(new SimpleTarget<Drawable>() {
@@ -80,6 +87,10 @@ public class CardsGridFragment extends Fragment {
         prepareTransitions();
         postponeEnterTransition();
 
+        mLoadingContainer = view.findViewById(R.id.cards_loading);
+        mErrorContainer = view.findViewById(R.id.cards_error);
+        mErrorText = view.findViewById(R.id.cards_error_text);
+
         return view;
     }
 
@@ -88,20 +99,31 @@ public class CardsGridFragment extends Fragment {
         AndroidSupportInjection.inject(this);
         super.onActivityCreated(savedInstanceState);
 
-        CardsListViewModel viewModel = ViewModelProviders.of(this, cardsModelFactory)
+        mViewModel = ViewModelProviders.of(this, cardsModelFactory)
                 .get(CardsListViewModel.class);
-        viewModel.error().observe(this, this::onError);
-        viewModel.cards().observe(this, this::onCards);
-        viewModel.progress().observe(this, this::onProgress);
-        viewModel.prepare();
+        mViewModel.error().observe(this, this::onError);
+        mViewModel.cards().observe(this, this::onCards);
+        mViewModel.progress().observe(this, this::onProgress);
+        fetchCards();
+    }
+
+    private void fetchCards() {
+        mErrorContainer.setVisibility(View.INVISIBLE);
+        mViewModel.prepare();
     }
 
     private void onProgress(Boolean aBoolean) {
-
+        Timber.d("onProgress " + aBoolean);
+        if (aBoolean) {
+            mLoadingContainer.setVisibility(View.VISIBLE);
+        } else {
+            mLoadingContainer.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void onError(Throwable throwable) {
-
+        mErrorText.setText(getString(R.string.error_message_with_message, throwable.getMessage()));
+        mErrorContainer.setVisibility(View.VISIBLE);
     }
 
     private void onCards(List<Card> cards){
@@ -129,8 +151,6 @@ public class CardsGridFragment extends Fragment {
                 mCardsRecyclerView.removeOnLayoutChangeListener(this);
                 final RecyclerView.LayoutManager layoutManager = mCardsRecyclerView.getLayoutManager();
                 View viewAtPosition = layoutManager.findViewByPosition(CardsGridActivity.currentPosition);
-                // Scroll to position if the view for the current position is null (not currently part of
-                // layout manager children), or it's not completely visible.
                 if (viewAtPosition == null || layoutManager
                         .isViewPartiallyVisible(viewAtPosition, false, true)) {
                     mCardsRecyclerView.post(() -> layoutManager.scrollToPosition(CardsGridActivity.currentPosition));
@@ -143,19 +163,16 @@ public class CardsGridFragment extends Fragment {
         setExitTransition(TransitionInflater.from(getContext())
                 .inflateTransition(R.transition.grid_exit_transition));
 
-        // A similar mapping is set at the CardsPagerFragment with a setEnterSharedElementCallback.
         setExitSharedElementCallback(
                 new SharedElementCallback() {
                     @Override
                     public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-                        // Locate the ViewHolder for the clicked position.
                         RecyclerView.ViewHolder selectedViewHolder = mCardsRecyclerView
                                 .findViewHolderForAdapterPosition(CardsGridActivity.currentPosition);
                         if (selectedViewHolder == null || selectedViewHolder.itemView == null) {
                             return;
                         }
 
-                        // Map the first shared element name to the child ImageView.
                         sharedElements
                                 .put(names.get(0), selectedViewHolder.itemView.findViewById(R.id.card_image));
                     }

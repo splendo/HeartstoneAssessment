@@ -6,4 +6,8 @@
     <string name="description_card_text">Card description text</string>
     <string name="description_card_set">Card set</string>
     <string name="desription_card_class">Card class</string>
+    <string name="loading_text">Learning spells...</string>
+    <string name="description_loading_text">Loading indicator text</string>
+    <string name="description_error">Error text</string>
+    <string name="error_message_with_message">An error occured: %s</string>
 </resources>

@@ -1,13 +1,23 @@
 package com.lakhmotkin.heartstonecards.repository.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by Igor Lakhmotkin on 24.02.2018, for HeartstoneAssessment.
  */
-
+@Entity(
+        tableName = "cards"
+)
 public class Card implements Serializable{
+    @NonNull
+    @PrimaryKey
     private String cardId;
     private String name;
     private String cardSet;
@@ -15,12 +25,30 @@ public class Card implements Serializable{
     private String text;
     private String playerClass;
     private String locale;
-    private List<Mechanic> mechanics;
+    private ArrayList<Mechanic> mechanics;
     private String img;
     private String imgGold;
     private Boolean collectible;
     private Integer health;
     private String faction;
+    private boolean favorite = false;
+
+    public Card(@Nonnull String cardId, String name, String cardSet, String type, String text, String playerClass, String locale, ArrayList<Mechanic> mechanics, String img, String imgGold, Boolean collectible, Integer health, String faction, boolean favorite) {
+        this.cardId = cardId;
+        this.name = name;
+        this.cardSet = cardSet;
+        this.type = type;
+        this.text = text;
+        this.playerClass = playerClass;
+        this.locale = locale;
+        this.mechanics = mechanics;
+        this.img = img;
+        this.imgGold = imgGold;
+        this.collectible = collectible;
+        this.health = health;
+        this.faction = faction;
+        this.favorite = favorite;
+    }
 
     public Card(String cardId, String name, String cardSet, String img, String imgGold) {
         this.cardId = cardId;
@@ -30,18 +58,19 @@ public class Card implements Serializable{
         this.imgGold = imgGold;
     }
 
-    public Card(String cardId) {
+    public Card(@NonNull String cardId) {
         this.cardId = cardId;
     }
 
     public Card() {
     }
 
+    @NonNull
     public String getCardId() {
         return cardId;
     }
 
-    public void setCardId(String cardId) {
+    public void setCardId(@NonNull String cardId) {
         this.cardId = cardId;
     }
 
@@ -93,11 +122,11 @@ public class Card implements Serializable{
         this.locale = locale;
     }
 
-    public List<Mechanic> getMechanics() {
+    public ArrayList<Mechanic> getMechanics() {
         return mechanics;
     }
 
-    public void setMechanics(List<Mechanic> mechanics) {
+    public void setMechanics(ArrayList<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
 
@@ -139,5 +168,13 @@ public class Card implements Serializable{
 
     public void setFaction(String faction) {
         this.faction = faction;
+    }
+
+    public boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

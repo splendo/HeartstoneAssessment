@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -111,6 +112,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
             View.OnClickListener {
 
         private final ImageView image;
+        private final TextView name;
         private final RequestManager requestManager;
         private final ViewHolderListener viewHolderListener;
 
@@ -118,6 +120,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
                         ViewHolderListener viewHolderListener) {
             super(itemView);
             this.image = itemView.findViewById(R.id.card_image);
+            this.name = itemView.findViewById(R.id.card_name);
             this.requestManager = requestManager;
             this.viewHolderListener = viewHolderListener;
             itemView.findViewById(R.id.grid_item_root).setOnClickListener(this);
@@ -127,6 +130,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ImageViewHolde
             int adapterPosition = getAdapterPosition();
             setImage(adapterPosition, card);
             image.setTransitionName(card.getCardId());
+            name.setText(card.getName());
         }
 
         void setImage(final int adapterPosition, final Card card) {

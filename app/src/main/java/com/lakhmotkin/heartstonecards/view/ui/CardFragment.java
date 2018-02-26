@@ -16,11 +16,13 @@
 
 package com.lakhmotkin.heartstonecards.view.ui;
 
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.lakhmotkin.heartstonecards.R;
 import com.lakhmotkin.heartstonecards.repository.model.Card;
+import com.lakhmotkin.heartstonecards.view.adapter.GridAdapter;
 
 import timber.log.Timber;
 
@@ -54,6 +57,7 @@ public class CardFragment extends Fragment {
     private ImageView mFavoritesButton;
     private ImageView mGoldButton;
     private TextView mCardClass;
+    private Card mCard;
 
     public static CardFragment newInstance(Card card, Boolean selected) {
         CardFragment fragment = new CardFragment();
@@ -70,46 +74,56 @@ public class CardFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         Bundle arguments = getArguments();
-        Card card = (Card) arguments.getSerializable(KEY_CARD);
+        mCard = (Card) arguments.getSerializable(KEY_CARD);
         Boolean selected = arguments.getBoolean(KEY_SELECTED_CARD);
 
-        mCardTitle = (TextView) view.findViewById(R.id.card_title);
-        mCardTitle.setText(card.getName());
-        mCardSet = (TextView) view.findViewById(R.id.card_set);
-        mCardSet.setText(card.getCardSet());
-        mCardClass = (TextView) view.findViewById(R.id.card_class);
-        mCardClass.setText(card.getPlayerClass());
-        mCardText = (TextView) view.findViewById(R.id.card_text);
-        mCardText.setText(card.getText());
+        mCardTitle = view.findViewById(R.id.card_name);
+        mCardTitle.setText(mCard.getName());
+        mCardSet = view.findViewById(R.id.card_set);
+        mCardSet.setText(mCard.getCardSet());
+        mCardClass = view.findViewById(R.id.card_class);
+        mCardClass.setText(mCard.getPlayerClass());
+        mCardText = view.findViewById(R.id.card_text);
+        mCardText.setText(mCard.getText());
 
 
-        mFavoritesButton = (ImageView) view.findViewById(R.id.favorite_card_button);
+        mFavoritesButton = view.findViewById(R.id.favorite_card_button);
+        setFavoriteButtonColor(mCard);
         mFavoritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (getParentFragment() != null) {
+                    Card newCard = mCard;
+                    newCard.setFavorite(!mCard.getFavorite());
+                    setFavoriteButtonColor(newCard);
+                    ((CardsPagerFragment) getParentFragment()).addToFavorites(newCard);
+                }
             }
         });
 
-        mGoldButton = (ImageView) view.findViewById(R.id.gold_card_button);
+        mGoldButton = view.findViewById(R.id.gold_card_button);
         mGoldButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadImage(card.getImgGold(), null);
+                loadImage(mCard.getImgGold(), null);
             }
         });
-        int goldButtonVisibility = (card.getImgGold() != null) ? View.VISIBLE : View.INVISIBLE;
+        int goldButtonVisibility = (mCard.getImgGold() != null) ? View.VISIBLE : View.INVISIBLE;
         mGoldButton.setVisibility(goldButtonVisibility);
-        Timber.d("onCreateView card.getImgGold() = " + card.getImgGold());
 
         mCardImage = (ImageView) view.findViewById(R.id.card_image);
-        mCardImage.setTransitionName(card.getCardId());
+        mCardImage.setTransitionName(mCard.getCardId());
         if (selected) {
-            loadImage(card.getImg(), mImageReadyListener);
+            loadImage(mCard.getImg(), mImageReadyListener);
         } else {
-            loadImage(card.getImg(), null);
+            loadImage(mCard.getImg(), null);
         }
         return view;
+    }
+
+    private void setFavoriteButtonColor(Card card) {
+        int favoriteColor = (card.getFavorite()) ? R.color.colorAccent : android.R.color.darker_gray;
+        mFavoritesButton.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this.getContext(), favoriteColor)));
     }
 
     private void loadImage(String url, RequestListener<Drawable> listener) {

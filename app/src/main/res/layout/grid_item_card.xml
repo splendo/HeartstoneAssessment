@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid_item_root"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:clickable="true"
     android:focusable="true"
     android:clipChildren="false"
-    android:foreground="?android:selectableItemBackground">
+    android:foreground="?android:selectableItemBackground"
+    android:orientation="vertical"
+    android:gravity="center">
 
   <ImageView
       android:id="@+id/card_image"
@@ -16,4 +17,14 @@
       android:layout_height="200dp"
       android:contentDescription="@string/heartstone_card_thumbnail_description"
       android:adjustViewBounds="true"/>
-</FrameLayout>
+
+  <TextView
+      android:id="@+id/card_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14sp"
+      android:textColor="@android:color/white"
+      />
+
+
+</LinearLayout>

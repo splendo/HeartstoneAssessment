@@ -1,10 +1,16 @@
 package com.lakhmotkin.heartstonecards.di;
 
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
+
 import com.lakhmotkin.heartstonecards.App;
 import com.lakhmotkin.heartstonecards.C;
 import com.lakhmotkin.heartstonecards.repository.data.CardsRepository;
 import com.lakhmotkin.heartstonecards.repository.data.CardsRepositoryType;
+import com.lakhmotkin.heartstonecards.repository.data.db.AppDatabase;
+import com.lakhmotkin.heartstonecards.repository.data.db.AppDbHelper;
+import com.lakhmotkin.heartstonecards.repository.data.db.DbHelper;
 import com.lakhmotkin.heartstonecards.repository.service.CardsApiClient;
 import com.lakhmotkin.heartstonecards.repository.service.CardsClientType;
 import com.lakhmotkin.heartstonecards.repository.service.CardsClient;
@@ -36,6 +42,19 @@ public class AppModule {
         return app;
     }
 
+    @Provides
+    @Singleton
+    AppDatabase provideAppDatabase(Context context) {
+        return Room.databaseBuilder(context, AppDatabase.class, C.DB_NAME).fallbackToDestructiveMigration()
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    DbHelper provideDbHelper(AppDbHelper appDbHelper) {
+        return appDbHelper;
+    }
+
     @Singleton
     @Provides
     CardsApiClient provideCardsApiClient(OkHttpClient client) {
@@ -56,8 +75,8 @@ public class AppModule {
 
     @Singleton
     @Provides
-    CardsRepositoryType provideCardsRepository(CardsClientType cardsClient) {
-        return new CardsRepository(cardsClient);
+    CardsRepositoryType provideCardsRepository(CardsClientType cardsClient, DbHelper dbHelper) {
+        return new CardsRepository(cardsClient, dbHelper);
     }
 
     @Singleton

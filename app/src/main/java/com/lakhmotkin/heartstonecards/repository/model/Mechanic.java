@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Igor Lakhmotkin on 24.02.2018, for HeartstoneAssessment.
  */
 
-class Mechanic implements Serializable{
+public class Mechanic implements Serializable{
     private String name;
 
     public Mechanic(String name) {

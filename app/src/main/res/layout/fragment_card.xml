@@ -54,8 +54,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp">
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="50dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                     android:scaleType="fitCenter" />
 
                 <TextView
-                    android:id="@+id/card_title"
+                    android:id="@+id/card_name"
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -115,9 +115,6 @@
                         android:text="" />
 
                 </LinearLayout>
-
-
-
 
                 <TextView
                     android:id="@+id/card_text"

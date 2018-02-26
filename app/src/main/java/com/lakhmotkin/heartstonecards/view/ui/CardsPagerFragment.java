@@ -35,13 +35,7 @@ import android.widget.ImageView;
 
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.lakhmotkin.heartstonecards.R;
 import com.lakhmotkin.heartstonecards.repository.model.Card;
 import com.lakhmotkin.heartstonecards.view.adapter.CardsPagerAdapter;
@@ -56,6 +50,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
@@ -72,6 +68,7 @@ public class CardsPagerFragment extends Fragment {
     private CardsPagerAdapter mPagerAdapter;
     private ViewGroup mCardsRoot;
     private ImageView mBgImage;
+    private CardsListViewModel mViewModel;
 
     public static CardsPagerFragment newInstance(List<Card> cards) {
         CardsPagerFragment fragment = new CardsPagerFragment();
@@ -129,7 +126,7 @@ public class CardsPagerFragment extends Fragment {
         float finalRadius = (float) (Math.max(view.getWidth(), view.getHeight()) * 1.1);
 
         // create the animator for this view (the start radius is zero)
-        Animator circularReveal = ViewAnimationUtils.createCircularReveal(view, view.getWidth()/2, view.getHeight()/2, 0, finalRadius);
+        Animator circularReveal = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight() / 2, 0, finalRadius);
         circularReveal.setDuration(500);
         circularReveal.setInterpolator(new AccelerateInterpolator());
 
@@ -142,11 +139,10 @@ public class CardsPagerFragment extends Fragment {
         AndroidSupportInjection.inject(this);
         super.onActivityCreated(savedInstanceState);
 
-        CardsListViewModel viewModel = ViewModelProviders.of(this, cardsModelFactory)
+        mViewModel = ViewModelProviders.of(this, cardsModelFactory)
                 .get(CardsListViewModel.class);
-        viewModel.error().observe(this, this::onError);
-        viewModel.progress().observe(this, this::onProgress);
-        viewModel.prepare();
+        mViewModel.error().observe(this, this::onError);
+        mViewModel.progress().observe(this, this::onProgress);
 
         Timber.d("onActivityCreated");
     }
@@ -157,6 +153,26 @@ public class CardsPagerFragment extends Fragment {
 
     private void onError(Throwable throwable) {
 
+    }
+
+    public void addToFavorites(Card card) {
+        mViewModel.addToFavorites(card)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aBoolean -> {
+                    onChangedFavorite(card);
+                }, throwable -> {
+                });
+    }
+
+    private void onChangedFavorite(Card card) {
+        for (int i = 0; i < mCards.size(); i++) {
+            if (mCards.get(i).getCardId().equals(card.getCardId())) {
+                mCards.set(i, card);
+                mPagerAdapter.setCardsList(mCards);
+                return;
+            }
+        }
     }
 
     private void prepareSharedElementTransition() {

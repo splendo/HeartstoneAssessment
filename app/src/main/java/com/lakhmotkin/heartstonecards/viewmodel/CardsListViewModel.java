@@ -12,6 +12,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by Igor Lakhmotkin on 24.02.2018
  */
@@ -20,34 +24,85 @@ public class CardsListViewModel extends ViewModel {
     private final MutableLiveData<Boolean> mProgress = new MutableLiveData<>();
     private final MutableLiveData<List<Card>> mCards = new MutableLiveData<>();
     private final MutableLiveData<Throwable> mError = new MutableLiveData<>();
-    private final CardsRepositoryType mProductRepository;
+    private final CardsRepositoryType mCardsRepository;
 
     @Inject
-    public CardsListViewModel(@NonNull CardsRepositoryType productRepository) {
-        mProductRepository = productRepository;
+    public CardsListViewModel(@NonNull CardsRepositoryType cardsRepository) {
+        mCardsRepository = cardsRepository;
     }
 
     public void prepare() {
         if (mCards.getValue() == null) {
-            fetch();
+            fetchFavorites();
         }
     }
 
-    public void fetch() {
+    public void fetchRemote() {
         mProgress.postValue(true);
-        mProductRepository
-                .fetchCards()
-                .subscribe(this::onCardsList, this::onError);
+        mCardsRepository
+                .fetchRemoteCards()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onRemoteCardsList, this::onError);
+    }
+
+    public void fetchLocal() {
+        mProgress.postValue(true);
+        mCardsRepository
+                .getAllCards()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onLocalCardsList, this::onErrorLocal);
+    }
+
+    public void fetchFavorites() {
+        mProgress.postValue(true);
+        mCardsRepository
+                .getFavoriteCards()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onFavoriteCardList, this::onError);
+    }
+
+    private void onErrorLocal(Throwable throwable) {
+        fetchRemote();
     }
 
     private void onError(Throwable throwable) {
+        throwable.printStackTrace();
         mProgress.postValue(false);
         this.mError.postValue(throwable);
     }
 
-    private void onCardsList(List<Card> categories) {
+    private void onLocalCardsList(List<Card> cards) {
         mProgress.postValue(false);
-        this.mCards.postValue(categories);
+        if (!cards.isEmpty()) {
+            this.mCards.postValue(cards);
+        } else {
+            fetchRemote();
+        }
+    }
+
+    private void onFavoriteCardList(List<Card> cards) {
+        mProgress.postValue(false);
+        this.mCards.postValue(cards);
+    }
+
+    private void onRemoteCardsList(List<Card> cards) {
+        mProgress.postValue(false);
+        this.mCards.postValue(cards);
+        mCardsRepository
+                .insertCards(cards)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onCardsInserted, this::onError);
+    }
+
+    private void onCardsInserted(Boolean result) {
+    }
+
+
+    private void onCardUpdated(Boolean result) {
     }
 
     public LiveData<Boolean> progress() {
@@ -60,5 +115,9 @@ public class CardsListViewModel extends ViewModel {
 
     public LiveData<Throwable> error() {
         return mError;
+    }
+
+    public Observable<Boolean> addToFavorites(Card card) {
+        return mCardsRepository.updateCard(card);
     }
 }
