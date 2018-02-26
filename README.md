@@ -1,3 +1,24 @@
+## Explanatory note
+
+This is the Android App for viewing Heartstone Cards. It displays the cards in a grid and provides additional details for each one of them. You can also add and manage favorite cards, also it is possible to filter to show only `Legendary` cards with the `Deathrattle Mechanic`. Some cards have a golden version, including animated picture, so you can see it by clicking `Gold card` button.
+
+The data is dynamically fetched from [Github server](https://raw.githubusercontent.com/maestromaster/HeartstoneAssessment/master/cards.json) and getting stored in the App's database, so the App requires internet connection at the first launch.
+
+###### Tools  
+For creating app the next tools were used: Dagger 2, RxJava 2, Retrofit 2, Android Architecture Components, Mockito.
+
+###### Architecture
+The App is built using MVVM architecture since it is officially recommended by Android Developers on Google #io17. And it also provides possibility for quick UI modifications without involving changes in the logical part. 
+
+One of the achievements was to provide clean, maintainable production code, with no Android Studio warnings and following [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)). App correctly handles errors, so user can understand what goes wrong by provided message.
+
+###### User interface
+UI is built using fragments, keeping in mind that the App might be adapted for tablets by Master-Detail pattern, or fragment can be re-used as a Popup. Big images are loaded using Glide to prevent OOM exceptions. The App is built keeping in mind the view life-cycles, so the data survives configuration changes and won't request server again. It was achieved by using LiveData.
+
+###### External libraries
+The app uses Glide to load images from internet. The reason of chosing this library was the support of animated gif, which are used for golden cards.
+
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
