@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "70218429599",
+    "firebase_url": "https://heartstone-assessment.firebaseio.com",
+    "project_id": "heartstone-assessment",
+    "storage_bucket": "heartstone-assessment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70218429599:android:2dea1940ab6a5bef",
+        "android_client_info": {
+          "package_name": "eu.oloeriu.hearthstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70218429599-977oskljgm1nc1p2q16lbjc96tucm408.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eu.oloeriu.hearthstone",
+            "certificate_hash": "4ece3152b5281b59fb4a0e0f9aef5cb66eff8a9a"
+          }
+        },
+        {
+          "client_id": "70218429599-paf3vhtjlk4lc3b2pbjkf368ndoeofnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzsBO7lsA1lo_QjqzpZdh4yi7rVKFQ7x0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70218429599-paf3vhtjlk4lc3b2pbjkf368ndoeofnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
