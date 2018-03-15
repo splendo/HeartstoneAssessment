@@ -3,6 +3,13 @@ package eu.oloeriu.hearthstone.tools;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.provider.Settings;
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import eu.oloeriu.hearthstone.ui.MainActivity;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -12,6 +19,8 @@ import android.content.Context;
  * helper methods.
  */
 public class MyIntentService extends IntentService {
+    private static String logTag = Constants.LOG_TAG;
+
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_INITIAL_SETUP = "eu.oloeriu.hearthstone.tools.action.INITIAL_SETUP";
@@ -77,7 +86,26 @@ public class MyIntentService extends IntentService {
      */
     private void handleActionInitialSetup(String param1, String param2) {
         // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        String deviceId = Settings.Secure.getString(getBaseContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        Log.d(logTag, "deviceId = "+ deviceId);
+
+        String cardsLocation = Constants.LOCATION_CARDS
+                .replace(Constants.DEVICE_ID, deviceId);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference cards = database.getReference(cardsLocation);
+        DatabaseReference cardRef = cards.push();
+
+        Card card = new Card();
+        card.setName("First card");
+        card.setDescription("First long description");
+
+        cardRef.setValue(card);
+
+
+        Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
+        mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(mainActivityIntent);
     }
 
     /**
