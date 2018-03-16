@@ -5,6 +5,9 @@ import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,9 +17,19 @@ public class UtilsTest {
     @Test
     public void loadCardsFromJson() throws Exception {
         Resources resources = InstrumentationRegistry.getTargetContext().getResources();
-        Utils.loadCardsFromJson(resources);
-        //Resources resources = getInstru
-        //Utils.loadCardsFromJson()
+        Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
+        assertTrue("Contains basic", map.containsKey("Basic"));
+        List<Card> basicCards = map.get("Basic");
+        assertTrue("Contains more then 10 cards", basicCards.size() > 10);
+
+        for (Card card : basicCards) {
+            if (card.getCardId().equals("CS2_041e")) {
+                assertTrue("Name not \"Ancestral Infusion\"", card.getName().equals("Ancestral Infusion"));
+                Mechanic mechanic = card.getMechanics().get(0);
+                assertTrue("It should be taunt", mechanic.getName().equals("Taunt"));
+            }
+        }
+
     }
 
 }

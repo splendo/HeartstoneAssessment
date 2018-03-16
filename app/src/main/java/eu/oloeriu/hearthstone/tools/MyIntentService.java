@@ -98,7 +98,6 @@ public class MyIntentService extends IntentService {
 
         Card card = new Card();
         card.setName("First card");
-        card.setDescription("First long description");
 
         cardRef.setValue(card);
 

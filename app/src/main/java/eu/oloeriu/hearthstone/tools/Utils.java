@@ -3,10 +3,17 @@ package eu.oloeriu.hearthstone.tools;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import eu.oloeriu.hearthstone.R;
 
@@ -16,23 +23,21 @@ import eu.oloeriu.hearthstone.R;
 
 public class Utils {
     private static String logTag = Constants.LOG_TAG;
-    public static List<Card> loadCardsFromJson(Resources resources){
+
+
+
+    public static Map<String, List<Card>> loadCardsFromJson(Resources resources) {
 
 
         String json = null;
-        try {
-            InputStream is = resources.openRawResource(R.raw.cards);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-            Log.d(logTag,json);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        InputStream is = resources.openRawResource(R.raw.cards);
+        Reader reader = new InputStreamReader(is);
 
-        Log.d(logTag, "Initiate loadLocalCards()");
-        return new ArrayList<>();
+
+        Type type = new TypeToken<Map<String, List<Card>>>() {
+        }.getType();
+        Gson gson = new Gson();
+        Map<String, List<Card>> map = gson.fromJson(reader, type);
+        return map;
     }
 }
