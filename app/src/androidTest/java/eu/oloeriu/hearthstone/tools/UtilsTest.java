@@ -27,9 +27,10 @@ public class UtilsTest {
                 assertTrue("Name not \"Ancestral Infusion\"", card.getName().equals("Ancestral Infusion"));
                 Mechanic mechanic = card.getMechanics().get(0);
                 assertTrue("It should be taunt", mechanic.getName().equals("Taunt"));
+                return;
             }
         }
-
+        fail("Wee never managed to locate the Ancestral infusion card");
     }
 
 }
