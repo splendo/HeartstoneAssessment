@@ -22,15 +22,33 @@ public class UtilsTest {
         List<Card> basicCards = map.get("Basic");
         assertTrue("Contains more then 10 cards", basicCards.size() > 10);
 
+        boolean cardFound = false;
         for (Card card : basicCards) {
             if (card.getCardId().equals("CS2_041e")) {
                 assertTrue("Name not \"Ancestral Infusion\"", card.getName().equals("Ancestral Infusion"));
                 Mechanic mechanic = card.getMechanics().get(0);
                 assertTrue("It should be taunt", mechanic.getName().equals("Taunt"));
-                return;
+                cardFound = true;
+                break;
             }
         }
-        fail("Wee never managed to locate the Ancestral infusion card");
+        assertTrue("Wee never managed to locate the Ancestral infusion card", cardFound);
+
+        cardFound = false;
+        List<Card> streetsOfGadzetzan = map.get("Mean Streets of Gadgetzan");
+        for (Card card : streetsOfGadzetzan) {
+            if (card.getCardId().equals("CFM_902")) {
+
+                String[] classes = {"Druid", "Rogue", "Shaman"};
+                List<String> myClasses = card.getClasses();
+                for (String item : classes) {
+                    assertTrue("Class " + item + " not found", myClasses.contains(item));
+                }
+                cardFound = true;
+                break;
+            }
+        }
+        assertTrue("Wee never managed to locate Aya Blackpaw", cardFound);
     }
 
 }

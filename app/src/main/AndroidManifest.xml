@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name=".data.HearthstoneProvider"
+            android:authorities="eu.oloeriu.hearthstone" />
+
         <service
             android:name=".tools.MyIntentService"
             android:exported="false" />

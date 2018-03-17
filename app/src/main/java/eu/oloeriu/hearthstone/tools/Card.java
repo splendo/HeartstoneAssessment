@@ -11,15 +11,7 @@ public class Card {
     private String name;
     private String cardSet;
     private List<Mechanic>mechanics;
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private List<String> classes;
 
     public String getCardId() {
         return cardId;
@@ -29,19 +21,35 @@ public class Card {
         this.cardId = cardId;
     }
 
-    public String getCardSet() {
-        return cardSet;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setCardSet(String cardSet) {
         this.cardSet = cardSet;
     }
 
+    public void setMechanics(List<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
+
+    public void setClasses(List<String> classes) {
+        this.classes = classes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCardSet() {
+        return cardSet;
+    }
+
     public List<Mechanic> getMechanics() {
         return mechanics;
     }
 
-    public void setMechanics(List<Mechanic> mechanics) {
-        this.mechanics = mechanics;
+    public List<String> getClasses() {
+        return classes;
     }
 }
