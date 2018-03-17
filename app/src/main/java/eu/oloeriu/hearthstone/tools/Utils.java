@@ -2,6 +2,7 @@ package eu.oloeriu.hearthstone.tools;
 
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.database.Cursor;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -35,6 +36,11 @@ public class Utils {
         Gson gson = new Gson();
         Map<String, List<Card>> map = gson.fromJson(reader, type);
         return map;
+    }
+
+    public static int getCardsCount(ContentResolver contentResolver){
+        Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null,null,null,null);
+        return cursor.getCount();
     }
 
     public static void initialPersistCardsInDatabase(ContentResolver contentResolver, Resources resources, Map<String, List<Card>> cardsMap) {

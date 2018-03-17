@@ -9,6 +9,9 @@ import android.util.Log;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+import java.util.Map;
+
 import eu.oloeriu.hearthstone.ui.MainActivity;
 
 /**
@@ -19,16 +22,14 @@ import eu.oloeriu.hearthstone.ui.MainActivity;
  * helper methods.
  */
 public class MyIntentService extends IntentService {
-    private static String logTag = Constants.LOG_TAG;
-
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_INITIAL_SETUP = "eu.oloeriu.hearthstone.tools.action.INITIAL_SETUP";
     private static final String ACTION_BAZ = "eu.oloeriu.hearthstone.tools.action.BAZ";
-
     // TODO: Rename parameters
     private static final String EXTRA_PARAM1 = "eu.oloeriu.hearthstone.tools.extra.PARAM1";
     private static final String EXTRA_PARAM2 = "eu.oloeriu.hearthstone.tools.extra.PARAM2";
+    private static String logTag = Constants.LOG_TAG;
 
     public MyIntentService() {
         super("MyIntentService");
@@ -88,7 +89,7 @@ public class MyIntentService extends IntentService {
         // TODO: Handle action Foo
 
         String deviceId = Settings.Secure.getString(getBaseContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        Log.d(logTag, "deviceId = "+ deviceId);
+        Log.d(logTag, "deviceId = " + deviceId);
 
         String cardsLocation = Constants.LOCATION_CARDS
                 .replace(Constants.DEVICE_ID, deviceId);
@@ -104,7 +105,13 @@ public class MyIntentService extends IntentService {
         //store cards in sqlLight
         //todo check that there are no cards in the database
 
+        Map<String, List<Card>> jsonMap = Utils.loadCardsFromJson(this.getResources());
 
+        if (Utils.getCardsCount(this.getContentResolver()) < 3000) {
+            Log.d(logTag, "Initializing population for " + jsonMap.values().size() + " items");
+            Utils.initialPersistCardsInDatabase(this.getContentResolver(), this.getResources(), jsonMap);
+        }
+        Log.d(logTag, "Wee have " + Utils.getCardsCount(this.getContentResolver()) + " cards in database");
 
         Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
         mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
