@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import eu.oloeriu.hearthstone.TestingUtils;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -34,21 +36,22 @@ public class TestDatabase {
     }
 
     private void deleteAllRecordsFromProvider() {
-        contentResolver.delete(
-                CardTable.CONTENT_URI,
-                null,
-                null
-        );
-
-        Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
-        assertEquals("Not able to clear the CardTable", 0, cursor.getCount());
+//        contentResolver.delete(
+//                CardTable.CONTENT_URI,
+//                null,
+//                null
+//        );
+//
+//        Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
+//        assertEquals("Not able to clear the CardTable", 0, cursor.getCount());
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
     }
 
     @Test
     public void insertCard() {
         CardSql cardSql = new CardSql();
-        cardSql.id = 1;
-        cardSql.name = "Bogdan";
+        cardSql.setCardId("my id");
+        cardSql.setName("Bogdan");
 
 
         contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql, true));
@@ -61,6 +64,6 @@ public class TestDatabase {
 
 
         CardSql dataCard = CardTable.getRow(cursor, true);
-        assertTrue("Not the same name", dataCard.name.equals(cardSql.name));
+        assertTrue("Not the same name", dataCard.getName().equals(cardSql.getName()));
     }
 }

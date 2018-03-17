@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 import eu.oloeriu.hearthstone.R;
+import eu.oloeriu.hearthstone.data.CardSql;
+import eu.oloeriu.hearthstone.data.CardTable;
 
 /**
  * Created by Bogdan Oloeriu on 15/03/2018.
@@ -35,7 +37,15 @@ public class Utils {
         return map;
     }
 
-    public static void persistCardsInDatabase(ContentResolver contentResolver){
+    public static void initialPersistCardsInDatabase(ContentResolver contentResolver, Resources resources, Map<String, List<Card>> cardsMap) {
 
+        for (List<Card> cards : cardsMap.values()) {
+            for (Card card : cards) {
+                CardSql sqlCard = CardSql.buildFromCard(card);
+                contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(sqlCard, true));
+            }
+        }
     }
+
+
 }

@@ -7,13 +7,15 @@ import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import eu.oloeriu.hearthstone.TestingUtils;
 import eu.oloeriu.hearthstone.data.CardTable;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Bogdan Oloeriu on 16/03/2018.
@@ -57,7 +59,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void persistCardsInDatabase() throws Exception {
+    public void initialPersistCardsInDatabase() throws Exception {
         Resources resources = InstrumentationRegistry.getTargetContext().getResources();
         Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
         int totalCards = 0; // should be 3116 cards (quite allot of them)
@@ -67,12 +69,22 @@ public class UtilsTest {
         System.out.println("Total cards = " + totalCards);
 
         ContentResolver contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
-        Utils.persistCardsInDatabase(contentResolver);
+
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+
+        Map<String, List<Card>> allMap = Utils.loadCardsFromJson(resources);
+
+        Utils.initialPersistCardsInDatabase(contentResolver, resources,allMap);
 
         //get all cards cursor
         Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
         int databaseCount = cursor.getCount();
         assertEquals("Not same number of cards in database", totalCards, databaseCount);
+
+        //clean things out
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
     }
+
+
 
 }
