@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import eu.oloeriu.hearthstone.TestingUtils;
+import eu.oloeriu.hearthstone.data.CardSql;
 import eu.oloeriu.hearthstone.data.CardTable;
 
 import static org.junit.Assert.assertEquals;
@@ -74,7 +75,7 @@ public class UtilsTest {
 
         Map<String, List<Card>> allMap = Utils.loadCardsFromJson(resources);
 
-        Utils.initialPersistCardsInDatabase(contentResolver, resources,allMap);
+        Utils.initialPersistCardsInDatabase(contentResolver, resources, allMap);
 
         //get all cards cursor
         Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
@@ -85,6 +86,27 @@ public class UtilsTest {
         TestingUtils.deleteAllRecordsFromProvider(contentResolver);
     }
 
+    @Test
+    public void getCardsCount() {
+        ContentResolver contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
 
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+
+        CardSql cardSql = new CardSql();
+        cardSql.setName("Bogdan");
+
+        //insert 3 cards
+        for (int i = 1; i <= 3; i++) {
+
+            cardSql.setCardId(String.valueOf(i));
+            contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql, true));
+        }
+
+
+        int count = Utils.getCardsCount(contentResolver);
+        assertEquals("Not the expected count", 3, count);
+
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+    }
 
 }

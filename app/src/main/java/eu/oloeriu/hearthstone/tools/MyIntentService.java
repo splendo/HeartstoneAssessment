@@ -101,6 +101,10 @@ public class MyIntentService extends IntentService {
 
         cardRef.setValue(card);
 
+        //store cards in sqlLight
+        //todo check that there are no cards in the database
+
+
 
         Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
         mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
