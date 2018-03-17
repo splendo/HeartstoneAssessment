@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.support.test.InstrumentationRegistry;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -24,6 +25,11 @@ public class TestDatabase {
 
     @Before
     public void setUp() throws Exception {
+        deleteAllRecordsFromProvider();
+    }
+
+    @After
+    public void tareDown() throws Exception{
         deleteAllRecordsFromProvider();
     }
 

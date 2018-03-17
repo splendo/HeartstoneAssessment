@@ -1,5 +1,6 @@
 package eu.oloeriu.hearthstone.tools;
 
+import android.content.ContentResolver;
 import android.content.res.Resources;
 
 import com.google.gson.Gson;
@@ -32,5 +33,9 @@ public class Utils {
         Gson gson = new Gson();
         Map<String, List<Card>> map = gson.fromJson(reader, type);
         return map;
+    }
+
+    public static void persistCardsInDatabase(ContentResolver contentResolver){
+
     }
 }

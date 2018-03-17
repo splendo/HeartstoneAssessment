@@ -10,6 +10,8 @@ public class Card {
     private String cardId;
     private String name;
     private String cardSet;
+    private String type;
+    private String rarity;
     private List<Mechanic>mechanics;
     private List<String> classes;
 

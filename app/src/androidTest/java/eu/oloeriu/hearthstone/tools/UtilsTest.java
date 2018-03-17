@@ -1,12 +1,17 @@
 package eu.oloeriu.hearthstone.tools;
 
+import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import eu.oloeriu.hearthstone.data.CardTable;
 
 import static org.junit.Assert.*;
 
@@ -49,6 +54,25 @@ public class UtilsTest {
             }
         }
         assertTrue("Wee never managed to locate Aya Blackpaw", cardFound);
+    }
+
+    @Test
+    public void persistCardsInDatabase() throws Exception {
+        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
+        Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
+        int totalCards = 0; // should be 3116 cards (quite allot of them)
+        for (List<Card> cardsSet : map.values()) {
+            totalCards += cardsSet.size();
+        }
+        System.out.println("Total cards = " + totalCards);
+
+        ContentResolver contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
+        Utils.persistCardsInDatabase(contentResolver);
+
+        //get all cards cursor
+        Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
+        int databaseCount = cursor.getCount();
+        assertEquals("Not same number of cards in database", totalCards, databaseCount);
     }
 
 }
