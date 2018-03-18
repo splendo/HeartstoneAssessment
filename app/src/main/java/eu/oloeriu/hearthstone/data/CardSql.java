@@ -83,6 +83,10 @@ public class CardSql {
             }
         }
         sqlCard.setClasses(classes.toString());
+
+        sqlCard.setImg(card.getImg());
+        sqlCard.setImgGold(card.getImgGold());
+        sqlCard.setPlayerClass(card.getPlayerClass());
         return sqlCard;
     }
 
