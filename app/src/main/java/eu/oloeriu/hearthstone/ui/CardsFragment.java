@@ -20,7 +20,7 @@ import eu.oloeriu.hearthstone.data.CardTable;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CardsFragment.OnFragmentInteractionListener} interface
+ * {@link InteractionListener} interface
  * to handle interaction events.
  * Use the {@link CardsFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -36,7 +36,7 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private InteractionListener mListener;
 
     private CardsAdapter mCardsAdapter;
 
@@ -90,21 +90,15 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
         super.onActivityCreated(savedInstanceState);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof InteractionListener) {
+            mListener = (InteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement InteractionListener");
         }
     }
 
@@ -131,18 +125,5 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
         mCardsAdapter.swapCursor(null);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

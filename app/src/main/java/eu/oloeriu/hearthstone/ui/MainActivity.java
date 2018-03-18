@@ -1,18 +1,22 @@
 package eu.oloeriu.hearthstone.ui;
 
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import eu.oloeriu.hearthstone.R;
+import eu.oloeriu.hearthstone.tools.Constants;
 
-public class MainActivity extends AppCompatActivity implements CardsFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements InteractionListener{
+
 
     private TextView mTextMessage;
 
@@ -55,8 +59,9 @@ public class MainActivity extends AppCompatActivity implements CardsFragment.OnF
         transaction.commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
+    @Override
+    public void onShowDetails(String cardId) {
+        Log.d(Constants.LOG_TAG, "Time to show details for " + cardId);
     }
 }
