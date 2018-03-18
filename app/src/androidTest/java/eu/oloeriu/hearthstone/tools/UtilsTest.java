@@ -30,10 +30,11 @@ public class UtilsTest {
         List<Card> basicCards = map.get("Basic");
         assertTrue("Contains more then 10 cards", basicCards.size() > 10);
 
+
         boolean cardFound = false;
         for (Card card : basicCards) {
-            if (card.getCardId().equals("CS2_041e")) {
-                assertTrue("Name not \"Ancestral Infusion\"", card.getName().equals("Ancestral Infusion"));
+            if (card.getCardId().equals("hexfrog")) {
+                assertTrue("Name not \"Frog\"", card.getName().equals("Frog"));
                 Mechanic mechanic = card.getMechanics().get(0);
                 assertTrue("It should be taunt", mechanic.getName().equals("Taunt"));
                 cardFound = true;
