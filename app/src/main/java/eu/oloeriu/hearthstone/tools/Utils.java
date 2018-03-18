@@ -47,6 +47,7 @@ public class Utils {
 
     public static void initialPersistCardsInDatabase(ContentResolver contentResolver, Resources resources, Map<String, List<Card>> cardsMap) {
 
+
         for (List<Card> cards : cardsMap.values()) {
             for (Card card : cards) {
 

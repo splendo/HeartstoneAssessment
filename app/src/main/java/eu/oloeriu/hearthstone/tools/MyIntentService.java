@@ -107,7 +107,7 @@ public class MyIntentService extends IntentService {
 
         Map<String, List<Card>> jsonMap = Utils.loadCardsFromJson(this.getResources());
 
-        if (Utils.getCardsCount(this.getContentResolver()) < 3000) {
+        if (Utils.getCardsCount(this.getContentResolver()) < 1000) {
             Log.d(logTag, "Initializing population for " + jsonMap.values().size() + " items");
             Utils.initialPersistCardsInDatabase(this.getContentResolver(), this.getResources(), jsonMap);
         }
