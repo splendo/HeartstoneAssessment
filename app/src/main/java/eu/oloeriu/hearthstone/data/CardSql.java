@@ -70,7 +70,7 @@ public class CardSql {
         mechanics.append("");
         if (null != card.getMechanics()) {
             for (Mechanic mechanic : card.getMechanics()) {
-                mechanics.append(mechanic.getName());
+                mechanics.append(mechanic.getName()+" ");
             }
         }
         sqlCard.setMechanics(mechanics.toString());
@@ -79,7 +79,7 @@ public class CardSql {
         classes.append("");
         if (null != card.getClasses()) {
             for (String itemClass : card.getClasses()) {
-                classes.append(itemClass);
+                classes.append(itemClass +" ");
             }
         }
         sqlCard.setClasses(classes.toString());

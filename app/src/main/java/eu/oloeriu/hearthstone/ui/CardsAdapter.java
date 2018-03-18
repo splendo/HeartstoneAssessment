@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import org.w3c.dom.Text;
+
 import eu.oloeriu.hearthstone.R;
 import eu.oloeriu.hearthstone.data.CardTable;
 
@@ -44,6 +46,27 @@ public class CardsAdapter extends CursorAdapter {
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.small_card_v1))
                 .into(imageView);
-        //into(imageView);
+
+        TextView setView = (TextView)view.findViewById(R.id.item_card_set);
+        int id_set = cursor.getColumnIndex(CardTable.FIELD_CARDSET);
+        String setValue = cursor.getString(id_set);
+        if (setValue != null){
+            setView.setText("Set: "+setValue);
+        }
+
+        TextView viewMechanic = (TextView)view.findViewById(R.id.item_card_mechanics);
+        int id_mec = cursor.getColumnIndex(CardTable.FIELD_MECHANICS);
+        String mecValue = cursor.getString(id_mec);
+        if (mecValue != null &&  !mecValue.isEmpty()){
+            viewMechanic.setText("Mechanics: " + mecValue);
+        }
+
+        TextView viewClasses = (TextView)view.findViewById(R.id.item_card_classes);
+        int id_class = cursor.getColumnIndex(CardTable.FIELD_CLASSES);
+        String classValue = cursor.getString(id_class);
+        if (classValue != null && !classValue.isEmpty()){
+            viewClasses.setText("Classes: " + classValue);
+        }
+
     }
 }
