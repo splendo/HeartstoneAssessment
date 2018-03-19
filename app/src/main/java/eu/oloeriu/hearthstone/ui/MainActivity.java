@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import eu.oloeriu.hearthstone.R;
+import eu.oloeriu.hearthstone.data.CardTable;
 import eu.oloeriu.hearthstone.tools.Constants;
 
 public class MainActivity extends AppCompatActivity implements InteractionListener{
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
 
     private ListFragment mListFragment;
     private GridFragment mGridFragment;
+    private String mSortOrder;
+    private String mSelection;
+    private String mSelecionArgs[];
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //sort by card name ascending order
+        mSortOrder = CardTable.FIELD_NAME + " ASC";
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -78,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
     public void onNavigateListView() {
         //ListFragment listFragment = ListFragment.newInstance("param 1", "param 2");
         if (mListFragment == null){
-            mListFragment = ListFragment.newInstance("param 1", "param 2");
+            mListFragment = ListFragment.newInstance(mSortOrder,mSelection,mSelecionArgs);
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, mListFragment);

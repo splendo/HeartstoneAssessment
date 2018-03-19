@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,13 +14,12 @@ import eu.oloeriu.hearthstone.TestingUtils;
 import eu.oloeriu.hearthstone.data.CardSql;
 import eu.oloeriu.hearthstone.data.CardTable;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
- * Created by Bogdan Oloeriu on 16/03/2018.
+ * Created by Bogdan Oloeriu on 19/03/2018.
  */
-public class UtilsTest {
+public class TestUtils {
     @Test
     public void loadCardsFromJson() throws Exception {
         Resources resources = InstrumentationRegistry.getTargetContext().getResources();
@@ -61,6 +59,29 @@ public class UtilsTest {
     }
 
     @Test
+    public void getCardsCount() throws Exception {
+        ContentResolver contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
+
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+
+        CardSql cardSql = new CardSql();
+        cardSql.setName("Bogdan");
+
+        //insert 3 cards
+        for (int i = 1; i <= 3; i++) {
+
+            cardSql.setCardId(String.valueOf(i));
+            contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql, true));
+        }
+
+
+        int count = Utils.getCardsCount(contentResolver);
+        assertEquals("Not the expected count", 3, count);
+
+        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+    }
+
+    @Test
     public void initialPersistCardsInDatabase() throws Exception {
         Resources resources = InstrumentationRegistry.getTargetContext().getResources();
         Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
@@ -88,26 +109,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void getCardsCount() {
-        ContentResolver contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
-
-        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
-
-        CardSql cardSql = new CardSql();
-        cardSql.setName("Bogdan");
-
-        //insert 3 cards
-        for (int i = 1; i <= 3; i++) {
-
-            cardSql.setCardId(String.valueOf(i));
-            contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql, true));
-        }
-
-
-        int count = Utils.getCardsCount(contentResolver);
-        assertEquals("Not the expected count", 3, count);
-
-        TestingUtils.deleteAllRecordsFromProvider(contentResolver);
+    public void setupSharedSets() throws Exception {
     }
 
 }

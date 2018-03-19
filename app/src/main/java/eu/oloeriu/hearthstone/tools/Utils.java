@@ -1,8 +1,11 @@
 package eu.oloeriu.hearthstone.tools;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -15,6 +18,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import eu.oloeriu.hearthstone.R;
 import eu.oloeriu.hearthstone.data.CardSql;
@@ -72,6 +77,11 @@ public class Utils {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static void setupSharedSets(SharedPreferences sharedPreferences, List<Card> cards){
+        Set<String> shared_type = new TreeSet<>();
+        Log.d(logTag, "initiated shared preferences");
     }
 
 }

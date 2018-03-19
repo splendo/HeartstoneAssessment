@@ -29,16 +29,18 @@ import eu.oloeriu.hearthstone.data.CardTable;
  * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_SORT_ORDER = "param_sort_order";
+    private static final String ARG_SELECTION = "param_selection";
+    private static final String ARG_SELECTION_ARGS = "param_selection_arguments";
     private static final int CARDS_LOADER = 1;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mSortOrder;
+    private String mSelection;
+    private String mSelectionArgs[];
 
     private InteractionListener mListener;
 
@@ -52,16 +54,18 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param sortOrder sql part of the sorting order.
+     * @param selection CursorLoader part for selection
+     * @param selectionArgs CursorLoader part for selectionArgs;
      * @return A new instance of fragment ListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
+    public static ListFragment newInstance(String sortOrder, String selection, String[] selectionArgs) {
         ListFragment fragment = new ListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_SORT_ORDER, sortOrder);
+        args.putString(ARG_SELECTION, selection);
+        args.putStringArray(ARG_SELECTION_ARGS, selectionArgs);
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,8 +74,8 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mSelection = getArguments().getString(ARG_SELECTION);
+            mSortOrder = getArguments().getString(ARG_SORT_ORDER);
         }
         setHasOptionsMenu(true);
     }
@@ -83,7 +87,7 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         ListView listView = (ListView) view.findViewById(R.id.listView_cards);
-        mListAdapter = new ListAdapter(getActivity(),null,0);
+        mListAdapter = new ListAdapter(getActivity(), null, 0);
         listView.setAdapter(mListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,7 +96,7 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
 
                 int field_id = cursor.getColumnIndex(CardTable.FIELD__ID);
                 String cardId = cursor.getString(field_id);
-                int  cursorPosition = position;
+                int cursorPosition = position;
 
                 mListener.onShowDetails(cardId, cursorPosition);
             }
@@ -100,7 +104,6 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
 
         return view;
     }
-
 
 
     @Override
@@ -130,7 +133,7 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Uri uri = CardTable.CONTENT_URI;
-        Loader<Cursor> cursorLoader = new CursorLoader(getContext(),uri,null,null,null,null);
+        Loader<Cursor> cursorLoader = new CursorLoader(getContext(), uri, null, mSelection, mSelectionArgs, mSortOrder);
         return cursorLoader;
     }
 
@@ -153,7 +156,7 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.navigation_grid_view:
                 mListener.onNavigateGridView();
                 break;
