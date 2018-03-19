@@ -10,8 +10,12 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import eu.oloeriu.hearthstone.R;
@@ -22,10 +26,10 @@ import eu.oloeriu.hearthstone.data.CardTable;
  * Activities that contain this fragment must implement the
  * {@link InteractionListener} interface
  * to handle interaction events.
- * Use the {@link CardsFragment#newInstance} factory method to
+ * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CardsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,9 +42,9 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private InteractionListener mListener;
 
-    private CardsAdapter mCardsAdapter;
+    private ListAdapter mListAdapter;
 
-    public CardsFragment() {
+    public ListFragment() {
         // Required empty public constructor
     }
 
@@ -50,11 +54,11 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CardsFragment.
+     * @return A new instance of fragment ListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CardsFragment newInstance(String param1, String param2) {
-        CardsFragment fragment = new CardsFragment();
+    public static ListFragment newInstance(String param1, String param2) {
+        ListFragment fragment = new ListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,20 +73,35 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cards, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         ListView listView = (ListView) view.findViewById(R.id.listView_cards);
-        mCardsAdapter = new CardsAdapter(getActivity(),null,0);
-        listView.setAdapter(mCardsAdapter);
+        mListAdapter = new ListAdapter(getActivity(),null,0);
+        listView.setAdapter(mListAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+
+                int field_id = cursor.getColumnIndex(CardTable.FIELD__ID);
+                String cardId = cursor.getString(field_id);
+                int  cursorPosition = position;
+
+                mListener.onShowDetails(cardId, cursorPosition);
+            }
+        });
 
         return view;
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -117,13 +136,28 @@ public class CardsFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mCardsAdapter.swapCursor(data);
+        mListAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        mCardsAdapter.swapCursor(null);
+        mListAdapter.swapCursor(null);
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.list_fragment_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.navigation_grid_view:
+                mListener.onNavigateGridView();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

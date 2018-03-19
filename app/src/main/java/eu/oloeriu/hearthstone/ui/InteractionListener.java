@@ -16,5 +16,7 @@ public interface InteractionListener {
      *
      * @param cardId
      */
-    void onShowDetails(String cardId);
+    void onShowDetails(String cardId, int cursorPosition);
+    void onNavigateGridView();
+    void onNavigateListView();
 }

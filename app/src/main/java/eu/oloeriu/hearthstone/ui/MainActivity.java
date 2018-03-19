@@ -1,13 +1,13 @@
 package eu.oloeriu.hearthstone.ui;
 
-import android.content.ContentResolver;
-import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +18,9 @@ import eu.oloeriu.hearthstone.tools.Constants;
 public class MainActivity extends AppCompatActivity implements InteractionListener{
 
 
-    private TextView mTextMessage;
+
+    private ListFragment mListFragment;
+    private GridFragment mGridFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,20 +50,40 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        CardsFragment cardsFragment = CardsFragment.newInstance("param 1", "param 2");
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, cardsFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        onNavigateListView();
     }
 
 
     @Override
-    public void onShowDetails(String cardId) {
-        Log.d(Constants.LOG_TAG, "Time to show details for " + cardId);
+    public void onShowDetails(String cardId, int cursorPosition) {
+        Log.d(Constants.LOG_TAG, "Time to show details for " + cardId+ " - " + cursorPosition);
     }
+
+    @Override
+    public void onNavigateGridView() {
+        if (mGridFragment == null){
+            mGridFragment = GridFragment.newInstance("param 1", "param 2");
+        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mGridFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void onNavigateListView() {
+        //ListFragment listFragment = ListFragment.newInstance("param 1", "param 2");
+        if (mListFragment == null){
+            mListFragment = ListFragment.newInstance("param 1", "param 2");
+        }
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, mListFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

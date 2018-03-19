@@ -5,9 +5,12 @@
     tools:context="eu.oloeriu.hearthstone.ui.GridFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridView
+        android:id="@+id/grid_view_cards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"/>
+
 
 </FrameLayout>

@@ -21,8 +21,8 @@ import eu.oloeriu.hearthstone.data.CardTable;
  * Created by Bogdan Oloeriu on 17/03/2018.
  */
 
-public class CardsAdapter extends CursorAdapter {
-    public CardsAdapter(Context context, Cursor c, int flags) {
+public class ListAdapter extends CursorAdapter {
+    public ListAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }
 
