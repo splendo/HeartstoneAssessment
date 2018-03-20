@@ -6,10 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import eu.oloeriu.hearthstone.R;
@@ -17,6 +14,7 @@ import eu.oloeriu.hearthstone.data.CardTable;
 import eu.oloeriu.hearthstone.tools.Constants;
 
 public class MainActivity extends AppCompatActivity implements InteractionListener{
+
 
 
 
@@ -36,9 +34,10 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
                     //mTextMessage.setText(R.string.title_home);
                     Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.change_filter_type:
                     //mTextMessage.setText(R.string.title_dashboard);
-                    Toast.makeText(getApplicationContext(),"Dash board",Toast.LENGTH_SHORT).show();
+                    FilterByDialog dialog = new FilterByDialog();
+                    dialog.show(getSupportFragmentManager(), "filterByDialog");
                     return true;
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
@@ -83,14 +82,24 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
 
     @Override
     public void onNavigateListView() {
-        //ListFragment listFragment = ListFragment.newInstance("param 1", "param 2");
-        if (mListFragment == null){
-            mListFragment = ListFragment.newInstance(mSortOrder,mSelection,mSelecionArgs);
+
+        if(mListFragment == null) {
+            mListFragment = ListFragment.newInstance(mSortOrder, mSelection, mSelecionArgs);
         }
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, mListFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onUpdateFilter(String selection, String[] selectionArgs) {
+        mSelection = selection;
+        mSelecionArgs = selectionArgs;
+        //mListFragment = null;
+        //onNavigateListView();
+        mListFragment.changeFilters(selection,selectionArgs);
     }
 
 }

@@ -74,8 +74,9 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mSelection = getArguments().getString(ARG_SELECTION);
             mSortOrder = getArguments().getString(ARG_SORT_ORDER);
+            mSelection = getArguments().getString(ARG_SELECTION);
+            mSelectionArgs = getArguments().getStringArray(ARG_SELECTION_ARGS);
         }
         setHasOptionsMenu(true);
     }
@@ -162,5 +163,11 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void changeFilters(String selection, String[] selectionArgs){
+        mSelection = selection;
+        mSelectionArgs = selectionArgs;
+        getLoaderManager().restartLoader(CARDS_LOADER,null,this);
     }
 }

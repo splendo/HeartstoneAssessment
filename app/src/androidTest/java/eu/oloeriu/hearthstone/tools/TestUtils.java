@@ -139,9 +139,6 @@ public class TestUtils {
         assertTrue("No Stealth mechanic", mechanics.contains("Stealth"));
         assertTrue("No Tavern Brawl card set", card_sets.contains("Tavern Brawl"));
 
-
-
-
     }
 
 }

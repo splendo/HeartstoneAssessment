@@ -19,4 +19,5 @@ public interface InteractionListener {
     void onShowDetails(String cardId, int cursorPosition);
     void onNavigateGridView();
     void onNavigateListView();
+    void onUpdateFilter(String selection, String[] selectionArgs);
 }

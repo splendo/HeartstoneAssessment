@@ -3,12 +3,14 @@ package eu.oloeriu.hearthstone.tools;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -109,6 +111,15 @@ public class MyIntentService extends IntentService {
 //                Utils.updateCardInFirebase(deviceId, cardSql);
 //            }
 //        }
+
+        //setup shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
+        List<Card> cards = new ArrayList<>();
+        for (List<Card> cardSet : jsonMap.values()){
+            cards.addAll(cardSet);
+        }
+        Utils.setupSharedSets(sharedPreferences, cards);
+
 
         Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
         mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
