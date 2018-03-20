@@ -1,5 +1,6 @@
 package eu.oloeriu.hearthstone.ui;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
     @Override
     public void onShowDetails(String cardId, int cursorPosition) {
         Log.d(Constants.LOG_TAG, "Time to show details for " + cardId+ " - " + cursorPosition);
+        Intent intent = new Intent(this, ScreenSlideActivity.class);
+        startActivity(intent);
     }
 
     @Override
