@@ -1,14 +1,18 @@
 package eu.oloeriu.hearthstone.tools;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import eu.oloeriu.hearthstone.TestingUtils;
 import eu.oloeriu.hearthstone.data.CardSql;
@@ -110,6 +114,34 @@ public class TestUtils {
 
     @Test
     public void setupSharedSets() throws Exception {
+        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
+        Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
+        List<Card> cards = new ArrayList<>();
+        for (List<Card> setList : map.values()){
+            cards.addAll(setList);
+        }
+
+        SharedPreferences sharedPreferences = InstrumentationRegistry.getContext()
+                .getSharedPreferences(Constants.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
+
+        Utils.setupSharedSets(sharedPreferences, cards);
+        Set<String> types = sharedPreferences.getStringSet(Constants.SHARED_SET_TYPE, null);
+        Set<String> rarityes = sharedPreferences.getStringSet(Constants.SHARED_SET_RARITIES, null);
+        Set<String> classes = sharedPreferences.getStringSet(Constants.SHARED_SET_CLASSES,null);
+        Set<String> mechanics = sharedPreferences.getStringSet(Constants.SHARED_SET_MECHANICS, null);
+        Set<String> card_sets = sharedPreferences.getStringSet(Constants.SHARED_SET_CARD_SETS, null);
+
+
+        assertTrue("Types ware not initiated", types.size()>0);
+        assertTrue("No Hero Power type", types.contains("Hero Power"));
+        assertTrue("No Legendary rarity", rarityes.contains("Legendary"));
+        assertTrue("No Warlock class", classes.contains("Warlock"));
+        assertTrue("No Stealth mechanic", mechanics.contains("Stealth"));
+        assertTrue("No Tavern Brawl card set", card_sets.contains("Tavern Brawl"));
+
+
+
+
     }
 
 }

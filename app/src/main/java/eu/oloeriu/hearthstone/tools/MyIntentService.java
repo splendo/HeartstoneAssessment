@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 import java.util.Map;
 
+import eu.oloeriu.hearthstone.data.CardSql;
 import eu.oloeriu.hearthstone.ui.MainActivity;
 
 /**
@@ -91,20 +92,7 @@ public class MyIntentService extends IntentService {
         String deviceId = Settings.Secure.getString(getBaseContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.d(logTag, "deviceId = " + deviceId);
 
-        String cardsLocation = Constants.LOCATION_CARDS
-                .replace(Constants.DEVICE_ID, deviceId);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference cards = database.getReference(cardsLocation);
-        DatabaseReference cardRef = cards.push();
-
-        Card card = new Card();
-        card.setName("First card");
-
-        cardRef.setValue(card);
-
         //store cards in sqlLight
-        //todo check that there are no cards in the database
-
         Map<String, List<Card>> jsonMap = Utils.loadCardsFromJson(this.getResources());
 
         if (Utils.getCardsCount(this.getContentResolver()) < 1000) {
@@ -112,6 +100,15 @@ public class MyIntentService extends IntentService {
             Utils.initialPersistCardsInDatabase(this.getContentResolver(), this.getResources(), jsonMap);
         }
         Log.d(logTag, "Wee have " + Utils.getCardsCount(this.getContentResolver()) + " cards in database");
+
+        //todo consider querring the apy for owned cards for a moment this is just a raw test
+//        List<Card> meanStreats = jsonMap.get("Mean Streets of Gadgetzan");
+//        for (Card card : meanStreats) {
+//            if (card.getCardId().equals("CFM_902")) {
+//                CardSql cardSql = CardSql.buildFromCard(card);
+//                Utils.updateCardInFirebase(deviceId, cardSql);
+//            }
+//        }
 
         Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
         mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
