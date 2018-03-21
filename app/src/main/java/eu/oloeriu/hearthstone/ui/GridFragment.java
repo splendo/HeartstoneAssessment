@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import eu.oloeriu.hearthstone.R;
@@ -27,16 +28,18 @@ import eu.oloeriu.hearthstone.data.CardTable;
  * Use the {@link GridFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GridFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class GridFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>, UpdateFilters{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_SORT_ORDER = "param_sort_order";
+    private static final String ARG_SELECTION = "param_selection";
+    private static final String ARG_SELECTION_ARGS = "param_selection_arguments";
     private static final int CARDS_LOADER = 1;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mSortOrder;
+    private String mSelection;
+    private String mSelectionArgs[];
 
     private InteractionListener mListener;
     private GridAdapter mGridAdapter;
@@ -49,16 +52,15 @@ public class GridFragment extends Fragment implements LoaderManager.LoaderCallba
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment GridFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GridFragment newInstance(String param1, String param2) {
+    public static GridFragment newInstance(String sortOrder, String selection, String[] selectionArgs) {
         GridFragment fragment = new GridFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_SORT_ORDER, sortOrder);
+        args.putString(ARG_SELECTION, selection);
+        args.putStringArray(ARG_SELECTION_ARGS, selectionArgs);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,8 +86,9 @@ public class GridFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mSortOrder = getArguments().getString(ARG_SORT_ORDER);
+            mSelection = getArguments().getString(ARG_SELECTION);
+            mSelectionArgs = getArguments().getStringArray(ARG_SELECTION_ARGS);
         }
         setHasOptionsMenu(true);
     }
@@ -99,6 +102,18 @@ public class GridFragment extends Fragment implements LoaderManager.LoaderCallba
         GridView gridView = (GridView) view.findViewById(R.id.grid_view_cards);
         mGridAdapter = new GridAdapter(getActivity(), null,0);
         gridView.setAdapter(mGridAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+
+                int field_id = cursor.getColumnIndex(CardTable.FIELD__ID);
+                String cardId = cursor.getString(field_id);
+                int cursorPosition = position;
+
+                mListener.onShowDetails(cardId, cursorPosition);
+            }
+        });
 
         return view;
     }
@@ -129,7 +144,7 @@ public class GridFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
         Uri uri = CardTable.CONTENT_URI;
-        Loader<Cursor> cursorLoader = new CursorLoader(getContext(),uri,null,null,null,null);
+        Loader<Cursor> cursorLoader = new CursorLoader(getContext(), uri, null, mSelection, mSelectionArgs, mSortOrder);
         return cursorLoader;
     }
 
@@ -141,5 +156,12 @@ public class GridFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mGridAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void changeFilters(String selection, String[] selectionArgs) {
+        mSelection = selection;
+        mSelectionArgs = selectionArgs;
+        getLoaderManager().restartLoader(CARDS_LOADER,null,this);
     }
 }

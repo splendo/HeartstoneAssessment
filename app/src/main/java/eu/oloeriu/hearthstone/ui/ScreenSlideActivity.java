@@ -73,11 +73,22 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
-            CardSql cardSql = CardTable.getRow(mCursor,false);
+
+            CardSql cardSql = CardTable.getRow(mCursor, false);
             String cardId = cardSql.getCardId();
             String cardName = cardSql.getName();
-            ScreenSlidePageFragment screenSlidePageFragment = ScreenSlidePageFragment.newInstance(cardId,cardName);
+            String cardSet = cardSql.getCardSet();
+            String cardMechanics = cardSql.getMechanics();
+            String cardClasses = cardSql.getClasses();
+            String cardImageUrl = cardSql.getImg();
 
+            ScreenSlidePageFragment screenSlidePageFragment =
+                    ScreenSlidePageFragment.newInstance(cardId,
+                            cardName,
+                            cardSet,
+                            cardMechanics,
+                            cardClasses,
+                            cardImageUrl);
 
             return screenSlidePageFragment;
         }

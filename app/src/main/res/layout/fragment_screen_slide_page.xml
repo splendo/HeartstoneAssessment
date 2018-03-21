@@ -1,13 +1,66 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
 
-    <TextView style="?android:textAppearanceMedium"
-        android:id="@+id/detail_card_name"
-        android:padding="16dp"
-        android:lineSpacingMultiplier="1.2"
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Just some text" />
-</ScrollView>
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/hear_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorCardHeader">
+
+            <TextView
+                android:id="@+id/detail_card_name"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Card name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/detail_card_set"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_card_name"
+                android:text="Card set"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/detail_card_mechanics"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_card_set"
+                android:text="Card mechanics"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/detail_card_classes"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_card_mechanics"
+                android:text="Card mechanics"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hear_section"
+            app:srcCompat="@drawable/small_card_v1" />
+
+
+    </RelativeLayout>
+
+

@@ -29,7 +29,7 @@ import eu.oloeriu.hearthstone.data.CardTable;
  * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class ListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> , UpdateFilters{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_SORT_ORDER = "param_sort_order";
@@ -165,6 +165,8 @@ public class ListFragment extends Fragment implements LoaderManager.LoaderCallba
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
     public void changeFilters(String selection, String[] selectionArgs){
         mSelection = selection;
         mSelectionArgs = selectionArgs;
