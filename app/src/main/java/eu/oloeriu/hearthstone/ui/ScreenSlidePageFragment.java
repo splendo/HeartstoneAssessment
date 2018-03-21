@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import eu.oloeriu.hearthstone.R;
 
@@ -21,12 +22,12 @@ import eu.oloeriu.hearthstone.R;
 public class ScreenSlidePageFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String CARD_ID = "card_id";
+    private static final String CARD_NAME = "card_name";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mCardId;
+    private String mCardName;
 
     private OnFragmentInteractionListener mListener;
 
@@ -38,16 +39,16 @@ public class ScreenSlidePageFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param cardId Parameter 1.
+     * @param cardName Parameter 2.
      * @return A new instance of fragment ScreenSlidePageFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScreenSlidePageFragment newInstance(String param1, String param2) {
+    public static ScreenSlidePageFragment newInstance(String cardId, String cardName) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(CARD_ID, cardId);
+        args.putString(CARD_NAME, cardName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +57,8 @@ public class ScreenSlidePageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mCardId = getArguments().getString(CARD_ID);
+            mCardName = getArguments().getString(CARD_NAME);
         }
     }
 
@@ -66,6 +67,8 @@ public class ScreenSlidePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup rootView =(ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
+        TextView cardName = rootView.findViewById(R.id.detail_card_name);
+        cardName.setText(mCardName);
         return rootView;
     }
 

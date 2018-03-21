@@ -14,16 +14,19 @@ import eu.oloeriu.hearthstone.R;
 import eu.oloeriu.hearthstone.data.CardTable;
 import eu.oloeriu.hearthstone.tools.Constants;
 
-public class MainActivity extends AppCompatActivity implements InteractionListener{
-
-
+public class MainActivity extends AppCompatActivity implements InteractionListener {
 
 
     private ListFragment mListFragment;
     private GridFragment mGridFragment;
     private String mSortOrder;
     private String mSelection;
-    private String mSelecionArgs[];
+    private String mSelectionArgs[];
+
+    public static final String ARG_SORT_ORDER = "param_sort_order";
+    public static final String ARG_SELECTION = "param_selection";
+    public static final String ARG_SELECTION_ARGS = "param_selection_arguments";
+    public static final String ARG_CURSOR_POSITION = "param_cursor_position";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     //mTextMessage.setText(R.string.title_home);
-                    Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.change_filter_type:
                     //mTextMessage.setText(R.string.title_dashboard);
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
                     return true;
                 case R.id.navigation_notifications:
                     //mTextMessage.setText(R.string.title_notifications);
-                    Toast.makeText(getApplicationContext(),"Notifications",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Notifications", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
@@ -66,14 +69,18 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
 
     @Override
     public void onShowDetails(String cardId, int cursorPosition) {
-        Log.d(Constants.LOG_TAG, "Time to show details for " + cardId+ " - " + cursorPosition);
+        Log.d(Constants.LOG_TAG, "Time to show details for " + cardId + " - " + cursorPosition);
         Intent intent = new Intent(this, ScreenSlideActivity.class);
+        intent.putExtra(ARG_SORT_ORDER, mSortOrder);
+        intent.putExtra(ARG_SELECTION, mSelection);
+        intent.putExtra(ARG_SELECTION_ARGS, mSelectionArgs);
+        intent.putExtra(ARG_CURSOR_POSITION, cursorPosition);
         startActivity(intent);
     }
 
     @Override
     public void onNavigateGridView() {
-        if (mGridFragment == null){
+        if (mGridFragment == null) {
             mGridFragment = GridFragment.newInstance("param 1", "param 2");
         }
 
@@ -86,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
     @Override
     public void onNavigateListView() {
 
-        if(mListFragment == null) {
-            mListFragment = ListFragment.newInstance(mSortOrder, mSelection, mSelecionArgs);
+        if (mListFragment == null) {
+            mListFragment = ListFragment.newInstance(mSortOrder, mSelection, mSelectionArgs);
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -99,10 +106,10 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
     @Override
     public void onUpdateFilter(String selection, String[] selectionArgs) {
         mSelection = selection;
-        mSelecionArgs = selectionArgs;
+        mSelectionArgs = selectionArgs;
         //mListFragment = null;
         //onNavigateListView();
-        mListFragment.changeFilters(selection,selectionArgs);
+        mListFragment.changeFilters(selection, selectionArgs);
     }
 
 }
