@@ -29,9 +29,7 @@
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".ui.ScreenSlideActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity"/>
+
         </activity>
     </application>
 

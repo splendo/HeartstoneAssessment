@@ -12,6 +12,16 @@
         android:layout_alignParentLeft="true"
         app:srcCompat="@drawable/small_card_v1" />
 
+    <ImageView
+        android:id="@+id/favorite_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/ic_favorite_star" />
+
 
     <TextView
 
@@ -41,6 +51,8 @@
         android:layout_below="@id/item_card_mechanics"
         android:layout_toRightOf="@id/imageView"
         android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+
 
 
 </RelativeLayout>

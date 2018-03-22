@@ -50,9 +50,10 @@ public class ScreenSlidePageFragment extends Fragment {
     private String mCardGoldUrl;
 
     private OnFragmentInteractionListener mListener;
-    private int mColorFavorite;
-    private int mColorNotFavorite;
-    private Drawable mIconFavoriteDrawable;
+    //private int mColorFavorite;
+    //private int mColorNotFavorite;
+    //private Drawable mIconFavoriteDrawable;
+    private ImageView mFavoriteImageView;
     private ImageView mCardImageView;
 
 
@@ -132,29 +133,24 @@ public class ScreenSlidePageFragment extends Fragment {
                     .into(imageView);
         }
 
-        ImageView imageView = rootView.findViewById(R.id.image_fav_icon);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        mFavoriteImageView = rootView.findViewById(R.id.image_fav_icon);
+        mFavoriteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onFavoriteClicked();
             }
         });
 
-        mIconFavoriteDrawable = imageView.getDrawable();
-        mColorNotFavorite = getResources().getColor(R.color.colorNotFavorite);
-        mColorFavorite = getResources().getColor(R.color.colorIsFavorite);
+        //mIconFavoriteDrawable = imageView.getDrawable();
+        //mColorNotFavorite = getResources().getColor(R.color.colorNotFavorite);
+        //mColorFavorite = getResources().getColor(R.color.colorIsFavorite);
 
         paintCard();
         return rootView;
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -184,6 +180,8 @@ public class ScreenSlidePageFragment extends Fragment {
         }
         MyIntentService.startActionUpdateFavoriteCard(getContext(),mCardId,mCardFavorite);
         paintCard();
+        //modify the activity cache
+        mListener.onFavoriteModified(mCardId, mCardFavorite);
     }
 
     /**
@@ -193,7 +191,8 @@ public class ScreenSlidePageFragment extends Fragment {
      */
     private void paintCard() {
         if (mCardFavorite == 1) {
-            mIconFavoriteDrawable.setColorFilter(mColorFavorite, PorterDuff.Mode.SRC_ATOP);
+            //mIconFavoriteDrawable.setColorFilter(mColorFavorite, PorterDuff.Mode.SRC_ATOP);
+            mFavoriteImageView.setImageResource(R.drawable.ic_favorite_star);
             if (mCardGoldUrl != null) {
                 Glide.with(getActivity()).load(mCardGoldUrl)
                         .apply(new RequestOptions()
@@ -201,7 +200,8 @@ public class ScreenSlidePageFragment extends Fragment {
                         .into(mCardImageView);
             }
         } else {
-            mIconFavoriteDrawable.setColorFilter(mColorNotFavorite, PorterDuff.Mode.SRC_ATOP);
+            //mIconFavoriteDrawable.setColorFilter(mColorNotFavorite, PorterDuff.Mode.SRC_ATOP);
+            mFavoriteImageView.setImageResource(R.drawable.ic_not_favorite_star);
             if (mCardImageUrl != null) {
                 Glide.with(getActivity()).load(mCardImageUrl)
                         .apply(new RequestOptions()
@@ -222,7 +222,7 @@ public class ScreenSlidePageFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+
+        void onFavoriteModified(String cardId, Integer favoriteValue);
     }
 }

@@ -39,9 +39,24 @@ public class GridAdapter extends CursorAdapter{
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         int id_url = cursor.getColumnIndex(CardTable.FIELD_IMG);
         String url = cursor.getString(id_url);
-        Glide.with(context).load(url)
-                .apply(new RequestOptions()
-                        .placeholder(R.drawable.small_card_v1))
-                .into(imageView);
+        int id_gold = cursor.getColumnIndex(CardTable.FIELD_IMGGOLD);
+        String urlGold = cursor.getString(id_gold);
+
+        ImageView favoriteIcon = view.findViewById(R.id.favorite_icon);
+        int id_favorite = cursor.getColumnIndex(CardTable.FIELD_CARDSFAVORITE);
+        int val_favorite = cursor.getInt(id_favorite);
+        if (val_favorite == 0){
+            favoriteIcon.setVisibility(View.INVISIBLE);
+            Glide.with(context).load(url)
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.small_card_v1))
+                    .into(imageView);
+        }else {
+            favoriteIcon.setVisibility(View.VISIBLE);
+            Glide.with(context).load(urlGold)
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.small_card_v1))
+                    .into(imageView);
+        }
     }
 }

@@ -2,6 +2,7 @@ package eu.oloeriu.hearthstone.ui;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.media.Image;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +67,15 @@ public class ListAdapter extends CursorAdapter {
         String classValue = cursor.getString(id_class);
         if (classValue != null && !classValue.isEmpty()){
             viewClasses.setText("Classes: " + classValue);
+        }
+
+        ImageView favoriteIcon = view.findViewById(R.id.favorite_icon);
+        int id_favorite = cursor.getColumnIndex(CardTable.FIELD_CARDSFAVORITE);
+        int val_favorite = cursor.getInt(id_favorite);
+        if (val_favorite == 0){
+            favoriteIcon.setVisibility(View.INVISIBLE);
+        }else {
+            favoriteIcon.setVisibility(View.VISIBLE);
         }
 
     }

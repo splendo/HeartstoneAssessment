@@ -12,12 +12,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import eu.oloeriu.hearthstone.R;
 import eu.oloeriu.hearthstone.data.CardSql;
 import eu.oloeriu.hearthstone.data.CardTable;
 import eu.oloeriu.hearthstone.tools.ZoomOutPageTransformer;
 
 public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlidePageFragment.OnFragmentInteractionListener {
+
 
     private static final int NUM_PAGES = 5;
     private ViewPager mPager;
@@ -28,11 +32,14 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
     private String mSelection;
     private String mSelectionArgs[];
     private int mPosition;
+    private Map<String, Integer> mFavoriteMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
+
+        mFavoriteMap = new HashMap<>();
 
         Intent intent = getIntent();
         mSortOrder = intent.getStringExtra(MainActivity.ARG_SORT_ORDER);
@@ -50,15 +57,17 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 
     private Cursor createCursor() {
         ContentResolver contentResolver = getContentResolver();
         Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, mSelection, mSelectionArgs, mSortOrder);
         return cursor;
+    }
+
+    @Override
+    public void onFavoriteModified(String cardId, Integer favoriteValue) {
+        mFavoriteMap.put(cardId, favoriteValue);
     }
 
     /**
@@ -82,7 +91,11 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
             String cardClasses = cardSql.getClasses();
             String cardImageUrl = cardSql.getImg();
             String cardGoldUrl = cardSql.getImgGold();
+
             int cardFavorite = cardSql.getCardsFavorite();
+            if (mFavoriteMap.containsKey(cardId)){
+                cardFavorite = mFavoriteMap.get(cardId);
+            }
 
             ScreenSlidePageFragment screenSlidePageFragment =
                     ScreenSlidePageFragment.newInstance(cardId,
