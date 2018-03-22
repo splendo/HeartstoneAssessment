@@ -1,6 +1,8 @@
 package eu.oloeriu.hearthstone.ui;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,17 +34,25 @@ public class ScreenSlidePageFragment extends Fragment {
     private static final String CARD_MECHANICS = "card_mechanics";
     private static final String CARD_CLASSES = "card_classes";
     private static final String CARD_IMAGE_URL = "card_image_url";
+    private static final String CARD_GOLD_URL = "card_gold_url";
+    private static final String CARD_FAVORITE = "card_favorite";
 
     // TODO: Rename and change types of parameters
     private String mCardId;
     private String mCardName;
+    private int mCardFavorite;
 
     private String mCardSet;
     private String mCardMechanics;
     private String mCardClasses;
     private String mCardImageUrl;
+    private String mCardGoldUrl;
 
     private OnFragmentInteractionListener mListener;
+    private int mColorFavorite;
+    private int mColorNotFavorite;
+    private Drawable mIconFavoriteDrawable;
+    private ImageView mCardImageView;
 
 
     public ScreenSlidePageFragment() {
@@ -63,7 +73,9 @@ public class ScreenSlidePageFragment extends Fragment {
                                                       String cardSet,
                                                       String cardMechanics,
                                                       String cardClasses,
-                                                      String cardImageUrl) {
+                                                      String cardImageUrl,
+                                                      String cardGoldUrl,
+                                                      int cardFavorite) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle args = new Bundle();
         args.putString(CARD_ID, cardId);
@@ -72,6 +84,8 @@ public class ScreenSlidePageFragment extends Fragment {
         args.putString(CARD_MECHANICS, cardMechanics);
         args.putString(CARD_CLASSES, cardClasses);
         args.putString(CARD_IMAGE_URL, cardImageUrl);
+        args.putString(CARD_GOLD_URL, cardGoldUrl);
+        args.putInt(CARD_FAVORITE, cardFavorite);
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,6 +100,8 @@ public class ScreenSlidePageFragment extends Fragment {
             mCardMechanics = getArguments().getString(CARD_MECHANICS);
             mCardClasses = getArguments().getString(CARD_CLASSES);
             mCardImageUrl = getArguments().getString(CARD_IMAGE_URL);
+            mCardGoldUrl = getArguments().getString(CARD_GOLD_URL);
+            mCardFavorite = getArguments().getInt(CARD_FAVORITE);
         }
     }
 
@@ -104,6 +120,9 @@ public class ScreenSlidePageFragment extends Fragment {
         if (mCardMechanics != null) {
             ((TextView) rootView.findViewById(R.id.detail_card_mechanics)).setText("Mechanics: " + mCardMechanics);
         }
+
+        mCardImageView = rootView.findViewById(R.id.imageView);
+
         if (mCardImageUrl != null) {
             ImageView imageView = (ImageView) rootView.findViewById(R.id.imageView);
             Glide.with(getActivity()).load(mCardImageUrl)
@@ -112,6 +131,19 @@ public class ScreenSlidePageFragment extends Fragment {
                     .into(imageView);
         }
 
+        ImageView imageView = rootView.findViewById(R.id.image_fav_icon);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFavoriteClicked();
+            }
+        });
+
+        mIconFavoriteDrawable = imageView.getDrawable();
+        mColorNotFavorite = getResources().getColor(R.color.colorNotFavorite);
+        mColorFavorite = getResources().getColor(R.color.colorIsFavorite);
+
+        paintCard();
         return rootView;
     }
 
@@ -140,6 +172,42 @@ public class ScreenSlidePageFragment extends Fragment {
         mListener = null;
     }
 
+    /**
+     * It changes the current state of the card from normal to favorite ore the other way around
+     */
+    private void onFavoriteClicked(){
+        if (mCardFavorite == 0){
+            mCardFavorite = 1;
+        }else{
+            mCardFavorite = 0;
+        }
+        paintCard();
+    }
+
+    /**
+     * It checks if the current card is a favorite card ore not and then
+     * it uses the gold card to paint a favorite one and a normal card otherwise. It also
+     * changes the color of the favorite star
+     */
+    private void paintCard() {
+        if (mCardFavorite == 1) {
+            mIconFavoriteDrawable.setColorFilter(mColorFavorite, PorterDuff.Mode.SRC_ATOP);
+            if (mCardGoldUrl != null) {
+                Glide.with(getActivity()).load(mCardGoldUrl)
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.small_card_v1))
+                        .into(mCardImageView);
+            }
+        } else {
+            mIconFavoriteDrawable.setColorFilter(mColorNotFavorite, PorterDuff.Mode.SRC_ATOP);
+            if (mCardImageUrl != null) {
+                Glide.with(getActivity()).load(mCardImageUrl)
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.small_card_v1))
+                        .into(mCardImageView);
+            }
+        }
+    }
 
     /**
      * This interface must be implemented by activities that contain this

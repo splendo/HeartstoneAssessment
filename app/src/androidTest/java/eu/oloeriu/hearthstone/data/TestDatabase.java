@@ -15,6 +15,7 @@ import java.util.Map;
 
 import eu.oloeriu.hearthstone.TestingUtils;
 import eu.oloeriu.hearthstone.tools.Card;
+import eu.oloeriu.hearthstone.tools.TestUtils;
 import eu.oloeriu.hearthstone.tools.Utils;
 
 import static org.junit.Assert.assertEquals;
@@ -25,10 +26,12 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestDatabase {
     private static ContentResolver contentResolver;
+    private static Resources resources;
 
     @BeforeClass
     public static void setUpClass() {
         contentResolver = InstrumentationRegistry.getTargetContext().getContentResolver();
+        resources = InstrumentationRegistry.getTargetContext().getResources();
     }
 
     @Before
@@ -68,7 +71,6 @@ public class TestDatabase {
 
     @Test
     public void testQueryExamples(){
-        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
         Map<String, List<Card>> map = Utils.loadCardsFromJson(resources);
         int totalCards = 0; // should be 3116 cards (quite allot of them)
         for (List<Card> cardsSet : map.values()) {
@@ -94,5 +96,28 @@ public class TestDatabase {
             String[] column = cursor.getColumnNames();
             System.out.println(column);
         }
+    }
+
+    @Test
+    public void utilsUpdateFavorite(){
+        Card card1 = TestingUtils.getTyrandeWhisperwind(resources);
+        CardSql cardSql1 = CardSql.buildFromCard(card1);
+        contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql1, true));
+
+        CardSql cardSql2 = CardSql.buildFromCard(card1);
+        cardSql2.setCardId("modified2");
+        contentResolver.insert(CardTable.CONTENT_URI, CardTable.getContentValues(cardSql2,true));
+
+        Cursor allCursor = contentResolver.query(CardTable.CONTENT_URI,null,null,null,null);
+        assertEquals("Expected 2 cards on the database", 2, allCursor.getCount());
+        allCursor.close();
+
+        String cardId = card1.getCardId();
+        CardSql whisperA = TestingUtils.getCardById(cardId ,contentResolver);
+        assertEquals("Card should not be favorite", 0, whisperA.getCardsFavorite());
+
+        Utils.updateFavorite(cardId, 1,contentResolver);
+        whisperA = TestingUtils.getCardById(cardId,contentResolver);
+        assertEquals("Card should be favorite now", 1, whisperA.getCardsFavorite());
     }
 }

@@ -81,6 +81,8 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
             String cardMechanics = cardSql.getMechanics();
             String cardClasses = cardSql.getClasses();
             String cardImageUrl = cardSql.getImg();
+            String cardGoldUrl = cardSql.getImgGold();
+            int cardFavorite = cardSql.getCardsFavorite();
 
             ScreenSlidePageFragment screenSlidePageFragment =
                     ScreenSlidePageFragment.newInstance(cardId,
@@ -88,7 +90,9 @@ public class ScreenSlideActivity extends AppCompatActivity implements ScreenSlid
                             cardSet,
                             cardMechanics,
                             cardClasses,
-                            cardImageUrl);
+                            cardImageUrl,
+                            cardGoldUrl,
+                            cardFavorite);
 
             return screenSlidePageFragment;
         }

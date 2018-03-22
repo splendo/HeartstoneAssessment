@@ -1,9 +1,12 @@
 package eu.oloeriu.hearthstone.tools;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.net.Uri;
+import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,9 +36,15 @@ public class Utils {
     private static String logTag = Constants.LOG_TAG;
 
 
+    /**
+     * It loads all the cards from the clean_cards resource file
+     *
+     * @param resources the application context
+     * @return a map of card sets names and card list
+     */
     public static Map<String, List<Card>> loadCardsFromJson(Resources resources) {
 
-        InputStream is = resources.openRawResource(R.raw.clean_cards);
+        InputStream is = resources.openRawResource(R.raw.clean_gold_cards);
         Reader reader = new InputStreamReader(is);
 
         Type type = new TypeToken<Map<String, List<Card>>>() {
@@ -45,6 +54,12 @@ public class Utils {
         return map;
     }
 
+    /**
+     * It counts the number of cards from the database
+     *
+     * @param contentResolver of the application
+     * @return the number of cards from the database
+     */
     public static int getCardsCount(ContentResolver contentResolver) {
         Cursor cursor = contentResolver.query(CardTable.CONTENT_URI, null, null, null, null);
         return cursor.getCount();
@@ -63,13 +78,19 @@ public class Utils {
         }
     }
 
-    public static boolean urlExists(String URLName) {
+    /**
+     * Utility method to check if a specific http url exists.
+     *
+     * @param urlString the url string
+     * @return
+     */
+    public static boolean urlExists(String urlString) {
         try {
             HttpURLConnection.setFollowRedirects(false);
             // note : you may also need
             //        HttpURLConnection.setInstanceFollowRedirects(false)
             HttpURLConnection con =
-                    (HttpURLConnection) new URL(URLName).openConnection();
+                    (HttpURLConnection) new URL(urlString).openConnection();
             con.setRequestMethod("HEAD");
             return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
         } catch (Exception e) {
@@ -78,6 +99,13 @@ public class Utils {
         }
     }
 
+    /**
+     * Meant to be used at start time to update shared preferences with possible
+     * filter values from the cards.
+     *
+     * @param sharedPreferences the {@link SharedPreferences} used by the app
+     * @param cards             the list of cards that will be scanned for possible filer values
+     */
     public static void setupSharedSets(SharedPreferences sharedPreferences, List<Card> cards) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -118,7 +146,7 @@ public class Utils {
             }
 
             String cardSet = card.getCardSet();
-            if (cardSet != null && !cardSet.isEmpty() && !shared_card_sets.contains(cardSet)){
+            if (cardSet != null && !cardSet.isEmpty() && !shared_card_sets.contains(cardSet)) {
                 shared_card_sets.add(cardSet);
             }
 
@@ -135,7 +163,16 @@ public class Utils {
     }
 
 
-    public static void updateCardInFirebase(String deviceId, CardSql cardSql){
+    /**
+     * This one did not got the chance to use it. the application is wired up with firebase
+     * but for the moment I do not store cards information in it. Word of notice to the evaluator:
+     * "If the app is not able to initialize please send me the signature of you debug key so
+     * I can update the firebase project that supports this app
+     *
+     * @param deviceId the phone ore table device id
+     * @param cardSql  the {@link CardSql} that will be updated in the cloud
+     */
+    public static void updateCardInFirebase(String deviceId, CardSql cardSql) {
         String cardsLocation = Constants.LOCATION_CARD
                 .replace(Constants.DEVICE_ID, deviceId)
                 .replace(Constants.CARD_ID, cardSql.getCardId());
@@ -144,4 +181,28 @@ public class Utils {
         reference.setValue(cardSql);
     }
 
+    /**
+     * It updates the favorite information the card in SQLLight database
+     *
+     * @param cardId          the id of the card
+     * @param favorite        the new favorite value
+     * @param contentResolver the application content resolver
+     */
+    public static void updateFavorite(String cardId, int favorite, ContentResolver contentResolver) {
+        Uri cardUri = CardTable.CONTENT_URI;
+
+        ContentValues favoriteValues = new ContentValues();
+        favoriteValues.put(CardTable.FIELD_CARDSFAVORITE, favorite);
+
+        String selection = CardTable.FIELD__ID + " =? ";
+        String selectionArgs[] = {cardId};
+
+        int rowsUpdated = contentResolver.update(cardUri, favoriteValues, selection, selectionArgs);
+        if (rowsUpdated != 1) {
+            Log.e(logTag, "Huston wee have a problem. Not able to update one card " +
+                    "Wee updated " + rowsUpdated + " cards");
+        }
+
+        Log.d(logTag, "update favorite initiated");
+    }
 }
