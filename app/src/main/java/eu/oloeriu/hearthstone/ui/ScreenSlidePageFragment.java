@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import eu.oloeriu.hearthstone.R;
+import eu.oloeriu.hearthstone.tools.MyIntentService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -181,6 +182,7 @@ public class ScreenSlidePageFragment extends Fragment {
         }else{
             mCardFavorite = 0;
         }
+        MyIntentService.startActionUpdateFavoriteCard(getContext(),mCardId,mCardFavorite);
         paintCard();
     }
 

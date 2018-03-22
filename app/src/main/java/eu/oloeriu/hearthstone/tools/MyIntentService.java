@@ -7,14 +7,10 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import eu.oloeriu.hearthstone.data.CardSql;
 import eu.oloeriu.hearthstone.ui.MainActivity;
 
 /**
@@ -28,10 +24,10 @@ public class MyIntentService extends IntentService {
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_INITIAL_SETUP = "eu.oloeriu.hearthstone.tools.action.INITIAL_SETUP";
-    private static final String ACTION_BAZ = "eu.oloeriu.hearthstone.tools.action.BAZ";
+    private static final String ACTION_UPDATE_FAVORITE_CARD = "eu.oloeriu.hearthstone.tools.action.UPDATE_FAVORITE_CARD";
     // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "eu.oloeriu.hearthstone.tools.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "eu.oloeriu.hearthstone.tools.extra.PARAM2";
+    private static final String EXTRA_CARD_ID = "eu.oloeriu.hearthstone.tools.extra.PARAM1";
+    private static final String EXTRA_CARD_FAVORITE_VALUE = "eu.oloeriu.hearthstone.tools.extra.PARAM2";
     private static String logTag = Constants.LOG_TAG;
 
     public MyIntentService() {
@@ -48,8 +44,8 @@ public class MyIntentService extends IntentService {
     public static void startActionInitialSetup(Context context, String param1, String param2) {
         Intent intent = new Intent(context, MyIntentService.class);
         intent.setAction(ACTION_INITIAL_SETUP);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
+        intent.putExtra(EXTRA_CARD_ID, param1);
+        intent.putExtra(EXTRA_CARD_FAVORITE_VALUE, param2);
         context.startService(intent);
     }
 
@@ -60,11 +56,11 @@ public class MyIntentService extends IntentService {
      * @see IntentService
      */
     // TODO: Customize helper method
-    public static void startActionBaz(Context context, String param1, String param2) {
+    public static void startActionUpdateFavoriteCard(Context context, String cardId, int favoriteValue) {
         Intent intent = new Intent(context, MyIntentService.class);
-        intent.setAction(ACTION_BAZ);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
+        intent.setAction(ACTION_UPDATE_FAVORITE_CARD);
+        intent.putExtra(EXTRA_CARD_ID, cardId);
+        intent.putExtra(EXTRA_CARD_FAVORITE_VALUE, favoriteValue);
         context.startService(intent);
     }
 
@@ -73,13 +69,11 @@ public class MyIntentService extends IntentService {
         if (intent != null) {
             final String action = intent.getAction();
             if (ACTION_INITIAL_SETUP.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionInitialSetup(param1, param2);
-            } else if (ACTION_BAZ.equals(action)) {
-                final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-                final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionBaz(param1, param2);
+                handleActionInitialSetup();
+            } else if (ACTION_UPDATE_FAVORITE_CARD.equals(action)) {
+                final String cardId = intent.getStringExtra(EXTRA_CARD_ID);
+                final int favoriteValue = intent.getIntExtra(EXTRA_CARD_FAVORITE_VALUE, 0);
+                handleActionUpdateFavoriteCard(cardId, favoriteValue);
             }
         }
     }
@@ -88,8 +82,7 @@ public class MyIntentService extends IntentService {
      * Handle action Foo in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionInitialSetup(String param1, String param2) {
-        // TODO: Handle action Foo
+    private void handleActionInitialSetup() {
 
         String deviceId = Settings.Secure.getString(getBaseContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.d(logTag, "deviceId = " + deviceId);
@@ -115,11 +108,10 @@ public class MyIntentService extends IntentService {
         //setup shared preferences
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
         List<Card> cards = new ArrayList<>();
-        for (List<Card> cardSet : jsonMap.values()){
+        for (List<Card> cardSet : jsonMap.values()) {
             cards.addAll(cardSet);
         }
         Utils.setupSharedSets(sharedPreferences, cards);
-
 
         Intent mainActivityIntent = new Intent(getBaseContext(), MainActivity.class);
         mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -130,8 +122,8 @@ public class MyIntentService extends IntentService {
      * Handle action Baz in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void handleActionUpdateFavoriteCard(String cardId, int favoriteValue) {
+        //Time to update the card in SQLLight
+        Utils.updateFavorite(cardId, favoriteValue, this.getContentResolver());
     }
 }

@@ -202,7 +202,5 @@ public class Utils {
             Log.e(logTag, "Huston wee have a problem. Not able to update one card " +
                     "Wee updated " + rowsUpdated + " cards");
         }
-
-        Log.d(logTag, "update favorite initiated");
     }
 }
