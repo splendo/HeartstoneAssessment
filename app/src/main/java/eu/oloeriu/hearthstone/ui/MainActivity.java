@@ -1,6 +1,8 @@
 package eu.oloeriu.hearthstone.ui;
 
 import android.content.Intent;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 import eu.oloeriu.hearthstone.R;
 import eu.oloeriu.hearthstone.data.CardTable;
@@ -36,16 +40,20 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
                 case R.id.navigation_home:
                     //mTextMessage.setText(R.string.title_home);
                     Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
-                    mCurrentFragment.changeFilters(null,null);
+                    mCurrentFragment.changeFilters(null, null);
                     return true;
                 case R.id.change_filter_type:
                     //mTextMessage.setText(R.string.title_dashboard);
-                    FilterByDialog dialog = new FilterByDialog();
-                    dialog.show(getSupportFragmentManager(), "filterByDialog");
+                    FilterByDialog filterByTypeDialog = FilterByDialog.newInstance(FilterByDialog.FILTER.TYPE);
+                    filterByTypeDialog.show(getSupportFragmentManager(), "filterByDialog");
                     return true;
-                case R.id.navigation_notifications:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    Toast.makeText(getApplicationContext(), "Notifications", Toast.LENGTH_SHORT).show();
+                case R.id.navigation_filter_mechanics:
+                    FilterByDialog mechanicsDialog = FilterByDialog.newInstance(FilterByDialog.FILTER.MECHANICS);
+                    mechanicsDialog.show(getSupportFragmentManager(), "filterByDialog");
+                    return true;
+                case R.id.navigation_filter_classes:
+                    FilterByDialog classesDialog = FilterByDialog.newInstance(FilterByDialog.FILTER.CLASSES);
+                    classesDialog.show(getSupportFragmentManager(), "filterByDialog");
                     return true;
             }
             return false;
@@ -115,5 +123,6 @@ public class MainActivity extends AppCompatActivity implements InteractionListen
         //onNavigateListView();
         mCurrentFragment.changeFilters(selection, selectionArgs);
     }
+
 
 }

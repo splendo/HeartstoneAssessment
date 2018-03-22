@@ -1,3 +1,26 @@
+## Words to evaluation team
+- The application is wired to firebase and it might not start when you
+build it. If this is the case please drop me a message with your debug
+SHA-1 fingerprint  so I can add it to the trusted keys
+- The application uses SQLLight for persistence. For fast development of the
+content povider i used " [sql light simple provider](https://github.com/ckurtm/simple-sql-provider)"
+- First time when the app starts it sets up the database. It takes all
+the cards from the json provided and inserts them in the database. Please
+be patient for the proces tu finish.
+- I hope you have fun using the app and poking aroud my code. I'm looking
+forward for feead back.
+
+The filters in the bootom of the screan filter the data in the following
+respective order
+- Filter by Type
+- Filter by Mechanics
+- Filter by Classes
+
+
+Kind regards <br>
+Oloeriu Bogdan Marian <br>
+bogdan.oloeriu@gmail.com
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))

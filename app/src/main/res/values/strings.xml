@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">Love Hearthstone</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">All</string>
     <string name="filter_type">Type</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_mechanics">Mechanics</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_grid_view">Grid view</string>
     <string name="navigation_top_item">Top item</string>
     <string name="navigation_list_view">List view</string>
+    <string name="title_classes">Classes</string>
 
 </resources>
