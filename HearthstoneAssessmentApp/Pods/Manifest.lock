@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (4.7.1)
+  - MBProgressHUD (1.0.0)
+  - Realm (3.3.2):
+    - Realm/Headers (= 3.3.2)
+  - Realm/Headers (3.3.2)
+  - RealmSwift (3.3.2):
+    - Realm (= 3.3.2)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - UIScrollView-InfiniteScroll (1.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - MBProgressHUD (~> 1.0.0)
+  - RealmSwift
+  - SDWebImage (~> 4.0)
+  - UIScrollView-InfiniteScroll (~> 1.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - MBProgressHUD
+    - Realm
+    - RealmSwift
+    - SDWebImage
+    - UIScrollView-InfiniteScroll
+
+SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
+  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
+
+PODFILE CHECKSUM: e7b9a7fea3ea95801d1d7bf412fee2e80fcdfa27
+
+COCOAPODS: 1.5.0

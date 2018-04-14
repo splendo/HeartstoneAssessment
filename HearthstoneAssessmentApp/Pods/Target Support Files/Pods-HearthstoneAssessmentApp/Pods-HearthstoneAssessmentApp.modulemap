@@ -1,0 +1,6 @@
+framework module Pods_HearthstoneAssessmentApp {
+  umbrella header "Pods-HearthstoneAssessmentApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
