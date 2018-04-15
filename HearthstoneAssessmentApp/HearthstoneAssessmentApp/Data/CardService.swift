@@ -9,11 +9,6 @@
 import Foundation
 import RealmSwift
 
-//protocol CardServiceProtocol {
-//
-//}
-
-// Facade (API)
 class CardService {
     
     let loadDataManager: LoadDataManager = LoadDataManager()
@@ -27,8 +22,7 @@ class CardService {
         }
     }
     
-    func markCardAsFavorite(card: Card) {
-        card.isFavorite = !card.isFavorite
+    func markCardAsFavorite(card: Card) {        
         realmDataManager.updateCard(card: card)
     }
 }

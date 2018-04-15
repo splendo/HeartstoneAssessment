@@ -18,8 +18,14 @@ class Card: Object {
     @objc dynamic var rarity: String?
     @objc dynamic var isFavorite: Bool = false
     @objc dynamic var isElite: Bool = false
+    @objc dynamic var attack: Int = 0
+    @objc dynamic var health: Int = 0
     var mechanics = [MechanicCategory]()
     var classes = [String]()
+    
+    override class func primaryKey() -> String? {
+        return "cardId"
+    }
 }
 
 class MechanicCategory: Object {

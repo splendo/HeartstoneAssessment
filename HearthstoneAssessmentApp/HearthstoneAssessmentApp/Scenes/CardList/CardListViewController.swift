@@ -14,6 +14,7 @@ struct CardListContstans {
     static let reuseIdentifier = "CardCell"
     static let pageSize = 50
     static let sectionCount = 1
+    static let segueDetail = "CardDetailSegue"
 }
 
 class CardListViewController: UICollectionViewController {
@@ -22,7 +23,10 @@ class CardListViewController: UICollectionViewController {
     
     var activityIndicator: MBProgressHUD?
     
-    let cardListInteractor = CardListInteractor(pageSize: CardListContstans.pageSize)
+    let cardListInteractor = CardListInteractor()
+    var currentSelectedIndex: IndexPath?
+    
+    // MARK: - Obervable data source property
     
     var cardsDataSource = [Card]() {
         didSet {
@@ -41,7 +45,16 @@ class CardListViewController: UICollectionViewController {
     //MARK: - Segue
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        currentSelectedIndex = indexPath
+        self.performSegue(withIdentifier: CardListContstans.segueDetail, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == CardListContstans.segueDetail {
+            if let destinationVC = segue.destination as? CardDetailViewController {
+                destinationVC.currentSelectedIndex = self.currentSelectedIndex
+            }
+        }
     }
 }
 

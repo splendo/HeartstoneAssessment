@@ -27,12 +27,12 @@ class LoadDataManager {
     // load card Data by speed priority of an access
     func loadCards(onSuccess: @escaping ([Card]) -> Void, onFail: @escaping (Error) -> Void)  {
         
-        if let items = cacheDataManager.loadCards() {
-            return onSuccess(items)
-        }
+//        if let items = cacheDataManager.loadCards() {
+//            return onSuccess(items)
+//        }
         
         if let items = realmDataManager.loadCards() {
-            cacheDataManager.cacheCards(items)
+//            cacheDataManager.cacheCards(items)
             return onSuccess(items)
         }
         

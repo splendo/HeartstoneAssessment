@@ -15,14 +15,14 @@ protocol CardListView: BaseViewProtocol {
 class CardListInteractor {
     
     // delegate view
-    weak private var cardListView: CardListView?
+    weak var cardListView: CardListView?
     
     // services
-    private let cardService: CardService
+    let cardService: CardService
     
     // lifecycle
     
-    init(pageSize: Int) {
+    required init() {
         cardService = CardService()        
     }
     

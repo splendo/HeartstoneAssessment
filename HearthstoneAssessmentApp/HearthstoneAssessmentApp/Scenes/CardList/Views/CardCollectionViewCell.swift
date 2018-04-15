@@ -35,20 +35,17 @@ class CardCollectionViewCell: UICollectionViewCell {
         
         playerClassLabel.text = cardItem.playerClass ?? "--"
         
+        // mark Elite item
         if cardItem.isElite {
-//            imageView.layer.borderWidth = 2.0
-//            imageView.layer.borderColor = UIColor.magenta.cgColor
-            
+            playerClassLabel.textColor = UIColor.magenta
         } else {
-//            imageView.layer.borderWidth = 0
-//            imageView.layer.borderColor = UIColor.clear.cgColor
+            playerClassLabel.textColor = UIColor.darkGray
         }
         
-        guard let imageUrl = cardItem.img else {
-            return
+        // set Image url
+        if let imageUrl = card?.img {
+            imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage:UIImage(named: CardCollectionViewCell.PLACEHOLDER), options: .cacheMemoryOnly, completed: nil)
         }
-        
-        imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage:UIImage(named: CardCollectionViewCell.PLACEHOLDER), options: .cacheMemoryOnly, completed: nil)
     }
     
 }

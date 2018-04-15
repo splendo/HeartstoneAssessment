@@ -8,6 +8,7 @@ def shared_pods
     pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
     pod 'RealmSwift'
     pod 'SDWebImage', '~> 4.0'
+    pod 'ScalingCarousel'
 end
 
 target 'HearthstoneAssessmentApp' do

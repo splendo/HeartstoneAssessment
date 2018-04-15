@@ -35,6 +35,7 @@ class RealmDataManager {
     
     func updateCard(card: Card) {
         try! realm.write {
+            card.isFavorite = !card.isFavorite
             realm.add(card, update: true)
         }
     }
