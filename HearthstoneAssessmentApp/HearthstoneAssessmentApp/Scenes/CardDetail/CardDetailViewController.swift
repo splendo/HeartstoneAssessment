@@ -16,9 +16,15 @@ struct CardDetailContstans {
     static let sectionCount = 1
 }
 
+protocol CardDetailViewControllerDelegate: NSObjectProtocol {
+    func onClose()
+}
+
 class CardDetailViewController: UIViewController {
     
     @IBOutlet var carouselView: ScalingCarouselView!
+    
+    weak var cardDetailViewControllerDelegate: CardDetailViewControllerDelegate?
     
     let cardListInteractor = CardListInteractor()
     var activityIndicator: MBProgressHUD?
@@ -39,6 +45,7 @@ class CardDetailViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
+        cardDetailViewControllerDelegate?.onClose()
         dismiss(animated: true, completion: nil)
     }
     

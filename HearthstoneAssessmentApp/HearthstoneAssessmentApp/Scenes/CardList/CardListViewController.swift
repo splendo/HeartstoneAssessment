@@ -52,6 +52,7 @@ class CardListViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == CardListContstans.segueDetail {
             if let destinationVC = segue.destination as? CardDetailViewController {
+                destinationVC.cardDetailViewControllerDelegate = self
                 destinationVC.currentSelectedIndex = self.currentSelectedIndex
             }
         }
@@ -80,6 +81,16 @@ extension CardListViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cardCell = cell as! CardCollectionViewCell
         cardCell.setCard(cardsDataSource[indexPath.row])
+    }
+    
+}
+
+// MARK: - CardDetailViewControllerDelegate
+
+extension CardListViewController: CardDetailViewControllerDelegate {
+    
+    func onClose() {
+        collectionView?.reloadData()
     }
     
 }

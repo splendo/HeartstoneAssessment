@@ -13,6 +13,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playerClassLabel: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     static let PLACEHOLDER = "CardPlaceholder"
     
@@ -34,6 +35,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
         
         playerClassLabel.text = cardItem.playerClass ?? "--"
+        favouriteButton.isSelected = card?.isFavorite ?? false
         
         // mark Elite item
         if cardItem.isElite {
