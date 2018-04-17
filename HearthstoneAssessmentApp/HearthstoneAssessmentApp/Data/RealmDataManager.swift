@@ -33,34 +33,16 @@ class RealmDataManager {
         return nil
     }
     
-    func getCards(type: BasicType) -> [Card] {
-        let results = realm.objects(Card.self).filter({
-            $0.type == type.rawValue
-        })
-        if results.count > 0 {
-            return [Card](results)
+    func getCards(_ filter: String) -> [Card] {
+        if filter != DataConstants.ALL {
+            let results = realm.objects(Card.self).filter({
+                $0.type == filter ||
+                $0.playerClass == filter ||
+                $0.rarity == filter
+            })
+            return [Card](results)            
         }
-        return [Card]()
-    }
-    
-    func getCards(rarity: BasicRarity) -> [Card] {
-        let results = realm.objects(Card.self).filter({
-            $0.rarity == rarity.rawValue
-        })
-        if results.count > 0 {
-            return [Card](results)
-        }
-        return [Card]()
-    }
-    
-    func getCards(playerClass: BasicPlayerClass) -> [Card] {
-        let results = realm.objects(Card.self).filter({
-            $0.playerClass == playerClass.rawValue
-        })
-        if results.count > 0 {
-            return [Card](results)
-        }
-        return [Card]()
+        return loadCards()!
     }
     
     func updateCard(card: Card) {

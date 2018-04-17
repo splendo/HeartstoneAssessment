@@ -12,6 +12,7 @@ import RealmSwift
 struct DataConstants {
     static let FILE_URL = "https://github.com/splendo/HeartstoneAssessment/blob/apps/cards.json"
     static let FILE_NAME = "cards"
+    static let ALL = "All"
 }
 
 class LoadDataManager {
@@ -75,5 +76,44 @@ class LoadDataManager {
             }
         }
         return cards
+    }
+    
+    // populate filter object
+    
+    static func populateFilters() -> [FilterObject] {
+        var filters = [FilterObject]()
+        
+        filters.append(FilterObject(name: "All types", types: [DataConstants.ALL]))
+        
+        var typeList = [String]()
+        for valueCase in BasicType.cases() {
+            typeList.append(valueCase.rawValue)
+        }
+        filters.append(FilterObject(name: "Type", types: typeList))
+        
+        var rarityList = [String]()
+        for valueCase in BasicRarity.cases() {
+            rarityList.append(valueCase.rawValue)
+        }
+        filters.append(FilterObject(name: "Rarity", types: rarityList))
+        
+        var playerClassList = [String]()
+        for valueCase in BasicPlayerClass.cases() {
+            playerClassList.append(valueCase.rawValue)
+        }
+        filters.append(FilterObject(name: "Player class", types: playerClassList))
+        return filters
+    }
+    
+}
+
+class FilterObject {
+    
+    var filterName: String
+    var types: [String]
+    
+    init(name:String, types:[String]) {
+        self.filterName = name
+        self.types = types
     }
 }

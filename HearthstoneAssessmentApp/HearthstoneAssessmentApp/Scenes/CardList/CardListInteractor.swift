@@ -18,12 +18,12 @@ class CardListInteractor {
     weak var cardListView: CardListView?
     
     // services
-    let cardService: CardService
+    let cardService: CardService        
     
     // lifecycle
     
     required init() {
-        cardService = CardService()        
+        cardService = CardService()
     }
     
     func attachView(view: CardListView) {
@@ -47,7 +47,7 @@ class CardListInteractor {
         }
     }    
     
-    func filterCards() {
-        self.cardListView?.setCards(cards: self.cardService.getCards(.druid))
+    func filterCards(_ filter: String) {
+        self.cardListView?.setCards(cards: self.cardService.getCards(filter))
     }
 }

@@ -12,9 +12,9 @@ import UIScrollView_InfiniteScroll
 
 struct CardListContstans {
     static let reuseIdentifier = "CardCell"
-    static let pageSize = 50
     static let sectionCount = 1
     static let segueDetail = "CardDetailSegue"
+    static let segueFilter = "FilterSegue"
 }
 
 class CardListViewController: UICollectionViewController {
@@ -25,6 +25,7 @@ class CardListViewController: UICollectionViewController {
     
     let cardListInteractor = CardListInteractor()
     var currentSelectedIndex: IndexPath?
+    var currentFilter: String?
     
     // MARK: - Obervable data source property
     
@@ -53,7 +54,13 @@ class CardListViewController: UICollectionViewController {
         if segue.identifier == CardListContstans.segueDetail {
             if let destinationVC = segue.destination as? CardDetailViewController {
                 destinationVC.cardDetailViewControllerDelegate = self
+                destinationVC.currentFilter = self.currentFilter
                 destinationVC.currentSelectedIndex = self.currentSelectedIndex
+            }
+        }
+        if segue.identifier == CardListContstans.segueFilter {
+            if let destinationVC = segue.destination as? CardFilterViewController {
+                destinationVC.filterDelegate = self
             }
         }
     }
@@ -61,7 +68,7 @@ class CardListViewController: UICollectionViewController {
     //MARK: - Handlers
     
     @IBAction func tapFilter(_ sender: Any) {
-        self.cardListInteractor.filterCards()
+        
     }
     
 }
@@ -98,6 +105,17 @@ extension CardListViewController: CardDetailViewControllerDelegate {
     
     func onClose() {
         collectionView?.reloadData()
+    }
+    
+}
+
+// MARK: - CardFilterViewControllerDelegate
+
+extension CardListViewController: CardFilterViewControllerDelegate {
+    
+    func onPickFilterType(_ filterName: String) {
+        currentFilter = filterName
+        self.cardListInteractor.filterCards(filterName)
     }
     
 }

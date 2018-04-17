@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BasicRarity: String, Codable {
+enum BasicRarity: String, Codable, EnumCollection {
     case common = "Common"
     case epic = "Epic"
     case free = "Free"
@@ -16,7 +16,7 @@ enum BasicRarity: String, Codable {
     case rare = "Rare"
 }
 
-enum BasicType: String, Codable {
+enum BasicType: String, Codable, EnumCollection {
     case enchantment = "Enchantment"
     case hero = "Hero"
     case heroPower = "Hero Power"
@@ -53,7 +53,7 @@ enum CreditType: String, Codable {
     case minion = "Minion"
 }
 
-enum Skill: String, Codable {
+enum Skill: String, Codable, EnumCollection {
     case adapt = "Adapt"
     case adjacentBuff = "AdjacentBuff"
     case affectedBySpellPower = "AffectedBySpellPower"
@@ -85,7 +85,7 @@ enum Skill: String, Codable {
     case windfury = "Windfury"
 }
 
-enum BasicPlayerClass: String, Codable {
+enum BasicPlayerClass: String, Codable, EnumCollection {
     case deathKnight = "Death Knight"
     case dream = "Dream"
     case druid = "Druid"

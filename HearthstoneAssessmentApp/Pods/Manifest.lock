@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.1)
+  - CITreeView (1.4.0)
   - MBProgressHUD (1.0.0)
   - Realm (3.3.2):
     - Realm/Headers (= 3.3.2)
@@ -14,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CITreeView (~> 1.4)
   - MBProgressHUD (~> 1.0.0)
   - RealmSwift
   - ScalingCarousel
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - CITreeView
     - MBProgressHUD
     - Realm
     - RealmSwift
@@ -32,6 +35,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  CITreeView: b4ac947f5d8fcf239dae25210022a6f4e73a066e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
@@ -39,6 +43,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
 
-PODFILE CHECKSUM: 79a3324406f6d42a4c24d0b57adcbee81395faec
+PODFILE CHECKSUM: cca8ff824942927c3509eb01e9496a78459487d7
 
 COCOAPODS: 1.5.0

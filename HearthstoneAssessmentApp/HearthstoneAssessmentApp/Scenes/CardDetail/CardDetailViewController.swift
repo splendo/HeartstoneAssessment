@@ -29,6 +29,7 @@ class CardDetailViewController: UIViewController {
     let cardListInteractor = CardListInteractor()
     var activityIndicator: MBProgressHUD?
     var currentSelectedIndex: IndexPath?
+    var currentFilter: String?
     
     // MARK: - KVO data source property
     
@@ -41,7 +42,11 @@ class CardDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cardListInteractor.attachView(view: self)
-        cardListInteractor.loadCards()
+        if let f = currentFilter {
+            cardListInteractor.filterCards(f)
+        } else {
+            cardListInteractor.loadCards()
+        }        
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {

@@ -103,9 +103,7 @@
                             <color key="tintColor" red="0.9801443219" green="0.98417037730000001" blue="0.99648565050000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="tapFilter:" destination="xBV-h6-NNy" id="eRT-fQ-Iq4"/>
-                                <segue destination="NLK-Tj-rAT" kind="popoverPresentation" popoverAnchorBarButtonItem="w38-Tg-rjD" id="sVO-bl-dkc">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="NLK-Tj-rAT" kind="presentation" identifier="FilterSegue" id="sVO-bl-dkc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -118,17 +116,14 @@
             </objects>
             <point key="canvasLocation" x="608.79999999999995" y="-201.04947526236884"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Filter View Controller-->
         <scene sceneID="AxZ-Vk-BHa">
             <objects>
-                <viewController id="NLK-Tj-rAT" sceneMemberID="viewController">
+                <viewController id="NLK-Tj-rAT" customClass="CardFilterViewController" customModule="HearthstoneAssessmentApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aef-nC-8p5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xP-KQ-hii">
-                                <rect key="frame" x="0.0" y="97" width="375" height="570"/>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqJ-bN-C8A">
                                 <rect key="frame" x="329" y="56" width="30" height="30"/>
                                 <constraints>
@@ -139,21 +134,63 @@
                                 </constraints>
                                 <state key="normal" image="CloseIcon"/>
                                 <connections>
-                                    <action selector="closeButtonTapped:" destination="c7o-tT-GvN" eventType="touchUpInside" id="dFH-dg-CPJ"/>
+                                    <action selector="closeButtonTapped:" destination="NLK-Tj-rAT" eventType="touchUpInside" id="sE4-Uj-L4P"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wpc-t4-7vc">
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="50" id="fxb-Ti-Ezh" customClass="FilterTableViewCell" customModule="HearthstoneAssessmentApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fxb-Ti-Ezh" id="v6W-i6-w9F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXr-Zc-vW1">
+                                                    <rect key="frame" x="31" y="13.5" width="313" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
+                                                    <color key="textColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kXr-Zc-vW1" firstAttribute="leading" secondItem="v6W-i6-w9F" secondAttribute="leadingMargin" constant="16" id="Kmq-xM-YZV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kXr-Zc-vW1" secondAttribute="trailing" constant="16" id="Wfe-16-cM4"/>
+                                                <constraint firstItem="kXr-Zc-vW1" firstAttribute="centerY" secondItem="v6W-i6-w9F" secondAttribute="centerY" id="kwg-fJ-X7A"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="filterNameLabel" destination="kXr-Zc-vW1" id="jAO-Ao-V2b"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NLK-Tj-rAT" id="zH8-jv-Mtd"/>
+                                    <outlet property="delegate" destination="NLK-Tj-rAT" id="pkq-Em-H7m"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0xP-KQ-hii" firstAttribute="trailing" secondItem="SE9-SU-ky5" secondAttribute="trailing" id="7bc-lm-gch"/>
-                            <constraint firstItem="0xP-KQ-hii" firstAttribute="leading" secondItem="SE9-SU-ky5" secondAttribute="leading" id="8qp-ik-Yqc"/>
                             <constraint firstItem="SE9-SU-ky5" firstAttribute="trailing" secondItem="TqJ-bN-C8A" secondAttribute="trailing" constant="16" id="Og2-vU-LgR"/>
-                            <constraint firstItem="0xP-KQ-hii" firstAttribute="top" secondItem="SE9-SU-ky5" secondAttribute="top" constant="77" id="aA5-bZ-usO"/>
+                            <constraint firstItem="Wpc-t4-7vc" firstAttribute="leading" secondItem="SE9-SU-ky5" secondAttribute="leading" id="Su6-92-VGV"/>
+                            <constraint firstItem="Wpc-t4-7vc" firstAttribute="top" secondItem="TqJ-bN-C8A" secondAttribute="bottom" constant="8" id="Uco-Ec-im1"/>
+                            <constraint firstItem="Wpc-t4-7vc" firstAttribute="trailing" secondItem="SE9-SU-ky5" secondAttribute="trailing" id="YXA-uh-N7S"/>
                             <constraint firstItem="TqJ-bN-C8A" firstAttribute="top" secondItem="SE9-SU-ky5" secondAttribute="top" constant="36" id="cou-aq-XLC"/>
-                            <constraint firstItem="0xP-KQ-hii" firstAttribute="bottom" secondItem="SE9-SU-ky5" secondAttribute="bottom" id="uwe-Dt-8Sj"/>
+                            <constraint firstItem="Wpc-t4-7vc" firstAttribute="bottom" secondItem="SE9-SU-ky5" secondAttribute="bottom" id="hEq-Ff-YXl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SE9-SU-ky5"/>
                     </view>
+                    <connections>
+                        <outlet property="filtertableView" destination="Wpc-t4-7vc" id="M14-9o-2nv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xi-4O-6Lz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

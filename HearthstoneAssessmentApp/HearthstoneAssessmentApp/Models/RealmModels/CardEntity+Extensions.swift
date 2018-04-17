@@ -16,7 +16,7 @@ extension Card {
         card.name = basicCard.name
         card.playerClass = basicCard.playerClass?.rawValue
         card.type = basicCard.type?.rawValue
-        card.rarity = basicCard.type?.rawValue
+        card.rarity = basicCard.rarity?.rawValue
         card.img = basicCard.img
         card.isFavorite = false
         card.isElite = basicCard.elite ?? false

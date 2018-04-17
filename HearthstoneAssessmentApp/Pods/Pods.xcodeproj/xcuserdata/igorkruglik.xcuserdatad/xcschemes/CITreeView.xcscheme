@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A933C994A1A366CBBD95D3A1BAEC40ED"
-               BlueprintName = "ScalingCarousel"
+               BlueprintIdentifier = "4E79AEA97AB2747EF0A63863CA87EAF3"
+               BlueprintName = "CITreeView"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "ScalingCarousel.framework">
+               BuildableName = "CITreeView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

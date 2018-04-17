@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		86C00CFE3686A8ED2ED6DFD1 /* Pods_HearthstoneAssessmentAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B81A58683C76B043BDFB40F /* Pods_HearthstoneAssessmentAppTests.framework */; };
 		D10FC322E915AB57A7ED229F /* Pods_HearthstoneAssessmentApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BEBEFB900AB3C125F95076 /* Pods_HearthstoneAssessmentApp.framework */; };
+		ED00EB48208601BB0049D705 /* Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED00EB47208601BB0049D705 /* Enum+Extensions.swift */; };
 		ED27400420832E64009739BE /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED27400320832E64009739BE /* CardDetailViewController.swift */; };
 		ED27400620832EA5009739BE /* CardDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED27400520832EA5009739BE /* CardDetailCollectionViewCell.swift */; };
 		ED975F79207E499100D2C225 /* CardEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F78207E499100D2C225 /* CardEntity+Extensions.swift */; };
@@ -26,13 +27,8 @@
 		ED975F8C207E609F00D2C225 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F8A207E609F00D2C225 /* Localization.swift */; };
 		ED975F8F207E660200D2C225 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F8E207E660200D2C225 /* CardCollectionViewCell.swift */; };
 		EDA70DE920838F040083D0D8 /* CardListInterator+Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA70DE820838F040083D0D8 /* CardListInterator+Favourite.swift */; };
-		EDAB3B422085D02C000B1C05 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */; };
-		EDAB3B432085D02C000B1C05 /* CheckedCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */; };
-		EDAB3B442085D02C000B1C05 /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */; };
-		EDAB3B452085D02C000B1C05 /* CheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */; };
-		EDAB3B462085D02C000B1C05 /* UncheckedCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */; };
-		EDAB3B472085D02C000B1C05 /* UncheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B402085D02C000B1C05 /* UncheckedBox.png */; };
-		EDAB3B482085D02C000B1C05 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B412085D02C000B1C05 /* Info.plist */; };
+		EDAB3B4B2085EF64000B1C05 /* CardFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B4A2085EF64000B1C05 /* CardFilterViewController.swift */; };
+		EDAB3B4E2085FD3D000B1C05 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B4D2085FD3D000B1C05 /* FilterTableViewCell.swift */; };
 		EDBA16B8207C9FF700F9541E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA16B7207C9FF700F9541E /* AppDelegate.swift */; };
 		EDBA16BA207C9FF700F9541E /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA16B9207C9FF700F9541E /* CardListViewController.swift */; };
 		EDBA16BD207C9FF700F9541E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBA16BB207C9FF700F9541E /* Main.storyboard */; };
@@ -80,6 +76,7 @@
 		80F214C80F57FBDCD438BB17 /* Pods-HeartstoneAssessmentApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneAssessmentApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneAssessmentApp/Pods-HeartstoneAssessmentApp.release.xcconfig"; sourceTree = "<group>"; };
 		927AB784784944600B8CCDC0 /* Pods-HearthstoneAssessmentAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HearthstoneAssessmentAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HearthstoneAssessmentAppTests/Pods-HearthstoneAssessmentAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DAB2AD1B41DB5E50E14C10B4 /* Pods-HeartstoneAssessmentApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneAssessmentApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneAssessmentApp/Pods-HeartstoneAssessmentApp.debug.xcconfig"; sourceTree = "<group>"; };
+		ED00EB47208601BB0049D705 /* Enum+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Extensions.swift"; sourceTree = "<group>"; };
 		ED27400320832E64009739BE /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		ED27400520832EA5009739BE /* CardDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED975F78207E499100D2C225 /* CardEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardEntity+Extensions.swift"; sourceTree = "<group>"; };
@@ -91,14 +88,8 @@
 		ED975F8A207E609F00D2C225 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		ED975F8E207E660200D2C225 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDA70DE820838F040083D0D8 /* CardListInterator+Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardListInterator+Favourite.swift"; sourceTree = "<group>"; };
-		EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
-		EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckedCircle.png; sourceTree = "<group>"; };
-		EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
-		EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckedBox.png; sourceTree = "<group>"; };
-		EDAB3B3E2085D02C000B1C05 /* CheckboxListSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxListSwift.h; sourceTree = "<group>"; };
-		EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedCircle.png; sourceTree = "<group>"; };
-		EDAB3B402085D02C000B1C05 /* UncheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedBox.png; sourceTree = "<group>"; };
-		EDAB3B412085D02C000B1C05 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDAB3B4A2085EF64000B1C05 /* CardFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFilterViewController.swift; sourceTree = "<group>"; };
+		EDAB3B4D2085FD3D000B1C05 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		EDBA16B4207C9FF700F9541E /* HearthstoneAssessmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearthstoneAssessmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBA16B7207C9FF700F9541E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDBA16B9207C9FF700F9541E /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
@@ -185,27 +176,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EDAB3B382085CFF7000B1C05 /* ThirdParty */ = {
+		EDAB3B492085EF51000B1C05 /* CardFilter */ = {
 			isa = PBXGroup;
 			children = (
-				EDAB3B392085D02C000B1C05 /* CheckboxListSwift */,
+				EDAB3B4C2085FD2C000B1C05 /* Views */,
+				EDAB3B4A2085EF64000B1C05 /* CardFilterViewController.swift */,
 			);
-			path = ThirdParty;
+			path = CardFilter;
 			sourceTree = "<group>";
 		};
-		EDAB3B392085D02C000B1C05 /* CheckboxListSwift */ = {
+		EDAB3B4C2085FD2C000B1C05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */,
-				EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */,
-				EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */,
-				EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */,
-				EDAB3B3E2085D02C000B1C05 /* CheckboxListSwift.h */,
-				EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */,
-				EDAB3B402085D02C000B1C05 /* UncheckedBox.png */,
-				EDAB3B412085D02C000B1C05 /* Info.plist */,
+				EDAB3B4D2085FD3D000B1C05 /* FilterTableViewCell.swift */,
 			);
-			path = CheckboxListSwift;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EDBA16AB207C9FF700F9541E = {
@@ -231,7 +216,6 @@
 		EDBA16B6207C9FF700F9541E /* HearthstoneAssessmentApp */ = {
 			isa = PBXGroup;
 			children = (
-				EDAB3B382085CFF7000B1C05 /* ThirdParty */,
 				EDBF1A23207DDB4700AC5B2E /* Data */,
 				EDBF1A21207CED8F00AC5B2E /* Common */,
 				EDBF1A20207CECE300AC5B2E /* Applicaton */,
@@ -266,6 +250,7 @@
 		EDBF1A1E207CEC1900AC5B2E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDAB3B492085EF51000B1C05 /* CardFilter */,
 				EDF05CB9207F7E8B0012F3B2 /* CardDetail */,
 				ED975F7A207E4C5600D2C225 /* CardList */,
 			);
@@ -295,6 +280,7 @@
 				EDF7F2352084EE2A00D6E737 /* ViewExtensions */,
 				ED975F7E207E542800D2C225 /* BaseViewProtocol.swift */,
 				ED975F8A207E609F00D2C225 /* Localization.swift */,
+				ED00EB47208601BB0049D705 /* Enum+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -445,13 +431,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDBA16C2207C9FF700F9541E /* LaunchScreen.storyboard in Resources */,
-				EDAB3B462085D02C000B1C05 /* UncheckedCircle.png in Resources */,
-				EDAB3B482085D02C000B1C05 /* Info.plist in Resources */,
-				EDAB3B452085D02C000B1C05 /* CheckedBox.png in Resources */,
 				EDBA16BF207C9FF700F9541E /* Assets.xcassets in Resources */,
-				EDAB3B432085D02C000B1C05 /* CheckedCircle.png in Resources */,
 				EDBA16BD207C9FF700F9541E /* Main.storyboard in Resources */,
-				EDAB3B472085D02C000B1C05 /* UncheckedBox.png in Resources */,
 				EDBF1A28207DDD2100AC5B2E /* cards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +474,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HearthstoneAssessmentApp/Pods-HearthstoneAssessmentApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CITreeView/CITreeView.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -503,6 +485,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CITreeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -523,6 +506,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HearthstoneAssessmentAppTests/Pods-HearthstoneAssessmentAppTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CITreeView/CITreeView.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -533,6 +517,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CITreeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -570,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDAB3B4B2085EF64000B1C05 /* CardFilterViewController.swift in Sources */,
 				EDBF1A2E207E0B1700AC5B2E /* DataError.swift in Sources */,
 				EDBF1A3C207E428F00AC5B2E /* CardEntity.swift in Sources */,
 				ED975F82207E56E900D2C225 /* CardService.swift in Sources */,
@@ -580,9 +566,8 @@
 				EDBA16BA207C9FF700F9541E /* CardListViewController.swift in Sources */,
 				EDF7F2372084EE4300D6E737 /* UIView+IB.swift in Sources */,
 				ED975F88207E603B00D2C225 /* UIViewController+Alerts.swift in Sources */,
-				EDAB3B422085D02C000B1C05 /* CheckBoxButton.swift in Sources */,
-				EDAB3B442085D02C000B1C05 /* ChecklistView.swift in Sources */,
 				EDFDA6782083340800A07AF9 /* CardDetailViewController+Interactor.swift in Sources */,
+				ED00EB48208601BB0049D705 /* Enum+Extensions.swift in Sources */,
 				ED975F85207E600B00D2C225 /* CardListVC+Interactor.swift in Sources */,
 				ED975F8F207E660200D2C225 /* CardCollectionViewCell.swift in Sources */,
 				ED975F7F207E542800D2C225 /* BaseViewProtocol.swift in Sources */,
@@ -590,6 +575,7 @@
 				EDA70DE920838F040083D0D8 /* CardListInterator+Favourite.swift in Sources */,
 				ED975F7C207E53E200D2C225 /* CardListInteractor.swift in Sources */,
 				ED975F8B207E609F00D2C225 /* Localization.swift in Sources */,
+				EDAB3B4E2085FD3D000B1C05 /* FilterTableViewCell.swift in Sources */,
 				EDF7F239208504A700D6E737 /* HearthstoneTypes.swift in Sources */,
 				EDBF1A32207E17D500AC5B2E /* CodableHelper.swift in Sources */,
 				EDBA16B8207C9FF700F9541E /* AppDelegate.swift in Sources */,

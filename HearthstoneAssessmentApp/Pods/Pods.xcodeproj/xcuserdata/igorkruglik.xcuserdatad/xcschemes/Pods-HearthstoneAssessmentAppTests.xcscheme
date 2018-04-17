@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65723CD7B121B830915559361BB20953"
+               BlueprintIdentifier = "F4D4FA2AA8B1356DD07374E96BA5E84F"
                BuildableName = "Pods_HearthstoneAssessmentAppTests.framework"
                BlueprintName = "Pods-HearthstoneAssessmentAppTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65723CD7B121B830915559361BB20953"
+            BlueprintIdentifier = "F4D4FA2AA8B1356DD07374E96BA5E84F"
             BuildableName = "Pods_HearthstoneAssessmentAppTests.framework"
             BlueprintName = "Pods-HearthstoneAssessmentAppTests"
             ReferencedContainer = "container:Pods.xcodeproj">
