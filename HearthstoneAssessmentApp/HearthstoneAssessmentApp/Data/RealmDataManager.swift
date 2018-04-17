@@ -26,11 +26,41 @@ class RealmDataManager {
     
     // Load objects from realm DB
     func loadCards() -> [Card]? {
-        let cardResults = realm.objects(Card.self)
-        if cardResults.count > 0 {
-            return [Card](cardResults)
+        let results = realm.objects(Card.self)
+        if results.count > 0 {
+            return [Card](results)
         }
         return nil
+    }
+    
+    func getCards(type: BasicType) -> [Card] {
+        let results = realm.objects(Card.self).filter({
+            $0.type == type.rawValue
+        })
+        if results.count > 0 {
+            return [Card](results)
+        }
+        return [Card]()
+    }
+    
+    func getCards(rarity: BasicRarity) -> [Card] {
+        let results = realm.objects(Card.self).filter({
+            $0.rarity == rarity.rawValue
+        })
+        if results.count > 0 {
+            return [Card](results)
+        }
+        return [Card]()
+    }
+    
+    func getCards(playerClass: BasicPlayerClass) -> [Card] {
+        let results = realm.objects(Card.self).filter({
+            $0.playerClass == playerClass.rawValue
+        })
+        if results.count > 0 {
+            return [Card](results)
+        }
+        return [Card]()
     }
     
     func updateCard(card: Card) {

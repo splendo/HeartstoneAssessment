@@ -20,12 +20,19 @@
 		ED975F83207E56E900D2C225 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F81207E56E900D2C225 /* CardService.swift */; };
 		ED975F85207E600B00D2C225 /* CardListVC+Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F84207E600B00D2C225 /* CardListVC+Interactor.swift */; };
 		ED975F86207E600B00D2C225 /* CardListVC+Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F84207E600B00D2C225 /* CardListVC+Interactor.swift */; };
-		ED975F88207E603B00D2C225 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F87207E603B00D2C225 /* UIViewController+Helpers.swift */; };
-		ED975F89207E603B00D2C225 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F87207E603B00D2C225 /* UIViewController+Helpers.swift */; };
+		ED975F88207E603B00D2C225 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F87207E603B00D2C225 /* UIViewController+Alerts.swift */; };
+		ED975F89207E603B00D2C225 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F87207E603B00D2C225 /* UIViewController+Alerts.swift */; };
 		ED975F8B207E609F00D2C225 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F8A207E609F00D2C225 /* Localization.swift */; };
 		ED975F8C207E609F00D2C225 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F8A207E609F00D2C225 /* Localization.swift */; };
 		ED975F8F207E660200D2C225 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED975F8E207E660200D2C225 /* CardCollectionViewCell.swift */; };
 		EDA70DE920838F040083D0D8 /* CardListInterator+Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA70DE820838F040083D0D8 /* CardListInterator+Favourite.swift */; };
+		EDAB3B422085D02C000B1C05 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */; };
+		EDAB3B432085D02C000B1C05 /* CheckedCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */; };
+		EDAB3B442085D02C000B1C05 /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */; };
+		EDAB3B452085D02C000B1C05 /* CheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */; };
+		EDAB3B462085D02C000B1C05 /* UncheckedCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */; };
+		EDAB3B472085D02C000B1C05 /* UncheckedBox.png in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B402085D02C000B1C05 /* UncheckedBox.png */; };
+		EDAB3B482085D02C000B1C05 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDAB3B412085D02C000B1C05 /* Info.plist */; };
 		EDBA16B8207C9FF700F9541E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA16B7207C9FF700F9541E /* AppDelegate.swift */; };
 		EDBA16BA207C9FF700F9541E /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBA16B9207C9FF700F9541E /* CardListViewController.swift */; };
 		EDBA16BD207C9FF700F9541E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBA16BB207C9FF700F9541E /* Main.storyboard */; };
@@ -46,12 +53,10 @@
 		EDBF1A33207E17D500AC5B2E /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF1A31207E17D500AC5B2E /* CodableHelper.swift */; };
 		EDBF1A3C207E428F00AC5B2E /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF1A3B207E428F00AC5B2E /* CardEntity.swift */; };
 		EDBF1A3D207E428F00AC5B2E /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF1A3B207E428F00AC5B2E /* CardEntity.swift */; };
-		EDF05CBC207F7F270012F3B2 /* CardsCacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CBB207F7F270012F3B2 /* CardsCacheObject.swift */; };
-		EDF05CBD207F7F270012F3B2 /* CardsCacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CBB207F7F270012F3B2 /* CardsCacheObject.swift */; };
 		EDF05CBF207F84750012F3B2 /* RealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CBE207F84750012F3B2 /* RealmDataManager.swift */; };
 		EDF05CC0207F84750012F3B2 /* RealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CBE207F84750012F3B2 /* RealmDataManager.swift */; };
-		EDF05CC2207F85CA0012F3B2 /* CacheDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CC1207F85CA0012F3B2 /* CacheDataManager.swift */; };
-		EDF05CC3207F85CA0012F3B2 /* CacheDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF05CC1207F85CA0012F3B2 /* CacheDataManager.swift */; };
+		EDF7F2372084EE4300D6E737 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF7F2362084EE4300D6E737 /* UIView+IB.swift */; };
+		EDF7F239208504A700D6E737 /* HearthstoneTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF7F238208504A700D6E737 /* HearthstoneTypes.swift */; };
 		EDFDA6782083340800A07AF9 /* CardDetailViewController+Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFDA6772083340800A07AF9 /* CardDetailViewController+Interactor.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,10 +87,18 @@
 		ED975F7E207E542800D2C225 /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		ED975F81207E56E900D2C225 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		ED975F84207E600B00D2C225 /* CardListVC+Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardListVC+Interactor.swift"; sourceTree = "<group>"; };
-		ED975F87207E603B00D2C225 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		ED975F87207E603B00D2C225 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		ED975F8A207E609F00D2C225 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		ED975F8E207E660200D2C225 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDA70DE820838F040083D0D8 /* CardListInterator+Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardListInterator+Favourite.swift"; sourceTree = "<group>"; };
+		EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckedCircle.png; sourceTree = "<group>"; };
+		EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckedBox.png; sourceTree = "<group>"; };
+		EDAB3B3E2085D02C000B1C05 /* CheckboxListSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxListSwift.h; sourceTree = "<group>"; };
+		EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedCircle.png; sourceTree = "<group>"; };
+		EDAB3B402085D02C000B1C05 /* UncheckedBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UncheckedBox.png; sourceTree = "<group>"; };
+		EDAB3B412085D02C000B1C05 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDBA16B4207C9FF700F9541E /* HearthstoneAssessmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearthstoneAssessmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBA16B7207C9FF700F9541E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDBA16B9207C9FF700F9541E /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
@@ -103,9 +116,9 @@
 		EDBF1A2D207E0B1700AC5B2E /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		EDBF1A31207E17D500AC5B2E /* CodableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
 		EDBF1A3B207E428F00AC5B2E /* CardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntity.swift; sourceTree = "<group>"; };
-		EDF05CBB207F7F270012F3B2 /* CardsCacheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCacheObject.swift; sourceTree = "<group>"; };
 		EDF05CBE207F84750012F3B2 /* RealmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManager.swift; sourceTree = "<group>"; };
-		EDF05CC1207F85CA0012F3B2 /* CacheDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDataManager.swift; sourceTree = "<group>"; };
+		EDF7F2362084EE4300D6E737 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
+		EDF7F238208504A700D6E737 /* HearthstoneTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneTypes.swift; sourceTree = "<group>"; };
 		EDFDA6772083340800A07AF9 /* CardDetailViewController+Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardDetailViewController+Interactor.swift"; sourceTree = "<group>"; };
 		FF1938C4095759CA784149B4 /* Pods-HeartstoneAssessmentAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneAssessmentAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneAssessmentAppTests/Pods-HeartstoneAssessmentAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +185,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EDAB3B382085CFF7000B1C05 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				EDAB3B392085D02C000B1C05 /* CheckboxListSwift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		EDAB3B392085D02C000B1C05 /* CheckboxListSwift */ = {
+			isa = PBXGroup;
+			children = (
+				EDAB3B3A2085D02C000B1C05 /* CheckBoxButton.swift */,
+				EDAB3B3B2085D02C000B1C05 /* CheckedCircle.png */,
+				EDAB3B3C2085D02C000B1C05 /* ChecklistView.swift */,
+				EDAB3B3D2085D02C000B1C05 /* CheckedBox.png */,
+				EDAB3B3E2085D02C000B1C05 /* CheckboxListSwift.h */,
+				EDAB3B3F2085D02C000B1C05 /* UncheckedCircle.png */,
+				EDAB3B402085D02C000B1C05 /* UncheckedBox.png */,
+				EDAB3B412085D02C000B1C05 /* Info.plist */,
+			);
+			path = CheckboxListSwift;
+			sourceTree = "<group>";
+		};
 		EDBA16AB207C9FF700F9541E = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +231,7 @@
 		EDBA16B6207C9FF700F9541E /* HearthstoneAssessmentApp */ = {
 			isa = PBXGroup;
 			children = (
+				EDAB3B382085CFF7000B1C05 /* ThirdParty */,
 				EDBF1A23207DDB4700AC5B2E /* Data */,
 				EDBF1A21207CED8F00AC5B2E /* Common */,
 				EDBF1A20207CECE300AC5B2E /* Applicaton */,
@@ -219,9 +256,9 @@
 		EDBF1A19207CAC6600AC5B2E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EDF05CBA207F7EFE0012F3B2 /* CacheModels */,
 				EDBF1A3A207E427800AC5B2E /* RealmModels */,
 				EDBF1A30207E177F00AC5B2E /* CodableModels */,
+				EDF7F238208504A700D6E737 /* HearthstoneTypes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,8 +292,8 @@
 		EDBF1A21207CED8F00AC5B2E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EDF7F2352084EE2A00D6E737 /* ViewExtensions */,
 				ED975F7E207E542800D2C225 /* BaseViewProtocol.swift */,
-				ED975F87207E603B00D2C225 /* UIViewController+Helpers.swift */,
 				ED975F8A207E609F00D2C225 /* Localization.swift */,
 			);
 			path = Common;
@@ -268,7 +305,6 @@
 				ED975F81207E56E900D2C225 /* CardService.swift */,
 				EDBF1A2A207E031900AC5B2E /* LoadDataManager.swift */,
 				EDF05CBE207F84750012F3B2 /* RealmDataManager.swift */,
-				EDF05CC1207F85CA0012F3B2 /* CacheDataManager.swift */,
 				EDBF1A24207DDB6400AC5B2E /* DataProvider.swift */,
 				EDBF1A2D207E0B1700AC5B2E /* DataError.swift */,
 				EDBF1A27207DDD2100AC5B2E /* cards.json */,
@@ -305,12 +341,13 @@
 			path = CardDetail;
 			sourceTree = "<group>";
 		};
-		EDF05CBA207F7EFE0012F3B2 /* CacheModels */ = {
+		EDF7F2352084EE2A00D6E737 /* ViewExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				EDF05CBB207F7F270012F3B2 /* CardsCacheObject.swift */,
+				ED975F87207E603B00D2C225 /* UIViewController+Alerts.swift */,
+				EDF7F2362084EE4300D6E737 /* UIView+IB.swift */,
 			);
-			path = CacheModels;
+			path = ViewExtensions;
 			sourceTree = "<group>";
 		};
 		F9AB79B9DE0E37282572FEA4 /* Frameworks */ = {
@@ -408,8 +445,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDBA16C2207C9FF700F9541E /* LaunchScreen.storyboard in Resources */,
+				EDAB3B462085D02C000B1C05 /* UncheckedCircle.png in Resources */,
+				EDAB3B482085D02C000B1C05 /* Info.plist in Resources */,
+				EDAB3B452085D02C000B1C05 /* CheckedBox.png in Resources */,
 				EDBA16BF207C9FF700F9541E /* Assets.xcassets in Resources */,
+				EDAB3B432085D02C000B1C05 /* CheckedCircle.png in Resources */,
 				EDBA16BD207C9FF700F9541E /* Main.storyboard in Resources */,
+				EDAB3B472085D02C000B1C05 /* UncheckedBox.png in Resources */,
 				EDBF1A28207DDD2100AC5B2E /* cards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,14 +572,16 @@
 			files = (
 				EDBF1A2E207E0B1700AC5B2E /* DataError.swift in Sources */,
 				EDBF1A3C207E428F00AC5B2E /* CardEntity.swift in Sources */,
-				EDF05CBC207F7F270012F3B2 /* CardsCacheObject.swift in Sources */,
 				ED975F82207E56E900D2C225 /* CardService.swift in Sources */,
 				EDBF1A2B207E031900AC5B2E /* LoadDataManager.swift in Sources */,
 				ED27400420832E64009739BE /* CardDetailViewController.swift in Sources */,
 				ED27400620832EA5009739BE /* CardDetailCollectionViewCell.swift in Sources */,
 				EDBF1A1B207CAC7B00AC5B2E /* CodableObjects.swift in Sources */,
 				EDBA16BA207C9FF700F9541E /* CardListViewController.swift in Sources */,
-				ED975F88207E603B00D2C225 /* UIViewController+Helpers.swift in Sources */,
+				EDF7F2372084EE4300D6E737 /* UIView+IB.swift in Sources */,
+				ED975F88207E603B00D2C225 /* UIViewController+Alerts.swift in Sources */,
+				EDAB3B422085D02C000B1C05 /* CheckBoxButton.swift in Sources */,
+				EDAB3B442085D02C000B1C05 /* ChecklistView.swift in Sources */,
 				EDFDA6782083340800A07AF9 /* CardDetailViewController+Interactor.swift in Sources */,
 				ED975F85207E600B00D2C225 /* CardListVC+Interactor.swift in Sources */,
 				ED975F8F207E660200D2C225 /* CardCollectionViewCell.swift in Sources */,
@@ -546,7 +590,7 @@
 				EDA70DE920838F040083D0D8 /* CardListInterator+Favourite.swift in Sources */,
 				ED975F7C207E53E200D2C225 /* CardListInteractor.swift in Sources */,
 				ED975F8B207E609F00D2C225 /* Localization.swift in Sources */,
-				EDF05CC2207F85CA0012F3B2 /* CacheDataManager.swift in Sources */,
+				EDF7F239208504A700D6E737 /* HearthstoneTypes.swift in Sources */,
 				EDBF1A32207E17D500AC5B2E /* CodableHelper.swift in Sources */,
 				EDBA16B8207C9FF700F9541E /* AppDelegate.swift in Sources */,
 				ED975F79207E499100D2C225 /* CardEntity+Extensions.swift in Sources */,
@@ -562,13 +606,11 @@
 				EDBF1A26207DDB6400AC5B2E /* DataProvider.swift in Sources */,
 				ED975F7D207E53E200D2C225 /* CardListInteractor.swift in Sources */,
 				ED975F80207E542800D2C225 /* BaseViewProtocol.swift in Sources */,
-				ED975F89207E603B00D2C225 /* UIViewController+Helpers.swift in Sources */,
-				EDF05CBD207F7F270012F3B2 /* CardsCacheObject.swift in Sources */,
+				ED975F89207E603B00D2C225 /* UIViewController+Alerts.swift in Sources */,
 				ED975F8C207E609F00D2C225 /* Localization.swift in Sources */,
 				EDBF1A2C207E031900AC5B2E /* LoadDataManager.swift in Sources */,
 				ED975F83207E56E900D2C225 /* CardService.swift in Sources */,
 				EDBF1A1C207CAC7B00AC5B2E /* CodableObjects.swift in Sources */,
-				EDF05CC3207F85CA0012F3B2 /* CacheDataManager.swift in Sources */,
 				ED975F86207E600B00D2C225 /* CardListVC+Interactor.swift in Sources */,
 				EDBA16CD207C9FF800F9541E /* HearthstoneAssessmentAppTests.swift in Sources */,
 				EDBF1A33207E17D500AC5B2E /* CodableHelper.swift in Sources */,

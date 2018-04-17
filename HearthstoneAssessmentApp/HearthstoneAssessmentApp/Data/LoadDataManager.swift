@@ -17,7 +17,6 @@ struct DataConstants {
 class LoadDataManager {
     
     let realmDataManager: RealmDataManager = RealmDataManager()
-    let cacheDataManager: CacheDataManager = CacheDataManager()
     var dataProvider: DataObjectProviderProtocol
     
     init() {
@@ -27,18 +26,13 @@ class LoadDataManager {
     // load card Data by speed priority of an access
     func loadCards(onSuccess: @escaping ([Card]) -> Void, onFail: @escaping (Error) -> Void)  {
         
-//        if let items = cacheDataManager.loadCards() {
-//            return onSuccess(items)
-//        }
-        
         if let items = realmDataManager.loadCards() {
-//            cacheDataManager.cacheCards(items)
             return onSuccess(items)
         }
         
+        // load first time when no Realm DB exists
         loadDataFromFile(onSuccess: { [weak self] (items) in
             self?.realmDataManager.saveCards(items)
-            self?.cacheDataManager.cacheCards(items)
             onSuccess(items)
         }) { (error) in
             onFail(error)

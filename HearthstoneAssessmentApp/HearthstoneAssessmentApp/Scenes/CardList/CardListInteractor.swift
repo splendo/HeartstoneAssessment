@@ -36,7 +36,7 @@ class CardListInteractor {
     
     // MARK: - service methods
     
-    func loadCards(applyOffset: Bool = false) {
+    func loadCards() {
         self.cardListView?.startLoading()
         self.cardService.getCards(onSuccess: { [weak self] (cards) in
             self?.cardListView?.finishLoading()
@@ -47,4 +47,7 @@ class CardListInteractor {
         }
     }    
     
+    func filterCards() {
+        self.cardListView?.setCards(cards: self.cardService.getCards(.druid))
+    }
 }

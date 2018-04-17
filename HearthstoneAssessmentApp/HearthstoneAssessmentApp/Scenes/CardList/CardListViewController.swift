@@ -57,6 +57,13 @@ class CardListViewController: UICollectionViewController {
             }
         }
     }
+    
+    //MARK: - Handlers
+    
+    @IBAction func tapFilter(_ sender: Any) {
+        self.cardListInteractor.filterCards()
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate

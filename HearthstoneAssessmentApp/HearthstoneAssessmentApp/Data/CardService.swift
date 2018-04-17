@@ -22,6 +22,10 @@ class CardService {
         }
     }
     
+    func getCards(_ playerClass: BasicPlayerClass) -> [Card] {
+        return realmDataManager.getCards(playerClass: playerClass)
+    }
+    
     func markCardAsFavorite(card: Card) {        
         realmDataManager.updateCard(card: card)
     }
