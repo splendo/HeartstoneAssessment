@@ -176,6 +176,12 @@
                                     <outlet property="delegate" destination="NLK-Tj-rAT" id="pkq-Em-H7m"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUa-pa-1Mm">
+                                <rect key="frame" x="157" y="59.5" width="61" height="24.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                <color key="textColor" red="0.65098039220000004" green="0.050980392159999999" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -183,8 +189,10 @@
                             <constraint firstItem="Wpc-t4-7vc" firstAttribute="leading" secondItem="SE9-SU-ky5" secondAttribute="leading" id="Su6-92-VGV"/>
                             <constraint firstItem="Wpc-t4-7vc" firstAttribute="top" secondItem="TqJ-bN-C8A" secondAttribute="bottom" constant="8" id="Uco-Ec-im1"/>
                             <constraint firstItem="Wpc-t4-7vc" firstAttribute="trailing" secondItem="SE9-SU-ky5" secondAttribute="trailing" id="YXA-uh-N7S"/>
+                            <constraint firstItem="XUa-pa-1Mm" firstAttribute="centerY" secondItem="TqJ-bN-C8A" secondAttribute="centerY" id="Z5H-1Y-izs"/>
                             <constraint firstItem="TqJ-bN-C8A" firstAttribute="top" secondItem="SE9-SU-ky5" secondAttribute="top" constant="36" id="cou-aq-XLC"/>
                             <constraint firstItem="Wpc-t4-7vc" firstAttribute="bottom" secondItem="SE9-SU-ky5" secondAttribute="bottom" id="hEq-Ff-YXl"/>
+                            <constraint firstItem="XUa-pa-1Mm" firstAttribute="centerX" secondItem="SE9-SU-ky5" secondAttribute="centerX" id="zkO-eS-QM7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SE9-SU-ky5"/>
                     </view>

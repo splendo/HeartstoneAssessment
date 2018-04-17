@@ -12,6 +12,11 @@ import MBProgressHUD
 extension CardListViewController: CardListView {
     
     func setCards(cards: Array<Card>) {
+        if cards.count == 0 {
+            self.collectionView?.setEmptyMessage("No results found")
+        } else {
+            self.collectionView?.restore()
+        }
         self.cardsDataSource = cards
     }
     

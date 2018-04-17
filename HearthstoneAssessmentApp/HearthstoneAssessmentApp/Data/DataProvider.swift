@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol DataObjectProviderProtocol {
     func loadCardData(onDataLoad: @escaping (RootCardsObject) -> Void, onFailed: @escaping (Error) -> Void)

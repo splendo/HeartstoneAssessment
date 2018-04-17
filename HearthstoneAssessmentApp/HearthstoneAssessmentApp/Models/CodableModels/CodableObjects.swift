@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 struct RootCardsObject: Codable {
     let basic, classic: [BasicCard]?

@@ -4,27 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>CITreeView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-HearthstoneAssessmentApp.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-HearthstoneAssessmentAppTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -45,11 +30,6 @@
 			<false/>
 		</dict>
 		<key>ScalingCarousel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>UIScrollView-InfiniteScroll.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

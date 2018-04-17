@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EDBA16C7207C9FF800F9541E"
+               BuildableName = "HearthstoneAssessmentAppTests.xctest"
+               BlueprintName = "HearthstoneAssessmentAppTests"
+               ReferencedContainer = "container:HearthstoneAssessmentApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

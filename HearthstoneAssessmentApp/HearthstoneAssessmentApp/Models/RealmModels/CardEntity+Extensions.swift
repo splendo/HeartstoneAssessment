@@ -22,13 +22,7 @@ extension Card {
         card.isElite = basicCard.elite ?? false
         card.classes = basicCard.classes ?? [String]()
         card.attack = basicCard.attack ?? 0
-        card.health = basicCard.health ?? 0
-        if let mechanics = basicCard.mechanics {
-            for mechanic in mechanics {
-                let mechanic = MechanicCategory(name: mechanic.name?.rawValue)
-                card.mechanics.append(mechanic)
-            }
-        }
+        card.health = basicCard.health ?? 0        
         return card
     }
     

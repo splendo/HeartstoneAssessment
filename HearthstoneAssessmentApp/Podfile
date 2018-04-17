@@ -3,18 +3,12 @@
 use_frameworks!
 
 def shared_pods
-    pod 'Alamofire'
-    pod 'MBProgressHUD', '~> 1.0.0'    
-    pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
+    pod 'MBProgressHUD', '~> 1.0.0'
     pod 'RealmSwift'
     pod 'SDWebImage', '~> 4.0'
     pod 'ScalingCarousel'    
 end
 
 target 'HearthstoneAssessmentApp' do
-  shared_pods
-end
-
-target 'HearthstoneAssessmentAppTests' do
   shared_pods
 end

@@ -20,22 +20,11 @@ class Card: Object {
     @objc dynamic var isElite: Bool = false
     @objc dynamic var attack: Int = 0
     @objc dynamic var health: Int = 0
-    var mechanics = [MechanicCategory]()
     var classes = [String]()
     
     override class func primaryKey() -> String? {
         return "cardId"
     }
-}
-
-class MechanicCategory: Object {
-    
-    convenience init(name: String?) {
-        self.init()
-        self.name = name
-    }
-    
-    @objc dynamic var name: String? = nil
 }
 
 

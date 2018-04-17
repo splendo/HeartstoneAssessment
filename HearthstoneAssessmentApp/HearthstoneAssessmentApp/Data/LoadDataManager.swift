@@ -27,9 +27,10 @@ class LoadDataManager {
     // load card Data by speed priority of an access
     func loadCards(onSuccess: @escaping ([Card]) -> Void, onFail: @escaping (Error) -> Void)  {
         
-        if let items = realmDataManager.loadCards() {
-            return onSuccess(items)
-        }
+        if !realmDataManager.realm.isEmpty {
+            onSuccess(realmDataManager.loadCards())
+            return
+        }        
         
         // load first time when no Realm DB exists
         loadDataFromFile(onSuccess: { [weak self] (items) in

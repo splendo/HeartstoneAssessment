@@ -25,12 +25,10 @@ class RealmDataManager {
     }
     
     // Load objects from realm DB
-    func loadCards() -> [Card]? {
-        let results = realm.objects(Card.self)
-        if results.count > 0 {
-            return [Card](results)
-        }
-        return nil
+    func loadCards() -> [Card] {
+        let results = self.realm.objects(Card.self)
+        let cards = [Card](results)
+        return cards    
     }
     
     func getCards(_ filter: String) -> [Card] {
@@ -42,7 +40,7 @@ class RealmDataManager {
             })
             return [Card](results)            
         }
-        return loadCards()!
+        return [Card]()
     }
     
     func updateCard(card: Card) {

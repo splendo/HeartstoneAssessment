@@ -8,11 +8,9 @@
 
 import UIKit
 import MBProgressHUD
-import UIScrollView_InfiniteScroll
 
 struct CardListContstans {
     static let reuseIdentifier = "CardCell"
-    static let sectionCount = 1
     static let segueDetail = "CardDetailSegue"
     static let segueFilter = "FilterSegue"
 }
@@ -68,7 +66,7 @@ class CardListViewController: UICollectionViewController {
     //MARK: - Handlers
     
     @IBAction func tapFilter(_ sender: Any) {
-        
+        //
     }
     
 }
@@ -76,10 +74,6 @@ class CardListViewController: UICollectionViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension CardListViewController {
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return CardListContstans.sectionCount
-    }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
@@ -93,6 +87,9 @@ extension CardListViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if cardsDataSource.count == 0 {
+            return
+        }
         let cardCell = cell as! CardCollectionViewCell
         cardCell.setCard(cardsDataSource[indexPath.row])
     }
