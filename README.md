@@ -1,3 +1,25 @@
+## Implementation notes
+
+Hi! I'd like to share some thoughts and decisions I made while working on this assignement.
+
+### API
+Endpoint was implemented with [json-server](https://github.com/typicode/json-server) after cleaning out structure of the JSON file with a script. Then it was uploaded to Heroku. On the first launch it could take up to 30 seconds for endpoint to wake up. 
+The only issue with this solution is that it doesn't return Cursor for pagination. But I implemented it in the native code and wrote few lines to modify JSON response and insert a cursor there manually. 
+
+
+### Native
+App is not production ready of course, but all features should be working as requested. Some parts of project are simplified or missing, like proper error handling, empty screen for CollectionView, other UI things, etc. I see a lot of possibilities for UI/UX improvements as well, but it's a question of time. 
+App supports sorting, filtering and pagination. Details screen supports horizontal scrolling and also loads more data on demand. 
+I wrote few unit tests but of course there should be 4-5 times more coverage for production ready status - including UI tests with mock data. 
+
+
+### Dependencies
+I decided to use Alamofire and SDWebImage to save time on networking and image loading.
+For UT I used Quick/Nimble. 
+
+***
+
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
