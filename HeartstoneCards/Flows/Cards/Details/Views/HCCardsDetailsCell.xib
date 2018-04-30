@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="br3-gT-Rcm" customClass="HCCardsDetailsCell" customModule="HeartstoneCards" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="382"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="382"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="7Dy-It-WmO">
+                        <rect key="frame" x="0.0" y="15" width="250" height="367"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Bm0-Pf-wLd">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="15"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imJ-im-kxq">
+                                <rect key="frame" x="0.0" y="15" width="250" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lady Liadrin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAG-7y-GkD">
+                                <rect key="frame" x="20" y="44" width="210" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="0.37722081218274117" green="0.37722081218274117" blue="0.37722081218274117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tAG-7y-GkD" secondAttribute="trailing" constant="20" id="HeJ-bM-o7R"/>
+                            <constraint firstItem="tAG-7y-GkD" firstAttribute="top" secondItem="imJ-im-kxq" secondAttribute="bottom" constant="5" id="Hm4-4Y-4Gb"/>
+                            <constraint firstAttribute="bottom" secondItem="tAG-7y-GkD" secondAttribute="bottom" constant="-50" id="cQ5-sT-72k"/>
+                            <constraint firstItem="tAG-7y-GkD" firstAttribute="leading" secondItem="Bm0-Pf-wLd" secondAttribute="leading" constant="20" id="gto-gk-acQ"/>
+                            <constraint firstAttribute="trailing" secondItem="imJ-im-kxq" secondAttribute="trailing" id="kqf-n7-DbY"/>
+                            <constraint firstItem="imJ-im-kxq" firstAttribute="top" secondItem="Bm0-Pf-wLd" secondAttribute="top" constant="15" id="mFA-UQ-DNA"/>
+                            <constraint firstItem="imJ-im-kxq" firstAttribute="leading" secondItem="Bm0-Pf-wLd" secondAttribute="leading" id="w9w-LH-w1w"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7Dy-It-WmO" secondAttribute="trailing" id="1Qk-TT-yn8"/>
+                <constraint firstItem="Bm0-Pf-wLd" firstAttribute="bottom" secondItem="7Dy-It-WmO" secondAttribute="top" id="7Ht-HP-cHj"/>
+                <constraint firstItem="7Dy-It-WmO" firstAttribute="bottom" secondItem="br3-gT-Rcm" secondAttribute="bottomMargin" id="KhP-5d-h08"/>
+                <constraint firstItem="Bm0-Pf-wLd" firstAttribute="top" secondItem="br3-gT-Rcm" secondAttribute="top" id="N4R-0l-Lo3"/>
+                <constraint firstAttribute="trailing" secondItem="Bm0-Pf-wLd" secondAttribute="trailing" id="NLR-Kz-OUw"/>
+                <constraint firstItem="Bm0-Pf-wLd" firstAttribute="leading" secondItem="br3-gT-Rcm" secondAttribute="leading" id="gxS-we-KRa"/>
+                <constraint firstItem="7Dy-It-WmO" firstAttribute="leading" secondItem="br3-gT-Rcm" secondAttribute="leading" id="lWN-h8-WZD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="JFz-a9-kwe"/>
+            <size key="customSize" width="250" height="382"/>
+            <connections>
+                <outlet property="imageView" destination="7Dy-It-WmO" id="9md-08-9lm"/>
+                <outlet property="subtitleLabel" destination="tAG-7y-GkD" id="SLs-fb-MuX"/>
+                <outlet property="titleLabel" destination="imJ-im-kxq" id="rTL-cX-L2S"/>
+            </connections>
+            <point key="canvasLocation" x="183" y="-115"/>
+        </collectionViewCell>
+    </objects>
+</document>

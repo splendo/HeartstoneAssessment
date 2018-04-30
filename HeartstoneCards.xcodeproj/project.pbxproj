@@ -1,0 +1,838 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D245B290B9EF7D7F4E8BEAB /* Pods_HeartstoneCardsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D0A45E077AFCE957D8419 /* Pods_HeartstoneCardsTests.framework */; };
+		24ADDDE6C7806D673BDA314E /* Pods_HeartstoneCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08415A715F81CD2F0EFF3800 /* Pods_HeartstoneCards.framework */; };
+		331C677A209682990097DAC0 /* HCApiFIlterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C675820967F220097DAC0 /* HCApiFIlterSpec.swift */; };
+		331C677C209682E10097DAC0 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331C677B209682E10097DAC0 /* Nimble.framework */; };
+		331C677E209682E40097DAC0 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331C677D209682E40097DAC0 /* Quick.framework */; };
+		331C678020968E780097DAC0 /* HCFavoriteCardsServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C677F20968E780097DAC0 /* HCFavoriteCardsServiceSpec.swift */; };
+		331C678220969FC00097DAC0 /* HCApiServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C678120969FC00097DAC0 /* HCApiServiceSpec.swift */; };
+		331C67842097179F0097DAC0 /* HCBaseCardsListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C67832097179F0097DAC0 /* HCBaseCardsListViewModelSpec.swift */; };
+		33D735ED208D301C001D45D9 /* HCCardsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D735EC208D301C001D45D9 /* HCCardsListCell.xib */; };
+		33D735EF208D3097001D45D9 /* HCCardsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D735EE208D3097001D45D9 /* HCCardsListCell.swift */; };
+		C883609B263CDE84D7500F5F /* HCNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836B166BEDA54CECB7A140 /* HCNetworkService.swift */; };
+		C88360E10EF300E5A4480216 /* HCApiFIlter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88360EE13F8C85773D85352 /* HCApiFIlter.swift */; };
+		C8836135A988884CDF3C356C /* HCFiltersTableDataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88360D4977A3A914D82B762 /* HCFiltersTableDataAdapter.swift */; };
+		C883613DA4893F0290869D11 /* HCCardDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88365F06A6E0CB543409AF8 /* HCCardDetailsCoordinator.swift */; };
+		C883616BAF33031889170337 /* HCCardsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836D38A31EE7CF3095E3F3 /* HCCardsListViewModel.swift */; };
+		C88362549A03B09A6B5DC4E7 /* HCServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88366F9599EA1712DA5B2BA /* HCServiceLocator.swift */; };
+		C88362DD8FFD6157D113B93A /* HCApiDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836C95E6B599836B84E65C /* HCApiDataStructure.swift */; };
+		C88363FD96CF3CCD9624423E /* HCFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883606FDADD1CC9AA38F73E /* HCFavoriteButton.swift */; };
+		C88363FEFE9A91FAF1144779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C883627B0B8ADEB639AED099 /* Assets.xcassets */; };
+		C883644756A0C07E4FC4DADE /* HCCardsListDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836918478DE9EB775C420A /* HCCardsListDetailsLayout.swift */; };
+		C8836471F77A2EBE396D1CE1 /* HCBaseCardsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883654685F02CF6FAFFF011 /* HCBaseCardsListViewModel.swift */; };
+		C88364E040422A6EB950546B /* HCCardFiltersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836434F31FF742D384A285 /* HCCardFiltersVC.swift */; };
+		C883667109BA41DEDD3022ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C883603990633F3AB9E76EA3 /* LaunchScreen.storyboard */; };
+		C88366BC49430672D358829E /* HCCardFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836E1BC30F51D9620A78BA /* HCCardFiltersViewModel.swift */; };
+		C883673298661E927F34B19F /* HCCardsDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8836F32739AC83B715813DD /* HCCardsDetailsCell.xib */; };
+		C88367FE588718E79D41CDB5 /* HCFavoriteCardsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836F3AD90CDF7FFA5187FB /* HCFavoriteCardsService.swift */; };
+		C883698108A9F7108E478C75 /* HCCardsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88363A29306561D555CC388 /* HCCardsCoordinator.swift */; };
+		C8836A47CAF318A8F95B71B1 /* HCCardsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88361036D08A2EDB9B50967 /* HCCardsDetailsVC.swift */; };
+		C8836AA6CD6AB35A2BC4A82B /* HCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836485F3C729940DD6C352 /* HCCard.swift */; };
+		C8836B101EA2C459F99D20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88361F024FA466A70B88C83 /* AppDelegate.swift */; };
+		C8836B2E2B063D580A9B756F /* HCWrappedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88363744FDBEC3020DCE2B0 /* HCWrappedCollectionView.swift */; };
+		C8836BC4FDE2DC41CC58F53C /* HCAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883611045206E61F95A6985 /* HCAppCoordinator.swift */; };
+		C8836C7C944DA597D872E65C /* HCCardsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88361C31FAFFBD759E81A3A /* HCCardsDetailsCell.swift */; };
+		C8836C8466EACBF4259B27EB /* HCCardsListGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836CE64ACA3E53D7B1201E /* HCCardsListGridLayout.swift */; };
+		C8836D17F9F1D011BD9E486A /* HCApiFiltersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88360673939E9B4C798AE07 /* HCApiFiltersData.swift */; };
+		C8836D248AABE3F769FEC45C /* HCCardsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836E4A7679510FAB9E1947 /* HCCardsDataProvider.swift */; };
+		C8836D9D84647E9A19D508CC /* HCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836731FD86807F8D623E26 /* HCCoordinator.swift */; };
+		C8836E6457FC4FFF074C68DB /* HCSelectionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88362AF6CFBF6162E139241 /* HCSelectionTableVC.swift */; };
+		C8836E735AC24DBE14EE3F33 /* HCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88366893247EFEDC9BAADD8 /* HCError.swift */; };
+		C8836ECA12D58EBDA26FCA01 /* HCCardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836D27D902370251FE19CC /* HCCardDetailsViewModel.swift */; };
+		C8836F9A5705055C1F764C89 /* HCApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8836BC6CA037FEF67D8FC89 /* HCApiService.swift */; };
+		C8836FA7FDA883940E4EBE6F /* HCCardsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88367A0B16F06AA76E4F892 /* HCCardsListVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		331C6775209682930097DAC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 338F2D57208B5EAE008B92FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 338F2D5E208B5EAE008B92FF;
+			remoteInfo = HeartstoneCards;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08415A715F81CD2F0EFF3800 /* Pods_HeartstoneCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartstoneCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE1DC434F2AC3618E8200F6 /* Pods-HeartstoneCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCards/Pods-HeartstoneCards.debug.xcconfig"; sourceTree = "<group>"; };
+		16373F31054CB87CDAFDA8A5 /* Pods-HeartstoneCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCardsTests/Pods-HeartstoneCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D1D0A45E077AFCE957D8419 /* Pods_HeartstoneCardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartstoneCardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C675820967F220097DAC0 /* HCApiFIlterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCApiFIlterSpec.swift; sourceTree = "<group>"; };
+		331C675A209680390097DAC0 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C675C2096803C0097DAC0 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C6770209682930097DAC0 /* HeartstoneCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartstoneCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C6774209682930097DAC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		331C677B209682E10097DAC0 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C677D209682E40097DAC0 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		331C677F20968E780097DAC0 /* HCFavoriteCardsServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCFavoriteCardsServiceSpec.swift; sourceTree = "<group>"; };
+		331C678120969FC00097DAC0 /* HCApiServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCApiServiceSpec.swift; sourceTree = "<group>"; };
+		331C67832097179F0097DAC0 /* HCBaseCardsListViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseCardsListViewModelSpec.swift; sourceTree = "<group>"; };
+		338F2D5F208B5EAE008B92FF /* HeartstoneCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartstoneCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D735EC208D301C001D45D9 /* HCCardsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCCardsListCell.xib; sourceTree = "<group>"; };
+		33D735EE208D3097001D45D9 /* HCCardsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCardsListCell.swift; sourceTree = "<group>"; };
+		450A8B00DAB22CD0A3AE207F /* Pods-HeartstoneCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCards/Pods-HeartstoneCards.release.xcconfig"; sourceTree = "<group>"; };
+		5367E133FC105FECC0252917 /* Pods-HeartstoneCardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCardsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCardsUITests/Pods-HeartstoneCardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5849CC751E7976A94D9704DD /* Pods_HeartstoneCardsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartstoneCardsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73CA96C5FB6AC129A6207C95 /* Pods-HeartstoneCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCardsTests/Pods-HeartstoneCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		C883603990633F3AB9E76EA3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C88360673939E9B4C798AE07 /* HCApiFiltersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCApiFiltersData.swift; sourceTree = "<group>"; };
+		C883606FDADD1CC9AA38F73E /* HCFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFavoriteButton.swift; sourceTree = "<group>"; };
+		C88360D4977A3A914D82B762 /* HCFiltersTableDataAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFiltersTableDataAdapter.swift; sourceTree = "<group>"; };
+		C88360EE13F8C85773D85352 /* HCApiFIlter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCApiFIlter.swift; sourceTree = "<group>"; };
+		C88361036D08A2EDB9B50967 /* HCCardsDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsDetailsVC.swift; sourceTree = "<group>"; };
+		C883611045206E61F95A6985 /* HCAppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCAppCoordinator.swift; sourceTree = "<group>"; };
+		C88361C31FAFFBD759E81A3A /* HCCardsDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsDetailsCell.swift; sourceTree = "<group>"; };
+		C88361F024FA466A70B88C83 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C883627B0B8ADEB639AED099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C88362AF6CFBF6162E139241 /* HCSelectionTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCSelectionTableVC.swift; sourceTree = "<group>"; };
+		C88363744FDBEC3020DCE2B0 /* HCWrappedCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCWrappedCollectionView.swift; sourceTree = "<group>"; };
+		C88363A29306561D555CC388 /* HCCardsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsCoordinator.swift; sourceTree = "<group>"; };
+		C8836434F31FF742D384A285 /* HCCardFiltersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardFiltersVC.swift; sourceTree = "<group>"; };
+		C8836485F3C729940DD6C352 /* HCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCard.swift; sourceTree = "<group>"; };
+		C883654685F02CF6FAFFF011 /* HCBaseCardsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCBaseCardsListViewModel.swift; sourceTree = "<group>"; };
+		C883656B0C294D678A165520 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		C88365F06A6E0CB543409AF8 /* HCCardDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardDetailsCoordinator.swift; sourceTree = "<group>"; };
+		C88366893247EFEDC9BAADD8 /* HCError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCError.swift; sourceTree = "<group>"; };
+		C88366F9599EA1712DA5B2BA /* HCServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCServiceLocator.swift; sourceTree = "<group>"; };
+		C8836731FD86807F8D623E26 /* HCCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCoordinator.swift; sourceTree = "<group>"; };
+		C88367A0B16F06AA76E4F892 /* HCCardsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsListVC.swift; sourceTree = "<group>"; };
+		C8836918478DE9EB775C420A /* HCCardsListDetailsLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsListDetailsLayout.swift; sourceTree = "<group>"; };
+		C8836B166BEDA54CECB7A140 /* HCNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCNetworkService.swift; sourceTree = "<group>"; };
+		C8836BC6CA037FEF67D8FC89 /* HCApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCApiService.swift; sourceTree = "<group>"; };
+		C8836C95E6B599836B84E65C /* HCApiDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCApiDataStructure.swift; sourceTree = "<group>"; };
+		C8836CE64ACA3E53D7B1201E /* HCCardsListGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsListGridLayout.swift; sourceTree = "<group>"; };
+		C8836D27D902370251FE19CC /* HCCardDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardDetailsViewModel.swift; sourceTree = "<group>"; };
+		C8836D38A31EE7CF3095E3F3 /* HCCardsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsListViewModel.swift; sourceTree = "<group>"; };
+		C8836E1BC30F51D9620A78BA /* HCCardFiltersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardFiltersViewModel.swift; sourceTree = "<group>"; };
+		C8836E4A7679510FAB9E1947 /* HCCardsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCCardsDataProvider.swift; sourceTree = "<group>"; };
+		C8836F32739AC83B715813DD /* HCCardsDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCCardsDetailsCell.xib; sourceTree = "<group>"; };
+		C8836F3AD90CDF7FFA5187FB /* HCFavoriteCardsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCFavoriteCardsService.swift; sourceTree = "<group>"; };
+		DB68D90ADACE707A1F1DADA0 /* Pods-HeartstoneCardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneCardsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartstoneCardsUITests/Pods-HeartstoneCardsUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		331C676D209682930097DAC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				331C677E209682E40097DAC0 /* Quick.framework in Frameworks */,
+				331C677C209682E10097DAC0 /* Nimble.framework in Frameworks */,
+				1D245B290B9EF7D7F4E8BEAB /* Pods_HeartstoneCardsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338F2D5C208B5EAE008B92FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24ADDDE6C7806D673BDA314E /* Pods_HeartstoneCards.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1576FEADBD880FE3258A05A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0BE1DC434F2AC3618E8200F6 /* Pods-HeartstoneCards.debug.xcconfig */,
+				450A8B00DAB22CD0A3AE207F /* Pods-HeartstoneCards.release.xcconfig */,
+				16373F31054CB87CDAFDA8A5 /* Pods-HeartstoneCardsTests.debug.xcconfig */,
+				73CA96C5FB6AC129A6207C95 /* Pods-HeartstoneCardsTests.release.xcconfig */,
+				5367E133FC105FECC0252917 /* Pods-HeartstoneCardsUITests.debug.xcconfig */,
+				DB68D90ADACE707A1F1DADA0 /* Pods-HeartstoneCardsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		331C6771209682930097DAC0 /* HeartstoneCardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				331C675820967F220097DAC0 /* HCApiFIlterSpec.swift */,
+				331C6774209682930097DAC0 /* Info.plist */,
+				331C677F20968E780097DAC0 /* HCFavoriteCardsServiceSpec.swift */,
+				331C678120969FC00097DAC0 /* HCApiServiceSpec.swift */,
+				331C67832097179F0097DAC0 /* HCBaseCardsListViewModelSpec.swift */,
+			);
+			path = HeartstoneCardsTests;
+			sourceTree = "<group>";
+		};
+		338F2D56208B5EAE008B92FF = {
+			isa = PBXGroup;
+			children = (
+				338F2D61208B5EAE008B92FF /* HeartstoneCards */,
+				331C6771209682930097DAC0 /* HeartstoneCardsTests */,
+				338F2D60208B5EAE008B92FF /* Products */,
+				1576FEADBD880FE3258A05A6 /* Pods */,
+				700CEC5710DD989CC18A481B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		338F2D60208B5EAE008B92FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				338F2D5F208B5EAE008B92FF /* HeartstoneCards.app */,
+				331C6770209682930097DAC0 /* HeartstoneCardsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		338F2D61208B5EAE008B92FF /* HeartstoneCards */ = {
+			isa = PBXGroup;
+			children = (
+				338F2D90208B9CBA008B92FF /* Flows */,
+				C8836046BB7CFA4DF3E46FB4 /* Launch */,
+				C88361FC8336D72FC0308820 /* Resources */,
+				C8836F0976CF435EA761C0E8 /* Core */,
+			);
+			path = HeartstoneCards;
+			sourceTree = "<group>";
+		};
+		338F2D90208B9CBA008B92FF /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				C883619E5E6EE82E533F6E3D /* Cards */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		33D735EB208D2FFA001D45D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33D735EC208D301C001D45D9 /* HCCardsListCell.xib */,
+				33D735EE208D3097001D45D9 /* HCCardsListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		700CEC5710DD989CC18A481B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				331C677D209682E40097DAC0 /* Quick.framework */,
+				331C677B209682E10097DAC0 /* Nimble.framework */,
+				331C675C2096803C0097DAC0 /* Quick.framework */,
+				331C675A209680390097DAC0 /* Nimble.framework */,
+				08415A715F81CD2F0EFF3800 /* Pods_HeartstoneCards.framework */,
+				2D1D0A45E077AFCE957D8419 /* Pods_HeartstoneCardsTests.framework */,
+				5849CC751E7976A94D9704DD /* Pods_HeartstoneCardsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8836046BB7CFA4DF3E46FB4 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				C88361F024FA466A70B88C83 /* AppDelegate.swift */,
+				C883611045206E61F95A6985 /* HCAppCoordinator.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		C883619E5E6EE82E533F6E3D /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				C88364D29069B7CFCB54BF3B /* List */,
+				C8836AD602E06E26828AFB65 /* Details */,
+				C8836E4A7679510FAB9E1947 /* HCCardsDataProvider.swift */,
+				C8836CD5988389DC82326532 /* Filters */,
+				C88363A29306561D555CC388 /* HCCardsCoordinator.swift */,
+				C88366746A33B66225199A6C /* Shared */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		C88361FC8336D72FC0308820 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C883627B0B8ADEB639AED099 /* Assets.xcassets */,
+				C883656B0C294D678A165520 /* Info.plist */,
+				C883603990633F3AB9E76EA3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C88364D29069B7CFCB54BF3B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				33D735EB208D2FFA001D45D9 /* Views */,
+				C88367A0B16F06AA76E4F892 /* HCCardsListVC.swift */,
+				C8836CE64ACA3E53D7B1201E /* HCCardsListGridLayout.swift */,
+				C8836D38A31EE7CF3095E3F3 /* HCCardsListViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C883660FF18C83EF86C5E6FA /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C88360673939E9B4C798AE07 /* HCApiFiltersData.swift */,
+				C88360EE13F8C85773D85352 /* HCApiFIlter.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		C88366746A33B66225199A6C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C883654685F02CF6FAFFF011 /* HCBaseCardsListViewModel.swift */,
+				C88362AF6CFBF6162E139241 /* HCSelectionTableVC.swift */,
+				C88363744FDBEC3020DCE2B0 /* HCWrappedCollectionView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C88368B11D9E6A7B4D9F683D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C88366F9599EA1712DA5B2BA /* HCServiceLocator.swift */,
+				C8836F3AD90CDF7FFA5187FB /* HCFavoriteCardsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C88368C85AF67F29EEC2BD16 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C88366893247EFEDC9BAADD8 /* HCError.swift */,
+				C8836731FD86807F8D623E26 /* HCCoordinator.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C8836AD602E06E26828AFB65 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				C8836EF6160FB322289D646C /* Views */,
+				C88361036D08A2EDB9B50967 /* HCCardsDetailsVC.swift */,
+				C8836918478DE9EB775C420A /* HCCardsListDetailsLayout.swift */,
+				C88365F06A6E0CB543409AF8 /* HCCardDetailsCoordinator.swift */,
+				C8836D27D902370251FE19CC /* HCCardDetailsViewModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		C8836CD5988389DC82326532 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C8836434F31FF742D384A285 /* HCCardFiltersVC.swift */,
+				C8836E1BC30F51D9620A78BA /* HCCardFiltersViewModel.swift */,
+				C88360D4977A3A914D82B762 /* HCFiltersTableDataAdapter.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		C8836D7CC9E04C506D77A91A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C8836485F3C729940DD6C352 /* HCCard.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C8836EF6160FB322289D646C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C88361C31FAFFBD759E81A3A /* HCCardsDetailsCell.swift */,
+				C8836F32739AC83B715813DD /* HCCardsDetailsCell.xib */,
+				C883606FDADD1CC9AA38F73E /* HCFavoriteButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C8836F0976CF435EA761C0E8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C88368B11D9E6A7B4D9F683D /* Services */,
+				C8836FBC5AD5FDDA407692B1 /* Network */,
+				C88368C85AF67F29EEC2BD16 /* Shared */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C8836FBC5AD5FDDA407692B1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C8836B166BEDA54CECB7A140 /* HCNetworkService.swift */,
+				C883660FF18C83EF86C5E6FA /* Filters */,
+				C8836BC6CA037FEF67D8FC89 /* HCApiService.swift */,
+				C8836D7CC9E04C506D77A91A /* Models */,
+				C8836C95E6B599836B84E65C /* HCApiDataStructure.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		331C676F209682930097DAC0 /* HeartstoneCardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 331C6777209682930097DAC0 /* Build configuration list for PBXNativeTarget "HeartstoneCardsTests" */;
+			buildPhases = (
+				681590E0401EAA4A7D9FB695 /* [CP] Check Pods Manifest.lock */,
+				331C676C209682930097DAC0 /* Sources */,
+				331C676D209682930097DAC0 /* Frameworks */,
+				331C676E209682930097DAC0 /* Resources */,
+				FE5F43B7EB64F574D08181C8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				331C6776209682930097DAC0 /* PBXTargetDependency */,
+			);
+			name = HeartstoneCardsTests;
+			productName = HeartstoneCardsTests;
+			productReference = 331C6770209682930097DAC0 /* HeartstoneCardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		338F2D5E208B5EAE008B92FF /* HeartstoneCards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 338F2D87208B5EB0008B92FF /* Build configuration list for PBXNativeTarget "HeartstoneCards" */;
+			buildPhases = (
+				0C259E8AD712E40D955768E8 /* [CP] Check Pods Manifest.lock */,
+				338F2D5B208B5EAE008B92FF /* Sources */,
+				338F2D5C208B5EAE008B92FF /* Frameworks */,
+				338F2D5D208B5EAE008B92FF /* Resources */,
+				5479CD307EA501DB43F74E83 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeartstoneCards;
+			productName = HeartstoneCards;
+			productReference = 338F2D5F208B5EAE008B92FF /* HeartstoneCards.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		338F2D57208B5EAE008B92FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Roman Petryshen";
+				TargetAttributes = {
+					331C676F209682930097DAC0 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 338F2D5E208B5EAE008B92FF;
+					};
+					338F2D5E208B5EAE008B92FF = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 338F2D5A208B5EAE008B92FF /* Build configuration list for PBXProject "HeartstoneCards" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 338F2D56208B5EAE008B92FF;
+			productRefGroup = 338F2D60208B5EAE008B92FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				338F2D5E208B5EAE008B92FF /* HeartstoneCards */,
+				331C676F209682930097DAC0 /* HeartstoneCardsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		331C676E209682930097DAC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338F2D5D208B5EAE008B92FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C88363FEFE9A91FAF1144779 /* Assets.xcassets in Resources */,
+				C883667109BA41DEDD3022ED /* LaunchScreen.storyboard in Resources */,
+				33D735ED208D301C001D45D9 /* HCCardsListCell.xib in Resources */,
+				C883673298661E927F34B19F /* HCCardsDetailsCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C259E8AD712E40D955768E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartstoneCards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5479CD307EA501DB43F74E83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeartstoneCards/Pods-HeartstoneCards-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartstoneCards/Pods-HeartstoneCards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		681590E0401EAA4A7D9FB695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartstoneCardsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE5F43B7EB64F574D08181C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeartstoneCardsTests/Pods-HeartstoneCardsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartstoneCardsTests/Pods-HeartstoneCardsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		331C676C209682930097DAC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				331C678220969FC00097DAC0 /* HCApiServiceSpec.swift in Sources */,
+				331C678020968E780097DAC0 /* HCFavoriteCardsServiceSpec.swift in Sources */,
+				331C677A209682990097DAC0 /* HCApiFIlterSpec.swift in Sources */,
+				331C67842097179F0097DAC0 /* HCBaseCardsListViewModelSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338F2D5B208B5EAE008B92FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8836B101EA2C459F99D20D1 /* AppDelegate.swift in Sources */,
+				C8836BC4FDE2DC41CC58F53C /* HCAppCoordinator.swift in Sources */,
+				C8836FA7FDA883940E4EBE6F /* HCCardsListVC.swift in Sources */,
+				33D735EF208D3097001D45D9 /* HCCardsListCell.swift in Sources */,
+				C88362549A03B09A6B5DC4E7 /* HCServiceLocator.swift in Sources */,
+				C8836C8466EACBF4259B27EB /* HCCardsListGridLayout.swift in Sources */,
+				C883616BAF33031889170337 /* HCCardsListViewModel.swift in Sources */,
+				C883609B263CDE84D7500F5F /* HCNetworkService.swift in Sources */,
+				C8836D248AABE3F769FEC45C /* HCCardsDataProvider.swift in Sources */,
+				C8836A47CAF318A8F95B71B1 /* HCCardsDetailsVC.swift in Sources */,
+				C883644756A0C07E4FC4DADE /* HCCardsListDetailsLayout.swift in Sources */,
+				C883613DA4893F0290869D11 /* HCCardDetailsCoordinator.swift in Sources */,
+				C8836ECA12D58EBDA26FCA01 /* HCCardDetailsViewModel.swift in Sources */,
+				C8836C7C944DA597D872E65C /* HCCardsDetailsCell.swift in Sources */,
+				C88363FD96CF3CCD9624423E /* HCFavoriteButton.swift in Sources */,
+				C88364E040422A6EB950546B /* HCCardFiltersVC.swift in Sources */,
+				C88366BC49430672D358829E /* HCCardFiltersViewModel.swift in Sources */,
+				C8836D17F9F1D011BD9E486A /* HCApiFiltersData.swift in Sources */,
+				C88360E10EF300E5A4480216 /* HCApiFIlter.swift in Sources */,
+				C8836F9A5705055C1F764C89 /* HCApiService.swift in Sources */,
+				C8836AA6CD6AB35A2BC4A82B /* HCCard.swift in Sources */,
+				C88362DD8FFD6157D113B93A /* HCApiDataStructure.swift in Sources */,
+				C88367FE588718E79D41CDB5 /* HCFavoriteCardsService.swift in Sources */,
+				C8836E735AC24DBE14EE3F33 /* HCError.swift in Sources */,
+				C8836D9D84647E9A19D508CC /* HCCoordinator.swift in Sources */,
+				C883698108A9F7108E478C75 /* HCCardsCoordinator.swift in Sources */,
+				C8836135A988884CDF3C356C /* HCFiltersTableDataAdapter.swift in Sources */,
+				C8836471F77A2EBE396D1CE1 /* HCBaseCardsListViewModel.swift in Sources */,
+				C8836E6457FC4FFF074C68DB /* HCSelectionTableVC.swift in Sources */,
+				C8836B2E2B063D580A9B756F /* HCWrappedCollectionView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		331C6776209682930097DAC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 338F2D5E208B5EAE008B92FF /* HeartstoneCards */;
+			targetProxy = 331C6775209682930097DAC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		331C6778209682930097DAC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16373F31054CB87CDAFDA8A5 /* Pods-HeartstoneCardsTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HeartstoneCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.petryshen.HeartstoneCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartstoneCards.app/HeartstoneCards";
+			};
+			name = Debug;
+		};
+		331C6779209682930097DAC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73CA96C5FB6AC129A6207C95 /* Pods-HeartstoneCardsTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HeartstoneCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.petryshen.HeartstoneCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartstoneCards.app/HeartstoneCards";
+			};
+			name = Release;
+		};
+		338F2D85208B5EB0008B92FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		338F2D86208B5EB0008B92FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		338F2D88208B5EB0008B92FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BE1DC434F2AC3618E8200F6 /* Pods-HeartstoneCards.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = HeartstoneCards/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.petryshen.HeartstoneCards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		338F2D89208B5EB0008B92FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 450A8B00DAB22CD0A3AE207F /* Pods-HeartstoneCards.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = HeartstoneCards/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.petryshen.HeartstoneCards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		331C6777209682930097DAC0 /* Build configuration list for PBXNativeTarget "HeartstoneCardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				331C6778209682930097DAC0 /* Debug */,
+				331C6779209682930097DAC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		338F2D5A208B5EAE008B92FF /* Build configuration list for PBXProject "HeartstoneCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338F2D85208B5EB0008B92FF /* Debug */,
+				338F2D86208B5EB0008B92FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		338F2D87208B5EB0008B92FF /* Build configuration list for PBXNativeTarget "HeartstoneCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338F2D88208B5EB0008B92FF /* Debug */,
+				338F2D89208B5EB0008B92FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 338F2D57208B5EAE008B92FF /* Project object */;
+}
