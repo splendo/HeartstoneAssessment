@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardCardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:clipChildren="false"
+    android:foreground="?android:selectableItemBackground"
+    android:padding="@dimen/spacing_tiny"
+    card_view:cardCornerRadius="@dimen/spacing_tiny"
+    card_view:cardElevation="@dimen/spacing_tiny"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true">
+
+    <ImageView
+        android:id="@+id/cardGridImage"
+        android:layout_width="@dimen/grid_item_card_image_width"
+        android:layout_height="@dimen/grid_item_card_image_height"
+        android:scaleType="fitCenter" />
+</android.support.v7.widget.CardView>

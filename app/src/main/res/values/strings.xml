@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Heartstone</string>
+    <string name="cards_title">Heartstone Cards</string>
+    <string name="card_details_added_favorites_message">Card added to favorites!</string>
+    <string name="card_details_removed_favorites_message">Card removed from favorites!</string>
+    <string name="card_details_name_title">Card name:</string>
+    <string name="card_details_set_title">Card set:</string>
+    <string name="card_details_type_title">Card type:</string>
+    <string name="card_details_rarity_title">Card rarity:</string>
+    <string name="card_details_description_title">Card description:</string>
+    <string name="card_details_classes_title">Classes:</string>
+    <string name="card_details_mechanics_title">Mechanics:</string>
+    <string name="unknown">Unknown</string>
+</resources>

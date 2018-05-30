@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+ext {
+    VERSION_NAME = "1.0.0"
+    VERSION_CODE = 1
+}
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.nielsmasdorp.heartstone"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+        }
+        acceptance {
+            signingConfig signingConfigs.debug
+            initWith buildTypes.debug
+
+            versionNameSuffix "-acceptance"
+            applicationIdSuffix ".acceptance"
+
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled true
+            useProguard true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/rxkotlin.properties'
+        exclude 'META-INF/rxkotlin_main.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support:recyclerview-v7:$android_support_version"
+    implementation "com.android.support:design:$android_support_version"
+    implementation "com.android.support:cardview-v7:$android_support_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.4'
+
+    //Dagger
+    api "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    api("com.google.dagger:dagger-android-support:$dagger_version", {
+        exclude group: 'com.google.code.findbugs'
+    })
+
+    // Jake
+    api 'com.jakewharton.timber:timber:4.5.1'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+    // ReactiveX
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api "io.reactivex.rxjava2:rxjava:$reactive_x_version"
+    api "io.reactivex.rxjava2:rxkotlin:$reactive_x_version"
+    api 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.0.0'
+    testApi 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    testApi "io.reactivex.rxjava2:rxjava:$reactive_x_version"
+    testApi "io.reactivex.rxjava2:rxkotlin:$reactive_x_version"
+
+    testApi 'junit:junit:4.12'
+    testApi 'org.mockito:mockito-core:2.11.0'
+    testApi 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
+
+    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
