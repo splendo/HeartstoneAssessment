@@ -16,9 +16,7 @@ class CardCarouselPagerAdapter(fragment: Fragment) : FragmentStatePagerAdapter(f
             notifyDataSetChanged()
         }
 
-    override fun getCount(): Int {
-        return cards.size
-    }
+    override fun getCount(): Int = cards.count()
 
     override fun getItem(position: Int): Fragment {
         return CardDetailFragment.newInstance(cards[position])

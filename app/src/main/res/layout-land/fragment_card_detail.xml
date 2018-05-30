@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="@dimen/spacing_default">
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/spacing_default">
 
         <ImageView
             android:id="@+id/cardDetailImage"
-            android:layout_width="@dimen/card_detail_image_width"
-            android:layout_height="@dimen/card_detail_image_height"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             tools:background="@drawable/ic_launcher_background" />
 

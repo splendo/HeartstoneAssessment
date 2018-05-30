@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Model for all sets of [JSONCard]s in the JSON file in /assets
  */
 data class JSONCardSets(
+
         @SerializedName("Basic")
         val basicCards: List<JSONCard>,
 

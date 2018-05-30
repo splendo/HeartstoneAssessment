@@ -11,7 +11,7 @@ interface CardDetail {
 
         var card: CardViewModel?
         fun showCardAsFavorite(notifyUser: Boolean = true)
-        fun showCardNotFavorited()
+        fun showCardNotFavorite()
     }
 
     interface Presenter {

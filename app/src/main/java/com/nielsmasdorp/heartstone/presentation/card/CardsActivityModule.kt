@@ -9,6 +9,9 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class CardsActivityModule {
 
-    @ContributesAndroidInjector(modules = [CardGridFragmentModule::class, CardCarouselFragmentModule::class, CardDetailFragmentModule::class])
+    @ContributesAndroidInjector(modules = [
+    CardGridFragmentModule::class,
+    CardCarouselFragmentModule::class,
+    CardDetailFragmentModule::class])
     abstract fun cardsActivity(): CardsActivity
 }

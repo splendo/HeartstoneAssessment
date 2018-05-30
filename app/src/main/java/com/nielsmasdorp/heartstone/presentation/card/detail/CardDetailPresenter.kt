@@ -25,7 +25,7 @@ class CardDetailPresenter @Inject constructor(private val view: CardDetail.View,
         view.card?.let {
             if (isCardAddedToFavorites.execute(it.id)) {
                 removeCardFromFavorites.execute(it.id)
-                view.showCardNotFavorited()
+                view.showCardNotFavorite()
             } else {
                 addCardToFavorites.execute(it.id)
                 view.showCardAsFavorite()

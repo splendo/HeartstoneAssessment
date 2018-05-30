@@ -57,7 +57,7 @@ class CardDetailFragment : Fragment(), CardDetail.View {
         if (notifyUser) Toast.makeText(context, getString(R.string.card_details_added_favorites_message), Toast.LENGTH_SHORT).show()
     }
 
-    override fun showCardNotFavorited() {
+    override fun showCardNotFavorite() {
         cardDetailFavoritesIcon.setImageResource(R.drawable.ic_favorites_empty_24dp)
         Toast.makeText(context, getString(R.string.card_details_removed_favorites_message), Toast.LENGTH_SHORT).show()
     }

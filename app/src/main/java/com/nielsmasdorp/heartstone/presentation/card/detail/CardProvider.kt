@@ -4,7 +4,7 @@ import com.nielsmasdorp.heartstone.presentation.card.CardViewModel
 import javax.inject.Inject
 
 /**
- * Provider that provides a single card
+ * [CardDetail.CardProvider] implementation that provides a single card through fragment arguments
  */
 class CardProvider @Inject constructor(private val cardDetailFragment: CardDetailFragment) : CardDetail.CardProvider {
 

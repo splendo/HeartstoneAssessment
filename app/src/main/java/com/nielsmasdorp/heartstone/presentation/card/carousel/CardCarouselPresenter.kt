@@ -9,8 +9,6 @@ class CardCarouselPresenter @Inject constructor(private val view: CardCarousel.V
                                                 private val cardsProvider: CardCarousel.CardsProvider) : CardCarousel.Presenter {
 
     override fun startPresenting() {
-        cardsProvider.cards?.let {
-            view.cards = it
-        }
+        view.cards = cardsProvider.cards ?: emptyList()
     }
 }

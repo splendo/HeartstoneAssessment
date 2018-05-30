@@ -39,7 +39,12 @@ class CardGridPresenterTest {
     @Test
     fun `Show legendary cards with deathrattle mechanic when presenter starts`() {
         //given
-        given(getCards.execute(CardRequest(requestedRarity = CardRequest.LEGENDARY_RARITY, requestedMechanic = CardRequest.DEATHRATTLE_MECHANIC)))
+        val request = CardRequest(
+                requestedRarity = CardRequest.LEGENDARY_RARITY,
+                requestedMechanic = CardRequest.DEATHRATTLE_MECHANIC,
+                sortingStrategy = CardRequest.Sort.DESCENDING
+        )
+        given(getCards.execute(request))
                 .willReturn(Single.just(listOf(CardTestUtil.createTestCard(id = "1"))))
 
         //when

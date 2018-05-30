@@ -5,7 +5,7 @@ import com.nielsmasdorp.heartstone.presentation.card.carousel.CardCarouselFragme
 import javax.inject.Inject
 
 /**
- * Provider that provides a list of cards
+ * [CardCarousel.CardsProvider] implementation that provides the cards through fragment arguments
  */
 class CardsProvider @Inject constructor(private val cardCarouselFragment: CardCarouselFragment) : CardCarousel.CardsProvider {
 

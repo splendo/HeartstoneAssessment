@@ -14,7 +14,6 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.nielsmasdorp.heartstone.presentation.card.CardsActivity
 import kotlinx.android.synthetic.main.grid_item_card.view.*
@@ -25,8 +24,6 @@ import kotlinx.android.synthetic.main.grid_item_card.view.*
 class CardGridAdapter(fragment: Fragment) : RecyclerView.Adapter<CardGridAdapter.CardViewHolder>() {
 
     private var requestManager: RequestManager = Glide.with(fragment)
-
-    private var viewHolderListener: ViewHolderListener = ViewHolderListenerImpl()
 
     var onCardClickedListener: ((CardViewModel) -> Unit)? = null
 
@@ -41,8 +38,7 @@ class CardGridAdapter(fragment: Fragment) : RecyclerView.Adapter<CardGridAdapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.grid_item_card, parent, false),
-                requestManager,
-                viewHolderListener
+                requestManager
         )
     }
 
@@ -54,22 +50,7 @@ class CardGridAdapter(fragment: Fragment) : RecyclerView.Adapter<CardGridAdapter
         return cards.indexOf(clickedViewModel)
     }
 
-    inner class ViewHolderListenerImpl : ViewHolderListener {
-
-        override fun onLoadCompleted(view: ImageView, adapterPosition: Int) {
-            if (CardsActivity.CURRENT_POSITION != adapterPosition) {
-                return
-            }
-            onClickedImageLoaded?.invoke()
-        }
-
-        override fun onItemClicked(clickedPosition: Int) {
-            onCardClickedListener?.invoke(cards[clickedPosition])
-        }
-    }
-
-    inner class CardViewHolder(itemView: View, private val requestManager: RequestManager,
-                               val viewHolderListener: ViewHolderListener) : RecyclerView.ViewHolder(itemView) {
+    inner class CardViewHolder(itemView: View, private val requestManager: RequestManager) : RecyclerView.ViewHolder(itemView) {
 
         fun bind() {
             itemView.apply {
@@ -79,25 +60,22 @@ class CardGridAdapter(fragment: Fragment) : RecyclerView.Adapter<CardGridAdapter
                         .listener(object : RequestListener<Drawable> {
                             override fun onLoadFailed(e: GlideException?, model: Any,
                                                       target: Target<Drawable>, isFirstResource: Boolean): Boolean {
-                                viewHolderListener.onLoadCompleted(cardGridImage, adapterPosition)
+                                if (CardsActivity.CURRENT_POSITION == adapterPosition) {
+                                    onClickedImageLoaded?.invoke()
+                                }
                                 return false
                             }
 
                             override fun onResourceReady(resource: Drawable, model: Any, target: Target<Drawable>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
-                                viewHolderListener.onLoadCompleted(cardGridImage, adapterPosition)
+                                if (CardsActivity.CURRENT_POSITION == adapterPosition) {
+                                    onClickedImageLoaded?.invoke()
+                                }
                                 return false
                             }
                         })
                         .into(cardGridImage)
-                setOnClickListener { viewHolderListener.onItemClicked(adapterPosition) }
+                setOnClickListener { onCardClickedListener?.invoke(cards[adapterPosition]) }
             }
         }
-    }
-
-    interface ViewHolderListener {
-
-        fun onLoadCompleted(view: ImageView, adapterPosition: Int)
-
-        fun onItemClicked(clickedPosition: Int)
     }
 }
