@@ -67,11 +67,6 @@ public class ItemListFragment<V extends GenericMVPBinding.ListerView, M extends 
     @Nullable
     @BindView(R.id.progress_layout) protected ViewGroup vProgressBar;
 
-    @Nullable
-    @BindView(R.id.loading_data) protected TextView vLoadingLabel;
-
-    @BindResource(R.string.data_loading) protected String mDataLoadingLabel;
-
     /** The adapter for the generic item's list */
     private ItemsRecyclerAdapter<M, ViewHolder> mItemsAdapter;
 
@@ -122,8 +117,6 @@ public class ItemListFragment<V extends GenericMVPBinding.ListerView, M extends 
         Spork.bind(this);
 
         setupRecyclerView(true);
-
-        setLoadingLabel(mDataLoadingLabel);
 
         // if other views are extending this fragment, they might have set their own presenter
         // if so, the presenter is compatible with this view, so comply and skip this step
@@ -181,15 +174,6 @@ public class ItemListFragment<V extends GenericMVPBinding.ListerView, M extends 
         if (mLinearLayoutManager != null) mListState = mLinearLayoutManager.onSaveInstanceState();
         mItemsCache = mItemsAdapter.mItems;
         super.onPause();
-    }
-
-    /**
-     * Sets generic label for the loading data progress message, extend to customize
-     *
-     * @param label the text to show
-     */
-    protected void setLoadingLabel(String label) {
-        if (vLoadingLabel != null) vLoadingLabel.setText(label);
     }
 
     @Override

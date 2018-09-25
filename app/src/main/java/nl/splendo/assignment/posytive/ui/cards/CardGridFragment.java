@@ -73,8 +73,6 @@ public class CardGridFragment
 
         setupRecyclerView(true);
 
-        setLoadingLabel(mCardsLoadingLabel);
-
         mCardsAdapter = new CardsRecyclerAdapter(mCardsPresenter, new ArrayList<>());
         setItemsAdapter(mCardsAdapter);
     }

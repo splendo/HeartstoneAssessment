@@ -16,6 +16,7 @@
     <dimen name="measure_dp_large">16dp</dimen> <!-- margins between fragments -->
     <dimen name="measure_dp_larger">32dp</dimen> <!-- margins between fragments -->
     <dimen name="measure_dp_largest">48dp</dimen><!-- margins between fragments -->
+    <dimen name="measure_dp_huge">80dp</dimen><!-- margins between fragments -->
 
     <dimen name="detailed_view_header_height">240dp</dimen>
     <dimen name="detailed_view_header_min_margin">48dp</dimen>
@@ -23,5 +24,6 @@
     <dimen name="detailed_view_header_fav_margin">80dp</dimen>
 
     <dimen name="grid_item_fav_icon_size">20dp</dimen>
+    <dimen name="grid_bottom_loader_size">150dp</dimen>
 
 </resources>

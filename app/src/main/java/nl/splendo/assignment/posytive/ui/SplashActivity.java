@@ -46,13 +46,11 @@ public class SplashActivity extends BaseActivity implements LifecycleInteractor,
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, TAG + " is active");
         mPresenter.onViewActive(this);
     }
 
     @Override
     public void onPause() {
-        Log.d(TAG, TAG + " is inactive");
         mPresenter.onViewInactive();
         super.onPause();
     }

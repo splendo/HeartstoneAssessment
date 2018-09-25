@@ -83,11 +83,6 @@ public class CardFragment extends BaseView implements CardsBinding.View {
     @Nullable
     @BindView(R.id.progress_layout) protected ViewGroup vProgressBar;
 
-    @Nullable
-    @BindView(R.id.loading_data) protected TextView vLoadingLabel;
-
-    @BindResource(R.string.data_loading_card) protected String mCardLoadingLabel;
-
     /** The Presenter that handles action on this View, and communicate with the Card(s) data model */
     private CardsBinding.Presenter mCardPresenter;
 
@@ -143,7 +138,6 @@ public class CardFragment extends BaseView implements CardsBinding.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Spork.bind(this);
-        setLoadingLabel(mCardLoadingLabel);
     }
 
     @Override
@@ -157,15 +151,6 @@ public class CardFragment extends BaseView implements CardsBinding.View {
                 vProgressBar.setVisibility(GONE);
             }
         }
-    }
-
-    /**
-     * Sets generic label for the loading data progress message, extend to customize
-     *
-     * @param label the text to show
-     */
-    protected void setLoadingLabel(String label) {
-        if (vLoadingLabel != null) vLoadingLabel.setText(label);
     }
 
     @Override

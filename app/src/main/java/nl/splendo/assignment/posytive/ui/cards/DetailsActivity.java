@@ -40,7 +40,7 @@ public class DetailsActivity extends BaseActivity implements LifecycleInteractor
 
     @BindView(R.id.toolbar) private Toolbar vToolbar;
 
-    @BindView(R.id.loading_data) private View vLoading;
+    @BindView(R.id.progress_layout) private View vLoading;
 
     @BindView(R.id.item_details_viewpager) private ViewPager vPager;
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context="nl.splendo.assignment.posytive.ui.cards.CardGridFragment">
 
     <android.support.v7.widget.RecyclerView
@@ -26,9 +26,9 @@
         tools:ignore="MissingPrefix"
         fontPath="fonts/Orbitron-Black.ttf" />
 
-    <include layout="@layout/view_loading"
+    <include layout="@layout/view_loading_scrolling"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        android:layout_height="@dimen/grid_bottom_loader_size"
+        android:layout_gravity="bottom|center_horizontal"/>
 
 </FrameLayout>
