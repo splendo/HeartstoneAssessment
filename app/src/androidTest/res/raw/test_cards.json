@@ -1,0 +1,131 @@
+{
+  "Cards": [
+    {
+      "cardId": "CFM_321",
+      "name": "Grimestreet Informant",
+      "cardSet": "Mean Streets of Gadgetzan",
+      "type": "Minion",
+      "rarity": "Rare",
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "text": "[x]<b>Battlecry:</b> <b>Discover</b> a\\nHunter, Paladin, or Warrior\\ncard.",
+      "flavor": "\"Naw, naw.  You're talkin' about Grime BOULEVARD.  I ain't know nuthin' 'bout that.\"",
+      "artist": "Anton Zemskov",
+      "collectible": true,
+      "playerClass": "Neutral",
+      "multiClassGroup": "Grimy Goons",
+      "classes": [
+        "Hunter",
+        "Paladin",
+        "Warrior"
+      ],
+      "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/CFM_321.png",
+      "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/CFM_321_premium.gif",
+      "locale": "enUS",
+      "mechanics": [
+        {
+          "name": "Discover"
+        },
+        {
+          "name": "Battlecry"
+        }
+      ]
+    },
+    {
+      "cardId": "EX1_012",
+      "name": "Bloodmage Thalnos",
+      "cardSet": "Classic",
+      "type": "Minion",
+      "faction": "Neutral",
+      "rarity": "Legendary",
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "text": "<b>Spell Damage +1</b>. <b>Deathrattle:</b> Draw a card.",
+      "flavor": "He's in charge of the Annual Scarlet Monastery Blood Drive!",
+      "artist": "Alex Horley Orlandelli",
+      "collectible": true,
+      "elite": true,
+      "playerClass": "Neutral",
+      "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/EX1_012.png",
+      "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/EX1_012_premium.gif",
+      "locale": "enUS",
+      "mechanics": [
+        {
+          "name": "Deathrattle"
+        },
+        {
+          "name": "Spell Damage"
+        }
+      ]
+    },
+    {
+      "cardId": "EX1_100",
+      "name": "Lorewalker Cho",
+      "cardSet": "Classic",
+      "type": "Minion",
+      "faction": "Neutral",
+      "rarity": "Legendary",
+      "cost": 2,
+      "attack": 0,
+      "health": 4,
+      "text": "Whenever a player casts a spell, put a copy into the other player\u2019s hand.",
+      "flavor": "Lorewalker Cho archives and shares tales from the land of Pandaria, but his favorite story is the one where Joey and Phoebe go on a road trip.",
+      "artist": "Mark Zug",
+      "collectible": true,
+      "elite": true,
+      "playerClass": "Neutral",
+      "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/EX1_100.png",
+      "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/EX1_100_premium.gif",
+      "locale": "enUS"
+    },
+    {
+      "cardId": "EX1_556",
+      "name": "Harvest Golem",
+      "cardSet": "Classic",
+      "type": "Minion",
+      "faction": "Neutral",
+      "rarity": "Common",
+      "cost": 3,
+      "attack": 2,
+      "health": 3,
+      "text": "<b>Deathrattle:</b> Summon a 2/1 Damaged Golem.",
+      "flavor": "\"Overheat threshold exceeded. System failure. Wheat clog in port two. Shutting down.\"",
+      "artist": "Brian Despain",
+      "collectible": true,
+      "race": "Mech",
+      "playerClass": "Neutral",
+      "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/EX1_556.png",
+      "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/EX1_556_premium.gif",
+      "locale": "enUS",
+      "mechanics": [
+        {
+          "name": "Deathrattle"
+        }
+      ]
+    },
+    {
+      "cardId": "EX1_137",
+      "name": "Headcrack",
+      "cardSet": "Classic",
+      "type": "Spell",
+      "faction": "Neutral",
+      "rarity": "Rare",
+      "cost": 3,
+      "text": "Deal $2 damage to the enemy hero. <b>Combo:</b> Return this to your hand next turn.",
+      "flavor": "When all else fails, nothing beats a swift whack upside the head.",
+      "artist": "James Zhang",
+      "collectible": true,
+      "playerClass": "Rogue",
+      "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/EX1_137.png",
+      "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/EX1_137_premium.gif",
+      "locale": "enUS",
+      "mechanics": [
+        {
+          "name": "Combo"
+        }
+      ]
+    }
+  ]
+}

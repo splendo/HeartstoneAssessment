@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/detail_view"
+        tools:context="laurens.hearthstoneassessment.activities.detailpage.DetailPageActivity">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal" android:gravity="end">
+        <ImageButton
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:id="@+id/toggle_favorite"
+                android:contentDescription="@string/favorite_button_content_description"/>
+    </LinearLayout>
+
+    <ImageView android:layout_width="match_parent" android:layout_height="300dp"
+               android:id="@+id/detail_image"
+               android:contentDescription="@string/detail_image_content_description"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_title"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingBottom="30dp"
+    />
+
+    <TextView android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/detail_text"/>
+</LinearLayout>
