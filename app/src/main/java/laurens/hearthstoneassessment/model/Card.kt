@@ -3,7 +3,6 @@ package laurens.hearthstoneassessment.model
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @Entity(tableName = "card")
 data class Card

@@ -1,7 +1,6 @@
 package laurens.hearthstoneassessment.activities.mainpage.grid
 
 import android.arch.paging.PagedListAdapter
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import laurens.hearthstoneassessment.R

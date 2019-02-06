@@ -2,11 +2,13 @@ package laurens.hearthstoneassessment.dataaccess.room
 
 import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.RoomDatabase
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import laurens.hearthstoneassessment.dataaccess.JsonCardSequence
-import org.jetbrains.anko.*
+import org.jetbrains.anko.AnkoLogger
 import java.io.InputStream
-import kotlin.coroutines.resume
 
 class PopulateRoomCallback(private val cards: InputStream) : RoomDatabase.Callback(), AnkoLogger {
     lateinit var database: LocalCardDatabase
