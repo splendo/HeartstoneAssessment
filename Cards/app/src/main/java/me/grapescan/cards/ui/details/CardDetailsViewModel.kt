@@ -1,4 +1,4 @@
-package me.grapescan.cards.ui.list
+package me.grapescan.cards.ui.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,8 @@ import kotlinx.coroutines.launch
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 
-class CardListViewModel(
+class CardDetailsViewModel(
+    val card: Card,
     repository: CardRepository
 ) : ViewModel() {
     val cards: MutableLiveData<List<Card>> by lazy {

@@ -1,16 +1,13 @@
 package me.grapescan.cards.ui.list
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
-import me.grapescan.cards.ext.inflate
+import me.grapescan.cards.ui.details.CardDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardListActivity : AppCompatActivity() {
@@ -24,7 +21,7 @@ class CardListActivity : AppCompatActivity() {
         viewModel.cards.observe(this@CardListActivity, Observer<List<Card>> { adapter.submitList(it) })
         findViewById<RecyclerView>(R.id.card_list).run {
             this@run.adapter = this@CardListActivity.adapter.apply {
-                onItemClick = { viewModel.onCardClick(it) }
+                onItemClick = { startActivity(CardDetailsActivity.createIntent(this@CardListActivity, it)) }
             }
             layoutManager = LinearLayoutManager(this@CardListActivity)
         }
