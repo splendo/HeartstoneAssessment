@@ -4,6 +4,8 @@ import android.app.Application
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 import me.grapescan.cards.data.LocalCardRepository
+import me.grapescan.cards.data.storage.InMemoryStorage
+import me.grapescan.cards.data.storage.Storage
 import me.grapescan.cards.ui.details.CardDetailsViewModel
 import me.grapescan.cards.ui.list.CardListViewModel
 import org.koin.android.ext.koin.androidContext
@@ -22,9 +24,10 @@ class App : Application() {
             androidContext(this@App)
             androidFileProperties()
             modules(module {
-                single<CardRepository> { LocalCardRepository() }
+                single<CardRepository> { LocalCardRepository(get()) }
+                single<Storage<List<String>>> { InMemoryStorage(emptyList()) }
                 viewModel { CardListViewModel(get()) }
-                factory { (card: Card) -> CardDetailsViewModel(card, get()) }
+                factory { (cardId: String) -> CardDetailsViewModel(cardId, get()) }
             })
         }
     }

@@ -10,4 +10,10 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Headline"
             tools:text="Card Name"/>
+    <me.grapescan.cards.ui.widget.CheckableImageView
+            android:id="@+id/favorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_favorite"/>
 </LinearLayout>

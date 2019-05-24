@@ -7,5 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class Card(
     val id: String,
     val name: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val isFavorite: Boolean = false
 ) : Parcelable

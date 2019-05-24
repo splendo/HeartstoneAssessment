@@ -21,7 +21,7 @@ class CardListActivity : AppCompatActivity() {
         viewModel.cards.observe(this@CardListActivity, Observer<List<Card>> { adapter.submitList(it) })
         findViewById<RecyclerView>(R.id.card_list).run {
             this@run.adapter = this@CardListActivity.adapter.apply {
-                onItemClick = { startActivity(CardDetailsActivity.createIntent(this@CardListActivity, it)) }
+                onItemClick = { startActivity(CardDetailsActivity.createIntent(this@CardListActivity, it.id)) }
             }
             layoutManager = LinearLayoutManager(this@CardListActivity)
         }

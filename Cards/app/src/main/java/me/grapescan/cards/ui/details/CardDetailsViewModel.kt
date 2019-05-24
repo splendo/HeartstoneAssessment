@@ -8,14 +8,20 @@ import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 
 class CardDetailsViewModel(
-    val card: Card,
-    repository: CardRepository
+    private val cardId: String,
+    private val repository: CardRepository
 ) : ViewModel() {
-    val cards: MutableLiveData<List<Card>> by lazy {
-        MutableLiveData<List<Card>>().also {
-            viewModelScope.launch {
-                cards.postValue(repository.getCards())
-            }
-        }
+
+    val card: MutableLiveData<Card> by lazy {
+        MutableLiveData<Card>().also { refresh() }
+    }
+
+    fun setFavorite(cardId: String, checked: Boolean) = viewModelScope.launch {
+        repository.setFavorite(cardId, checked)
+        refresh()
+    }
+
+    private fun refresh() = viewModelScope.launch {
+        card.postValue(repository.getCard(cardId))
     }
 }
