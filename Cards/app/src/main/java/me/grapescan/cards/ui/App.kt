@@ -1,10 +1,9 @@
 package me.grapescan.cards.ui
 
 import android.app.Application
-import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 import me.grapescan.cards.data.LocalCardRepository
-import me.grapescan.cards.data.storage.InMemoryStorage
+import me.grapescan.cards.data.storage.PersistentFavoritesStorage
 import me.grapescan.cards.data.storage.Storage
 import me.grapescan.cards.ui.details.CardDetailsViewModel
 import me.grapescan.cards.ui.list.CardListViewModel
@@ -25,7 +24,7 @@ class App : Application() {
             androidFileProperties()
             modules(module {
                 single<CardRepository> { LocalCardRepository(get()) }
-                single<Storage<List<String>>> { InMemoryStorage(emptyList()) }
+                single<Storage<List<String>>> { PersistentFavoritesStorage(get()) }
                 viewModel { CardListViewModel(get()) }
                 factory { (cardId: String) -> CardDetailsViewModel(cardId, get()) }
             })

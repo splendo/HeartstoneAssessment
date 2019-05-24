@@ -3,7 +3,7 @@ package me.grapescan.cards.data
 import me.grapescan.cards.data.storage.Storage
 
 class LocalCardRepository(
-    private val favoriteStorage: Storage<List<String>>
+    private val favoritesStorage: Storage<List<String>>
 ) : CardRepository {
     override suspend fun getCards() = listOf(
         Card("1", "First Card", "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png"),
@@ -12,12 +12,12 @@ class LocalCardRepository(
         Card("4", "Fourth Card", "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png"),
         Card("5", "Fifth Card", "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png"),
         Card("6", "Sixth Card", "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png")
-    ).map { it.copy(isFavorite = it.id in favoriteStorage.getData()) }
+    ).map { it.copy(isFavorite = it.id in favoritesStorage.load()) }
 
     override suspend fun getCard(id: String) = getCards().find { it.id == id }!!
 
     override suspend fun setFavorite(cardId: String, isFavorite: Boolean) {
-        favoriteStorage.setData(favoriteStorage.getData().toMutableList().apply {
+        favoritesStorage.save(favoritesStorage.load().toMutableList().apply {
             if (isFavorite) {
                 add(cardId)
             } else {
