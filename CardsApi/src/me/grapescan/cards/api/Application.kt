@@ -1,13 +1,16 @@
 package me.grapescan.cards.api
 
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
+import io.ktor.application.Application
+import io.ktor.application.call
+import io.ktor.application.install
 import io.ktor.features.*
-import org.slf4j.event.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import io.ktor.gson.*
+import io.ktor.gson.gson
+import io.ktor.request.path
+import io.ktor.response.respond
+import io.ktor.routing.Routing
+import io.ktor.routing.get
+import io.ktor.routing.routing
+import org.slf4j.event.Level
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
