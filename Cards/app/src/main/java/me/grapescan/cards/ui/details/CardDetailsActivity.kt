@@ -38,7 +38,7 @@ class CardDetailsActivity : AppCompatActivity() {
 
         private fun onLoadingComplete(card: Card) {
             if (card.id == intent.initialCard.id) {
-                // TODO: remove hack
+                // This delay is required for view pager to scroll to current page.
                 contentPager.postDelayed({ supportStartPostponedEnterTransition() }, 300)
             }
         }
