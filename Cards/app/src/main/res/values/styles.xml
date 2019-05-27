@@ -18,4 +18,11 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="ToolbarAction">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="tint">@android:color/white</item>
+    </style>
+
 </resources>

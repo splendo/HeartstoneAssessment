@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.request.target.DrawableImageViewTarget
@@ -35,7 +34,6 @@ class CardDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_details)
         viewModel.card.observe(this, Observer<Card> {
-            findViewById<TextView>(R.id.title).text = it.name
             findViewById<CheckableImageView>(R.id.favorite).setCheckedSilent(it.isFavorite)
             findViewById<ImageView>(R.id.content).let { card ->
                 GlideApp.with(this@CardDetailsActivity)
@@ -53,6 +51,7 @@ class CardDetailsActivity : AppCompatActivity() {
                     })
             }
         })
+        findViewById<ImageView>(R.id.back).setOnClickListener { supportFinishAfterTransition() }
         findViewById<CheckableImageView>(R.id.favorite).setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFavorite(intent.cardId, isChecked)
         }
