@@ -2,18 +2,16 @@ package me.grapescan.cards.ui.details
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.bumptech.glide.request.target.DrawableImageViewTarget
-import com.bumptech.glide.request.transition.Transition
+import androidx.viewpager2.widget.ViewPager2
+import kotlinx.android.synthetic.main.activity_card_details.*
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
-import me.grapescan.cards.ext.StringExtra
-import me.grapescan.cards.ui.glide.GlideApp
-import me.grapescan.cards.ui.widget.CheckableImageView
+import me.grapescan.cards.ext.ParcelableExtra
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -21,41 +19,66 @@ class CardDetailsActivity : AppCompatActivity() {
 
     companion object {
 
-        private var Intent.cardId by StringExtra()
+        private var Intent.initialCard by ParcelableExtra<Card>()
 
-        fun createIntent(context: Context, cardId: String) = Intent(context, CardDetailsActivity::class.java).apply {
-            this.cardId = cardId
+        private fun <T> MutableLiveData<T>.observe(lifecycleOwner: LifecycleOwner, observer: (T) -> Unit) =
+            this.observe(lifecycleOwner, Observer { observer(it) })
+
+        fun createIntent(context: Context, selectedCard: Card) =
+            Intent(context, CardDetailsActivity::class.java).apply {
+                this.initialCard = selectedCard
         }
     }
 
-    private val viewModel: CardDetailsViewModel by inject(parameters = { parametersOf(intent.cardId) })
+    private val viewModel: CardDetailsViewModel by inject(parameters = { parametersOf(intent.initialCard) })
+    private val cardDetailsAdapter = CardDetailsAdapter(object : CardDetailsAdapter.ContentLoadingListener {
+        override fun onLoadingSuccess(card: Card) = onLoadingComplete(card)
+
+        override fun onLoadingError(card: Card) = onLoadingComplete(card)
+
+        private fun onLoadingComplete(card: Card) {
+            if (card.id == intent.initialCard.id) {
+                // TODO: remove hack
+                contentPager.postDelayed({ supportStartPostponedEnterTransition() }, 300)
+            }
+        }
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_details)
-        viewModel.card.observe(this, Observer<Card> {
-            findViewById<CheckableImageView>(R.id.favorite).setCheckedSilent(it.isFavorite)
-            findViewById<ImageView>(R.id.content).let { card ->
-                GlideApp.with(this@CardDetailsActivity)
-                    .load(it.imageUrl)
-                    .into(object : DrawableImageViewTarget(card) {
-                        override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                            super.onResourceReady(resource, transition)
-                            supportStartPostponedEnterTransition()
-                        }
-
-                        override fun onLoadFailed(errorDrawable: Drawable?) {
-                            super.onLoadFailed(errorDrawable)
-                            supportStartPostponedEnterTransition()
-                        }
-                    })
-            }
-        })
-        findViewById<ImageView>(R.id.back).setOnClickListener { supportFinishAfterTransition() }
-        findViewById<CheckableImageView>(R.id.favorite).setOnCheckedChangeListener { _, isChecked ->
-            viewModel.setFavorite(intent.cardId, isChecked)
+        back.setOnClickListener { supportFinishAfterTransition() }
+        contentPager.run {
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            adapter = cardDetailsAdapter
         }
         supportPostponeEnterTransition()
 
+        viewModel.observe()
+    }
+
+    private fun CardDetailsViewModel.observe() {
+        cards.observe(this@CardDetailsActivity, ::onCardsUpdate)
+        currentCard.observe(this@CardDetailsActivity, ::onCurrentCardUpdate)
+    }
+
+    private fun onCurrentCardUpdate(currentCard: Card) {
+        contentPager.currentItem = cardDetailsAdapter.currentList.indexOf(currentCard)
+        favorite.setCheckedSilent(currentCard.isFavorite)
+        favorite.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setFavorite(currentCard.id, isChecked)
+            // TODO: update liked item
+        }
+    }
+
+    private fun onCardsUpdate(cards: List<Card>) {
+        cardDetailsAdapter.submitList(cards)
+        contentPager.currentItem = cards.indexOfFirst { it.id == intent.initialCard.id }
+        contentPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                viewModel.onCardSwitch(cards[position])
+            }
+        })
     }
 }

@@ -34,7 +34,7 @@ class CardListActivity : AppCompatActivity() {
             }
             this@run.adapter = this@CardListActivity.adapter.apply {
                 onItemClick = { view, item ->
-                    val intent = CardDetailsActivity.createIntent(this@CardListActivity, item.id)
+                    val intent = CardDetailsActivity.createIntent(this@CardListActivity, item)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         startActivity(
                             intent, ActivityOptionsCompat.makeSceneTransitionAnimation(

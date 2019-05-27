@@ -9,20 +9,28 @@ import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 
 class CardDetailsViewModel(
-    private val cardId: String,
+    private val initialCard: Card,
     private val repository: CardRepository
 ) : ViewModel() {
 
-    val card: MutableLiveData<Card> by lazy {
-        MutableLiveData<Card>().also { refresh() }
+    val currentCard by lazy { MutableLiveData<Card>() }
+
+    val cards: MutableLiveData<List<Card>> by lazy {
+        MutableLiveData<List<Card>>().also { _ ->
+            viewModelScope.launch(Dispatchers.IO) {
+                val data = repository.getCurrentSelection()
+                cards.postValue(data)
+                data.find { it.id == initialCard.id }?.let {
+                    onCardSwitch(it)
+                }
+            }
+        }
     }
 
     fun setFavorite(cardId: String, checked: Boolean) = viewModelScope.launch(Dispatchers.IO) {
         repository.setFavorite(cardId, checked)
-        refresh()
+        // TODO: refresh fav state
     }
 
-    private fun refresh() = viewModelScope.launch(Dispatchers.IO) {
-        card.postValue(repository.getCard(cardId))
-    }
+    fun onCardSwitch(item: Card) = currentCard.postValue(item)
 }

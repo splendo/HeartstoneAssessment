@@ -42,6 +42,16 @@ class StringExtra : ReadWriteProperty<Intent, String> {
     }
 }
 
+class ParcelableListExtra<T : Parcelable> : ReadWriteProperty<Intent, ArrayList<T>> {
+
+    override fun getValue(thisRef: Intent, property: KProperty<*>) =
+        thisRef.getParcelableArrayListExtra<T>(property.name)
+
+    override fun setValue(thisRef: Intent, property: KProperty<*>, value: ArrayList<T>) {
+        thisRef.putExtra(property.name, value)
+    }
+}
+
 @Suppress("UNCHECKED_CAST")
 class SerializableExtra<T : Serializable> : ReadWriteProperty<Intent, T> {
 

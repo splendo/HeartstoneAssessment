@@ -2,6 +2,7 @@ package me.grapescan.cards.ui
 
 import android.app.Application
 import com.google.gson.Gson
+import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 import me.grapescan.cards.data.LocalCardRepository
 import me.grapescan.cards.data.storage.CardCatalogStorage
@@ -30,7 +31,7 @@ class App : Application() {
                 single(named("favorites")) { PersistentFavoritesStorage(get()) }
                 single(named("catalog")) { CardCatalogStorage(get(), get()) }
                 viewModel { CardListViewModel(get()) }
-                factory { (cardId: String) -> CardDetailsViewModel(cardId, get()) }
+                factory { (initialCard: Card) -> CardDetailsViewModel(initialCard, get()) }
             })
         }
     }

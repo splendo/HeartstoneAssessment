@@ -7,6 +7,8 @@ class LocalCardRepository(
     private val catalogStorage: Storage<List<Card>>
 ) : CardRepository {
 
+    private var currentSelection: List<Card> = emptyList()
+
     override suspend fun getCards() = catalogStorage.load()
         .map { it.copy(isFavorite = it.id in favoritesStorage.load()) }
 
@@ -21,4 +23,10 @@ class LocalCardRepository(
             }
         })
     }
+
+    override suspend fun setCurrentSelection(items: List<Card>) {
+        currentSelection = items
+    }
+
+    override suspend fun getCurrentSelection() = currentSelection
 }

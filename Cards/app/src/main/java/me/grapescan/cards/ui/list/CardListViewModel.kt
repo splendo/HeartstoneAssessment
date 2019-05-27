@@ -14,7 +14,10 @@ class CardListViewModel(
     val cards: MutableLiveData<List<Card>> by lazy {
         MutableLiveData<List<Card>>().also {
             viewModelScope.launch(Dispatchers.IO) {
-                cards.postValue(repository.getCards())
+                repository.getCards().let {
+                    repository.setCurrentSelection(it)
+                    cards.postValue(it)
+                }
             }
         }
     }
