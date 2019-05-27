@@ -27,7 +27,7 @@ class CardDetailsActivity : AppCompatActivity() {
         fun createIntent(context: Context, selectedCard: Card) =
             Intent(context, CardDetailsActivity::class.java).apply {
                 this.initialCard = selectedCard
-        }
+            }
     }
 
     private val viewModel: CardDetailsViewModel by inject(parameters = { parametersOf(intent.initialCard) })
@@ -43,6 +43,16 @@ class CardDetailsActivity : AppCompatActivity() {
             }
         }
     })
+    private var onPageChangeCallback: ViewPager2.OnPageChangeCallback? = null
+        set(value) {
+            field?.let {
+                contentPager.unregisterOnPageChangeCallback(it)
+            }
+            field = value
+            field?.let {
+                contentPager.registerOnPageChangeCallback(it)
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,22 +73,20 @@ class CardDetailsActivity : AppCompatActivity() {
     }
 
     private fun onCurrentCardUpdate(currentCard: Card) {
-        contentPager.currentItem = cardDetailsAdapter.currentList.indexOf(currentCard)
+        contentPager.currentItem = cardDetailsAdapter.currentList.indexOfFirst { it.id == currentCard.id }
         favorite.setCheckedSilent(currentCard.isFavorite)
         favorite.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFavorite(currentCard.id, isChecked)
-            // TODO: update liked item
         }
     }
 
     private fun onCardsUpdate(cards: List<Card>) {
         cardDetailsAdapter.submitList(cards)
-        contentPager.currentItem = cards.indexOfFirst { it.id == intent.initialCard.id }
-        contentPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 viewModel.onCardSwitch(cards[position])
             }
-        })
+        }
     }
 }

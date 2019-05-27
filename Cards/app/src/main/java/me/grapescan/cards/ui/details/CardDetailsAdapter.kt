@@ -13,9 +13,9 @@ class CardDetailsAdapter(
         @JvmStatic
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Card>() {
 
-            override fun areItemsTheSame(left: Card, right: Card) = left == right
+            override fun areItemsTheSame(left: Card, right: Card) = left.id == right.id
 
-            override fun areContentsTheSame(left: Card, right: Card) = left == right
+            override fun areContentsTheSame(left: Card, right: Card) = areItemsTheSame(left, right)
         }
     }
 

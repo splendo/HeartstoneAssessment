@@ -7,10 +7,11 @@ class LocalCardRepository(
     private val catalogStorage: Storage<List<Card>>
 ) : CardRepository {
 
-    private var currentSelection: List<Card> = emptyList()
+    private var lastQuery: CardRepository.Query = CardRepository.Query.ALL
 
-    override suspend fun getCards() = catalogStorage.load()
+    override suspend fun getCards(query: CardRepository.Query) = catalogStorage.load()
         .map { it.copy(isFavorite = it.id in favoritesStorage.load()) }
+        .also { lastQuery = query }
 
     override suspend fun getCard(id: String) = getCards().find { it.id == id }!!
 
@@ -24,9 +25,5 @@ class LocalCardRepository(
         })
     }
 
-    override suspend fun setCurrentSelection(items: List<Card>) {
-        currentSelection = items
-    }
-
-    override suspend fun getCurrentSelection() = currentSelection
+    override suspend fun getCurrentSelection() = getCards(lastQuery)
 }

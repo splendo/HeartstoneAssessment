@@ -15,7 +15,6 @@ class CardListViewModel(
         MutableLiveData<List<Card>>().also {
             viewModelScope.launch(Dispatchers.IO) {
                 repository.getCards().let {
-                    repository.setCurrentSelection(it)
                     cards.postValue(it)
                 }
             }
