@@ -3,7 +3,7 @@ package me.grapescan.cards.ui.list
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
@@ -23,7 +23,7 @@ class CardListActivity : AppCompatActivity() {
             this@run.adapter = this@CardListActivity.adapter.apply {
                 onItemClick = { startActivity(CardDetailsActivity.createIntent(this@CardListActivity, it.id)) }
             }
-            layoutManager = LinearLayoutManager(this@CardListActivity)
+            layoutManager = GridLayoutManager(this@CardListActivity, 3)
         }
     }
 }
