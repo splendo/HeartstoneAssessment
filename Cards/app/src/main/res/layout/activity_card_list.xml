@@ -4,11 +4,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
         tools:context=".ui.list.CardListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/card_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
             tools:listitem="@layout/item_card"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
