@@ -2,13 +2,18 @@ package me.grapescan.cards.ui.details
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.bumptech.glide.request.target.DrawableImageViewTarget
+import com.bumptech.glide.request.transition.Transition
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.ext.StringExtra
+import me.grapescan.cards.ui.glide.GlideApp
 import me.grapescan.cards.ui.widget.CheckableImageView
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -32,9 +37,26 @@ class CardDetailsActivity : AppCompatActivity() {
         viewModel.card.observe(this, Observer<Card> {
             findViewById<TextView>(R.id.title).text = it.name
             findViewById<CheckableImageView>(R.id.favorite).setCheckedSilent(it.isFavorite)
+            findViewById<ImageView>(R.id.content).let { card ->
+                GlideApp.with(this@CardDetailsActivity)
+                    .load(it.imageUrl)
+                    .into(object : DrawableImageViewTarget(card) {
+                        override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                            super.onResourceReady(resource, transition)
+                            supportStartPostponedEnterTransition()
+                        }
+
+                        override fun onLoadFailed(errorDrawable: Drawable?) {
+                            super.onLoadFailed(errorDrawable)
+                            supportStartPostponedEnterTransition()
+                        }
+                    })
+            }
         })
         findViewById<CheckableImageView>(R.id.favorite).setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFavorite(intent.cardId, isChecked)
         }
+        supportPostponeEnterTransition()
+
     }
 }

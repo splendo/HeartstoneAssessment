@@ -1,5 +1,6 @@
 package me.grapescan.cards.ui.list
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +12,13 @@ import me.grapescan.cards.ui.glide.GlideApp
 
 class CardViewHolder(
     parent: ViewGroup,
-    val onClickListener: (item: Card) -> Unit
+    val onClickListener: (view: View, item: Card) -> Unit
 ) : RecyclerView.ViewHolder(parent.inflate(R.layout.item_card)) {
 
     val content: ImageView = itemView.content
 
     fun bind(item: Card) {
-        itemView.setOnClickListener { onClickListener(item) }
+        itemView.setOnClickListener { onClickListener(itemView, item) }
         GlideApp.with(itemView.context)
             .load(item.imageUrl)
             .into(content)

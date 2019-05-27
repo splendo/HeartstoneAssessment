@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,7 +33,21 @@ class CardListActivity : AppCompatActivity() {
                 insets.replaceSystemWindowInsets(insets.systemWindowInsetLeft, 0, insets.systemWindowInsetRight, 0)
             }
             this@run.adapter = this@CardListActivity.adapter.apply {
-                onItemClick = { startActivity(CardDetailsActivity.createIntent(this@CardListActivity, it.id)) }
+                onItemClick = { view, item ->
+                    val intent = CardDetailsActivity.createIntent(this@CardListActivity, item.id)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        startActivity(
+                            intent, ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                this@CardListActivity,
+                                view,
+                                resources.getString(R.string.transition_card)
+                            ).toBundle()
+                        )
+                    } else {
+                        startActivity(intent)
+                    }
+
+                }
             }
             layoutManager = GridLayoutManager(this@CardListActivity, 3)
         }

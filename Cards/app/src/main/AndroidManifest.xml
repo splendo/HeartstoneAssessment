@@ -23,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.details.CardDetailsActivity"/>
+        <activity
+                android:name=".ui.details.CardDetailsActivity"
+                android:theme="@style/AppTheme.Transparent"/>
     </application>
 
 </manifest>

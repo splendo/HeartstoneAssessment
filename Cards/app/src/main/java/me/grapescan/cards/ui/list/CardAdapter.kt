@@ -1,12 +1,13 @@
 package me.grapescan.cards.ui.list
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import me.grapescan.cards.data.Card
 
 class CardAdapter(
-    var onItemClick: (item: Card) -> Unit = {}
+    var onItemClick: (view: View, item: Card) -> Unit = { _, _ -> }
 ) : ListAdapter<Card, CardViewHolder>(DIFF_CALLBACK) {
 
     companion object {
