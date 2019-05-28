@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_card_details.*
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.ext.ParcelableExtra
+import me.grapescan.cards.ui.info.CardInfoActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -78,6 +79,7 @@ class CardDetailsActivity : AppCompatActivity() {
         favorite.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFavorite(currentCard.id, isChecked)
         }
+        info.setOnClickListener { startActivity(CardInfoActivity.createIntent(this, currentCard)) }
     }
 
     private fun onCardsUpdate(cards: List<Card>) {

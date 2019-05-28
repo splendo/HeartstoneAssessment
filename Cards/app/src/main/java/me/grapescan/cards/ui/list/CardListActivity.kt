@@ -8,7 +8,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_card_list.*
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.ui.details.CardDetailsActivity
@@ -27,7 +27,7 @@ class CardListActivity : AppCompatActivity() {
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                     View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         }
-        findViewById<RecyclerView>(R.id.card_list).run {
+        cardList.run {
             ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
                 this.setPadding(paddingLeft, insets.systemWindowInsetTop, paddingRight, insets.systemWindowInsetBottom)
                 insets.replaceSystemWindowInsets(insets.systemWindowInsetLeft, 0, insets.systemWindowInsetRight, 0)

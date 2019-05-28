@@ -9,7 +9,7 @@
         tools:context=".ui.list.CardListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/card_list"
+            android:id="@+id/cardList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"

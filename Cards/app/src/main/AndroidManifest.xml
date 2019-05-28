@@ -26,6 +26,7 @@
         <activity
                 android:name=".ui.details.CardDetailsActivity"
                 android:theme="@style/AppTheme.Transparent"/>
+        <activity android:name=".ui.info.CardInfoActivity"/>
     </application>
 
 </manifest>

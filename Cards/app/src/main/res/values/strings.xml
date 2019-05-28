@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Cards</string>
     <string name="transition_card">card</string>
+    <string name="label_text">Text</string>
+    <string name="label_card_set">Card set</string>
+    <string name="label_type">Type</string>
+    <string name="label_rarity">Rarity</string>
+    <string name="label_cost">Cost</string>
+    <string name="label_attack">Attack</string>
+    <string name="label_health">Health</string>
+    <string name="label_flavor">Flavor</string>
+    <string name="label_artist">Artist</string>
+    <string name="label_collectible">Is collectible</string>
+    <string name="label_player_class">Player class</string>
+    <string name="label_how_to_get_gold">How to get gold</string>
+    <string name="label_mechanics">Mechanics</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
