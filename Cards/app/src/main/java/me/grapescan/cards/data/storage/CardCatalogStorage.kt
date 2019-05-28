@@ -1,6 +1,7 @@
 package me.grapescan.cards.data.storage
 
 import android.content.Context
+import android.text.Html
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import me.grapescan.cards.R
@@ -27,7 +28,7 @@ class CardCatalogStorage(context: Context, gson: Gson) : Storage<List<Card>> {
                 cost = it.cost,
                 attack = it.attack,
                 health = it.health,
-                text = it.text ?: NOT_SPECIFIED,
+                text = Html.fromHtml(it.text?.replace("\\n", "<br>") ?: ""),
                 flavor = it.flavor ?: NOT_SPECIFIED,
                 artist = it.artist ?: NOT_SPECIFIED,
                 collectible = it.collectible ?: false,

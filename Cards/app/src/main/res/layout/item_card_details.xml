@@ -15,4 +15,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:targetApi="lollipop"/>
+
+    <include layout="@layout/partial_card_placeholder"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,7 +48,7 @@ private fun Card.get(parameter: CardRepository.Parameter): Comparable<*>? = when
     CardRepository.Parameter.COST -> cost
     CardRepository.Parameter.ATTACK -> attack
     CardRepository.Parameter.HEALTH -> health
-    CardRepository.Parameter.TEXT -> text
+    CardRepository.Parameter.TEXT -> text.toString()
     CardRepository.Parameter.FLAVOR -> flavor
     CardRepository.Parameter.ARTIST -> artist
     CardRepository.Parameter.COLLECTIBLE -> collectible

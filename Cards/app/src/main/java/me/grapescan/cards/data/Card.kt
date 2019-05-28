@@ -13,7 +13,7 @@ data class Card(
     val cost: Int,
     val attack: Int,
     val health: Int,
-    val text: String,
+    val text: CharSequence,
     val flavor: String,
     val artist: String,
     val collectible: Boolean,
