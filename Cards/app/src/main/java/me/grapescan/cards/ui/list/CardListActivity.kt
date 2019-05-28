@@ -36,6 +36,8 @@ class CardListActivity : AppCompatActivity() {
                 onItemClick = { view, item ->
                     val intent = CardDetailsActivity.createIntent(this@CardListActivity, item)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        // TODO: improve reverse transition to collapse into proper grid item
+                        // https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html
                         startActivity(
                             intent, ActivityOptionsCompat.makeSceneTransitionAnimation(
                                 this@CardListActivity,

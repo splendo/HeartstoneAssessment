@@ -8,6 +8,10 @@ import me.grapescan.cards.data.Card
 
 class CardCatalogStorage(context: Context, gson: Gson) : Storage<List<Card>> {
 
+    companion object {
+        private const val NOT_SPECIFIED = "Not specified"
+    }
+
     private val cards: List<Card> by lazy {
         val type = object : TypeToken<Map<String, List<CardDao>>>() {}.type
         val sourceJson = context.resources.openRawResource(R.raw.cards)
@@ -17,16 +21,28 @@ class CardCatalogStorage(context: Context, gson: Gson) : Storage<List<Card>> {
         catalog.values.flatten().map {
             Card(
                 id = it.cardId,
-                name = it.name,
-                imageUrl = it.img ?: ""
+                cardSet = it.cardSet ?: NOT_SPECIFIED,
+                type = it.type ?: NOT_SPECIFIED,
+                rarity = it.rarity ?: NOT_SPECIFIED,
+                cost = it.cost,
+                attack = it.attack,
+                health = it.health,
+                text = it.text ?: NOT_SPECIFIED,
+                flavor = it.flavor ?: NOT_SPECIFIED,
+                artist = it.artist ?: NOT_SPECIFIED,
+                collectible = it.collectible ?: false,
+                playerClass = it.playerClass ?: NOT_SPECIFIED,
+                howToGetGold = it.howToGetGold ?: NOT_SPECIFIED,
+                name = it.name ?: NOT_SPECIFIED,
+                imageUrl = it.img ?: "",
+                imageGoldUrl = it.imgGold ?: "",
+                mechanics = it.mechanics?.map { it.name } ?: emptyList()
             )
-        }.filter { it.imageUrl.isNotEmpty() }
+        }
     }
 
     override suspend fun load() = cards
 
-    override suspend fun save(data: List<Card>) {
-        throw UnsupportedOperationException("Card catalog is read only.")
-    }
+    override suspend fun save(data: List<Card>) = throw UnsupportedOperationException("Card catalog is read only.")
 
 }
