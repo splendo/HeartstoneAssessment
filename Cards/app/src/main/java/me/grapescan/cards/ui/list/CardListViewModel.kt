@@ -14,7 +14,14 @@ class CardListViewModel(
     val cards: MutableLiveData<List<Card>> by lazy {
         MutableLiveData<List<Card>>().also {
             viewModelScope.launch(Dispatchers.IO) {
-                repository.getCards().let {
+                repository.getCards(
+                    CardRepository.Query(
+                        CardRepository.Filter(
+                            mechanics = CardRepository.Mechanics.DEATHRATTLE,
+                            rarity = CardRepository.Rarity.LEGENDARY
+                        )
+                    )
+                ).let {
                     cards.postValue(it)
                 }
             }
