@@ -19,8 +19,6 @@ class LocalCardRepository(
         })
         .also { lastQuery = query }
 
-    override suspend fun getCard(id: String) = getCards().find { it.id == id }!!
-
     override suspend fun setFavorite(cardId: String, isFavorite: Boolean) {
         favoritesStorage.save(favoritesStorage.load().toMutableList().apply {
             if (isFavorite) {
