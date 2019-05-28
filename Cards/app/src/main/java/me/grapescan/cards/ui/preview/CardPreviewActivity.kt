@@ -1,4 +1,4 @@
-package me.grapescan.cards.ui.details
+package me.grapescan.cards.ui.preview
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
-import kotlinx.android.synthetic.main.activity_card_details.*
+import kotlinx.android.synthetic.main.activity_card_preview.*
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.ext.ParcelableExtra
@@ -16,7 +16,7 @@ import me.grapescan.cards.ui.info.CardInfoActivity
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class CardDetailsActivity : AppCompatActivity() {
+class CardPreviewActivity : AppCompatActivity() {
 
     companion object {
 
@@ -26,13 +26,13 @@ class CardDetailsActivity : AppCompatActivity() {
             this.observe(lifecycleOwner, Observer { observer(it) })
 
         fun createIntent(context: Context, selectedCard: Card) =
-            Intent(context, CardDetailsActivity::class.java).apply {
+            Intent(context, CardPreviewActivity::class.java).apply {
                 this.initialCard = selectedCard
             }
     }
 
-    private val viewModel: CardDetailsViewModel by inject(parameters = { parametersOf(intent.initialCard) })
-    private val cardDetailsAdapter = CardDetailsAdapter(object : CardDetailsAdapter.ContentLoadingListener {
+    private val viewModel: CardPreviewViewModel by inject(parameters = { parametersOf(intent.initialCard) })
+    private val cardPreviewAdapter = CardPreviewAdapter(object : CardPreviewAdapter.ContentLoadingListener {
         override fun onLoadingSuccess(card: Card) = onLoadingComplete(card)
 
         override fun onLoadingError(card: Card) = onLoadingComplete(card)
@@ -57,24 +57,24 @@ class CardDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_details)
+        setContentView(R.layout.activity_card_preview)
         back.setOnClickListener { supportFinishAfterTransition() }
         contentPager.run {
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            adapter = cardDetailsAdapter
+            adapter = cardPreviewAdapter
         }
         supportPostponeEnterTransition()
 
         viewModel.observe()
     }
 
-    private fun CardDetailsViewModel.observe() {
-        cards.observe(this@CardDetailsActivity, ::onCardsUpdate)
-        currentCard.observe(this@CardDetailsActivity, ::onCurrentCardUpdate)
+    private fun CardPreviewViewModel.observe() {
+        cards.observe(this@CardPreviewActivity, ::onCardsUpdate)
+        currentCard.observe(this@CardPreviewActivity, ::onCurrentCardUpdate)
     }
 
     private fun onCurrentCardUpdate(currentCard: Card) {
-        contentPager.currentItem = cardDetailsAdapter.currentList.indexOfFirst { it.id == currentCard.id }
+        contentPager.currentItem = cardPreviewAdapter.currentList.indexOfFirst { it.id == currentCard.id }
         favorite.setCheckedSilent(currentCard.isFavorite)
         favorite.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFavorite(currentCard.id, isChecked)
@@ -83,7 +83,7 @@ class CardDetailsActivity : AppCompatActivity() {
     }
 
     private fun onCardsUpdate(cards: List<Card>) {
-        cardDetailsAdapter.submitList(cards)
+        cardPreviewAdapter.submitList(cards)
         onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)

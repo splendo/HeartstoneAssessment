@@ -1,13 +1,13 @@
-package me.grapescan.cards.ui.details
+package me.grapescan.cards.ui.preview
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import me.grapescan.cards.data.Card
 
-class CardDetailsAdapter(
+class CardPreviewAdapter(
     private val contentLoadingListener: ContentLoadingListener = object : ContentLoadingListener {}
-) : ListAdapter<Card, CardDetailsViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Card, CardPreviewViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         @JvmStatic
@@ -20,9 +20,9 @@ class CardDetailsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        CardDetailsViewHolder(parent, contentLoadingListener)
+        CardPreviewViewHolder(parent, contentLoadingListener)
 
-    override fun onBindViewHolder(holder: CardDetailsViewHolder, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: CardPreviewViewHolder, position: Int) = holder.bind(getItem(position))
 
     interface ContentLoadingListener {
         fun onLoadingSuccess(card: Card) = Unit

@@ -1,4 +1,4 @@
-package me.grapescan.cards.ui.details
+package me.grapescan.cards.ui.preview
 
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
@@ -13,10 +13,10 @@ import me.grapescan.cards.data.Card
 import me.grapescan.cards.ext.inflate
 import me.grapescan.cards.ui.glide.GlideApp
 
-class CardDetailsViewHolder(
+class CardPreviewViewHolder(
     parent: ViewGroup,
-    private val listener: CardDetailsAdapter.ContentLoadingListener
-) : RecyclerView.ViewHolder(parent.inflate(R.layout.item_card_details)) {
+    private val listener: CardPreviewAdapter.ContentLoadingListener
+) : RecyclerView.ViewHolder(parent.inflate(R.layout.item_card_preview)) {
 
     val content = itemView.content
     val placeholder = itemView.placeholder

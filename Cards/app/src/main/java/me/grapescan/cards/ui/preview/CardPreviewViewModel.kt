@@ -1,4 +1,4 @@
-package me.grapescan.cards.ui.details
+package me.grapescan.cards.ui.preview
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 
-class CardDetailsViewModel(
+class CardPreviewViewModel(
     initialCard: Card,
     private val repository: CardRepository
 ) : ViewModel() {

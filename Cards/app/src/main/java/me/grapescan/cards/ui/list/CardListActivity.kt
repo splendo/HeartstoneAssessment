@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_card_list.*
 import me.grapescan.cards.R
 import me.grapescan.cards.data.Card
-import me.grapescan.cards.ui.details.CardDetailsActivity
+import me.grapescan.cards.ui.preview.CardPreviewActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardListActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ class CardListActivity : AppCompatActivity() {
             }
             this@run.adapter = this@CardListActivity.adapter.apply {
                 onItemClick = { view, item ->
-                    val intent = CardDetailsActivity.createIntent(this@CardListActivity, item)
+                    val intent = CardPreviewActivity.createIntent(this@CardListActivity, item)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         // TODO: improve reverse transition to collapse into proper grid item
                         // https://android-developers.googleblog.com/2018/02/continuous-shared-element-transitions.html

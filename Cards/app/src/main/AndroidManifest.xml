@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.details.CardDetailsActivity"
+                android:name=".ui.preview.CardPreviewActivity"
                 android:theme="@style/AppTheme.Transparent"/>
         <activity android:name=".ui.info.CardInfoActivity"/>
     </application>
