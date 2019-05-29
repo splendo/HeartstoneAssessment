@@ -5,6 +5,12 @@ This is a test project. You can find the requirements in [TASK.md](TASK.md).
 **Note:** [KLM Houses](https://play.google.com/store/apps/details?id=com.klm.mobile.houses) app has been updated design recently, so I've used the most matching version [1.8.0](https://www.apkmonk.com/download-app/com.klm.mobile.houses/2_com.klm.mobile.houses_2016-10-07.apk/) as a reference.
 
 ## Android application
+
+![](Cards/img/demo.gif | width=320)
+![](Cards/img/screenshot_list.jpg | width=320)
+![](Cards/img/screenshot_preview.jpg | width=320)
+![](Cards/img/screenshot_info.png | width=320)
+
 ### Project structure
 Project consists of one Gradle module.  
 Main sources are located under [app/src/main](Cards/app/src/main).  
