@@ -6,10 +6,12 @@ This is a test project. You can find the requirements in [TASK.md](TASK.md).
 
 ## Android application
 
-![Animated demo](/Cards/img/demo.gif?raw=true | width=320)
-![Screenshot](/Cards/img/screenshot_list.jpg?raw=true | width=320)
-![Screenshot](/Cards/img/screenshot_preview.jpg?raw=true | width=320)
-![Screenshot](/Cards/img/screenshot_info.png?raw=true | width=320)
+<p float="left">
+  <img src="/Cards/img/demo.gif?raw=true" width="320" />
+  <img src="/Cards/img/screenshot_list.jpg?raw=true" width="320" /> 
+  <img src="/Cards/img/screenshot_preview.jpg?raw=true" width="320" /> 
+  <img src="/Cards/img/screenshot_info.png?raw=true" width="320" />
+</p>
 
 ### Project structure
 Project consists of one Gradle module.  
