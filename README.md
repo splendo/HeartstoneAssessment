@@ -1,116 +1,59 @@
-## Introduction
+# Heartstone Assessment
 
-Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
+This is a test project. You can find the requirements in [TASK.md](TASK.md).  
+**Note:** There was a requirement to use MVVM presentation pattern.  
+**Note:** [KLM Houses](https://play.google.com/store/apps/details?id=com.klm.mobile.houses) app has been updated design recently, so I've used the most matching version [1.8.0](https://www.apkmonk.com/download-app/com.klm.mobile.houses/2_com.klm.mobile.houses_2016-10-07.apk/) as a reference.
 
-He wants you to build a web app that has similar UI/UX. Similar way to go from the grid view to detail view, and also being able to scroll through the detail views like a carousel (hint: download the Houses app and have a look at how it works) but he wants the app to show Hearthstone card images.
+## Android application
 
-We have supplied you with a json file (`cards.json`) containing all the Heartstone cards currently available.
+<p float="left">
+  <img src="/Cards/img/demo.gif?raw=true" width="320" />
+</p>
 
-Hsiao is especially interested in the app showing `Legendary` cards with the `Deathrattle Mechanic`, below are examples of such a cards :
+### Project structure
+Project consists of one Gradle module.  
+Main sources are located under [app/src/main](Cards/app/src/main).  
+Packages are organized by screen:
+* [me.grapescan.cards.ui.list](Cards/app/src/main/java/me/grapescan/cards/ui/list) - grid list of cards
+* [me.grapescan.cards.ui.preview](Cards/app/src/main/java/me/grapescan/cards/ui/preview) - card preview with swipe support
+* [me.grapescan.cards.ui.info](Cards/app/src/main/java/me/grapescan/cards/ui/info) - card details screen
+  
+Unit tests are located under [app/src/test](Cards/app/src/test/java/me/grapescan/cards).
 
-```json
-{
-   "cardId": "FP1_014",
-   "name": "Stalagg",
-   "cardSet": "Naxxramas",
-   "type": "Minion",
-   "rarity": "Legendary",
-   "cost": 5,
-   "attack": 7,
-   "health": 4,
-   "text": "<b>Deathrattle:</b> If Feugen also died this game, summon Thaddius.",
-   "flavor": "Stalagg want to write own flavor text.  \"STALAGG AWESOME!\"",
-   "artist": "Dany Orizio",
-   "collectible": true,
-   "elite": true,
-   "playerClass": "Neutral",
-   "howToGet": "Unlocked in The Construct Quarter, in the Naxxramas adventure.",
-   "howToGetGold": "Crafting unlocked in The Construct Quarter, in the Naxxramas adventure.",
-   "img": "http://wow.zamimg.com/images/hearthstone/cards/enus/original/FP1_014.png",
-   "imgGold": "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/FP1_014_premium.gif",
-   "locale": "enUS",
-   "mechanics": [
-     {
-       "name": "Deathrattle"
-     }
-   ]
-}
-```
+### Technology stack
+* Programming language - **Kotlin**  
+*Kotlin enables me to write less code and also supports many things that would look overcomplicated in Java.*
 
-and
+* Thread management - **Kotlin Coroutines**  
+*Coroutines are great for running async code in background. Also they are promoted by Google and have support in Architecure components.*
 
-```json
-{
-   "cardId": "CFM_902",
-   "name": "Aya Blackpaw",
-   "cardSet": "Mean Streets of Gadgetzan",
-   "type": "Minion",
-   "rarity": "Legendary",
-   "cost": 6,
-   "attack": 5,
-   "health": 3,
-   "text": " <b>Battlecry and Deathrattle:</b> Summon a <b>Jade Golem</b>.",
-   "flavor": "Though young, Aya took over as the leader of Jade Lotus through her charisma and strategic acumen when her predecessor was accidentally crushed by a jade golem.",
-   "artist": "Glenn Rane",
-   "collectible": true,
-   "elite": true,
-   "playerClass": "Neutral",
-   "multiClassGroup": "Jade Lotus",
-   "classes": [
-     "Druid",
-     "Rogue",
-     "Shaman"
-   ],
-   "img": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/CFM_902.png",
-   "imgGold": "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/CFM_902_premium.gif",
-   "locale": "enUS",
-   "mechanics": [
-     {
-       "name": "Jade Golem"
-     },
-     {
-       "name": "Battlecry"
-     },
-     {
-       "name": "Deathrattle"
-     }
-   ]
-}
-```
+* Dependency provisioning - **Koin**  
+*Koin intensively uses language features of Kotlin to make dependency declaration and injection as fluent as possible. It can be less powerful than Dagger for some edge cases, but for small and medium sized projects it's good enough.*
 
-## Assignment
+* Presentation pattern - **MVVM with Android Architecure Components**  
+*I've implemented MVVM by Google recommendations with LiveData, ViewModel and other architecture components.*
 
-You are free to choose the patterns and architectures to create this web app, the requirements are :
+* Image loading - **Glide**  
+*Glide is one of several options for image loading. I've chosen it because I have more experience with it, than with Picasso or Fresco.*
 
-### Backend
+* Storage - **Shared Preferences**  
+*There is no need to design a database for this scale of data. Ideally, data processing like sorting and filtering should be implemented by backend, so I need to store locally only favorites and probably some cache.*
 
-* Create an API using a Java (plain java or Groovy/Cotlin) backend allowing you to get card information for at least legendary deathrattle cards
-* The API should also support filtering based on relevant request parameters. Ideally, the API should enable the following, listed from easy to hard:
-  * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`
-  * return sorted results (for example, alphabetically sorted), supporting both ascending and descending
-  * (optional) return the results by pages (based on a page size request parameter), iterating over the pages are maintained by a cursor which is included in the response, this cursor is used in the subsequent request
+* JSON parser - **GSON**  
+*There are alternatives like Moshi and Jackson, but I'm usually using GSON in projects and didn't notice any issues with it.*
 
-### Web Application
-
-* Create the web app using JavaScript. You can use either plain JavaScript or a Framework of your choice
-* Show the card images in a grid like the houses app
-* when user click on a grid item , navigate to the card detail view where you can display more information regarding the card ( what you would like to show and how is up to you ), when in detail view the navigation to the next and previous card should be the same as the Houses App
-* The user should be able to set a card as favourite and this info should be persisted when the app closes, how to show cards that are tagged as favourites and how to persist that information is up to you
+* Unit tests - **JUnit**, **Mockito**  
+*It is the only mainstream choice to write unit tests.*
 
 
-## What we would like to see
+## Backend
+Project is implemented with [Ktor](https://ktor.io/) framework.  
+Source code is located under [CardsAPI](CardsApi).  
+Currently it is just returning **cards.json** content.  
+It is not finished because of limited time, but I will finish it anyway, because Ktor looks really interesting.
 
-* Proper handling of asynchonous calls
-* Clean code
-* Relevant design patterns
-* Javascript best practices
-* UI should remain responsive during content loading
-* Should you use 3rd party libraries and frameworks please motivate your choice
-* Unit tests
-* Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls
+License
+----
 
-## Finally
-
-To submit your result, fork this repository. When you are satisfied with your result, create a Pull Request. Make sure your backend is up and running somewhere for the duration of the review and tell us in the comments where to find it.
-
-Good Luck!
+Source code: MIT  
+All rights to Heartstone content belongs to the legal owners.

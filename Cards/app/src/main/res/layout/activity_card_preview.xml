@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:background="#80000000"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/contentPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back"
+            style="@style/ToolbarAction"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/info"
+            style="@style/ToolbarAction"
+            android:src="@drawable/ic_info_outline_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorite"/>
+
+    <me.grapescan.cards.ui.widget.CheckableImageView
+            android:id="@+id/favorite"
+            style="@style/ToolbarAction"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
