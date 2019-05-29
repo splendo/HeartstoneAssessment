@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'de.mobilej.unmock'
 
 android {
     compileSdkVersion 28
@@ -28,6 +29,22 @@ android {
     }
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
+    }
+    unMock {
+        keep "android.os.Bundle"
+        keepStartingWith "android.text.TextUtils"
+        keepStartingWith "android.util."
+        keepStartingWith "android.text."
+        keepStartingWith "android.content.UriMatcher"
+        keepStartingWith "android.content.Intent"
+        keepStartingWith "android.content.res.Configuration"
+        keepStartingWith "org."
+        keepStartingWith "libcore."
+        keepStartingWith "com.android.internal.R"
+        keepStartingWith "com.android.internal.util."
+        keep "android.net.Uri"
+
+        keepAndRename "java.nio.charset.Charsets" to "xjava.nio.charset.Charsets"
     }
 }
 
@@ -62,9 +79,9 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.0.1"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     testImplementation "com.jraska.livedata:testing-ktx:1.1.0"
-    //def kluentVersion = "1.49"
-    //testImplementation "org.amshove.kluent:kluent:$kluentVersion"
-    //testImplementation "org.amshove.kluent:kluent-android:$kluentVersion"
+    def kluentVersion = "1.49"
+    testImplementation "org.amshove.kluent:kluent:$kluentVersion"
+    testImplementation "org.amshove.kluent:kluent-android:$kluentVersion"
     //testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     //testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     //testImplementation "com.android.support.test:runner:1.0.2"

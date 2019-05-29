@@ -23,4 +23,24 @@ data class Card(
     val imageGoldUrl: String,
     val mechanics: List<String>,
     val isFavorite: Boolean = false
-) : Parcelable
+) : Parcelable {
+    override fun equals(other: Any?) = other is Card
+            && id == other.id
+            && name == other.name
+            && cardSet == other.cardSet
+            && type == other.type
+            && rarity == other.rarity
+            && cost == other.cost
+            && attack == other.attack
+            && health == other.health
+            && text.toString() == other.text.toString()
+            && flavor == other.flavor
+            && artist == other.artist
+            && collectible == other.collectible
+            && playerClass == other.playerClass
+            && howToGetGold == other.howToGetGold
+            && imageUrl == other.imageUrl
+            && imageGoldUrl == other.imageGoldUrl
+            && mechanics == other.mechanics
+            && isFavorite == other.isFavorite
+}

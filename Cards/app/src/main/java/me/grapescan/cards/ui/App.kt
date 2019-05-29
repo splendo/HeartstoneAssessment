@@ -5,7 +5,10 @@ import com.google.gson.Gson
 import me.grapescan.cards.data.Card
 import me.grapescan.cards.data.CardRepository
 import me.grapescan.cards.data.LocalCardRepository
+import me.grapescan.cards.data.Mapper
 import me.grapescan.cards.data.storage.CardCatalogStorage
+import me.grapescan.cards.data.storage.CardDao
+import me.grapescan.cards.data.storage.CardMapper
 import me.grapescan.cards.data.storage.PersistentFavoritesStorage
 import me.grapescan.cards.ui.list.CardListViewModel
 import me.grapescan.cards.ui.preview.CardPreviewViewModel
@@ -27,9 +30,10 @@ class App : Application() {
             androidFileProperties()
             modules(module {
                 single { Gson() }
+                single<Mapper<CardDao, Card>> { CardMapper() }
                 single<CardRepository> { LocalCardRepository(get(named("favorites")), get(named("catalog"))) }
                 single(named("favorites")) { PersistentFavoritesStorage(get()) }
-                single(named("catalog")) { CardCatalogStorage(get(), get()) }
+                single(named("catalog")) { CardCatalogStorage(get(), get(), get()) }
                 viewModel { CardListViewModel(get()) }
                 factory { (initialCard: Card) -> CardPreviewViewModel(initialCard, get()) }
             })
