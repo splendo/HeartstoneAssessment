@@ -34,6 +34,7 @@
 		4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */; };
 		4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */; };
 		4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */; };
+		4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FF22CE460F003F3F0F /* BorderedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorViewController.xib; sourceTree = "<group>"; };
+		4B67C2FF22CE460F003F3F0F /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */,
 				4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */,
 				4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */,
+				4B67C2FF22CE460F003F3F0F /* BorderedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				4B67C2D222CDDED5003F3F0F /* DataProvider.swift in Sources */,
 				4B67C2AF22CDDC96003F3F0F /* Heartstone.xcdatamodeld in Sources */,
 				4B67C2D922CDE01C003F3F0F /* Coordinator.swift in Sources */,
+				4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
