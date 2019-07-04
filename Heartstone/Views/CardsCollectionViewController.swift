@@ -8,25 +8,20 @@
 
 import UIKit
 
-class CardsCollectionViewController: UICollectionViewController {
+class CardsCollectionViewController: BaseCollectionViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let viewModel: CardListViewModel
 
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.register(CardViewCell.self)
+    init(viewModel: CardListViewModel, layout: UICollectionViewLayout) {
+        self.viewModel = viewModel
+        super.init(collectionViewLayout: layout)
     }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: CardViewCell = collectionView.dequeue(at: indexPath)
-        return cell
+        return viewModel.cards.count
     }
 }

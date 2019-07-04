@@ -1,5 +1,5 @@
 //
-//  FavoritesCollectionViewController.swift
+//  LoadingViewController.swift
 //  Heartstone
 //
 //  Created by Grigory Avdyushin on 04/07/2019.
@@ -8,5 +8,4 @@
 
 import UIKit
 
-class FavoritesCollectionViewController: BaseCollectionViewController {
-}
+class LoadingViewController: UIViewController { }

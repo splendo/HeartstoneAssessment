@@ -8,9 +8,11 @@
 
 struct CardCollection: Decodable {
 
-    let groups: [String: [Card]]
+    private let groups: [String: [Card]]
+    // Flatten cards list
+    let cards: [Card]
 
-    struct GroupKeys: CodingKey {
+    private struct GroupKeys: CodingKey {
         let intValue: Int? = nil
         var stringValue: String
         init?(stringValue: String) {
@@ -22,9 +24,13 @@ struct CardCollection: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: GroupKeys.self)
         var results = [String: [Card]]()
+        var cardsList = [Card]()
         try container.allKeys.forEach { key in
-            results[key.stringValue] = try container.decode([Card].self, forKey: key)
+            let cards = try container.decode([Card].self, forKey: key)
+            results[key.stringValue] = cards
+            cardsList.append(contentsOf: cards)
         }
         groups = results
+        cards = cardsList
     }
 }

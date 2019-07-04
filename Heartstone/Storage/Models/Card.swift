@@ -17,8 +17,8 @@ struct Card: Decodable {
 
     let cardId: String
     let name: String
-    let text: String?
     let type: CardType
+    let text: String?
     let rarity: CardRarity?
     let classes: [String]?
     let mechanics: [Mechanics]?

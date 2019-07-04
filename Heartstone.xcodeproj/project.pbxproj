@@ -28,6 +28,12 @@
 		4B67C2ED22CDEC61003F3F0F /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */; };
 		4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */; };
 		4B67C2F122CDF8E5003F3F0F /* CardCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F022CDF8E5003F3F0F /* CardCollection.swift */; };
+		4B67C2F322CE211F003F3F0F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */; };
+		4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */; };
+		4B67C2F922CE253B003F3F0F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */; };
+		4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */; };
+		4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */; };
+		4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,12 @@
 		4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDependency.swift; sourceTree = "<group>"; };
 		4B67C2F022CDF8E5003F3F0F /* CardCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollection.swift; sourceTree = "<group>"; };
+		4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +146,13 @@
 		4B67C2C922CDDD07003F3F0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B67C2F422CE23FA003F3F0F /* Models */,
 				4B67C2E722CDE867003F3F0F /* Cells */,
+				4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */,
 				4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */,
 				4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */,
+				4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */,
+				4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,7 +162,9 @@
 			children = (
 				4B67C2B022CDDC97003F3F0F /* Assets.xcassets */,
 				4B67C2E922CDE889003F3F0F /* CardViewCell.xib */,
+				4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */,
 				4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */,
+				4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */,
 				4B67C2CE22CDDE72003F3F0F /* cards.json */,
 			);
 			path = Resources;
@@ -211,6 +229,14 @@
 				4B67C2E822CDE889003F3F0F /* CardViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4B67C2F422CE23FA003F3F0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +323,8 @@
 				4B67C2B422CDDC97003F3F0F /* LaunchScreen.storyboard in Resources */,
 				4B67C2B122CDDC97003F3F0F /* Assets.xcassets in Resources */,
 				4B67C2CF22CDDE72003F3F0F /* cards.json in Resources */,
+				4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */,
+				4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */,
 				4B67C2EB22CDE889003F3F0F /* CardViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,13 +345,17 @@
 			files = (
 				4B67C2D722CDDFEC003F3F0F /* AppDependency.swift in Sources */,
 				4B67C2E322CDE64B003F3F0F /* FavoritesCollectionViewController.swift in Sources */,
+				4B67C2F922CE253B003F3F0F /* LoadingViewController.swift in Sources */,
 				4B67C2E622CDE7A2003F3F0F /* Instantiatable.swift in Sources */,
 				4B67C2F122CDF8E5003F3F0F /* CardCollection.swift in Sources */,
+				4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */,
 				4B67C2DD22CDE1C4003F3F0F /* HomeCoordinator.swift in Sources */,
+				4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */,
 				4B67C2A722CDDC96003F3F0F /* AppDelegate.swift in Sources */,
 				4B67C2DF22CDE571003F3F0F /* FavoritesCoordinator.swift in Sources */,
 				4B67C2EA22CDE889003F3F0F /* CardViewCell.swift in Sources */,
 				4B67C2E122CDE640003F3F0F /* CardsCollectionViewController.swift in Sources */,
+				4B67C2F322CE211F003F3F0F /* BaseCollectionViewController.swift in Sources */,
 				4B67C2D422CDDF69003F3F0F /* Card.swift in Sources */,
 				4B67C2DB22CDE163003F3F0F /* AppCoordinator.swift in Sources */,
 				4B67C2D222CDDED5003F3F0F /* DataProvider.swift in Sources */,

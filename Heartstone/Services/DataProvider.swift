@@ -9,29 +9,46 @@
 import Foundation
 
 enum DataProviderError: Error {
-    case notFound
-    case parsingFailed(inner: Error)
+    case resourceNotFound
+    case parsingFailure(inner: Error)
 }
 
 protocol DataProvider {
-    typealias FetchCardsCompletion = (Result<CardCollection, Error>) -> Void
+    typealias FetchCardsResult = Result<[Card], Error>
+    typealias FetchCardsCompletion = (FetchCardsResult) -> Void
+
     func fetchCardsList(_ completion: @escaping FetchCardsCompletion)
 }
 
 struct LocalCardDataProvider: DataProvider {
 
-    func fetchCardsList(_ completion: @escaping FetchCardsCompletion) {
+    private let queue = DispatchQueue(label: "LocalCardDataProviderQueue")
 
+    // Completion block will be called on main queue
+    func fetchCardsList(_ completion: @escaping FetchCardsCompletion) {
         guard let path = Bundle.main.url(forResource: "cards", withExtension: "json") else {
-            return completion(.failure(DataProviderError.notFound))
+            DispatchQueue.main.async {
+                completion(.failure(DataProviderError.resourceNotFound))
+            }
+            return
         }
 
-        do {
-            let data = try Data(contentsOf: path)
-            let collection = try JSONDecoder().decode(CardCollection.self, from: data)
-            completion(.success(collection))
-        } catch {
-            completion(.failure(DataProviderError.parsingFailed(inner: error)))
+        queue.async {
+            do {
+                let data = try Data(contentsOf: path)
+                let collection = try JSONDecoder().decode(CardCollection.self, from: data)
+                // TODO: Debug only
+                let filter: (Card) -> Bool = { card in
+                    return true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    completion(.success(collection.cards.filter(filter)))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(DataProviderError.parsingFailure(inner: error)))
+                }
+            }
         }
     }
 }
