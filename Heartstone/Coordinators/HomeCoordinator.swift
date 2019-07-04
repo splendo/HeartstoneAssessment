@@ -50,6 +50,28 @@ class HomeCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
             layout: UICollectionViewFlowLayout()
         )
         cardsViewController.title = title
+        cardsViewController.delegate = self
         navigationViewController.viewControllers = [cardsViewController]
+    }
+}
+
+extension HomeCoordinator: CardCollectionScreenDelegate {
+
+    func didSelectCardInfo(_ cardInfo: CardMinimumDetails) {
+        let detailsCoordinator = DetailsCoordinator(
+            dependency: dependency,
+            navigation: navigationViewController,
+            cardInfo: cardInfo
+        )
+        detailsCoordinator.delegate = self
+        add(childCoordinator: detailsCoordinator)
+        detailsCoordinator.start()
+    }
+}
+
+extension HomeCoordinator: DetailsDelegate {
+
+    func onDetailsFlowFinished<T>(_ coordinator: Coordinator<T>) {
+        childCoordinators.removeAll { $0 === coordinator }
     }
 }

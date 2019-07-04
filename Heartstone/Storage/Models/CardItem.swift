@@ -8,8 +8,12 @@
 
 import CoreData
 
-extension CardItem {
-    
+extension CardItem: CardMinimumDetails {
+
+    var title: String {
+        return name ?? "Unknown"
+    }
+
     var imageURL: URL? {
         guard let img = img else {
             return nil

@@ -5,8 +5,9 @@
         <attribute name="img" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CardItem" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="CardItem" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

@@ -37,6 +37,10 @@
 		4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FF22CE460F003F3F0F /* BorderedView.swift */; };
 		4B67C30222CE6DCA003F3F0F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */; };
 		4B81511B22CE7AE70093E9C0 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511A22CE7AE70093E9C0 /* CardItem.swift */; };
+		4B81511D22CE7B6F0093E9C0 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511C22CE7B6F0093E9C0 /* Storage.swift */; };
+		4B81511F22CE7DE70093E9C0 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */; };
+		4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */; };
+		4B81512322CE7E7F0093E9C0 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +89,10 @@
 		4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		4B67C30422CE7096003F3F0F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Heartstone/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		4B81511A22CE7AE70093E9C0 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
+		4B81511C22CE7B6F0093E9C0 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,7 @@
 				4B67C2E722CDE867003F3F0F /* Cells */,
 				4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */,
 				4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */,
+				4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */,
 				4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */,
 				4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */,
 				4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */,
@@ -171,6 +180,7 @@
 			children = (
 				4B67C2B022CDDC97003F3F0F /* Assets.xcassets */,
 				4B67C2E922CDE889003F3F0F /* CardViewCell.xib */,
+				4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */,
 				4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */,
 				4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */,
 				4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */,
@@ -205,6 +215,7 @@
 				4B67C2DA22CDE163003F3F0F /* AppCoordinator.swift */,
 				4B67C2DC22CDE1C4003F3F0F /* HomeCoordinator.swift */,
 				4B67C2DE22CDE571003F3F0F /* FavoritesCoordinator.swift */,
+				4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -213,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				4B67C2D122CDDED5003F3F0F /* DataProvider.swift */,
+				4B81511C22CE7B6F0093E9C0 /* Storage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -340,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B81512322CE7E7F0093E9C0 /* DetailsViewController.xib in Resources */,
 				4B67C2B422CDDC97003F3F0F /* LaunchScreen.storyboard in Resources */,
 				4B67C2B122CDDC97003F3F0F /* Assets.xcassets in Resources */,
 				4B67C2CF22CDDE72003F3F0F /* cards.json in Resources */,
@@ -387,14 +400,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B67C2D722CDDFEC003F3F0F /* AppDependency.swift in Sources */,
+				4B81511D22CE7B6F0093E9C0 /* Storage.swift in Sources */,
 				4B67C2E322CDE64B003F3F0F /* FavoritesCollectionViewController.swift in Sources */,
 				4B67C2F922CE253B003F3F0F /* LoadingViewController.swift in Sources */,
+				4B81511F22CE7DE70093E9C0 /* DetailsCoordinator.swift in Sources */,
 				4B67C2E622CDE7A2003F3F0F /* Instantiatable.swift in Sources */,
 				4B67C30222CE6DCA003F3F0F /* CardViewModel.swift in Sources */,
 				4B81511B22CE7AE70093E9C0 /* CardItem.swift in Sources */,
 				4B67C2F122CDF8E5003F3F0F /* CardCollection.swift in Sources */,
 				4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */,
 				4B67C2DD22CDE1C4003F3F0F /* HomeCoordinator.swift in Sources */,
+				4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */,
 				4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */,
 				4B67C2A722CDDC96003F3F0F /* AppDelegate.swift in Sources */,
 				4B67C2DF22CDE571003F3F0F /* FavoritesCoordinator.swift in Sources */,

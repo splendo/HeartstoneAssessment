@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /// Favorites List Coordinator
 class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
@@ -23,10 +24,25 @@ class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
         collectionViewLayout: UICollectionViewFlowLayout()
     )
 
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<CardItem> = {
+        let fetchRequest: NSFetchRequest<CardItem> = CardItem.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "updatedAt", ascending: false)
+        ]
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: dependency.storage.privateContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        return fetchedResultsController
+    }()
+
     override func start() {
         super.start()
 
         viewController.title = NSLocalizedString("Favorites", comment: "Favorites")
         viewController.view.backgroundColor = .green
+        viewController.fetchedResultsController = fetchedResultsController
     }
 }

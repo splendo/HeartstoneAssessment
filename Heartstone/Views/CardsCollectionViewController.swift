@@ -33,4 +33,9 @@ class CardsCollectionViewController: BaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.cards.count
     }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let card = viewModel.cards[indexPath.row]
+        delegate?.didSelectCardInfo(card)
+    }
 }
