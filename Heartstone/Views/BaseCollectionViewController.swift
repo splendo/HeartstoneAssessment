@@ -10,11 +10,12 @@ import UIKit
 
 class BaseCollectionViewController: UICollectionViewController {
 
-    private struct Constants {
+    struct Constants {
         static let itemsInRow = 3
         static let lineSpacing: CGFloat = 0
         static let rowSpacing: CGFloat = 0
         static let cellHeight: CGFloat = 160
+
         static func cellWidth(in view: UIView) -> CGFloat {
             assert(itemsInRow >= 0)
             let availableWidth = view.bounds.width - (lineSpacing * CGFloat(itemsInRow - 1))
@@ -26,9 +27,7 @@ class BaseCollectionViewController: UICollectionViewController {
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
 
-    func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) {
-
-    }
+    func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) { }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,7 @@ class BaseCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        fatalError("Should be overriden in subclass")
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -55,8 +54,4 @@ class BaseCollectionViewController: UICollectionViewController {
         configureCell(cell, at: indexPath)
         return cell
     }
-}
-
-extension BaseCollectionViewController: UICollectionViewDelegateFlowLayout {
-
 }

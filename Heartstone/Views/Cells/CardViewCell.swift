@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CardViewCell: UICollectionViewCell, NibInstantiatable {
 
-    @IBOutlet weak var borderedView: BorderedView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet private weak var borderedView: BorderedView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+
+    var viewModel: CardViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            titleLabel.text = viewModel.name
+            borderedView.borderSides = viewModel.borderSides
+            if let url = viewModel.imageURL {
+                debugPrint(url)
+                imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
+            }
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

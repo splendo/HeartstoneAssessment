@@ -24,6 +24,15 @@ struct LocalCardDataProvider: DataProvider {
 
     private let queue = DispatchQueue(label: "LocalCardDataProviderQueue")
 
+    static let filter: (Card) -> Bool = { card in
+        if
+            card.rarity == "Legendary",
+            card.mechanics?.first(where: { $0.name == "Deathrattle" }) != nil {
+                return true
+        }
+        return false
+    }
+
     // Completion block will be called on main queue
     func fetchCardsList(_ completion: @escaping FetchCardsCompletion) {
         guard let path = Bundle.main.url(forResource: "cards", withExtension: "json") else {
@@ -37,12 +46,15 @@ struct LocalCardDataProvider: DataProvider {
             do {
                 let data = try Data(contentsOf: path)
                 let collection = try JSONDecoder().decode(CardCollection.self, from: data)
+
+                let results = collection
+                    .cards
+                    .filter(LocalCardDataProvider.filter)
+                    .sorted(by: { $0.name < $1.name })
+
                 // TODO: Debug only
-                let filter: (Card) -> Bool = { card in
-                    return true
-                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    completion(.success(collection.cards.filter(filter)))
+                    completion(.success(results))
                 }
             } catch {
                 DispatchQueue.main.async {

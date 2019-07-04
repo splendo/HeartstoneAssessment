@@ -23,23 +23,14 @@ class CardsCollectionViewController: BaseCollectionViewController {
 
     override func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) {
         let card = viewModel.cards[indexPath.row]
-        var borderSides: BorderLayer.Side = []
-        if indexPath.row < 3 {
-            borderSides.insert(.top)
-        }
-        if indexPath.row % 3 == 0 {
-            borderSides.insert([.left, .bottom])
-        } else if (indexPath.row - 1) % 3 == 0 {
-            borderSides.insert([.left, .bottom, .right])
-        } else if (indexPath.row - 2) % 3 == 0 {
-            borderSides.insert([.bottom, .right])
-        }
-        cell.borderedView.borderSides = borderSides
-        cell.titleLabel.text = card.name
+        cell.viewModel = CardViewModel(
+            name: card.name,
+            imageURL: card.imageURL,
+            borderSides: BorderLayer.Side.border(at: indexPath)
+        )
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: Debug only
-        return min(14, viewModel.cards.count)
+        return viewModel.cards.count
     }
 }

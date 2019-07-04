@@ -39,6 +39,7 @@ class HomeCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
         guard case .success(let cards) = result, cards.isEmpty == false else {
             errorViewController.title = title
             navigationViewController.viewControllers = [errorViewController]
+            debugPrint(result)
             return
         }
 
