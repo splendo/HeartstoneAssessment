@@ -67,9 +67,22 @@ class HomeCoordinatorTests: XCTestCase {
     }
 
     func testShowDetails() {
+        let expectation = self.expectation(description: "Data Fetched")
         let card = Card(cardId: "card-id", name: "some name", type: "type", img: nil, text: nil, rarity: nil, classes: nil, mechanics: nil)
+        let mock = (dependency.dataProvider as! MockDataProvider)
+        mock.onFetch = { completion in
+            completion(.success([card]))
+            DispatchQueue.main.async {
+                expectation.fulfill()
+            }
+        }
         coordinator.start()
-        coordinator.didSelectCard(card)
+        wait(for: [expectation], timeout: 5)
+        guard let collectionController = coordinator.navigationViewController.visibleViewController as? UICollectionViewController else {
+            XCTFail()
+            return
+        }
+        collectionController.collectionView(collectionController.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
         XCTAssertNotNil(coordinator.childCoordinators.first(where: { $0 is DetailsCoordinator }))
     }
 }

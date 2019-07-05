@@ -50,6 +50,7 @@
 		4B81513922CF93B40093E9C0 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */; };
 		4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513A22CF95C50093E9C0 /* CardItemTests.swift */; };
 		4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */; };
+		4B81513F22CFD8E60093E9C0 /* CardStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
 		4B81513A22CF95C50093E9C0 /* CardItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItemTests.swift; sourceTree = "<group>"; };
 		4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinatorTests.swift; sourceTree = "<group>"; };
+		4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */,
 				4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */,
 				4B81513A22CF95C50093E9C0 /* CardItemTests.swift */,
+				4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */,
 				4B67C2C022CDDC97003F3F0F /* Info.plist */,
 			);
 			path = HeartstoneTests;
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */,
+				4B81513F22CFD8E60093E9C0 /* CardStorageTests.swift in Sources */,
 				4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */,
 				4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */,
 				4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */,

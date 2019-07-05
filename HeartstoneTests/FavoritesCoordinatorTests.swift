@@ -84,12 +84,8 @@ class FavoritesCoordinatorTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
-        guard let item = cardItem else {
-            XCTFail()
-            return
-        }
         coordinator.start()
-        coordinator.didSelectCardItem(item)
+        coordinator.viewController.collectionView(coordinator.viewController.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
         XCTAssertNotNil(coordinator.childCoordinators.first(where: { $0 is DetailsCoordinator }))
     }
 }
