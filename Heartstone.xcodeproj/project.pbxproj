@@ -48,6 +48,9 @@
 		4B81512F22CF3C070093E9C0 /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512E22CF3C070093E9C0 /* CardStorage.swift */; };
 		4B81513222CF88780093E9C0 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513022CF88780093E9C0 /* EmptyViewController.swift */; };
 		4B81513322CF88780093E9C0 /* EmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81513122CF88780093E9C0 /* EmptyViewController.xib */; };
+		4B81513922CF93B40093E9C0 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */; };
+		4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513A22CF95C50093E9C0 /* CardItemTests.swift */; };
+		4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		4B81512E22CF3C070093E9C0 /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
 		4B81513022CF88780093E9C0 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		4B81513122CF88780093E9C0 /* EmptyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyViewController.xib; sourceTree = "<group>"; };
+		4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
+		4B81513A22CF95C50093E9C0 /* CardItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItemTests.swift; sourceTree = "<group>"; };
+		4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +174,10 @@
 				4B81512A22CF37250093E9C0 /* DecoderTests.swift */,
 				4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */,
 				4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */,
+				4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */,
+				4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */,
 				4B67C2BE22CDDC97003F3F0F /* HeartstoneTests.swift */,
+				4B81513A22CF95C50093E9C0 /* CardItemTests.swift */,
 				4B67C2C022CDDC97003F3F0F /* Info.plist */,
 			);
 			path = HeartstoneTests;
@@ -455,8 +464,11 @@
 			files = (
 				4B67C2BF22CDDC97003F3F0F /* HeartstoneTests.swift in Sources */,
 				4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */,
+				4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */,
+				4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */,
 				4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */,
 				4B67C2ED22CDEC61003F3F0F /* AppCoordinatorTests.swift in Sources */,
+				4B81513922CF93B40093E9C0 /* DetailsViewModelTests.swift in Sources */,
 				4B81512B22CF37250093E9C0 /* DecoderTests.swift in Sources */,
 				4B81512722CF2FA50093E9C0 /* Heartstone.xcdatamodeld in Sources */,
 			);
