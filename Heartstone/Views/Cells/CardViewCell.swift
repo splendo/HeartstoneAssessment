@@ -11,7 +11,12 @@ import Kingfisher
 
 class CardViewCell: UICollectionViewCell, NibInstantiatable {
 
-    @IBOutlet private weak var borderedView: BorderedView!
+    @IBOutlet private weak var borderedView: BorderedView! {
+        didSet {
+            borderedView.borderColor = UIColor.blue.cgColor
+        }
+    }
+
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
 
@@ -26,11 +31,5 @@ class CardViewCell: UICollectionViewCell, NibInstantiatable {
                 imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
             }
         }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        borderedView.borderColor = UIColor.blue.cgColor
     }
 }

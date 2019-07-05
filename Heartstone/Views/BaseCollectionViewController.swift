@@ -27,7 +27,9 @@ class BaseCollectionViewController: UICollectionViewController {
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
 
-    func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) { }
+    func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) {
+        /* Call in subclass to configure Cell */
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

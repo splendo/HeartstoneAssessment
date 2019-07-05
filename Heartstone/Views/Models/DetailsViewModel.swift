@@ -19,7 +19,9 @@ struct DetailsViewModel {
         self.cardId = card.cardId
         self.name = card.name
         self.imageURL = card.imageURL
-        self.text = "Rarity: \(card.rarity ?? "unknown")"
+        let format = NSLocalizedString("Rarity: %@", comment: "Rarity")
+        let unknown = NSLocalizedString("Unknown", comment: "Unknown rarity")
+        self.text = String.localizedStringWithFormat(format, card.rarity ?? unknown)
         self.isFavorite = isFavorite
     }
 

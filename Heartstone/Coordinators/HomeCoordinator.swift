@@ -16,15 +16,15 @@ class HomeCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
     }()
 
     private(set) lazy var navigationViewController = UINavigationController()
-    private(set) lazy var loadingViewController = LoadingViewController(nibName: nil, bundle: nil)
-    private(set) lazy var errorViewController = ErrorViewController(nibName: nil, bundle: nil)
 
     private let title = NSLocalizedString("Cards", comment: "Cards")
 
     override func start() {
         super.start()
 
+        let loadingViewController = LoadingViewController(nibName: nil, bundle: nil)
         navigationViewController.viewControllers = [loadingViewController]
+        navigationViewController.tabBarItem.image = UIImage(named: "placeholder")
         loadingViewController.title = title
 
         dependency.dataProvider.fetchCardsList { result in
@@ -37,13 +37,11 @@ class HomeCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
 
     fileprivate func processResults(_ result: DataProvider.FetchCardsResult) {
         guard case .success(let cards) = result, cards.isEmpty == false else {
+            let errorViewController = ErrorViewController(nibName: nil, bundle: nil)
             errorViewController.title = title
             navigationViewController.viewControllers = [errorViewController]
-            debugPrint(result)
             return
         }
-
-        debugPrint("Loaded \(cards.count) cards")
 
         let cardsViewController =  CardsCollectionViewController(
             viewModel: CardListViewModel(cards: cards),

@@ -27,6 +27,7 @@ class Coordinator<T> {
     deinit {
         // Stop self on release
         stop()
+        debugPrint("\(self) is about to deinit")
     }
 
     /// Start coordinator
@@ -36,7 +37,6 @@ class Coordinator<T> {
 
     /// Stop current and *all* child coordinators
     func stop() {
-        debugPrint("\(self) is about to stop")
         // Notify parent that we're finished and parent will remove us
         parent?.onChildFinished(self)
         childCoordinators.forEach { $0.stop() }

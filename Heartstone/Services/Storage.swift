@@ -13,6 +13,7 @@ public struct Storage {
     private let container: NSPersistentContainer
     private let saveQueue: OperationQueue
     public var privateContext: NSManagedObjectContext
+    
     public var mainContext: NSManagedObjectContext {
         return container.viewContext
     }

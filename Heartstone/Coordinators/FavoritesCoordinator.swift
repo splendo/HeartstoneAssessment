@@ -41,6 +41,7 @@ class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
     override func start() {
         super.start()
 
+        navigationViewController.tabBarItem.image = UIImage(named: "placeholder")
         viewController.title = NSLocalizedString("Favorites", comment: "Favorites")
         viewController.delegate = self
         viewController.fetchedResultsController = fetchedResultsController

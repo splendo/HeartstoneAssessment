@@ -45,7 +45,7 @@ class DetailsViewModelTests: XCTestCase {
         let model = DetailsViewModel(card: card, isFavorite: true)
         XCTAssertEqual(model.cardId, "123")
         XCTAssertEqual(model.name, "name")
-        XCTAssertEqual(model.text, "Rarity: unknown")
+        XCTAssertEqual(model.text, "Rarity: Unknown")
         XCTAssertEqual(model.imageURL?.absoluteString, "http://aaa.bb/c.jpg")
         XCTAssertTrue(model.isFavorite)
         XCTAssertEqual(model.favoriteButtonTitle, "Remove from Favorites")
