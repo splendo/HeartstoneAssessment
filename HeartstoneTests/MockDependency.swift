@@ -6,6 +6,7 @@
 //  Copyright © 2019 Grigory Avdyushin. All rights reserved.
 //
 
+import CoreData
 @testable import Heartstone
 
 class MockDataProvider: DataProvider {
@@ -41,6 +42,20 @@ class MockCardStorage: CardStorage {
 }
 
 class MockDependency: Dependency {
-    var dataProvider: DataProvider = MockDataProvider()
-    var cardStorage: CardStorage = MockCardStorage(Storage(name: "Heartstone"))
+
+    let dataProvider: DataProvider = MockDataProvider()
+    let cardStorage: CardStorage = MockCardStorage(
+        Storage(container: MockDependency.mockPersistentContainer())
+    )
+
+    static func mockPersistentContainer() -> NSPersistentContainer {
+        let container = NSPersistentContainer(name: "Heartstone")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            assert(error == nil)
+        }
+        return container
+    }
 }

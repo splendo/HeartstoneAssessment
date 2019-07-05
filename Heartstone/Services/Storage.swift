@@ -12,29 +12,19 @@ public struct Storage {
 
     private let container: NSPersistentContainer
     private let saveQueue: OperationQueue
-
-    public init(name: String = "Model") {
-        container = NSPersistentContainer(name: name)
-        container.loadPersistentStores { (storeDescription, error) in
-            debugPrint("CoreData: Inited \(storeDescription)")
-            if let error = error {
-                debugPrint("CoreData: Unresolved error \(error)")
-                return
-            }
-        }
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        privateContext = container.newBackgroundContext()
-
-        saveQueue = OperationQueue()
-        saveQueue.maxConcurrentOperationCount = 1
-        saveQueue.qualityOfService = .utility
-    }
-
+    public var privateContext: NSManagedObjectContext
     public var mainContext: NSManagedObjectContext {
         return container.viewContext
     }
 
-    public var privateContext: NSManagedObjectContext
+    public init(container: NSPersistentContainer) {
+        self.container = container
+        self.privateContext = container.newBackgroundContext()
+
+        self.saveQueue = OperationQueue()
+        self.saveQueue.maxConcurrentOperationCount = 1
+        self.saveQueue.qualityOfService = .utility
+    }
 
     public func performAndSave(context: NSManagedObjectContext,
                                block: @escaping (NSManagedObjectContext) -> Void,

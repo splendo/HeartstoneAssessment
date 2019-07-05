@@ -16,7 +16,7 @@ class CardItemTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        storage = Storage(name: "Heartstone")
+        storage = Storage(container: MockDependency.mockPersistentContainer())
     }
 
     override func tearDown() {

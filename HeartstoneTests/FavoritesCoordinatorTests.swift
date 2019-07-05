@@ -39,8 +39,29 @@ class FavoritesCoordinatorTests: XCTestCase {
     }
 
     func testStart() {
+        let expectation = self.expectation(description: "Created")
+        var cardItem: CardItem?
+
+        dependency.cardStorage.storage.performAndSave(context: dependency.cardStorage.storage.privateContext, block: { context in
+
+            let entity = NSEntityDescription.entity(forEntityName: "CardItem", in: context)!
+            cardItem = CardItem.init(entity: entity, insertInto: context)
+
+            cardItem?.cardId = "123"
+            cardItem?.name = "name"
+            cardItem?.img = "img"
+            cardItem?.type = "type"
+            cardItem?.rarity = "rarity"
+            cardItem?.updatedAt = Date()
+
+        }) { state in
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
         coordinator.start()
         XCTAssertTrue(coordinator.navigationViewController.visibleViewController is FavoritesCollectionViewController)
+        XCTAssertEqual(coordinator.viewController.numberOfSections(in: coordinator.viewController.collectionView), 1)
+        XCTAssertEqual(coordinator.viewController.collectionView(coordinator.viewController.collectionView, numberOfItemsInSection: 0), 1)
     }
 
     func testDetails() {
