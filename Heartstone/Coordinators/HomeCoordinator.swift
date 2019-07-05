@@ -55,23 +55,15 @@ class HomeCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
     }
 }
 
-extension HomeCoordinator: CardCollectionScreenDelegate {
+extension HomeCoordinator: CardsCollectionViewDelegate {
 
-    func didSelectCardInfo(_ cardInfo: CardMinimumDetails) {
+    func didSelectCard(_ card: Card) {
         let detailsCoordinator = DetailsCoordinator(
             dependency: dependency,
             navigation: navigationViewController,
-            cardInfo: cardInfo
+            card: card
         )
-        detailsCoordinator.delegate = self
         add(childCoordinator: detailsCoordinator)
         detailsCoordinator.start()
-    }
-}
-
-extension HomeCoordinator: DetailsDelegate {
-
-    func onDetailsFlowFinished<T>(_ coordinator: Coordinator<T>) {
-        childCoordinators.removeAll { $0 === coordinator }
     }
 }

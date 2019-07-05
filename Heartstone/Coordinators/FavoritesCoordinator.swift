@@ -13,10 +13,10 @@ import CoreData
 class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
 
     lazy var rootViewController: UIViewController = {
-        return navigationVC
+        return navigationViewController
     }()
 
-    private(set) lazy var navigationVC: UINavigationController = {
+    private(set) lazy var navigationViewController: UINavigationController = {
         return UINavigationController(rootViewController: viewController)
     }()
 
@@ -31,7 +31,7 @@ class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
         ]
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: dependency.storage.privateContext,
+            managedObjectContext: dependency.cardStorage.storage.privateContext,
             sectionNameKeyPath: nil,
             cacheName: nil
         )
@@ -42,7 +42,21 @@ class FavoritesCoordinator<T: Dependency>: Coordinator<T>, RootViewProvider {
         super.start()
 
         viewController.title = NSLocalizedString("Favorites", comment: "Favorites")
-        viewController.view.backgroundColor = .green
+        viewController.delegate = self
         viewController.fetchedResultsController = fetchedResultsController
+        viewController.fetchedResultsController?.delegate = viewController
+    }
+}
+
+extension FavoritesCoordinator: FavoritesCollectionViewDelegate {
+
+    func didSelectCardItem(_ cardItem: CardItem) {
+        let detailsCoordinator = DetailsCoordinator(
+            dependency: dependency,
+            navigation: navigationViewController,
+            card: cardItem.toCard()
+        )
+        add(childCoordinator: detailsCoordinator)
+        detailsCoordinator.start()
     }
 }

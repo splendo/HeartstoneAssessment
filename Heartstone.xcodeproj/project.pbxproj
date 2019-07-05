@@ -41,6 +41,13 @@
 		4B81511F22CE7DE70093E9C0 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */; };
 		4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */; };
 		4B81512322CE7E7F0093E9C0 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */; };
+		4B81512722CF2FA50093E9C0 /* Heartstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2AD22CDDC96003F3F0F /* Heartstone.xcdatamodeld */; };
+		4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */; };
+		4B81512B22CF37250093E9C0 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512A22CF37250093E9C0 /* DecoderTests.swift */; };
+		4B81512D22CF3A7A0093E9C0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */; };
+		4B81512F22CF3C070093E9C0 /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512E22CF3C070093E9C0 /* CardStorage.swift */; };
+		4B81513222CF88780093E9C0 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513022CF88780093E9C0 /* EmptyViewController.swift */; };
+		4B81513322CF88780093E9C0 /* EmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81513122CF88780093E9C0 /* EmptyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +100,12 @@
 		4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
 		4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
+		4B81512A22CF37250093E9C0 /* DecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
+		4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		4B81512E22CF3C070093E9C0 /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
+		4B81513022CF88780093E9C0 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		4B81513122CF88780093E9C0 /* EmptyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */,
+				4B81512A22CF37250093E9C0 /* DecoderTests.swift */,
 				4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */,
+				4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */,
 				4B67C2BE22CDDC97003F3F0F /* HeartstoneTests.swift */,
 				4B67C2C022CDDC97003F3F0F /* Info.plist */,
 			);
@@ -167,6 +182,7 @@
 				4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */,
 				4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */,
 				4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */,
+				4B81513022CF88780093E9C0 /* EmptyViewController.swift */,
 				4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */,
 				4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */,
 				4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */,
@@ -181,6 +197,7 @@
 				4B67C2B022CDDC97003F3F0F /* Assets.xcassets */,
 				4B67C2E922CDE889003F3F0F /* CardViewCell.xib */,
 				4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */,
+				4B81513122CF88780093E9C0 /* EmptyViewController.xib */,
 				4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */,
 				4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */,
 				4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */,
@@ -225,6 +242,7 @@
 			children = (
 				4B67C2D122CDDED5003F3F0F /* DataProvider.swift */,
 				4B81511C22CE7B6F0093E9C0 /* Storage.swift */,
+				4B81512E22CF3C070093E9C0 /* CardStorage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,6 +276,7 @@
 			children = (
 				4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */,
 				4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */,
+				4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -358,6 +377,7 @@
 				4B67C2CF22CDDE72003F3F0F /* cards.json in Resources */,
 				4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */,
 				4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */,
+				4B81513322CF88780093E9C0 /* EmptyViewController.xib in Resources */,
 				4B67C2EB22CDE889003F3F0F /* CardViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +431,7 @@
 				4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */,
 				4B67C2DD22CDE1C4003F3F0F /* HomeCoordinator.swift in Sources */,
 				4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */,
+				4B81512D22CF3A7A0093E9C0 /* DetailsViewModel.swift in Sources */,
 				4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */,
 				4B67C2A722CDDC96003F3F0F /* AppDelegate.swift in Sources */,
 				4B67C2DF22CDE571003F3F0F /* FavoritesCoordinator.swift in Sources */,
@@ -421,6 +442,8 @@
 				4B67C2DB22CDE163003F3F0F /* AppCoordinator.swift in Sources */,
 				4B67C2D222CDDED5003F3F0F /* DataProvider.swift in Sources */,
 				4B67C2AF22CDDC96003F3F0F /* Heartstone.xcdatamodeld in Sources */,
+				4B81512F22CF3C070093E9C0 /* CardStorage.swift in Sources */,
+				4B81513222CF88780093E9C0 /* EmptyViewController.swift in Sources */,
 				4B67C2D922CDE01C003F3F0F /* Coordinator.swift in Sources */,
 				4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */,
 			);
@@ -431,8 +454,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B67C2BF22CDDC97003F3F0F /* HeartstoneTests.swift in Sources */,
+				4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */,
 				4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */,
 				4B67C2ED22CDEC61003F3F0F /* AppCoordinatorTests.swift in Sources */,
+				4B81512B22CF37250093E9C0 /* DecoderTests.swift in Sources */,
+				4B81512722CF2FA50093E9C0 /* Heartstone.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

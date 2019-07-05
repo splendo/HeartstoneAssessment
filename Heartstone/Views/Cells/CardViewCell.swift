@@ -23,7 +23,6 @@ class CardViewCell: UICollectionViewCell, NibInstantiatable {
             titleLabel.text = viewModel.name
             borderedView.borderSides = viewModel.borderSides
             if let url = viewModel.imageURL {
-                debugPrint(url)
                 imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
             }
         }

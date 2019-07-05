@@ -8,13 +8,9 @@
 
 import UIKit
 
-protocol CardCollectionScreenDelegate: class {
-    func didSelectCardInfo(_ cardInfo: CardMinimumDetails)
-}
-
 class BaseCollectionViewController: UICollectionViewController {
 
-    struct Constants {
+     struct Constants {
         static let itemsInRow = 3
         static let lineSpacing: CGFloat = 0
         static let rowSpacing: CGFloat = 0
@@ -27,8 +23,6 @@ class BaseCollectionViewController: UICollectionViewController {
         }
     }
 
-    weak var delegate: CardCollectionScreenDelegate?
-    
     var flowLayout: UICollectionViewFlowLayout? {
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }

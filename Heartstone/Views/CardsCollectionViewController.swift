@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol CardsCollectionViewDelegate: class {
+    func didSelectCard(_ card: Card)
+}
+
 class CardsCollectionViewController: BaseCollectionViewController {
 
     private let viewModel: CardListViewModel
+    weak var delegate: CardsCollectionViewDelegate?
 
     init(viewModel: CardListViewModel, layout: UICollectionViewLayout) {
         self.viewModel = viewModel
@@ -35,7 +40,6 @@ class CardsCollectionViewController: BaseCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let card = viewModel.cards[indexPath.row]
-        delegate?.didSelectCardInfo(card)
+        delegate?.didSelectCard(viewModel.cards[indexPath.row])
     }
 }

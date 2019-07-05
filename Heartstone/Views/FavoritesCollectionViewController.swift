@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol FavoritesCollectionViewDelegate: class {
+    func didSelectCardItem(_ cardItem: CardItem)
+}
+
 class FavoritesCollectionViewController: BaseCollectionViewController {
 
     var fetchedResultsController: NSFetchedResultsController<CardItem>? {
@@ -17,17 +21,20 @@ class FavoritesCollectionViewController: BaseCollectionViewController {
         }
     }
 
-    fileprivate var blockOperations = [BlockOperation]()
+    weak var delegate: FavoritesCollectionViewDelegate?
 
-
-    deinit {
-        blockOperations.forEach {
-            $0.cancel()
+    override func configureCell(_ cell: CardViewCell, at indexPath: IndexPath) {
+        guard let cardItem = fetchedResultsController?.object(at: indexPath) else {
+            return
         }
-        blockOperations.removeAll(keepingCapacity: false)
+
+        cell.viewModel = CardViewModel(
+            name: cardItem.name,
+            imageURL: cardItem.imageURL,
+            borderSides: BorderLayer.Side.border(at: indexPath)
+        )
     }
 }
-
 
 extension FavoritesCollectionViewController {
 
@@ -40,77 +47,28 @@ extension FavoritesCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let card = fetchedResultsController?.object(at: indexPath) else {
+        guard let cardItem = fetchedResultsController?.object(at: indexPath) else {
             assertionFailure("Can't find Card object for given indexPath \(indexPath)")
             return
         }
 
-        delegate?.didSelectCardInfo(card)
+        delegate?.didSelectCardItem(cardItem)
     }
 }
 
 extension FavoritesCollectionViewController: NSFetchedResultsControllerDelegate {
 
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        DispatchQueue.main.async { }
-    }
-
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.performBatchUpdates({ [weak self] in
-                self?.blockOperations.forEach {
-                    $0.start()
-                }
-            }) { [weak self] finished in
-                self?.blockOperations.removeAll(keepingCapacity: false)
-            }
+        DispatchQueue.main.async { [weak collectionView] in
+            collectionView?.reloadData()
         }
     }
+
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) { }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,
                     at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-
-        DispatchQueue.main.async { [weak self] in
-            switch type {
-            case .insert:
-                guard let indexPath = newIndexPath else { break }
-
-                self?.blockOperations.append(
-                    BlockOperation {
-                        self?.collectionView?.insertItems(at: [indexPath])
-                    }
-                )
-            case .delete:
-                guard let indexPath = indexPath else { break }
-
-                self?.blockOperations.append(
-                    BlockOperation {
-                        self?.collectionView?.deleteItems(at: [indexPath])
-                    }
-                )
-            case .move:
-                guard let indexPath = indexPath, let newIndexPath = newIndexPath else { break }
-
-                self?.blockOperations.append(
-                    BlockOperation {
-                        self?.collectionView?.deleteItems(at: [indexPath])
-                        self?.collectionView?.insertItems(at: [newIndexPath])
-                    }
-                )
-            case .update:
-                guard let indexPath = indexPath else { break }
-
-                self?.blockOperations.append(
-                    BlockOperation{
-                        self?.collectionView?.reloadItems(at: [indexPath])
-                    }
-                )
-            @unknown default:
-                ()
-            }
-        }
-    }
+                    newIndexPath: IndexPath?) { }
 }

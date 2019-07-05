@@ -8,12 +8,7 @@
 
 import Foundation
 
-protocol CardMinimumDetails {
-    var title: String { get }
-    var imageURL: URL? { get }
-}
-
-struct Card: Decodable, CardMinimumDetails {
+struct Card: Decodable {
 
     typealias CardType = String
     typealias CardRarity = String
@@ -30,12 +25,6 @@ struct Card: Decodable, CardMinimumDetails {
     let rarity: CardRarity?
     let classes: [String]?
     let mechanics: [Mechanics]?
-
-    // MARK: Minimum info
-
-    var title: String {
-        return name
-    }
 
     var imageURL: URL? {
         guard let img = img else { return nil }

@@ -53,7 +53,7 @@ struct LocalCardDataProvider: DataProvider {
                     .sorted(by: { $0.name < $1.name })
 
                 // TODO: Debug only
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 0...1)) {
                     completion(.success(results))
                 }
             } catch {

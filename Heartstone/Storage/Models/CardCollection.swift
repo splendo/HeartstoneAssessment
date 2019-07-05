@@ -8,6 +8,7 @@
 
 struct CardCollection: Decodable {
 
+    // Keep just in case
     private let groups: [String: [Card]]
     // Flatten cards list
     let cards: [Card]

@@ -8,10 +8,10 @@
 
 protocol Dependency {
     var dataProvider: DataProvider { get }
-    var storage: Storage { get }
+    var cardStorage: CardStorage { get }
 }
 
 class AppDependency: Dependency {
     let dataProvider: DataProvider = LocalCardDataProvider()
-    let storage = Storage(name: "Heartstone")
+    let cardStorage: CardStorage = CoreDataCardStorage(storage: Storage(name: "Heartstone"))
 }

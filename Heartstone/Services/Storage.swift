@@ -36,10 +36,6 @@ public struct Storage {
 
     public var privateContext: NSManagedObjectContext
 
-    public func newPrivateContext() -> NSManagedObjectContext {
-        return container.newBackgroundContext()
-    }
-
     public func performAndSave(context: NSManagedObjectContext,
                                block: @escaping (NSManagedObjectContext) -> Void,
                                completion: NSManagedObjectContext.SaveCompletion? = nil) {
