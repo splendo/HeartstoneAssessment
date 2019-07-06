@@ -1,0 +1,751 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B67C2A722CDDC96003F3F0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2A622CDDC96003F3F0F /* AppDelegate.swift */; };
+		4B67C2AF22CDDC96003F3F0F /* Heartstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2AD22CDDC96003F3F0F /* Heartstone.xcdatamodeld */; };
+		4B67C2B122CDDC97003F3F0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2B022CDDC97003F3F0F /* Assets.xcassets */; };
+		4B67C2B422CDDC97003F3F0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */; };
+		4B67C2CF22CDDE72003F3F0F /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2CE22CDDE72003F3F0F /* cards.json */; };
+		4B67C2D222CDDED5003F3F0F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2D122CDDED5003F3F0F /* DataProvider.swift */; };
+		4B67C2D422CDDF69003F3F0F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2D322CDDF69003F3F0F /* Card.swift */; };
+		4B67C2D722CDDFEC003F3F0F /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2D622CDDFEC003F3F0F /* AppDependency.swift */; };
+		4B67C2D922CDE01C003F3F0F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2D822CDE01C003F3F0F /* Coordinator.swift */; };
+		4B67C2DB22CDE163003F3F0F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2DA22CDE163003F3F0F /* AppCoordinator.swift */; };
+		4B67C2DD22CDE1C4003F3F0F /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2DC22CDE1C4003F3F0F /* HomeCoordinator.swift */; };
+		4B67C2DF22CDE571003F3F0F /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2DE22CDE571003F3F0F /* FavoritesCoordinator.swift */; };
+		4B67C2E122CDE640003F3F0F /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */; };
+		4B67C2E322CDE64B003F3F0F /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */; };
+		4B67C2E622CDE7A2003F3F0F /* Instantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2E522CDE7A2003F3F0F /* Instantiatable.swift */; };
+		4B67C2EA22CDE889003F3F0F /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2E822CDE889003F3F0F /* CardViewCell.swift */; };
+		4B67C2EB22CDE889003F3F0F /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2E922CDE889003F3F0F /* CardViewCell.xib */; };
+		4B67C2ED22CDEC61003F3F0F /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */; };
+		4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */; };
+		4B67C2F122CDF8E5003F3F0F /* CardCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F022CDF8E5003F3F0F /* CardCollection.swift */; };
+		4B67C2F322CE211F003F3F0F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */; };
+		4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */; };
+		4B67C2F922CE253B003F3F0F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */; };
+		4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */; };
+		4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */; };
+		4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */; };
+		4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2FF22CE460F003F3F0F /* BorderedView.swift */; };
+		4B67C30222CE6DCA003F3F0F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */; };
+		4B81511B22CE7AE70093E9C0 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511A22CE7AE70093E9C0 /* CardItem.swift */; };
+		4B81511D22CE7B6F0093E9C0 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511C22CE7B6F0093E9C0 /* Storage.swift */; };
+		4B81511F22CE7DE70093E9C0 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */; };
+		4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */; };
+		4B81512322CE7E7F0093E9C0 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */; };
+		4B81512722CF2FA50093E9C0 /* Heartstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B67C2AD22CDDC96003F3F0F /* Heartstone.xcdatamodeld */; };
+		4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */; };
+		4B81512B22CF37250093E9C0 /* DecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512A22CF37250093E9C0 /* DecoderTests.swift */; };
+		4B81512D22CF3A7A0093E9C0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */; };
+		4B81512F22CF3C070093E9C0 /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81512E22CF3C070093E9C0 /* CardStorage.swift */; };
+		4B81513222CF88780093E9C0 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513022CF88780093E9C0 /* EmptyViewController.swift */; };
+		4B81513322CF88780093E9C0 /* EmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B81513122CF88780093E9C0 /* EmptyViewController.xib */; };
+		4B81513922CF93B40093E9C0 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */; };
+		4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513A22CF95C50093E9C0 /* CardItemTests.swift */; };
+		4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */; };
+		4B81513F22CFD8E60093E9C0 /* CardStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */; };
+		4B81514122D109550093E9C0 /* DetailsCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B81514022D109550093E9C0 /* DetailsCoordinatorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B67C2BB22CDDC97003F3F0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B67C29B22CDDC96003F3F0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B67C2A222CDDC96003F3F0F;
+			remoteInfo = Heartstone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B67C2A322CDDC96003F3F0F /* Heartstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B67C2A622CDDC96003F3F0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B67C2AE22CDDC96003F3F0F /* Heartstone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Heartstone.xcdatamodel; sourceTree = "<group>"; };
+		4B67C2B022CDDC97003F3F0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B67C2B322CDDC97003F3F0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4B67C2B522CDDC97003F3F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B67C2BA22CDDC97003F3F0F /* HeartstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B67C2C022CDDC97003F3F0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B67C2CE22CDDE72003F3F0F /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		4B67C2D122CDDED5003F3F0F /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		4B67C2D322CDDF69003F3F0F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4B67C2D622CDDFEC003F3F0F /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		4B67C2D822CDE01C003F3F0F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4B67C2DA22CDE163003F3F0F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4B67C2DC22CDE1C4003F3F0F /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		4B67C2DE22CDE571003F3F0F /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
+		4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
+		4B67C2E522CDE7A2003F3F0F /* Instantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instantiatable.swift; sourceTree = "<group>"; };
+		4B67C2E822CDE889003F3F0F /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		4B67C2E922CDE889003F3F0F /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
+		4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDependency.swift; sourceTree = "<group>"; };
+		4B67C2F022CDF8E5003F3F0F /* CardCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollection.swift; sourceTree = "<group>"; };
+		4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorViewController.xib; sourceTree = "<group>"; };
+		4B67C2FF22CE460F003F3F0F /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
+		4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		4B67C30422CE7096003F3F0F /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Heartstone/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		4B81511A22CE7AE70093E9C0 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
+		4B81511C22CE7B6F0093E9C0 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
+		4B81512A22CF37250093E9C0 /* DecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTests.swift; sourceTree = "<group>"; };
+		4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		4B81512E22CF3C070093E9C0 /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
+		4B81513022CF88780093E9C0 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		4B81513122CF88780093E9C0 /* EmptyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyViewController.xib; sourceTree = "<group>"; };
+		4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
+		4B81513A22CF95C50093E9C0 /* CardItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItemTests.swift; sourceTree = "<group>"; };
+		4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinatorTests.swift; sourceTree = "<group>"; };
+		4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorageTests.swift; sourceTree = "<group>"; };
+		4B81514022D109550093E9C0 /* DetailsCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinatorTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B67C2A022CDDC96003F3F0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B67C2B722CDDC97003F3F0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B67C29A22CDDC96003F3F0F = {
+			isa = PBXGroup;
+			children = (
+				4B67C2A522CDDC96003F3F0F /* Heartstone */,
+				4B67C2BD22CDDC97003F3F0F /* HeartstoneTests */,
+				4B67C2A422CDDC96003F3F0F /* Products */,
+				4B67C30322CE7096003F3F0F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4B67C2A422CDDC96003F3F0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2A322CDDC96003F3F0F /* Heartstone.app */,
+				4B67C2BA22CDDC97003F3F0F /* HeartstoneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B67C2A522CDDC96003F3F0F /* Heartstone */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2CD22CDDD9F003F3F0F /* Coordinators */,
+				4B67C2D522CDDFDD003F3F0F /* Dependencies */,
+				4B67C2CA22CDDD21003F3F0F /* Resources */,
+				4B67C2D022CDDEC1003F3F0F /* Services */,
+				4B67C2CB22CDDD43003F3F0F /* Storage */,
+				4B67C2C922CDDD07003F3F0F /* Views */,
+				4B67C2E422CDE716003F3F0F /* Utils */,
+				4B67C2A622CDDC96003F3F0F /* AppDelegate.swift */,
+				4B67C2B522CDDC97003F3F0F /* Info.plist */,
+			);
+			path = Heartstone;
+			sourceTree = "<group>";
+		};
+		4B67C2BD22CDDC97003F3F0F /* HeartstoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2EC22CDEC61003F3F0F /* AppCoordinatorTests.swift */,
+				4B81513A22CF95C50093E9C0 /* CardItemTests.swift */,
+				4B81513E22CFD8E60093E9C0 /* CardStorageTests.swift */,
+				4B81512A22CF37250093E9C0 /* DecoderTests.swift */,
+				4B81514022D109550093E9C0 /* DetailsCoordinatorTests.swift */,
+				4B81513822CF93B40093E9C0 /* DetailsViewModelTests.swift */,
+				4B81513C22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift */,
+				4B81512822CF304B0093E9C0 /* HomeCoordinatorTests.swift */,
+				4B67C2EE22CDEC8E003F3F0F /* MockDependency.swift */,
+				4B67C2C022CDDC97003F3F0F /* Info.plist */,
+			);
+			path = HeartstoneTests;
+			sourceTree = "<group>";
+		};
+		4B67C2C922CDDD07003F3F0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2F422CE23FA003F3F0F /* Models */,
+				4B67C2E722CDE867003F3F0F /* Cells */,
+				4B67C2F222CE211F003F3F0F /* BaseCollectionViewController.swift */,
+				4B67C2E022CDE640003F3F0F /* CardsCollectionViewController.swift */,
+				4B81512022CE7E7F0093E9C0 /* DetailsViewController.swift */,
+				4B81513022CF88780093E9C0 /* EmptyViewController.swift */,
+				4B67C2E222CDE64B003F3F0F /* FavoritesCollectionViewController.swift */,
+				4B67C2FB22CE2965003F3F0F /* ErrorViewController.swift */,
+				4B67C2F722CE253B003F3F0F /* LoadingViewController.swift */,
+				4B67C2FF22CE460F003F3F0F /* BorderedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4B67C2CA22CDDD21003F3F0F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2B022CDDC97003F3F0F /* Assets.xcassets */,
+				4B67C2E922CDE889003F3F0F /* CardViewCell.xib */,
+				4B81512122CE7E7F0093E9C0 /* DetailsViewController.xib */,
+				4B81513122CF88780093E9C0 /* EmptyViewController.xib */,
+				4B67C2FC22CE2965003F3F0F /* ErrorViewController.xib */,
+				4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */,
+				4B67C2F822CE253B003F3F0F /* LoadingViewController.xib */,
+				4B67C2CE22CDDE72003F3F0F /* cards.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4B67C2CB22CDDD43003F3F0F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2CC22CDDD4A003F3F0F /* Models */,
+				4B67C2AD22CDDC96003F3F0F /* Heartstone.xcdatamodeld */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4B67C2CC22CDDD4A003F3F0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2D322CDDF69003F3F0F /* Card.swift */,
+				4B67C2F022CDF8E5003F3F0F /* CardCollection.swift */,
+				4B81511A22CE7AE70093E9C0 /* CardItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4B67C2CD22CDDD9F003F3F0F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2D822CDE01C003F3F0F /* Coordinator.swift */,
+				4B67C2DA22CDE163003F3F0F /* AppCoordinator.swift */,
+				4B67C2DC22CDE1C4003F3F0F /* HomeCoordinator.swift */,
+				4B67C2DE22CDE571003F3F0F /* FavoritesCoordinator.swift */,
+				4B81511E22CE7DE70093E9C0 /* DetailsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		4B67C2D022CDDEC1003F3F0F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2D122CDDED5003F3F0F /* DataProvider.swift */,
+				4B81511C22CE7B6F0093E9C0 /* Storage.swift */,
+				4B81512E22CF3C070093E9C0 /* CardStorage.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4B67C2D522CDDFDD003F3F0F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2D622CDDFEC003F3F0F /* AppDependency.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		4B67C2E422CDE716003F3F0F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2E522CDE7A2003F3F0F /* Instantiatable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4B67C2E722CDE867003F3F0F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2E822CDE889003F3F0F /* CardViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4B67C2F422CE23FA003F3F0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C2F522CE240C003F3F0F /* CardListViewModel.swift */,
+				4B67C30122CE6DCA003F3F0F /* CardViewModel.swift */,
+				4B81512C22CF3A7A0093E9C0 /* DetailsViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4B67C30322CE7096003F3F0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B67C30422CE7096003F3F0F /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B67C2A222CDDC96003F3F0F /* Heartstone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B67C2C322CDDC97003F3F0F /* Build configuration list for PBXNativeTarget "Heartstone" */;
+			buildPhases = (
+				4B67C29F22CDDC96003F3F0F /* Sources */,
+				4B67C2A022CDDC96003F3F0F /* Frameworks */,
+				4B67C2A122CDDC96003F3F0F /* Resources */,
+				4B67C30622CE70A5003F3F0F /* Carthage */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Heartstone;
+			productName = Heartstone;
+			productReference = 4B67C2A322CDDC96003F3F0F /* Heartstone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B67C2B922CDDC97003F3F0F /* HeartstoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B67C2C622CDDC97003F3F0F /* Build configuration list for PBXNativeTarget "HeartstoneTests" */;
+			buildPhases = (
+				4B67C2B622CDDC97003F3F0F /* Sources */,
+				4B67C2B722CDDC97003F3F0F /* Frameworks */,
+				4B67C2B822CDDC97003F3F0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B67C2BC22CDDC97003F3F0F /* PBXTargetDependency */,
+			);
+			name = HeartstoneTests;
+			productName = HeartstoneTests;
+			productReference = 4B67C2BA22CDDC97003F3F0F /* HeartstoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B67C29B22CDDC96003F3F0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Grigory Avdyushin";
+				TargetAttributes = {
+					4B67C2A222CDDC96003F3F0F = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					4B67C2B922CDDC97003F3F0F = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 4B67C2A222CDDC96003F3F0F;
+					};
+				};
+			};
+			buildConfigurationList = 4B67C29E22CDDC96003F3F0F /* Build configuration list for PBXProject "Heartstone" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B67C29A22CDDC96003F3F0F;
+			productRefGroup = 4B67C2A422CDDC96003F3F0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B67C2A222CDDC96003F3F0F /* Heartstone */,
+				4B67C2B922CDDC97003F3F0F /* HeartstoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B67C2A122CDDC96003F3F0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B81512322CE7E7F0093E9C0 /* DetailsViewController.xib in Resources */,
+				4B67C2B422CDDC97003F3F0F /* LaunchScreen.storyboard in Resources */,
+				4B67C2B122CDDC97003F3F0F /* Assets.xcassets in Resources */,
+				4B67C2CF22CDDE72003F3F0F /* cards.json in Resources */,
+				4B67C2FE22CE2965003F3F0F /* ErrorViewController.xib in Resources */,
+				4B67C2FA22CE253B003F3F0F /* LoadingViewController.xib in Resources */,
+				4B81513322CF88780093E9C0 /* EmptyViewController.xib in Resources */,
+				4B67C2EB22CDE889003F3F0F /* CardViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B67C2B822CDDC97003F3F0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B67C30622CE70A5003F3F0F /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B67C29F22CDDC96003F3F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B67C2D722CDDFEC003F3F0F /* AppDependency.swift in Sources */,
+				4B81511D22CE7B6F0093E9C0 /* Storage.swift in Sources */,
+				4B67C2E322CDE64B003F3F0F /* FavoritesCollectionViewController.swift in Sources */,
+				4B67C2F922CE253B003F3F0F /* LoadingViewController.swift in Sources */,
+				4B81511F22CE7DE70093E9C0 /* DetailsCoordinator.swift in Sources */,
+				4B67C2E622CDE7A2003F3F0F /* Instantiatable.swift in Sources */,
+				4B67C30222CE6DCA003F3F0F /* CardViewModel.swift in Sources */,
+				4B81511B22CE7AE70093E9C0 /* CardItem.swift in Sources */,
+				4B67C2F122CDF8E5003F3F0F /* CardCollection.swift in Sources */,
+				4B67C2F622CE240C003F3F0F /* CardListViewModel.swift in Sources */,
+				4B67C2DD22CDE1C4003F3F0F /* HomeCoordinator.swift in Sources */,
+				4B81512222CE7E7F0093E9C0 /* DetailsViewController.swift in Sources */,
+				4B81512D22CF3A7A0093E9C0 /* DetailsViewModel.swift in Sources */,
+				4B67C2FD22CE2965003F3F0F /* ErrorViewController.swift in Sources */,
+				4B67C2A722CDDC96003F3F0F /* AppDelegate.swift in Sources */,
+				4B67C2DF22CDE571003F3F0F /* FavoritesCoordinator.swift in Sources */,
+				4B67C2EA22CDE889003F3F0F /* CardViewCell.swift in Sources */,
+				4B67C2E122CDE640003F3F0F /* CardsCollectionViewController.swift in Sources */,
+				4B67C2F322CE211F003F3F0F /* BaseCollectionViewController.swift in Sources */,
+				4B67C2D422CDDF69003F3F0F /* Card.swift in Sources */,
+				4B67C2DB22CDE163003F3F0F /* AppCoordinator.swift in Sources */,
+				4B67C2D222CDDED5003F3F0F /* DataProvider.swift in Sources */,
+				4B67C2AF22CDDC96003F3F0F /* Heartstone.xcdatamodeld in Sources */,
+				4B81512F22CF3C070093E9C0 /* CardStorage.swift in Sources */,
+				4B81513222CF88780093E9C0 /* EmptyViewController.swift in Sources */,
+				4B67C2D922CDE01C003F3F0F /* Coordinator.swift in Sources */,
+				4B67C30022CE460F003F3F0F /* BorderedView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B67C2B622CDDC97003F3F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B81512922CF304B0093E9C0 /* HomeCoordinatorTests.swift in Sources */,
+				4B81513F22CFD8E60093E9C0 /* CardStorageTests.swift in Sources */,
+				4B81513B22CF95C50093E9C0 /* CardItemTests.swift in Sources */,
+				4B81513D22CF98A50093E9C0 /* FavoritesCoordinatorTests.swift in Sources */,
+				4B67C2EF22CDEC8E003F3F0F /* MockDependency.swift in Sources */,
+				4B67C2ED22CDEC61003F3F0F /* AppCoordinatorTests.swift in Sources */,
+				4B81513922CF93B40093E9C0 /* DetailsViewModelTests.swift in Sources */,
+				4B81514122D109550093E9C0 /* DetailsCoordinatorTests.swift in Sources */,
+				4B81512B22CF37250093E9C0 /* DecoderTests.swift in Sources */,
+				4B81512722CF2FA50093E9C0 /* Heartstone.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B67C2BC22CDDC97003F3F0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B67C2A222CDDC96003F3F0F /* Heartstone */;
+			targetProxy = 4B67C2BB22CDDC97003F3F0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4B67C2B222CDDC97003F3F0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B67C2B322CDDC97003F3F0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4B67C2C122CDDC97003F3F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4B67C2C222CDDC97003F3F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B67C2C422CDDC97003F3F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q4HEW2JVA9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Heartstone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avdyushin.Heartstone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4B67C2C522CDDC97003F3F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q4HEW2JVA9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Heartstone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avdyushin.Heartstone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4B67C2C722CDDC97003F3F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q4HEW2JVA9;
+				INFOPLIST_FILE = HeartstoneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avdyushin.HeartstoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heartstone.app/Heartstone";
+			};
+			name = Debug;
+		};
+		4B67C2C822CDDC97003F3F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q4HEW2JVA9;
+				INFOPLIST_FILE = HeartstoneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.avdyushin.HeartstoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Heartstone.app/Heartstone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B67C29E22CDDC96003F3F0F /* Build configuration list for PBXProject "Heartstone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B67C2C122CDDC97003F3F0F /* Debug */,
+				4B67C2C222CDDC97003F3F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B67C2C322CDDC97003F3F0F /* Build configuration list for PBXNativeTarget "Heartstone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B67C2C422CDDC97003F3F0F /* Debug */,
+				4B67C2C522CDDC97003F3F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B67C2C622CDDC97003F3F0F /* Build configuration list for PBXNativeTarget "HeartstoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B67C2C722CDDC97003F3F0F /* Debug */,
+				4B67C2C822CDDC97003F3F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B67C2AD22CDDC96003F3F0F /* Heartstone.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B67C2AE22CDDC96003F3F0F /* Heartstone.xcdatamodel */,
+			);
+			currentVersion = 4B67C2AE22CDDC96003F3F0F /* Heartstone.xcdatamodel */;
+			path = Heartstone.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4B67C29B22CDDC96003F3F0F /* Project object */;
+}
