@@ -22,22 +22,29 @@ class MockCardStorage: CardStorage {
 
     let storage: Storage
 
+    var findCardValue: CardItem?
+    var isExistsValue = false
+    var isCreateCardCalled = false
+    var isDeleteCardCalled = false
+
     init(_ storage: Storage) {
         self.storage = storage
     }
 
     func isExists(cardId: String) -> Bool {
-        return false
+        return isExistsValue
     }
 
     func findCard(by cardId: String) -> CardItem? {
-        return nil
+        return findCardValue
     }
 
     func createCard(from card: Card) {
+        isCreateCardCalled = true
     }
 
     func deleteCard(by cardId: String) {
+        isDeleteCardCalled = true
     }
 }
 
@@ -57,5 +64,20 @@ class MockDependency: Dependency {
             assert(error == nil)
         }
         return container
+    }
+}
+
+extension Card {
+    static func mockCard(cardId: String = "card-id", name: String = "name", type: String = "type") -> Card {
+        return Card(
+            cardId: cardId,
+            name: name,
+            type: type,
+            img: nil,
+            text: nil,
+            rarity: nil,
+            classes: nil,
+            mechanics: nil
+        )
     }
 }
