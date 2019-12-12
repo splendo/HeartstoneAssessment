@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62DE901AA804A4B056536F7D /* RootDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */; };
+		62DE9084E013027F267164B4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */; };
+		62DE949A09F7D8175B841927 /* CollectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */; };
+		62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */; };
 		62DE97FBAD2ED4F3BFFDF464 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DE9D4A54443759559D1902 /* cards.json */; };
 		62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A380AE4940383815D54 /* CollectionViewController.swift */; };
+		62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */; };
+		62DE9ED83BE839640F09AF3B /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */; };
 		94FA041D23A2D69F00D67D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA041C23A2D69F00D67D10 /* AppDelegate.swift */; };
 		94FA042623A2D6A100D67D10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94FA042523A2D6A100D67D10 /* Assets.xcassets */; };
 		94FA042923A2D6A100D67D10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FA042723A2D6A100D67D10 /* LaunchScreen.storyboard */; };
@@ -26,8 +32,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencies.swift; sourceTree = "<group>"; };
+		62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
+		62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellModels.swift; sourceTree = "<group>"; };
 		62DE9A380AE4940383815D54 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionModels.swift; sourceTree = "<group>"; };
 		62DE9D4A54443759559D1902 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPresenting.swift; sourceTree = "<group>"; };
 		94FA041923A2D69F00D67D10 /* HearthstoneHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearthstoneHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FA041C23A2D69F00D67D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94FA042523A2D6A100D67D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +73,10 @@
 			children = (
 				62DE9A380AE4940383815D54 /* CollectionViewController.swift */,
 				62DE9E26C4E5CADF01DBE183 /* CardCell */,
+				62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */,
+				62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */,
+				62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */,
+				62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -81,9 +97,17 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		62DE9C2D30A2722CD2A99CA8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		62DE9E26C4E5CADF01DBE183 /* CardCell */ = {
 			isa = PBXGroup;
 			children = (
+				62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */,
 			);
 			path = CardCell;
 			sourceTree = "<group>";
@@ -112,6 +136,8 @@
 				94FA043E23A2D77600D67D10 /* Resources */,
 				94FA041C23A2D69F00D67D10 /* AppDelegate.swift */,
 				62DE994C9A70DC885D0BBE27 /* Scenes */,
+				62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */,
+				62DE9C2D30A2722CD2A99CA8 /* Services */,
 			);
 			path = HearthstoneHelper;
 			sourceTree = "<group>";
@@ -239,6 +265,12 @@
 			files = (
 				94FA041D23A2D69F00D67D10 /* AppDelegate.swift in Sources */,
 				62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */,
+				62DE949A09F7D8175B841927 /* CollectionModels.swift in Sources */,
+				62DE901AA804A4B056536F7D /* RootDependencies.swift in Sources */,
+				62DE9084E013027F267164B4 /* CollectionViewDataSource.swift in Sources */,
+				62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */,
+				62DE9ED83BE839640F09AF3B /* CollectionPresenting.swift in Sources */,
+				62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
