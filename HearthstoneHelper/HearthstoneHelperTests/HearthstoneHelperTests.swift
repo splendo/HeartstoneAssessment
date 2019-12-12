@@ -1,10 +1,8 @@
 //
-//  HearthstoneHelperTests.swift
-//  HearthstoneHelperTests
+// Created by Maxim Berezhnoy on 12/12/2019.
+// Licensed under the MIT license
 //
-//  Created by maxim on 12/12/2019.
-//  Copyright © 2019 rencevio. All rights reserved.
-//
+// Copyright (c) 2019 rencevio. All rights reserved.
 
 import XCTest
 @testable import HearthstoneHelper
