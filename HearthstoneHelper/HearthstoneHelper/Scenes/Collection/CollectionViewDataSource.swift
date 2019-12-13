@@ -8,11 +8,11 @@ import UIKit
 
 protocol CollectionViewDataSourcing: UICollectionViewDataSource {
     func register(for collectionView: UICollectionView)
-    func set(collection: CollectionInfo)
+    func set(collection: Collection)
 }
 
-class CollectionViewDataSource: NSObject {
-    private var collection = CollectionInfo(cards: [])
+final class CollectionViewDataSource: NSObject {
+    private var collection = Collection(cards: [])
 }
 
 // MARK: - CollectionViewDataSourcing
@@ -22,7 +22,7 @@ extension CollectionViewDataSource: CollectionViewDataSourcing {
         collectionView.dataSource = self
     }
 
-    func set(collection: CollectionInfo) {
+    func set(collection: Collection) {
         self.collection = collection
     }
 }
@@ -37,7 +37,7 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "temp", for: indexPath)
 
         let label = UILabel(frame: cell.bounds)
-        label.text = collection.cards[indexPath.item]
+        label.text = collection.cards[indexPath.item].name
         
         cell.subviews.forEach({ $0.removeFromSuperview() })
         cell.addSubview(label)

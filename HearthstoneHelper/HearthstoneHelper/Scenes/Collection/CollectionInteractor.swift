@@ -8,7 +8,7 @@ protocol CollectionInteracting {
     func fetchCollection()
 }
 
-class CollectionInteractor: CollectionInteracting {
+final class CollectionInteractor: CollectionInteracting {
     private let presenter: CollectionPresenting
 
     init(presenter: CollectionPresenting) {
@@ -16,6 +16,10 @@ class CollectionInteractor: CollectionInteracting {
     }
 
     func fetchCollection() {
-        presenter.present(collection: CollectionInfo(cards: ["1", "2", "3"]))
+        presenter.present(collection: Collection(cards: [
+            Card(cardId: "1", name: "Foo", rarity: "rare", mechanics: nil, img: nil),
+            Card(cardId: "2", name: "Bar", rarity: "rare", mechanics: nil, img: nil),
+            Card(cardId: "3", name: "Baz", rarity: "rare", mechanics: nil, img: nil)
+        ]))
     }
 }

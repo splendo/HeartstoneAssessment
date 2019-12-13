@@ -7,13 +7,13 @@
 import class Foundation.DispatchQueue
 
 protocol CollectionPresenting {
-    func present(collection: CollectionInfo)
+    func present(collection: Collection)
 }
 
-class CollectionPresenter: CollectionPresenting {
+final class CollectionPresenter: CollectionPresenting {
     weak var view: CollectionDisplaying?
 
-    func present(collection: CollectionInfo) {
+    func present(collection: Collection) {
         DispatchQueue.main.async { [weak self] in
             self?.view?.display(cards: collection)
         }

@@ -4,7 +4,7 @@
 //
 // Copyright (c) 2019 rencevio. All rights reserved.
 
-class RootDependencies {
+final class RootDependencies {
     func createCollectionViewController() -> CollectionViewController {
         let dataSource = CollectionViewDataSource()
 

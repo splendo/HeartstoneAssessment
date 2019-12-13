@@ -4,6 +4,6 @@
 //
 // Copyright (c) 2019 rencevio. All rights reserved.
 
-struct CollectionInfo {
-    let cards: [CardId]
+struct Collection {
+    let cards: [Card]
 }

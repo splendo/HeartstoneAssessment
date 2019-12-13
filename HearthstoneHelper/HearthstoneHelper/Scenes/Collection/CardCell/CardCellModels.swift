@@ -6,21 +6,19 @@
 
 import UIKit
 
-typealias CardId = String
-
 enum CardInfo {
     struct Request {
-        let id: CardId
+        let id: Card.ID
     }
 
     struct Response {
-        let id: CardId
+        let id: Card.ID
         let name: String
         let image: Data?
     }
 
     struct ViewModel {
-        let id: CardId
+        let id: Card.ID
         let name: String
         let image: UIImage
     }

@@ -7,10 +7,10 @@
 import UIKit
 
 protocol CollectionDisplaying: class {
-    func display(cards: CollectionInfo)
+    func display(cards: Collection)
 }
 
-class CollectionViewController: UIViewController {
+final class CollectionViewController: UIViewController {
     private let dataSource: CollectionViewDataSourcing
     private let interactor: CollectionInteracting
 
@@ -55,7 +55,7 @@ class CollectionViewController: UIViewController {
 
 // MARK: - CollectionDisplaying
 extension CollectionViewController: CollectionDisplaying {
-    func display(cards: CollectionInfo) {
+    func display(cards: Collection) {
         dataSource.set(collection: cards)
         collectionView.reloadData()
     }

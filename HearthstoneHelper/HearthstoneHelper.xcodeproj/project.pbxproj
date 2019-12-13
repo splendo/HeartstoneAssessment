@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		62DE901AA804A4B056536F7D /* RootDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */; };
+		62DE904C73ED18EE3B4F8036 /* LocalCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE97F406810884970D7285 /* LocalCollectionRetriever.swift */; };
 		62DE9084E013027F267164B4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */; };
 		62DE949A09F7D8175B841927 /* CollectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */; };
+		62DE94F2409791B4B780C257 /* CardSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE94B42141372E2635E2DF /* CardSets.swift */; };
 		62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */; };
 		62DE97FBAD2ED4F3BFFDF464 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DE9D4A54443759559D1902 /* cards.json */; };
 		62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A380AE4940383815D54 /* CollectionViewController.swift */; };
+		62DE9A987D76002B9100BBCC /* CollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE964CE38B0098E74328FD /* CollectionRetriever.swift */; };
 		62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */; };
 		62DE9ED83BE839640F09AF3B /* CollectionPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */; };
+		62DE9F643049CEFDAC20A792 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9F4DE6FD4515C2F9D044 /* Card.swift */; };
+		94423CBE23A530FB0091FA81 /* LocalCollectionRetrieverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE97458E3D757BE1FCBAB4 /* LocalCollectionRetrieverTests.swift */; };
 		94FA041D23A2D69F00D67D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA041C23A2D69F00D67D10 /* AppDelegate.swift */; };
 		94FA042623A2D6A100D67D10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94FA042523A2D6A100D67D10 /* Assets.xcassets */; };
 		94FA042923A2D6A100D67D10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FA042723A2D6A100D67D10 /* LaunchScreen.storyboard */; };
@@ -32,14 +37,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62DE94B42141372E2635E2DF /* CardSets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSets.swift; sourceTree = "<group>"; };
 		62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencies.swift; sourceTree = "<group>"; };
+		62DE964CE38B0098E74328FD /* CollectionRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRetriever.swift; sourceTree = "<group>"; };
 		62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
 		62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellModels.swift; sourceTree = "<group>"; };
+		62DE97458E3D757BE1FCBAB4 /* LocalCollectionRetrieverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollectionRetrieverTests.swift; sourceTree = "<group>"; };
+		62DE97F406810884970D7285 /* LocalCollectionRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollectionRetriever.swift; sourceTree = "<group>"; };
 		62DE9A380AE4940383815D54 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionModels.swift; sourceTree = "<group>"; };
 		62DE9D4A54443759559D1902 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPresenting.swift; sourceTree = "<group>"; };
+		62DE9F4DE6FD4515C2F9D044 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		94FA041923A2D69F00D67D10 /* HearthstoneHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearthstoneHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FA041C23A2D69F00D67D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94FA042523A2D6A100D67D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +98,32 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		62DE9659B94A39903102992D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				62DE9F4DE6FD4515C2F9D044 /* Card.swift */,
+				62DE94B42141372E2635E2DF /* CardSets.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		62DE976EEDD7CF85B7CA6B81 /* CollectionRetriever */ = {
+			isa = PBXGroup;
+			children = (
+				62DE964CE38B0098E74328FD /* CollectionRetriever.swift */,
+				62DE97F406810884970D7285 /* LocalCollectionRetriever.swift */,
+			);
+			path = CollectionRetriever;
+			sourceTree = "<group>";
+		};
+		62DE979DC39C17BDDE2F2878 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				62DE9C95F3CB34918492E878 /* CollectionRetriever */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		62DE994C9A70DC885D0BBE27 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +136,18 @@
 		62DE9C2D30A2722CD2A99CA8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				62DE9659B94A39903102992D /* Entities */,
+				62DE976EEDD7CF85B7CA6B81 /* CollectionRetriever */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		62DE9C95F3CB34918492E878 /* CollectionRetriever */ = {
+			isa = PBXGroup;
+			children = (
+				62DE97458E3D757BE1FCBAB4 /* LocalCollectionRetrieverTests.swift */,
+			);
+			path = CollectionRetriever;
 			sourceTree = "<group>";
 		};
 		62DE9E26C4E5CADF01DBE183 /* CardCell */ = {
@@ -147,6 +193,7 @@
 			children = (
 				94FA043323A2D6A100D67D10 /* HearthstoneHelperTests.swift */,
 				94FA043523A2D6A100D67D10 /* Info.plist */,
+				62DE979DC39C17BDDE2F2878 /* Services */,
 			);
 			path = HearthstoneHelperTests;
 			sourceTree = "<group>";
@@ -271,6 +318,10 @@
 				62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */,
 				62DE9ED83BE839640F09AF3B /* CollectionPresenting.swift in Sources */,
 				62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */,
+				62DE9F643049CEFDAC20A792 /* Card.swift in Sources */,
+				62DE9A987D76002B9100BBCC /* CollectionRetriever.swift in Sources */,
+				62DE904C73ED18EE3B4F8036 /* LocalCollectionRetriever.swift in Sources */,
+				62DE94F2409791B4B780C257 /* CardSets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94423CBE23A530FB0091FA81 /* LocalCollectionRetrieverTests.swift in Sources */,
 				94FA043423A2D6A100D67D10 /* HearthstoneHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
