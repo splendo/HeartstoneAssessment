@@ -9,14 +9,18 @@ import Foundation
 struct Card: Decodable {
     typealias ID = String
     typealias Rarity = String
-    
+    typealias `Type` = String
+    typealias Class = String
+
     struct Mechanic: Decodable {
         let name: String
     }
-    
+
     let cardId: ID
     let name: String
+    let type: Type
     let rarity: Rarity?
     let mechanics: [Mechanic]?
     let img: URL?
+    let playerClass: Class?
 }

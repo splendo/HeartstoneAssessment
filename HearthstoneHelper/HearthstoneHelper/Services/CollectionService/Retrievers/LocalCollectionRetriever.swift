@@ -22,7 +22,7 @@ final class LocalCollectionRetriever: CollectionRetriever {
         case invalidFormat(Error)
     }
 
-    func retrieveCollection(completion: @escaping (Result<[Card], RetrievalError>) -> Void) {
+    func retrieveCollection(completion: @escaping CollectionRetriever.Completion) {
         retrievalQueue.async { [fileReader, weak dispatchQueue] in
             guard let dispatchQueue = dispatchQueue else {
                 return
@@ -30,14 +30,14 @@ final class LocalCollectionRetriever: CollectionRetriever {
 
             guard let url = Bundle.main.url(forResource: "cards", withExtension: "json") else {
                 dispatchQueue.async {
-                    completion(.failure(.fileNotFound))
+                    completion(.failure(RetrievalError.fileNotFound))
                 }
                 return
             }
 
             guard let data = fileReader(url) else {
                 dispatchQueue.async {
-                    completion(.failure(.fileNotReadable))
+                    completion(.failure(RetrievalError.fileNotReadable))
                 }
                 return
             }
@@ -50,7 +50,7 @@ final class LocalCollectionRetriever: CollectionRetriever {
                 }
             } catch {
                 dispatchQueue.async {
-                    completion(.failure(.invalidFormat(error)))
+                    completion(.failure(RetrievalError.invalidFormat(error)))
                 }
             }
         }

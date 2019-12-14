@@ -14,8 +14,10 @@ final class CollectionViewController: UIViewController {
     private let dataSource: CollectionViewDataSourcing
     private let interactor: CollectionInteracting
 
+    let itemsPerRow = 3
+    let margin: CGFloat = 15
+
     private lazy var collectionView: UICollectionView = {
-        let margin: CGFloat = 15
 
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
@@ -47,7 +49,15 @@ final class CollectionViewController: UIViewController {
 
     private func setupCollectionView() {
         collectionView.delegate = self
-        self.view = collectionView
+
+        view.addSubview(collectionView)
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
 
         dataSource.register(for: collectionView)
     }
@@ -64,4 +74,22 @@ extension CollectionViewController: CollectionDisplaying {
 // MARK: - UICollectionViewDelegate
 extension CollectionViewController: UICollectionViewDelegate {
 
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+                else { return .zero }
+
+        let collectionViewWidth = collectionView.bounds.width - margin * 2
+        
+        let totalInteritemSpacing = CGFloat(itemsPerRow - 1) * flowLayout.minimumInteritemSpacing
+        
+        let itemWidth = (collectionViewWidth - totalInteritemSpacing) / CGFloat(itemsPerRow)
+
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
 }

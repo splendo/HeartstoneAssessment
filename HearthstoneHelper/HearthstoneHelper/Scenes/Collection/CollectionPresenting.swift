@@ -6,7 +6,7 @@
 
 import class Foundation.DispatchQueue
 
-protocol CollectionPresenting {
+protocol CollectionPresenting: class {
     func present(collection: Collection)
 }
 

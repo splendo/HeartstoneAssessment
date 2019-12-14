@@ -7,7 +7,7 @@
 import Foundation
 
 protocol CollectionRetriever {
-    associatedtype RetrievalError: Error
+    typealias Completion = (Result<[Card], Error>) -> Void
     
-    func retrieveCollection(completion: @escaping (Result<[Card], RetrievalError>) -> Void)
+    func retrieveCollection(completion: @escaping Completion)
 }

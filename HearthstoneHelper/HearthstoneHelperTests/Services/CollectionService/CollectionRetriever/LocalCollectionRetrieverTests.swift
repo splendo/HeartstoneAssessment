@@ -28,10 +28,10 @@ class LocalCollectionRetrieverTests: XCTestCase {
             switch result {
             case .success(_):
                 XCTFail("Data retrieval unexpectedly succeeded")
-            case .failure(.fileNotFound), .failure(.invalidFormat(_)):
-                XCTFail("Unexpected error during data retrieval: \(result)")
-            case .failure(.fileNotReadable):
+            case .failure(LocalCollectionRetriever.RetrievalError.fileNotReadable):
                 break
+            default:
+                XCTFail("Unexpected error during data retrieval: \(result)")
             }
 
             retrievalExpectation.fulfill()
@@ -49,10 +49,10 @@ class LocalCollectionRetrieverTests: XCTestCase {
             switch result {
             case .success(_):
                 XCTFail("Data retrieval unexpectedly succeeded")
-            case .failure(.fileNotReadable), .failure(.fileNotFound):
-                XCTFail("Unexpected error during data retrieval: \(result)")
-            case .failure(.invalidFormat(_)):
+            case .failure(LocalCollectionRetriever.RetrievalError.invalidFormat(_)):
                 break
+            default:
+                XCTFail("Unexpected error during data retrieval: \(result)")
             }
 
             retrievalExpectation.fulfill()

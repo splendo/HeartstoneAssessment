@@ -10,16 +10,23 @@ protocol CollectionInteracting {
 
 final class CollectionInteractor: CollectionInteracting {
     private let presenter: CollectionPresenting
+    private let collectionProvider: CollectionProviding
 
-    init(presenter: CollectionPresenting) {
+    init(presenter: CollectionPresenting, collectionProvider: CollectionProviding) {
         self.presenter = presenter
+        self.collectionProvider = collectionProvider
     }
 
     func fetchCollection() {
-        presenter.present(collection: Collection(cards: [
-            Card(cardId: "1", name: "Foo", rarity: "rare", mechanics: nil, img: nil),
-            Card(cardId: "2", name: "Bar", rarity: "rare", mechanics: nil, img: nil),
-            Card(cardId: "3", name: "Baz", rarity: "rare", mechanics: nil, img: nil)
-        ]))
+        collectionProvider.getCollection { [weak presenter] result in
+            guard let presenter = presenter else { return }
+
+            switch result {
+            case .success(let cards):
+                presenter.present(collection: Collection(cards: cards))
+            case .failure(let error):
+                fatalError("\(error)")
+            }
+        }
     }
 }
