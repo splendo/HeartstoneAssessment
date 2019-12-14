@@ -10,7 +10,16 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 
 import com.krayem.hearthstone.R
+import com.krayem.hearthstone.model.SectionFilter
+import com.krayem.hearthstone.model.SectionFilter_
+import com.krayem.hearthstone.objectbox.ObjectBox
+import com.krayem.hearthstone.utils.fromJsonArray
+import com.krayem.hearthstone.utils.toJsonArray
+import io.objectbox.Box
+import io.objectbox.BoxStore
+import io.objectbox.kotlin.boxFor
 import kotlinx.android.synthetic.main.filters_fragment.*
+import org.json.JSONArray
 
 class FiltersFragment : Fragment() {
 
@@ -80,6 +89,13 @@ class FiltersFragment : Fragment() {
             getString(R.string.ability_deathrattle_label)
         )
 
+        val typesBox : Box<SectionFilter> = ObjectBox.boxStore.boxFor()
+        val typesFilter = typesBox.query().equal(SectionFilter_.index,1).build().findFirst()
+        if(typesFilter != null){
+            selectedTypes = fromJsonArray(JSONArray(typesFilter.typesJsonArray))
+        }
+
+        type_tv.setText(String.format(getString(R.string.type_selected_label),selectedTypes.size),false)
         val typesAdapter = SpinnerArrayAdapter(context!!, R.layout.spinner_item, types,selectedTypes)
         type_tv.setAdapter(typesAdapter)
         type_tv.setOnDismissListener {
@@ -100,7 +116,10 @@ class FiltersFragment : Fragment() {
     }
 
     private fun applyFilter() {
-
+        val typesBox : Box<SectionFilter> = ObjectBox.boxStore.boxFor()
+        typesBox.query().equal(SectionFilter_.index,1).build().remove()
+        typesBox.put(SectionFilter(0,1, toJsonArray(selectedTypes).toString()))
+        activity?.supportFragmentManager?.popBackStack()
     }
 
 }

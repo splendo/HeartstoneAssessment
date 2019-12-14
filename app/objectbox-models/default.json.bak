@@ -21,34 +21,9 @@
         }
       ],
       "relations": []
-    },
-    {
-      "id": "2:8838631591361525855",
-      "lastPropertyId": "3:2932638306941813145",
-      "name": "SectionFilter",
-      "properties": [
-        {
-          "id": "1:1843586489892875580",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:8487709813671166977",
-          "name": "index",
-          "type": 5,
-          "flags": 4
-        },
-        {
-          "id": "3:2932638306941813145",
-          "name": "typesJsonArray",
-          "type": 9
-        }
-      ],
-      "relations": []
     }
   ],
-  "lastEntityId": "2:8838631591361525855",
+  "lastEntityId": "1:4144153094570939716",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
