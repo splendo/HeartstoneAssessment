@@ -12,13 +12,19 @@ protocol CollectionViewDataSourcing: UICollectionViewDataSource {
 }
 
 final class CollectionViewDataSource: NSObject {
+    private let cellConfigurator: CardCellConfiguring
+
+    init(cellConfigurator: CardCellConfiguring) {
+        self.cellConfigurator = cellConfigurator
+    }
+
     private var collection = Collection(cards: [])
 }
 
 // MARK: - CollectionViewDataSourcing
 extension CollectionViewDataSource: CollectionViewDataSourcing {
     func register(for collectionView: UICollectionView) {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "temp")
+        collectionView.register(CardCellView.self, forCellWithReuseIdentifier: CardCellView.reuseIdentifier)
         collectionView.dataSource = self
     }
 
@@ -34,14 +40,25 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "temp", for: indexPath)
-
-        let label = UILabel(frame: cell.bounds)
-        label.text = collection.cards[indexPath.item].name
+        let cell = dequeueCardCell(from: collectionView, for: indexPath)
         
-        cell.subviews.forEach({ $0.removeFromSuperview() })
-        cell.addSubview(label)
-
+        cellConfigurator.configure(cell)
+        
+        let cardInfo = collection.cards[indexPath.item]
+        cell.interactor?.updateCard(from: cardInfo)
+        
         return cell
+    }
+}
+
+// MARK: - CardCellView dequeuing
+extension CollectionViewDataSource {
+    func dequeueCardCell(from collectionView: UICollectionView, for indexPath: IndexPath) -> CardCellView {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCellView.reuseIdentifier, for: indexPath)
+        if let cardCell = cell as? CardCellView {
+            return cardCell
+        } else {
+            fatalError("Unexpected cell type while dequeuing in \(CollectionViewDataSource.self): got \(cell)")
+        }
     }
 }

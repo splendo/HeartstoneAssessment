@@ -8,11 +8,13 @@ import struct Foundation.Data
 
 final class RootDependencies {
     let collectionCreating: CollectionCreating
-    
+
     init() {
-        collectionCreating = CollectionFactory()
+        let cardCellFactory = CardCellFactory()
+        
+        collectionCreating = CollectionFactory(cardCellFactory: cardCellFactory)
     }
-    
+
     func createCollectionViewController() -> CollectionDisplaying {
         collectionCreating.createCollectionViewController()
     }

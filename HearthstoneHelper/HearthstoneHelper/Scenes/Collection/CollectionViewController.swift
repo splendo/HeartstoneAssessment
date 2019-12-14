@@ -16,6 +16,7 @@ final class CollectionViewController: UIViewController {
 
     let itemsPerRow = 3
     let margin: CGFloat = 15
+    let cardHeightRatio: CGFloat = 1.51
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -88,6 +89,6 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
         let itemWidth = (collectionViewWidth - totalInteritemSpacing) / CGFloat(itemsPerRow)
 
-        return CGSize(width: itemWidth, height: itemWidth)
+        return CGSize(width: itemWidth, height: itemWidth * cardHeightRatio)
     }
 }

@@ -11,11 +11,16 @@ protocol CollectionCreating {
 }
 
 class CollectionFactory: CollectionCreating {
-    func createCollectionViewController() -> CollectionDisplaying {
-        let dataSource = CollectionViewDataSource()
-        
-        let presenter = CollectionPresenter()
+    let cardCellFactory: CardCellCreating
 
+    init(cardCellFactory: CardCellCreating) {
+        self.cardCellFactory = cardCellFactory
+    }
+
+    func createCollectionViewController() -> CollectionDisplaying {
+        let dataSource = CollectionViewDataSource(cellConfigurator: cardCellFactory.createCellConfigurator())
+
+        let presenter = CollectionPresenter()
         let interactor = CollectionInteractor(
                 presenter: presenter,
                 collectionProvider: CollectionService(
