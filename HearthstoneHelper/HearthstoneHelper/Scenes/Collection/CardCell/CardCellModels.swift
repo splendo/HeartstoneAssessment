@@ -6,20 +6,16 @@
 
 import UIKit
 
-enum CardInfo {
+enum CardImage {
     struct Request {
-        let id: Card.ID
+        let url: URL
     }
 
     struct Response {
-        let id: Card.ID
-        let name: String
         let image: Data?
     }
 
     struct ViewModel {
-        let id: Card.ID
-        let name: String
         let image: UIImage
     }
 }

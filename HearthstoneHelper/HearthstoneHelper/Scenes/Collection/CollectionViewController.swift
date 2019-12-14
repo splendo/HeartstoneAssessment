@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol CollectionDisplaying: class {
+protocol CollectionDisplaying: class, Displaying {
     func display(cards: Collection)
 }
 
@@ -18,12 +18,11 @@ final class CollectionViewController: UIViewController {
     let margin: CGFloat = 15
 
     private lazy var collectionView: UICollectionView = {
-
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         view.alwaysBounceVertical = true
         return view
     }()
@@ -57,8 +56,7 @@ final class CollectionViewController: UIViewController {
         collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
-
+        
         dataSource.register(for: collectionView)
     }
 }
@@ -85,9 +83,9 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                 else { return .zero }
 
         let collectionViewWidth = collectionView.bounds.width - margin * 2
-        
+
         let totalInteritemSpacing = CGFloat(itemsPerRow - 1) * flowLayout.minimumInteritemSpacing
-        
+
         let itemWidth = (collectionViewWidth - totalInteritemSpacing) / CGFloat(itemsPerRow)
 
         return CGSize(width: itemWidth, height: itemWidth)

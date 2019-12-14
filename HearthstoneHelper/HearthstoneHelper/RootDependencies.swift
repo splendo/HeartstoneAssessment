@@ -7,23 +7,13 @@
 import struct Foundation.Data
 
 final class RootDependencies {
-    func createCollectionViewController() -> CollectionViewController {
-        let dataSource = CollectionViewDataSource()
-
-        let presenter = CollectionPresenter()
-        
-        // todo: factorize
-        let interactor = CollectionInteractor(
-                presenter: presenter,
-                collectionProvider: CollectionService(
-                        retriever: LocalCollectionRetriever(
-                                fileReader: { url in try? Data(contentsOf: url) })
-                )
-        )
-
-        let viewController = CollectionViewController(dataSource: dataSource, interactor: interactor)
-        presenter.view = viewController
-
-        return viewController
+    let collectionCreating: CollectionCreating
+    
+    init() {
+        collectionCreating = CollectionFactory()
+    }
+    
+    func createCollectionViewController() -> CollectionDisplaying {
+        collectionCreating.createCollectionViewController()
     }
 }

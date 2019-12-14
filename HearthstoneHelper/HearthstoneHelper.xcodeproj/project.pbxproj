@@ -11,11 +11,14 @@
 		62DE9084E013027F267164B4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */; };
 		62DE949A09F7D8175B841927 /* CollectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */; };
 		62DE94F2409791B4B780C257 /* CardSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE94B42141372E2635E2DF /* CardSets.swift */; };
+		62DE9611A183B6E774D9B551 /* CollectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE907A1C6D4B83B9CB9201 /* CollectionFactory.swift */; };
+		62DE96494D2369E79C354611 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE954CFE6EB15F06A8787B /* CardCellView.swift */; };
 		62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */; };
 		62DE97FBAD2ED4F3BFFDF464 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DE9D4A54443759559D1902 /* cards.json */; };
 		62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A380AE4940383815D54 /* CollectionViewController.swift */; };
 		62DE9991BC93742181DACED4 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91612A72CC37CE153183 /* CollectionService.swift */; };
 		62DE9B5043367EC1273AFECA /* LocalCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE90CF0AFC6B289F0132C2 /* LocalCollectionRetriever.swift */; };
+		62DE9C9097076B72322D98E9 /* Displaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91A199A6D3C3BE6997DE /* Displaying.swift */; };
 		62DE9D9E4876F3C2865BBB56 /* CollectionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE990FA6AF4FA24317CB95 /* CollectionServiceTests.swift */; };
 		62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */; };
 		62DE9ECC77EE1749848FC9A1 /* MockCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9B22B183E5C0DA6D869C /* MockCollectionRetriever.swift */; };
@@ -40,9 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62DE907A1C6D4B83B9CB9201 /* CollectionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionFactory.swift; sourceTree = "<group>"; };
 		62DE90CF0AFC6B289F0132C2 /* LocalCollectionRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollectionRetriever.swift; sourceTree = "<group>"; };
 		62DE91612A72CC37CE153183 /* CollectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionService.swift; sourceTree = "<group>"; };
+		62DE91A199A6D3C3BE6997DE /* Displaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displaying.swift; sourceTree = "<group>"; };
 		62DE94B42141372E2635E2DF /* CardSets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSets.swift; sourceTree = "<group>"; };
+		62DE954CFE6EB15F06A8787B /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
 		62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencies.swift; sourceTree = "<group>"; };
 		62DE96B01FA34E8BE5BF7467 /* LocalCollectionRetrieverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCollectionRetrieverTests.swift; sourceTree = "<group>"; };
 		62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInteractor.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 				62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */,
 				62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */,
 				62DE9D5AF3D4E4875E0FA926 /* CollectionPresenting.swift */,
+				62DE907A1C6D4B83B9CB9201 /* CollectionFactory.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -120,6 +127,14 @@
 				62DE9B22B183E5C0DA6D869C /* MockCollectionRetriever.swift */,
 			);
 			path = CollectionService;
+			sourceTree = "<group>";
+		};
+		62DE95A0C267DE194E6A8B1B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				62DE91A199A6D3C3BE6997DE /* Displaying.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		62DE9659B94A39903102992D /* Entities */ = {
@@ -170,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */,
+				62DE954CFE6EB15F06A8787B /* CardCellView.swift */,
 			);
 			path = CardCell;
 			sourceTree = "<group>";
@@ -209,6 +225,7 @@
 				62DE994C9A70DC885D0BBE27 /* Scenes */,
 				62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */,
 				62DE9C2D30A2722CD2A99CA8 /* Services */,
+				62DE95A0C267DE194E6A8B1B /* Utils */,
 			);
 			path = HearthstoneHelper;
 			sourceTree = "<group>";
@@ -348,6 +365,9 @@
 				62DE9991BC93742181DACED4 /* CollectionService.swift in Sources */,
 				62DE9F342280B2B5E33FB55A /* CollectionRetriever.swift in Sources */,
 				62DE9B5043367EC1273AFECA /* LocalCollectionRetriever.swift in Sources */,
+				62DE96494D2369E79C354611 /* CardCellView.swift in Sources */,
+				62DE9611A183B6E774D9B551 /* CollectionFactory.swift in Sources */,
+				62DE9C9097076B72322D98E9 /* Displaying.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

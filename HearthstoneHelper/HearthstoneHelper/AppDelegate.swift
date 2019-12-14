@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let collectionViewController = dependencies.createCollectionViewController()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = collectionViewController
+        window?.rootViewController = collectionViewController.asViewController
         window?.makeKeyAndVisible()
         return true
     }
