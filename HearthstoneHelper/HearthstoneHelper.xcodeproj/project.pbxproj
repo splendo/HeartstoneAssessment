@@ -24,6 +24,7 @@
 		62DE966DE32CF1BC72BCA51F /* CollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96C3BE2D49B47997734C /* CollectionInteractor.swift */; };
 		62DE9675C3E56A3EDA2E0F4D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE99B98B5C97EC5C06A8EE /* ImageService.swift */; };
 		62DE97FBAD2ED4F3BFFDF464 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DE9D4A54443759559D1902 /* cards.json */; };
+		62DE9807E90C5A743362988B /* MockCardCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE92569B3B83D94A4755ED /* MockCardCellPresenter.swift */; };
 		62DE9854BF5E1EDF2CEEB0BE /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9980BA15B192C2DAD2AE /* ImageCache.swift */; };
 		62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A380AE4940383815D54 /* CollectionViewController.swift */; };
 		62DE9991BC93742181DACED4 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91612A72CC37CE153183 /* CollectionService.swift */; };
@@ -31,20 +32,21 @@
 		62DE9A4603073D6A01BEE2FD /* ImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9DAC925D362CC43E0D2D /* ImageServiceTests.swift */; };
 		62DE9AF96A475DAE79B11988 /* CollectionServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A231DA5DDF0BDC315B7 /* CollectionServiceFactory.swift */; };
 		62DE9B5043367EC1273AFECA /* LocalCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE90CF0AFC6B289F0132C2 /* LocalCollectionRetriever.swift */; };
+		62DE9B97083D4B21C7B8D014 /* CardCellInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9CEA107E42B35297C44D /* CardCellInteractorTests.swift */; };
 		62DE9C03652E140A22403F8D /* MockCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE95AC1E10ECADA5BF4A33 /* MockCollectionRetriever.swift */; };
 		62DE9C9097076B72322D98E9 /* Displaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91A199A6D3C3BE6997DE /* Displaying.swift */; };
 		62DE9C90A087C4EB779B1E95 /* MockImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE920D295E2E81376B1609 /* MockImageService.swift */; };
 		62DE9D9E4876F3C2865BBB56 /* CollectionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE990FA6AF4FA24317CB95 /* CollectionServiceTests.swift */; };
-		62DE9DB052C43810FCA01790 /* MockCardCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9AC8CA0D4EF30AFE0EFD /* MockCardCellPresenter.swift */; };
 		62DE9E0AD1066D4A99B81EA2 /* MockImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9E8F79FD5321A7756CFC /* MockImageCache.swift */; };
 		62DE9E11F8B83D7A141DAED7 /* CardCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9740834E0DE6D48D13C7 /* CardCellModels.swift */; };
+		62DE9E12A79801A400BC68C9 /* MockCollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE946BA653A9B4F623D2B2 /* MockCollectionService.swift */; };
 		62DE9EB6EFC211750D454246 /* NetworkImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D043E5A921BAF7237A8 /* NetworkImageRetriever.swift */; };
 		62DE9ECC2FC412868B35F575 /* HttpClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96864AC44CD0AA2B2D39 /* HttpClientTests.swift */; };
 		62DE9ED83BE839640F09AF3B /* CollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D5AF3D4E4875E0FA926 /* CollectionPresenter.swift */; };
 		62DE9F04FBC87D58EE6FA2CB /* LocalCollectionRetrieverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96B01FA34E8BE5BF7467 /* LocalCollectionRetrieverTests.swift */; };
 		62DE9F342280B2B5E33FB55A /* CollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE971DA42B60FA5BE3D3C6 /* CollectionRetriever.swift */; };
 		62DE9F643049CEFDAC20A792 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9F4DE6FD4515C2F9D044 /* Card.swift */; };
-		94423CBF23A56EFE0091FA81 /* CardCellInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9E6F4BA4C5CB14835744 /* CardCellInteractorTests.swift */; };
+		62DE9F6DE56E11EEA9B5117D /* MockCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D3A7417557FF79F594D /* MockCollectionPresenter.swift */; };
 		94423CC023A666480091FA81 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE94AFB7523AAD041D790D /* HttpClient.swift */; };
 		94FA041D23A2D69F00D67D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FA041C23A2D69F00D67D10 /* AppDelegate.swift */; };
 		94FA042623A2D6A100D67D10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94FA042523A2D6A100D67D10 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		62DE91A199A6D3C3BE6997DE /* Displaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Displaying.swift; sourceTree = "<group>"; };
 		62DE920D295E2E81376B1609 /* MockImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockImageService.swift; sourceTree = "<group>"; };
 		62DE920D3FD81005BB5D17CD /* MockCancelable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCancelable.swift; sourceTree = "<group>"; };
+		62DE92569B3B83D94A4755ED /* MockCardCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCardCellPresenter.swift; sourceTree = "<group>"; };
+		62DE946BA653A9B4F623D2B2 /* MockCollectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCollectionService.swift; sourceTree = "<group>"; };
 		62DE94AFB7523AAD041D790D /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		62DE94B42141372E2635E2DF /* CardSets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSets.swift; sourceTree = "<group>"; };
 		62DE954CFE6EB15F06A8787B /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -87,15 +91,15 @@
 		62DE99B98B5C97EC5C06A8EE /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		62DE9A231DA5DDF0BDC315B7 /* CollectionServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionServiceFactory.swift; sourceTree = "<group>"; };
 		62DE9A380AE4940383815D54 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		62DE9AC8CA0D4EF30AFE0EFD /* MockCardCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCardCellPresenter.swift; sourceTree = "<group>"; };
 		62DE9AECCA03AB5A02A90A5D /* CollectionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionModels.swift; sourceTree = "<group>"; };
 		62DE9CBC068A39CE28E0E664 /* CardCellInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellInteractor.swift; sourceTree = "<group>"; };
+		62DE9CEA107E42B35297C44D /* CardCellInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellInteractorTests.swift; sourceTree = "<group>"; };
 		62DE9D043E5A921BAF7237A8 /* NetworkImageRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageRetriever.swift; sourceTree = "<group>"; };
+		62DE9D3A7417557FF79F594D /* MockCollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCollectionPresenter.swift; sourceTree = "<group>"; };
 		62DE9D4A54443759559D1902 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		62DE9D5AF3D4E4875E0FA926 /* CollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPresenter.swift; sourceTree = "<group>"; };
 		62DE9D8534FE823C8C4AF079 /* CardCellFactory.dart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellFactory.dart.swift; sourceTree = "<group>"; };
 		62DE9DAC925D362CC43E0D2D /* ImageServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceTests.swift; sourceTree = "<group>"; };
-		62DE9E6F4BA4C5CB14835744 /* CardCellInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellInteractorTests.swift; sourceTree = "<group>"; };
 		62DE9E8F79FD5321A7756CFC /* MockImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockImageCache.swift; sourceTree = "<group>"; };
 		62DE9E907B793C4B1154D982 /* ImageServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceFactory.swift; sourceTree = "<group>"; };
 		62DE9EFF80537844F5001D8E /* Cancelable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 			children = (
 				62DE9472EE7ABB2A88E5FC87 /* CollectionRetriever */,
 				62DE990FA6AF4FA24317CB95 /* CollectionServiceTests.swift */,
+				62DE946BA653A9B4F623D2B2 /* MockCollectionService.swift */,
 			);
 			path = CollectionService;
 			sourceTree = "<group>";
@@ -218,6 +223,15 @@
 				62DE94B42141372E2635E2DF /* CardSets.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		62DE970BD0B9973467168E0A /* CardCell */ = {
+			isa = PBXGroup;
+			children = (
+				62DE9CEA107E42B35297C44D /* CardCellInteractorTests.swift */,
+				62DE92569B3B83D94A4755ED /* MockCardCellPresenter.swift */,
+			);
+			path = CardCell;
 			sourceTree = "<group>";
 		};
 		62DE976EEDD7CF85B7CA6B81 /* CollectionService */ = {
@@ -297,8 +311,8 @@
 		62DE9DEB0D79819192C83FA0 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				62DE9E6F4BA4C5CB14835744 /* CardCellInteractorTests.swift */,
-				62DE9AC8CA0D4EF30AFE0EFD /* MockCardCellPresenter.swift */,
+				62DE970BD0B9973467168E0A /* CardCell */,
+				62DE9D3A7417557FF79F594D /* MockCollectionPresenter.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -532,10 +546,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94423CBF23A56EFE0091FA81 /* CardCellInteractorTests.swift in Sources */,
 				62DE9F04FBC87D58EE6FA2CB /* LocalCollectionRetrieverTests.swift in Sources */,
 				62DE9D9E4876F3C2865BBB56 /* CollectionServiceTests.swift in Sources */,
-				62DE9DB052C43810FCA01790 /* MockCardCellPresenter.swift in Sources */,
 				62DE9ECC2FC412868B35F575 /* HttpClientTests.swift in Sources */,
 				62DE9A4603073D6A01BEE2FD /* ImageServiceTests.swift in Sources */,
 				62DE92810EF64F2CA2601BF4 /* MockCancelable.swift in Sources */,
@@ -543,6 +555,10 @@
 				62DE9E0AD1066D4A99B81EA2 /* MockImageCache.swift in Sources */,
 				62DE9A3299AB24478C8865EE /* MockImageRetriever.swift in Sources */,
 				62DE9C90A087C4EB779B1E95 /* MockImageService.swift in Sources */,
+				62DE9B97083D4B21C7B8D014 /* CardCellInteractorTests.swift in Sources */,
+				62DE9807E90C5A743362988B /* MockCardCellPresenter.swift in Sources */,
+				62DE9F6DE56E11EEA9B5117D /* MockCollectionPresenter.swift in Sources */,
+				62DE9E12A79801A400BC68C9 /* MockCollectionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

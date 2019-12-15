@@ -12,7 +12,7 @@ class MockImageRetriever: ImageRetriever {
     private(set) var retrieveUrlArgument: URL?
     var retrievalResult: Result<Data, Error>?
 
-    func retrieve(from url: URL, completion: @escaping Completion) -> HearthstoneHelper.Cancelable {
+    func retrieve(from url: URL, completion: @escaping Completion) -> Cancelable {
         guard let retrievalResult = retrievalResult else {
             fatalError("retrievalResult expectation was not set")
         }

@@ -9,8 +9,8 @@ protocol CollectionInteracting {
 }
 
 final class CollectionInteractor: CollectionInteracting {
-    private let presenter: CollectionPresenting
     private let collectionService: CollectionProviding
+    private let presenter: CollectionPresenting
 
     init(presenter: CollectionPresenting, collectionService: CollectionProviding) {
         self.presenter = presenter
@@ -18,7 +18,9 @@ final class CollectionInteractor: CollectionInteracting {
     }
 
     func fetchCollection() {
-        collectionService.getCollection { [weak presenter] result in
+        collectionService.getCollection(
+                sortBy: .ascending,
+                filterWith: cardFilter) { [weak presenter] result in
             guard let presenter = presenter else { return }
 
             switch result {
@@ -29,4 +31,10 @@ final class CollectionInteractor: CollectionInteracting {
             }
         }
     }
+
+    private var cardFilter: (Card) -> Bool =
+            { card in
+                card.mechanics?.first { $0.name == "Deathrattle" } != nil
+                        && card.rarity == "Legendary"
+            }
 }

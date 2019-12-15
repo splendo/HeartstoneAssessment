@@ -9,7 +9,7 @@ import Foundation
 struct Card: Decodable {
     typealias ID = String
     typealias Rarity = String
-    typealias `Type` = String
+    typealias EntityType = String
     typealias Class = String
 
     struct Mechanic: Decodable {
@@ -18,7 +18,7 @@ struct Card: Decodable {
     
     let cardId: ID
     let name: String
-    let type: Type
+    let type: EntityType
     let rarity: Rarity?
     let mechanics: [Mechanic]?
     let img: URL?

@@ -23,6 +23,8 @@ class CardCellView: UICollectionViewCell {
 
     var interactor: CardCellInteracting?
 
+    private let placeholderNameLabelMargin = 10
+
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
 
@@ -55,11 +57,6 @@ class CardCellView: UICollectionViewCell {
 
         view.addSubview(placeholderNameLabel)
 
-        placeholderNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        placeholderNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        placeholderNameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        placeholderNameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -10).isActive = true
-
         view.backgroundColor = .white
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
@@ -83,6 +80,8 @@ class CardCellView: UICollectionViewCell {
         setupPlaceholderView()
         setupImageView()
         setupLoadingIndicator()
+
+        layout()
     }
 
     private func setupPlaceholderView() {
@@ -93,6 +92,13 @@ class CardCellView: UICollectionViewCell {
         placeholderView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         placeholderView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         placeholderView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+
+        placeholderNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeholderNameLabel.centerXAnchor.constraint(equalTo: placeholderView.centerXAnchor).isActive = true
+        placeholderNameLabel.centerYAnchor.constraint(equalTo: placeholderView.centerYAnchor).isActive = true
+        placeholderNameLabel.widthAnchor.constraint(
+                equalTo: placeholderView.widthAnchor,
+                constant: CGFloat(-1 * placeholderNameLabelMargin)).isActive = true
     }
 
     private func setupImageView() {
