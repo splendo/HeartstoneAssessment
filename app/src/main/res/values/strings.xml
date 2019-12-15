@@ -56,6 +56,9 @@
 
     <string name="apply_filters_label">Apply Filters</string>
 
+    <string name="sort_alphabetical_label">Alphabetical</string>
+    <string name="sort_rarity_label">Rarity</string>
+
 
     <!--    -->
 <!--    -->
@@ -68,4 +71,12 @@
 <!--    -->
 <!--    -->
 <!--    -->
+
+    <array name="rarity_array">
+        <item>Free</item>
+        <item>Common</item>
+        <item>Rare</item>
+        <item>Epic</item>
+        <item>Legendary</item>
+    </array>
 </resources>

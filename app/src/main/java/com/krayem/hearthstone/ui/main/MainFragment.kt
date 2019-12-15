@@ -130,7 +130,6 @@ class MainFragment : Fragment() {
         main_fragment_progress.visibility = View.GONE
         cards_rv.visibility = View.VISIBLE
         Toast.makeText(context,"ERROR",Toast.LENGTH_SHORT).show()
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

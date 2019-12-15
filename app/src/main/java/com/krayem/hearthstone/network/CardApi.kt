@@ -8,5 +8,5 @@ import retrofit2.http.GET
 interface CardApi {
 
     @GET("/cards/all")
-    fun getAll(): Observable<List<Card>>
+    fun getAll(): Observable<MutableList<Card>>
 }

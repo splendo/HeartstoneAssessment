@@ -1,12 +1,32 @@
 package com.krayem.hearthstone.utils
 
 import org.json.JSONArray
+import org.json.JSONObject
 
-fun toJsonArray(set: Set<String>) : JSONArray{
-    val json = JSONArray()
-    for (item in set) {
-        json.put(item)
+fun toJsonObject(types: Set<String>,classes: Set<String>, mechanics: Set<String>,rarity: Pair<Int,Int>) : JSONObject{
+    val json = JSONObject()
+
+    val typesJSONArray = JSONArray()
+    for (item in types) {
+        typesJSONArray.put(item)
     }
+    json.put("types",typesJSONArray)
+
+    val classesJSONArray = JSONArray()
+    for (item in classes) {
+        classesJSONArray.put(item)
+    }
+    json.put("classes",classesJSONArray)
+
+    val mechanicsJSONArray = JSONArray()
+    for (item in mechanics) {
+        mechanicsJSONArray.put(item)
+    }
+    json.put("mechanics",mechanicsJSONArray)
+
+    json.put("minRarity",rarity.first)
+    json.put("maxRarity",rarity.second)
+
     return json
 }
 
@@ -16,4 +36,8 @@ fun fromJsonArray(json: JSONArray) : MutableSet<String>{
         set.add(json.getString(i))
     }
     return set
+}
+
+fun getRarityPair(json: JSONObject): Pair<Int,Int>{
+    return Pair(json.getInt("minRarity"),json.getInt("maxRarity"))
 }

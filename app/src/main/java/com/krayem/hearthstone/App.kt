@@ -2,6 +2,7 @@ package com.krayem.hearthstone
 
 import android.app.Application
 import android.content.Context
+import com.krayem.hearthstone.network.FakeServer
 import com.krayem.hearthstone.objectbox.ObjectBox
 
 class App : Application() {

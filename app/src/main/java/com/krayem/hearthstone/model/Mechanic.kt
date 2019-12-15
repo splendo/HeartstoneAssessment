@@ -2,6 +2,8 @@ package com.krayem.hearthstone.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
 
 
 data class Mechanic(val name: String? = null) : Parcelable {

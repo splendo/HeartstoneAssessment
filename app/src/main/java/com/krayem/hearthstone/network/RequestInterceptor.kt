@@ -1,21 +1,41 @@
 package com.krayem.hearthstone.network
 
+import android.util.Log
 import com.krayem.hearthstone.App
+import com.krayem.hearthstone.db.DatabaseManager
+import com.krayem.hearthstone.db.DatabaseModule
+import com.krayem.hearthstone.di.DaggerComponentInjector
+import com.krayem.hearthstone.di.DaggerViewModelInjector
+import com.krayem.hearthstone.model.Card
+import com.krayem.hearthstone.objectbox.ObjectBox
 import com.krayem.hearthstone.utils.JSON_TEST
+import io.objectbox.Box
+import io.objectbox.kotlin.boxFor
 import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
 class RequestInterceptor : Interceptor {
+
+
+    init {
+        DaggerComponentInjector
+            .builder()
+            .databaseModule(DatabaseModule)
+            .build()
+            .inject(this)
+    }
+
+
+    @Inject
+    lateinit var fakeServer: FakeServer
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val uri = chain.request().url().uri().toString()
         val responseString = when {
-//            uri.endsWith("cards/all") -> JSON_TEST
-            uri.endsWith("cards/all") -> {
-                val jsonfile: String = App.instance.assets.open("cards.json").bufferedReader().use { it.readText() }
-                val all = JSONObject(jsonfile)
-                all.getJSONArray("Basic").toString()
-            }
+            uri.endsWith("cards/all") -> fakeServer.getAll().toString()
             else -> ""
         }
 

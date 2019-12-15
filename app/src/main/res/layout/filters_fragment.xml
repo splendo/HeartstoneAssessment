@@ -43,19 +43,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:rsb_indicator_height="wrap_content"
                 app:rsb_indicator_width="wrap_content"
-                app:rsb_max="5"
+                app:rsb_max="4"
                 app:rsb_min="0"
                 app:rsb_min_interval="0"
                 app:rsb_mode="range"
                 app:rsb_step_auto_bonding="true"
                 app:rsb_step_color="@color/colorAccent"
-                app:rsb_step_height="10dp"
-                app:rsb_step_radius="10dp"
-                app:rsb_step_width="10dp"
-                app:rsb_steps="5" />
+                app:rsb_step_height="5dp"
+                app:rsb_step_radius="5dp"
+                app:rsb_step_width="5dp"
+                app:rsb_steps="4"
+                app:rsb_tick_mark_text_array="@array/rarity_array"
+                app:rsb_tick_mark_mode="other"
+                app:rsb_tick_mark_text_color="@android:color/black"
+                app:rsb_tick_mark_text_margin="20dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/type_til"
@@ -118,6 +124,51 @@
                     android:padding="16dp"
                     android:editable="false" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/sort_alphabetic_rb"
+                app:layout_constraintTop_toBottomOf="@id/mechanic_til"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/sort_alphabetic_cb"
+                android:text="@string/sort_alphabetical_label"
+                android:layout_margin="16dp"/>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/sort_alphabetic_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/sort_alphabetic_rb"
+                app:layout_constraintBottom_toBottomOf="@id/sort_alphabetic_rb"
+                app:layout_constraintStart_toEndOf="@id/sort_alphabetic_rb"
+                android:layout_marginEnd="16dp"
+                android:button="@drawable/sorting_switch_selector"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/sort_rarity_rb"
+                app:layout_constraintTop_toBottomOf="@id/sort_alphabetic_rb"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/sort_rarity_cb"
+                android:text="@string/sort_rarity_label"
+                android:layout_margin="16dp"/>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/sort_rarity_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/sort_rarity_rb"
+                app:layout_constraintBottom_toBottomOf="@id/sort_rarity_rb"
+                app:layout_constraintStart_toEndOf="@id/sort_rarity_rb"
+                android:layout_marginEnd="16dp"
+                android:button="@drawable/sorting_switch_selector"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

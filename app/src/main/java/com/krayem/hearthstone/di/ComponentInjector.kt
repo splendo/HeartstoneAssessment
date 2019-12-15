@@ -9,18 +9,18 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(NetworkModule::class)])
-interface ViewModelInjector{
+@Component(modules = [(DatabaseModule::class)])
+interface ComponentInjector{
 
-    fun inject(mainViewModel: MainViewModel)
+    fun inject(fakeServer: FakeServer)
 
-
+    fun inject(requestInterceptor: RequestInterceptor)
 
     @Component.Builder
     interface Builder {
-        fun build(): ViewModelInjector
+        fun build(): ComponentInjector
 
-        fun networkModule(networkModule: NetworkModule): Builder
+        fun databaseModule(databaseModule: DatabaseModule): Builder
 
     }
 
