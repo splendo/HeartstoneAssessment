@@ -23,7 +23,7 @@ final class CollectionViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.0)
+        view.backgroundColor = Style.screenBackgroundColor
         view.alwaysBounceVertical = true
         
         return view
@@ -42,9 +42,11 @@ final class CollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.title = "Collection"
+        
         setupCollectionView()
-
+        
         interactor.fetchCollection()
     }
 
@@ -73,7 +75,11 @@ extension CollectionViewController: CollectionDisplaying {
 
 // MARK: - UICollectionViewDelegate
 extension CollectionViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let card = dataSource.cardAt(index: indexPath.item)
+        
+        navigationController?.pushViewController(DetailsViewController(withInfoFrom: card), animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

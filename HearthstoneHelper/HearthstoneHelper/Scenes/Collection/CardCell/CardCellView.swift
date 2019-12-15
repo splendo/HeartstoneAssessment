@@ -37,7 +37,7 @@ class CardCellView: UICollectionViewCell {
         let indicator = UIActivityIndicatorView()
 
         indicator.hidesWhenStopped = true
-        indicator.color = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.0)
+        indicator.color = Style.cellLoadingIndicatorColor
 
         return indicator
     }()
@@ -47,7 +47,7 @@ class CardCellView: UICollectionViewCell {
 
         placeholderNameLabel.numberOfLines = 0
         placeholderNameLabel.textAlignment = .center
-        placeholderNameLabel.textColor = UIColor(red: 0.20, green: 0.29, blue: 0.37, alpha: 1.0)
+        placeholderNameLabel.textColor = Style.cellPlaceholderNameLabelColor
 
         return placeholderNameLabel
     }()

@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let collectionViewController = dependencies.createCollectionViewController()
-        
+
+        let navigationController = UINavigationController(rootViewController: collectionViewController.asViewController)
+
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = collectionViewController.asViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }

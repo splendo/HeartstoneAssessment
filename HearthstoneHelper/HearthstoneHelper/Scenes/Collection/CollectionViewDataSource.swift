@@ -9,6 +9,7 @@ import UIKit
 protocol CollectionViewDataSourcing: UICollectionViewDataSource {
     func register(for collectionView: UICollectionView)
     func set(collection: Collection)
+    func cardAt(index: Int) -> Card
 }
 
 final class CollectionViewDataSource: NSObject {
@@ -31,6 +32,10 @@ extension CollectionViewDataSource: CollectionViewDataSourcing {
     func set(collection: Collection) {
         self.collection = collection
     }
+
+    func cardAt(index: Int) -> Card {
+        collection.cards[index]
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -41,12 +46,12 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueCardCell(from: collectionView, for: indexPath)
-        
+
         cellConfigurator.configure(cell)
-        
+
         let cardInfo = collection.cards[indexPath.item]
         cell.interactor?.updateCard(from: cardInfo)
-        
+
         return cell
     }
 }
