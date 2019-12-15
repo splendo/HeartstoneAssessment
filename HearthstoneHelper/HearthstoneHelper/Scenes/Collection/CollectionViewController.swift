@@ -23,8 +23,9 @@ final class CollectionViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.0)
         view.alwaysBounceVertical = true
+        
         return view
     }()
 
