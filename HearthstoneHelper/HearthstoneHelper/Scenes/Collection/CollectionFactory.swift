@@ -7,26 +7,28 @@
 import struct Foundation.Data
 
 protocol CollectionCreating {
-    func createCollectionViewController() -> CollectionDisplaying
+    func createCollectionViewController(imageService: ImageProviding) -> CollectionDisplaying
 }
 
 class CollectionFactory: CollectionCreating {
     let cardCellFactory: CardCellCreating
+    let collectionServiceFactory: CollectionServiceCreating
 
-    init(cardCellFactory: CardCellCreating) {
+    init(cardCellFactory: CardCellCreating, collectionServiceFactory: CollectionServiceCreating) {
         self.cardCellFactory = cardCellFactory
+        self.collectionServiceFactory = collectionServiceFactory
     }
 
-    func createCollectionViewController() -> CollectionDisplaying {
-        let dataSource = CollectionViewDataSource(cellConfigurator: cardCellFactory.createCellConfigurator())
+    func createCollectionViewController(imageService: ImageProviding) -> CollectionDisplaying {
+        let cellConfigurator = cardCellFactory.createCellConfigurator(imageService: imageService)
+        let dataSource = CollectionViewDataSource(cellConfigurator: cellConfigurator)
+
+        let collectionService = collectionServiceFactory.create()
 
         let presenter = CollectionPresenter()
         let interactor = CollectionInteractor(
                 presenter: presenter,
-                collectionProvider: CollectionService(
-                        retriever: LocalCollectionRetriever(
-                                fileReader: { url in try? Data(contentsOf: url) })
-                )
+                collectionService: collectionService
         )
 
         let viewController = CollectionViewController(dataSource: dataSource, interactor: interactor)

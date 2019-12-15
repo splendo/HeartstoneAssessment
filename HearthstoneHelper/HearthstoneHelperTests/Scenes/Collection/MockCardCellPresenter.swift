@@ -8,18 +8,22 @@ import struct Foundation.Data
 @testable import HearthstoneHelper
 
 class MockCardCellPresenter: CardCellPresenting {
-    private(set) var presentNameCalls = [String]()
-    private(set) var presentImageCalls = [Data]()
+    private(set) var presentNameCallCount = 0
+    private(set) var presentNameCallArgument: String?
+    private(set) var presentImageCallCount = 0
+    private(set) var presentImageCallArgument: Data?
     private(set) var presentLoadingCallCount: Int = 0
-    private(set) var presentErrorImageCallCount: Int = 0
+    private(set) var presentErrorCallCount: Int = 0
     private(set) var presentNoImageCallCount: Int = 0
 
     func present(name: String) {
-        presentNameCalls.append(name)
+        presentNameCallCount += 1
+        presentNameCallArgument = name
     }
 
     func presentImage(from data: Data) {
-        presentImageCalls.append(data)
+        presentImageCallCount += 1
+        presentImageCallArgument = data
     }
 
     func presentLoading() {
@@ -27,7 +31,7 @@ class MockCardCellPresenter: CardCellPresenting {
     }
 
     func presentError() {
-        presentErrorImageCallCount += 1
+        presentErrorCallCount += 1
     }
 
     func presentNoImage() {

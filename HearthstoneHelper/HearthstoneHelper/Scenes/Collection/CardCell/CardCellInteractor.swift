@@ -13,14 +13,12 @@ protocol CardCellInteracting {
 class CardCellInteractor: CardCellInteracting {
     private let presenter: CardCellPresenting
     private var imageService: ImageProviding
-    
+
     private var imageTask: Cancelable?
 
-    init(presenter: CardCellPresenting) {
+    init(presenter: CardCellPresenting, imageService: ImageProviding) {
         self.presenter = presenter
-        // todo: injection
-        self.imageService =
-                ImageService(imageCache: ImageCache(), imageRetriever: NetworkImageRetriever(httpClient: Http.Client()))
+        self.imageService = imageService
     }
 
     func updateCard(from info: Card) {
@@ -42,16 +40,14 @@ class CardCellInteractor: CardCellInteracting {
             return
         }
 
-        imageTask = imageService.fetch(from: url) { result in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
+        imageTask = imageService.fetch(from: url) { [weak self] result in
+            guard let self = self else { return }
 
-                switch result {
-                case .success(let data):
-                    self.presenter.presentImage(from: data)
-                case .failure:
-                    self.presenter.presentError()
-                }
+            switch result {
+            case .success(let data):
+                self.presenter.presentImage(from: data)
+            case .failure:
+                self.presenter.presentError()
             }
         }
     }

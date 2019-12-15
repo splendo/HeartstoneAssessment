@@ -7,15 +7,22 @@
 import struct Foundation.Data
 
 final class RootDependencies {
-    let collectionCreating: CollectionCreating
+    let imageService: ImageService
 
     init() {
-        let cardCellFactory = CardCellFactory()
-        
-        collectionCreating = CollectionFactory(cardCellFactory: cardCellFactory)
+        let imageServiceFactory = ImageServiceFactory()
+        imageService = imageServiceFactory.create()
     }
 
     func createCollectionViewController() -> CollectionDisplaying {
-        collectionCreating.createCollectionViewController()
+        let collectionServiceFactory = CollectionServiceFactory()
+        let cardCellFactory = CardCellFactory()
+
+        let collectionFactory = CollectionFactory(
+                cardCellFactory: cardCellFactory,
+                collectionServiceFactory: collectionServiceFactory
+        )
+
+        return collectionFactory.createCollectionViewController(imageService: imageService)
     }
 }

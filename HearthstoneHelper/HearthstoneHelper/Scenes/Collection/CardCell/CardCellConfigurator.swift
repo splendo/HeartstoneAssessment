@@ -9,11 +9,17 @@ protocol CardCellConfiguring {
 }
 
 class CardCellConfigurator: CardCellConfiguring {
+    let imageService: ImageProviding
+
+    init(imageService: ImageProviding) {
+        self.imageService = imageService
+    }
+
     func configure(_ cell: CardCellView) {
         if (cell.interactor == nil) {
             let presenter = CardCellPresenter(view: cell)
-            let interactor = CardCellInteractor(presenter: presenter)
-            
+            let interactor = CardCellInteractor(presenter: presenter, imageService: imageService)
+
             cell.interactor = interactor
         }
     }

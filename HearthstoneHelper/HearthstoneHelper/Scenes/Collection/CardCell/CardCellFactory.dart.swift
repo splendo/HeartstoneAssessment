@@ -7,11 +7,11 @@
 import Foundation
 
 protocol CardCellCreating {
-    func createCellConfigurator() -> CardCellConfigurator
+    func createCellConfigurator(imageService: ImageProviding) -> CardCellConfigurator
 }
 
 class CardCellFactory: CardCellCreating {
-    func createCellConfigurator() -> CardCellConfigurator {
-        CardCellConfigurator()
+    func createCellConfigurator(imageService: ImageProviding) -> CardCellConfigurator {
+        CardCellConfigurator(imageService: imageService)
     }
 }

@@ -10,15 +10,15 @@ protocol CollectionInteracting {
 
 final class CollectionInteractor: CollectionInteracting {
     private let presenter: CollectionPresenting
-    private let collectionProvider: CollectionProviding
+    private let collectionService: CollectionProviding
 
-    init(presenter: CollectionPresenting, collectionProvider: CollectionProviding) {
+    init(presenter: CollectionPresenting, collectionService: CollectionProviding) {
         self.presenter = presenter
-        self.collectionProvider = collectionProvider
+        self.collectionService = collectionService
     }
 
     func fetchCollection() {
-        collectionProvider.getCollection { [weak presenter] result in
+        collectionService.getCollection { [weak presenter] result in
             guard let presenter = presenter else { return }
 
             switch result {
