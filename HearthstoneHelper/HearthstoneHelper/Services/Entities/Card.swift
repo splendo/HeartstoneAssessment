@@ -15,7 +15,7 @@ struct Card: Decodable {
     struct Mechanic: Decodable {
         let name: String
     }
-
+    
     let cardId: ID
     let name: String
     let type: Type

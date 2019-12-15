@@ -6,10 +6,6 @@
 
 import Foundation
 
-protocol Cancelable {
-    func cancel()
-}
-
 protocol HttpCommunicator {
     @discardableResult
     func get(url: URL, completion: @escaping Http.TaskCompletion) -> Cancelable

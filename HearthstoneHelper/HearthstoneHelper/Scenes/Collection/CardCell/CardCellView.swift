@@ -6,12 +6,19 @@
 
 import UIKit
 
+enum CardCellState {
+    case noImage
+    case loading
+    case image(UIImage)
+}
+
 protocol CardCellDisplaying: class {
     func display(name: String)
-    func display(image: UIImage)
+    func display(state: CardCellState)
 }
 
 class CardCellView: UICollectionViewCell {
+    
     static let reuseIdentifier = "\(CardCellView.self)"
 
     var interactor: CardCellInteracting?
@@ -37,10 +44,15 @@ class CardCellView: UICollectionViewCell {
         super.init(frame: frame)
 
         setupPlaceholderNameLabel()
+
+        addSubview(imageView)
     }
     
     private func setupPlaceholderNameLabel() {
         addSubview(placeholderNameLabel)
+
+        placeholderNameLabel.numberOfLines = 0
+        placeholderNameLabel.textAlignment = .center
         
         placeholderNameLabel.translatesAutoresizingMaskIntoConstraints = false
         placeholderNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -55,14 +67,19 @@ extension CardCellView: CardCellDisplaying {
         placeholderNameLabel.text = name
     }
 
-    func display(image: UIImage) {
-        // todo: this is temporary, image/name view will be removed by loading state change
-        if (imageView.superview === self) {
-            imageView.removeFromSuperview()
+    func display(state: CardCellState) {
+        switch state {
+        case .noImage:
+            imageView.isHidden = true
+            placeholderNameLabel.isHidden = false
+        case .loading:
+            imageView.isHidden = true
+            placeholderNameLabel.isHidden = false
+            // todo: loading thingy
+        case .image(let image):
+            placeholderNameLabel.isHidden = true
+            imageView.isHidden = false
+            imageView.image = image
         }
-        placeholderNameLabel.removeFromSuperview()
-        
-        imageView.image = image
-        addSubview(imageView)
     }
 }

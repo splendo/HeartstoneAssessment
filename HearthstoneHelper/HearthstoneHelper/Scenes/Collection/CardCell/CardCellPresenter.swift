@@ -9,15 +9,15 @@ import class UIKit.UIImage
 
 protocol CardCellPresenting {
     func present(name: String)
+    func presentNoImage()
     func presentImage(from data: Data)
     func presentLoading()
-    func presentErrorImage()
-    func presentPlaceholderImage()
+    func presentError()
 }
 
 class CardCellPresenter: CardCellPresenting {
     weak var view: CardCellDisplaying?
-    
+
     init(view: CardCellDisplaying) {
         self.view = view
     }
@@ -28,22 +28,22 @@ class CardCellPresenter: CardCellPresenting {
 
     func presentImage(from data: Data) {
         guard let image = UIImage(data: data) else {
-            presentErrorImage()
-            return 
+            presentError()
+            return
         }
-        
-        view?.display(image: image)
+
+        view?.display(state: .image(image))
     }
 
     func presentLoading() {
-        
+        view?.display(state: .loading)
     }
 
-    func presentErrorImage() {
-        
+    func presentError() {
+        view?.display(state: .noImage)
     }
 
-    func presentPlaceholderImage() {
-        
+    func presentNoImage() {
+        view?.display(state: .noImage)
     }
 }

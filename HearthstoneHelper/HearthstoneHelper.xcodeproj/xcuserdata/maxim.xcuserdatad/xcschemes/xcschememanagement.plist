@@ -9,26 +9,40 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>LocalCollectionRetrieverTests.test_retrieveCollection_returnsNilData_completesWithError.xcscheme</key>
+		<key>CardCellInteractorTests.test_updateCard_withNoImageURL_presentsNoImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>All in LocalCollectionRetrieverTests.swift.xcscheme</key>
+		<key>HttpClientTests.test_getRequest_succeeds.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>CollectionServiceTests.test_getCollection_defaultOrder_sortsAscending.xcscheme</key>
+		<key>ImageServiceTests.test_fetchImage_imageIsCached_returnsCachedValue.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>All in ImageServiceTests.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>ImageServiceTests.test_fetchImage_imageIsNotCached_retrievesImage_storesImageInCache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 </dict>

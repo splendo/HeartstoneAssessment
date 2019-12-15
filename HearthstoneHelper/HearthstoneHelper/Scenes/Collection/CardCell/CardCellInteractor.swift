@@ -12,44 +12,47 @@ protocol CardCellInteracting {
 
 class CardCellInteractor: CardCellInteracting {
     private let presenter: CardCellPresenting
+    private var imageService: ImageProviding
+    
+    private var imageTask: Cancelable?
 
     init(presenter: CardCellPresenting) {
         self.presenter = presenter
+        // todo: injection
+        self.imageService =
+                ImageService(imageCache: ImageCache(), imageRetriever: NetworkImageRetriever(httpClient: Http.Client()))
     }
 
     func updateCard(from info: Card) {
         presenter.present(name: info.name)
+
         loadImage(for: info.img)
     }
 
     private func loadImage(for url: URL?) {
+        if let imageTask = imageTask {
+            imageTask.cancel()
+        }
+        imageTask = nil
+
         presenter.presentLoading()
 
         guard let url = url else {
-            self.presenter.presentPlaceholderImage()
+            presenter.presentNoImage()
             return
         }
 
-        DispatchQueue(label: "temp queue").async { [weak self] in
-            guard let self = self else { return }
+        imageTask = imageService.fetch(from: url) { result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
 
-            // todo: proper downloading
-            tempDownloadImage(from: url) { data in
-                DispatchQueue.main.async {
-                    guard let data = data else {
-                        self.presenter.presentErrorImage()
-                        return
-                    }
-
+                switch result {
+                case .success(let data):
                     self.presenter.presentImage(from: data)
+                case .failure:
+                    self.presenter.presentError()
                 }
             }
         }
     }
-}
-
-func tempDownloadImage(from url: URL, completion: @escaping (Data?) -> Void) {
-    URLSession.shared.dataTask(with: url) { data, _, error in
-        completion(data)
-    }.resume()
 }
