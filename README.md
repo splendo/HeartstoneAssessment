@@ -1,3 +1,33 @@
+## Developer notes
+
+The project is implemented with *Clean Swift*/*VIP* architecture. Most essential parts are covered with *Unit Tests*.
+
+The project is split in structured as follows:
+- *Scenes*: 
+    - contains all views and their respective VIP components
+    - all components are instantiated through the factories
+    - *Collection*:
+        - collection view with all cards (by default only *Legendary Deathrattle* cards are shown)
+    - *Details*:
+        - detailed view of a card 
+        
+- *Services*:
+    - *CollectionService*:
+        - responsible for retrieving card collection
+        - allows for filtering and ordering the output
+    - *ImageService*:
+        - responsible for fetching and caching images
+    - *MetadataService*:
+        - responsible for fetching, caching and persisting card metadata (such as card favorite status)
+        
+- *Network*:
+    - Contains basic HTTP client with cancellation support
+    
+What can be improved:
+- Even more test coverage
+- The way image fetching cancellation handled during card cell reuse is flawed and might lead to race condition (although that is very unlikely)
+- *MetadataService* protocol is called *MetadataProviding* which incorrectly describes that abstraction, since the service is also responsible for caching/persisting. It could be split into *MetadataProviding* and *MetadataStoring*
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
