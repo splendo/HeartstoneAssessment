@@ -37,19 +37,19 @@ class CardCellView: UICollectionViewCell {
         let indicator = UIActivityIndicatorView()
 
         indicator.hidesWhenStopped = true
-        indicator.color = Style.cellLoadingIndicatorColor
+        indicator.color = Style.CellLoadingIndicator.color
 
         return indicator
     }()
 
     private lazy var placeholderNameLabel: UILabel = {
-        let placeholderNameLabel = UILabel()
+        let label = UILabel()
 
-        placeholderNameLabel.numberOfLines = 0
-        placeholderNameLabel.textAlignment = .center
-        placeholderNameLabel.textColor = Style.cellPlaceholderNameLabelColor
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = Style.CellPlaceholderNameLabel.color
 
-        return placeholderNameLabel
+        return label
     }()
 
     private lazy var placeholderView: UIView = {

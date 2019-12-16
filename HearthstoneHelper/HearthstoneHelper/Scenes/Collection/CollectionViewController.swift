@@ -13,6 +13,7 @@ protocol CollectionDisplaying: class, Displaying {
 final class CollectionViewController: UIViewController {
     private let dataSource: CollectionViewDataSourcing
     private let interactor: CollectionInteracting
+    private let router: CollectionRouting
 
     let itemsPerRow = 3
     let margin: CGFloat = 15
@@ -23,15 +24,16 @@ final class CollectionViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = Style.screenBackgroundColor
+        view.backgroundColor = Style.ScreenBackground.color
         view.alwaysBounceVertical = true
-        
+
         return view
     }()
 
-    init(dataSource: CollectionViewDataSourcing, interactor: CollectionInteracting) {
+    init(dataSource: CollectionViewDataSourcing, interactor: CollectionInteracting, router: CollectionRouting) {
         self.dataSource = dataSource
         self.interactor = interactor
+        self.router = router
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,11 +44,11 @@ final class CollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.title = "Collection"
-        
+
         setupCollectionView()
-        
+
         interactor.fetchCollection()
     }
 
@@ -60,7 +62,7 @@ final class CollectionViewController: UIViewController {
         collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
+
         dataSource.register(for: collectionView)
     }
 }
@@ -78,7 +80,7 @@ extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = dataSource.cardAt(index: indexPath.item)
         
-        navigationController?.pushViewController(DetailsViewController(withInfoFrom: card), animated: true)
+        router.routeToDetailsView(withInfoFrom: card)
     }
 }
 

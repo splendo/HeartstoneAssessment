@@ -13,15 +13,18 @@ protocol CollectionCreating {
 class CollectionFactory: CollectionCreating {
     let cardCellFactory: CardCellCreating
     let collectionServiceFactory: CollectionServiceCreating
+    let detailsFactory: DetailsCreating
 
-    init(cardCellFactory: CardCellCreating, collectionServiceFactory: CollectionServiceCreating) {
+    init(cardCellFactory: CardCellCreating,
+         collectionServiceFactory: CollectionServiceCreating,
+         detailsFactory: DetailsCreating) {
         self.cardCellFactory = cardCellFactory
         self.collectionServiceFactory = collectionServiceFactory
+        self.detailsFactory = detailsFactory
     }
 
     func createCollectionViewController(imageService: ImageProviding) -> CollectionDisplaying {
-        let cellConfigurator = cardCellFactory.createCellConfigurator(imageService: imageService)
-        let dataSource = CollectionViewDataSource(cellConfigurator: cellConfigurator)
+        let dataSource = createCollectionViewDataSource(imageService: imageService)
 
         let collectionService = collectionServiceFactory.create()
 
@@ -30,10 +33,19 @@ class CollectionFactory: CollectionCreating {
                 presenter: presenter,
                 collectionService: collectionService
         )
+        let router = CollectionRouter(detailsFactory: detailsFactory)
 
-        let viewController = CollectionViewController(dataSource: dataSource, interactor: interactor)
+        let viewController = CollectionViewController(
+                dataSource: dataSource, interactor: interactor, router: router)
         presenter.view = viewController
+        router.sourceVC = viewController
 
         return viewController
+    }
+
+    private func createCollectionViewDataSource(imageService: ImageProviding) -> CollectionViewDataSourcing {
+        let cellConfigurator = cardCellFactory.createCellConfigurator(imageService: imageService)
+
+        return CollectionViewDataSource(cellConfigurator: cellConfigurator)
     }
 }

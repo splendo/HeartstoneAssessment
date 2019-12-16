@@ -6,12 +6,43 @@
 
 import UIKit
 
-final class DetailsViewController: UIViewController {
-    let card: Card
+protocol DetailsDisplaying: class, Displaying {
+    func display(image: UIImage)
+    func display(favoriteStatus: Bool)
+    func display(cardName: String)
+    func display(cardFlavor: String)
+}
 
-    init(withInfoFrom card: Card) {
-        self.card = card
-        
+final class DetailsViewController: UIViewController {
+    private let interactor: DetailsInteracting
+
+    private let imageTopOffset: CGFloat = 10
+    private let imageHeightMultiplier: CGFloat = 0.7
+    
+    private let flavorLabelTopOffset: CGFloat = 10
+    private let flavorLabelMargin: CGFloat = 30
+
+    private lazy var imageView: UIImageView = {
+        let view = UIImageView()
+
+        view.contentMode = .scaleAspectFit
+
+        return view
+    }()
+
+    private lazy var flavorLabel: UILabel = {
+        let label = UILabel()
+
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = Style.CardDetailsFlavorLabel.color
+
+        return label
+    }()
+
+    init(interactor: DetailsInteracting) {
+        self.interactor = interactor
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -21,13 +52,54 @@ final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
+        setupImageView()
+        setupFlavorLabel()
+
+        interactor.loadDetails()
     }
-    
+
     private func setupView() {
-        view.backgroundColor = Style.screenBackgroundColor
-        
-        navigationItem.title = card.name
+        view.backgroundColor = Style.ScreenBackground.color
+    }
+
+    private func setupImageView() {
+        view.addSubview(imageView)
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: imageTopOffset).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor,
+                multiplier: imageHeightMultiplier).isActive = true
+    }
+
+    private func setupFlavorLabel() {
+        view.addSubview(flavorLabel)
+
+        flavorLabel.translatesAutoresizingMaskIntoConstraints = false
+        flavorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        flavorLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, 
+                constant: flavorLabelTopOffset).isActive = true
+        flavorLabel.widthAnchor.constraint(equalTo: view.widthAnchor, 
+                constant: -1 * flavorLabelMargin).isActive = true
+    }
+}
+
+// MARK: - DetailsDisplaying
+extension DetailsViewController: DetailsDisplaying {
+    func display(image: UIImage) {
+        imageView.image = image
+    }
+
+    func display(favoriteStatus: Bool) {}
+
+    func display(cardName: String) {
+        navigationItem.title = cardName
+    }
+
+    func display(cardFlavor: String) {
+        flavorLabel.text = cardFlavor
     }
 }

@@ -17,10 +17,12 @@ final class RootDependencies {
     func createCollectionViewController() -> CollectionDisplaying {
         let collectionServiceFactory = CollectionServiceFactory()
         let cardCellFactory = CardCellFactory()
+        let detailsFactory = DetailsFactory(imageService: imageService)
 
         let collectionFactory = CollectionFactory(
                 cardCellFactory: cardCellFactory,
-                collectionServiceFactory: collectionServiceFactory
+                collectionServiceFactory: collectionServiceFactory,
+                detailsFactory: detailsFactory
         )
 
         return collectionFactory.createCollectionViewController(imageService: imageService)

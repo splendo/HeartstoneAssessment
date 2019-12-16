@@ -7,20 +7,16 @@
 import Foundation
 
 struct Card: Decodable {
-    typealias ID = String
-    typealias Rarity = String
-    typealias EntityType = String
-    typealias Class = String
-
     struct Mechanic: Decodable {
         let name: String
     }
     
-    let cardId: ID
+    let cardId: String
     let name: String
-    let type: EntityType
-    let rarity: Rarity?
+    let type: String
+    let rarity: String?
     let mechanics: [Mechanic]?
     let img: URL?
-    let playerClass: Class?
+    let playerClass: String?
+    let flavor: String?
 }
