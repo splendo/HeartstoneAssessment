@@ -79,7 +79,7 @@ extension CollectionViewController: CollectionDisplaying {
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = dataSource.cardAt(index: indexPath.item)
-        
+
         router.routeToDetailsView(withInfoFrom: card)
     }
 }

@@ -6,7 +6,7 @@
 
 protocol DetailsInteracting {
     func loadDetails()
-    func set(favoriteStatus: Bool)
+    func toggleFavoriteStatus()
 }
 
 protocol DetailsDataStore {
@@ -42,7 +42,7 @@ class DetailsInteractor: DetailsInteracting, DetailsDataStore {
         // fav
     }
 
-    func set(favoriteStatus: Bool) {
+    func toggleFavoriteStatus() {
         
     }
 }

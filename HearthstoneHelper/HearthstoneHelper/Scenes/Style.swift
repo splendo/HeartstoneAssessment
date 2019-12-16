@@ -22,4 +22,8 @@ struct Style {
     struct CardDetailsFlavorLabel {
         static let color = UIColor(red: 0.20, green: 0.29, blue: 0.37, alpha: 1.0)
     }
+    
+    struct CardDetailsFavoriteLabel {
+        static let color = UIColor(red: 0.20, green: 0.29, blue: 0.37, alpha: 1.0)
+    }
 }

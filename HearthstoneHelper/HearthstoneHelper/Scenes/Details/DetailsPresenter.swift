@@ -8,7 +8,7 @@ import UIKit
 
 protocol DetailsPresenting: class {
     func presentImage(from data: Data)
-    func present(favoriteStatus: Bool)
+    func present(favoriteStatus: FavoriteStatus)
     func present(cardName: String)
     func present(cardFlavor: String)
 }
@@ -22,7 +22,7 @@ class DetailsPresenter: DetailsPresenting {
         view?.display(image: image)
     }
 
-    func present(favoriteStatus: Bool) {
+    func present(favoriteStatus: FavoriteStatus) {
         view?.display(favoriteStatus: favoriteStatus)
     }
 

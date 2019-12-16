@@ -102,17 +102,16 @@ class CardCellView: UICollectionViewCell {
     }
 
     private func setupImageView() {
-        imageView.frame = bounds
         addSubview(imageView)
     }
 
     private func setupLoadingIndicator() {
-        loadingIndicator.center = center
         addSubview(loadingIndicator)
     }
 
     private func layout() {
         loadingIndicator.center = CGPoint(x: bounds.width / 2, y: bounds.height / 6)
+        imageView.frame = bounds
     }
 }
 
@@ -126,12 +125,15 @@ extension CardCellView: CardCellDisplaying {
         switch state {
         case .noImage:
             loadingIndicator.stopAnimating()
+            placeholderNameLabel.isHidden = false
             imageView.isHidden = true
         case .loading:
             loadingIndicator.startAnimating()
+            placeholderNameLabel.isHidden = false
             imageView.isHidden = true
         case .image(let image):
             loadingIndicator.stopAnimating()
+            placeholderNameLabel.isHidden = true
             imageView.isHidden = false
             imageView.image = image
         }

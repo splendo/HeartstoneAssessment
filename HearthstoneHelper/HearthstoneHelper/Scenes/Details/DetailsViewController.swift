@@ -8,7 +8,7 @@ import UIKit
 
 protocol DetailsDisplaying: class, Displaying {
     func display(image: UIImage)
-    func display(favoriteStatus: Bool)
+    func display(favoriteStatus: FavoriteStatus)
     func display(cardName: String)
     func display(cardFlavor: String)
 }
@@ -16,11 +16,37 @@ protocol DetailsDisplaying: class, Displaying {
 final class DetailsViewController: UIViewController {
     private let interactor: DetailsInteracting
 
-    private let imageTopOffset: CGFloat = 10
+    private let favoriteButtonSize: CGFloat = 30
+
+    private let imageTopOffset: CGFloat = -10
     private let imageHeightMultiplier: CGFloat = 0.7
-    
+
     private let flavorLabelTopOffset: CGFloat = 10
     private let flavorLabelMargin: CGFloat = 30
+
+    private lazy var favoriteOffImage: UIImage? = {
+        UIImage(named: "favorite-off.png")
+    }()
+
+    private lazy var favoriteOnImage: UIImage? = {
+        UIImage(named: "favorite-on.png")
+    }()
+
+    private lazy var favoriteBarImage: UIImageView = {
+        let view = UIImageView()
+
+        view.contentMode = .scaleAspectFit
+
+        return view
+    }()
+
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+
+        button.setBackgroundImage(favoriteOffImage, for: .normal)
+
+        return button
+    }()
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
@@ -54,6 +80,7 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        setupFavoriteView()
         setupImageView()
         setupFlavorLabel()
 
@@ -80,10 +107,23 @@ final class DetailsViewController: UIViewController {
 
         flavorLabel.translatesAutoresizingMaskIntoConstraints = false
         flavorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        flavorLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, 
+        flavorLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor,
                 constant: flavorLabelTopOffset).isActive = true
-        flavorLabel.widthAnchor.constraint(equalTo: view.widthAnchor, 
+        flavorLabel.widthAnchor.constraint(equalTo: view.widthAnchor,
                 constant: -1 * flavorLabelMargin).isActive = true
+    }
+
+    private func setupFavoriteView() {
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.widthAnchor.constraint(equalToConstant: favoriteButtonSize).isActive = true
+        favoriteButton.heightAnchor.constraint(equalToConstant: favoriteButtonSize).isActive = true
+        favoriteButton.addTarget(self, action: #selector(toggleFavoriteStatus), for: .touchUpInside)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+    }
+
+    @objc private func toggleFavoriteStatus() {
+        interactor.toggleFavoriteStatus()
     }
 }
 
@@ -93,7 +133,14 @@ extension DetailsViewController: DetailsDisplaying {
         imageView.image = image
     }
 
-    func display(favoriteStatus: Bool) {}
+    func display(favoriteStatus: FavoriteStatus) {
+        switch favoriteStatus {
+        case .favorite:
+            favoriteButton.setBackgroundImage(favoriteOnImage, for: .normal)
+        case .notFavorite:
+            favoriteButton.setBackgroundImage(favoriteOffImage, for: .normal)
+        }
+    }
 
     func display(cardName: String) {
         navigationItem.title = cardName
