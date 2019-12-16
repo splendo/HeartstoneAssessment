@@ -8,7 +8,7 @@ import UIKit
 
 protocol DetailsDisplaying: class, Displaying {
     func display(image: UIImage)
-    func display(favoriteStatus: FavoriteStatus)
+    func display(favoriteStatus: CardMetadata.FavoriteStatus)
     func display(cardName: String)
     func display(cardFlavor: String)
 }
@@ -133,7 +133,7 @@ extension DetailsViewController: DetailsDisplaying {
         imageView.image = image
     }
 
-    func display(favoriteStatus: FavoriteStatus) {
+    func display(favoriteStatus: CardMetadata.FavoriteStatus) {
         switch favoriteStatus {
         case .favorite:
             favoriteButton.setBackgroundImage(favoriteOnImage, for: .normal)

@@ -5,11 +5,11 @@
 // Copyright (c) 2019 rencevio. All rights reserved.
 
 protocol ImageServiceCreating {
-    func create() -> ImageService
+    func create() -> ImageProviding
 }
 
 class ImageServiceFactory: ImageServiceCreating {
-    func create() -> ImageService {
+    func create() -> ImageProviding {
         let httpClient = Http.Client()
         let imageCache = ImageCache()
         let imageRetriever = NetworkImageRetriever(httpClient: httpClient)

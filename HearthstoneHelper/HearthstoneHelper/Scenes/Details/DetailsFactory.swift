@@ -10,14 +10,19 @@ protocol DetailsCreating {
 
 class DetailsFactory: DetailsCreating {
     let imageService: ImageProviding
+    let metadataService: MetadataProviding
 
-    init(imageService: ImageProviding) {
+    init(imageService: ImageProviding, metadataService: MetadataProviding) {
         self.imageService = imageService
+        self.metadataService = metadataService
     }
 
     func createDetailsViewController(withInfoFrom card: Card) -> DetailsDisplaying {
         let presenter = DetailsPresenter()
-        let interactor = DetailsInteractor(withInfoFrom: card, presenter: presenter, imageService: imageService)
+        let interactor = DetailsInteractor(withInfoFrom: card, 
+                presenter: presenter, 
+                imageService: imageService, 
+                metadataService: metadataService)
 
         let view = DetailsViewController(interactor: interactor)
         presenter.view = view

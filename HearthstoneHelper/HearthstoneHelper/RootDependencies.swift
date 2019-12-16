@@ -7,17 +7,21 @@
 import struct Foundation.Data
 
 final class RootDependencies {
-    let imageService: ImageService
+    let imageService: ImageProviding
+    let metadataService: MetadataProviding
 
     init() {
         let imageServiceFactory = ImageServiceFactory()
         imageService = imageServiceFactory.create()
+        
+        let metadataServiceFactory = MetadataServiceFactory()
+        metadataService = metadataServiceFactory.create()
     }
 
     func createCollectionViewController() -> CollectionDisplaying {
         let collectionServiceFactory = CollectionServiceFactory()
         let cardCellFactory = CardCellFactory()
-        let detailsFactory = DetailsFactory(imageService: imageService)
+        let detailsFactory = DetailsFactory(imageService: imageService, metadataService: metadataService)
 
         let collectionFactory = CollectionFactory(
                 cardCellFactory: cardCellFactory,

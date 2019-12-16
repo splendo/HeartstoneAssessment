@@ -7,11 +7,13 @@
 import Foundation
 
 struct Card: Decodable {
+    typealias ID = String
+    
     struct Mechanic: Decodable {
         let name: String
     }
     
-    let cardId: String
+    let cardId: ID
     let name: String
     let type: String
     let rarity: String?
