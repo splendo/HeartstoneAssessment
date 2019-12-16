@@ -24,7 +24,7 @@ class CardCellView: UICollectionViewCell {
 
     var interactor: CardCellInteracting?
 
-    private let favoriteImageSize: CGFloat = 30
+    private let favoriteImageSizeRatio: CGFloat = 0.2
     private let placeholderNameLabelMargin = 10
 
     private lazy var imageView: UIImageView = {
@@ -94,15 +94,17 @@ class CardCellView: UICollectionViewCell {
 
         layout()
     }
-    
+
     private func setupFavoriteImageView() {
         addSubview(favoriteImageView)
-        
+
         favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
         favoriteImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         favoriteImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        favoriteImageView.widthAnchor.constraint(equalToConstant: favoriteImageSize).isActive = true
-        favoriteImageView.heightAnchor.constraint(equalToConstant: favoriteImageSize).isActive = true
+        favoriteImageView.widthAnchor.constraint(equalTo: widthAnchor,
+                multiplier: favoriteImageSizeRatio).isActive = true
+        favoriteImageView.heightAnchor.constraint(equalTo: widthAnchor,
+                multiplier: favoriteImageSizeRatio).isActive = true
     }
 
     private func setupPlaceholderView() {
