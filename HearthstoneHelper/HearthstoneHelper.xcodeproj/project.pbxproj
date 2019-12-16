@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62DE901AA804A4B056536F7D /* RootDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE959E0ABA23B8A2B9561F /* RootDependencies.swift */; };
-		62DE9051540F13A364D209B6 /* CardCellFactory.dart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D8534FE823C8C4AF079 /* CardCellFactory.dart.swift */; };
+		62DE9051540F13A364D209B6 /* CardCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9D8534FE823C8C4AF079 /* CardCellFactory.swift */; };
 		62DE9084E013027F267164B4 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE96D63B9DC86B9437D78A /* CollectionViewDataSource.swift */; };
 		62DE91F4777EC7D76F71828A /* ImageServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9E907B793C4B1154D982 /* ImageServiceFactory.swift */; };
 		62DE923F4CA2FC5606251956 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE98ECB3471DB80E0A9237 /* DetailsInteractor.swift */; };
@@ -38,6 +38,7 @@
 		62DE98732D85B8D28A51F3C0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A380AE4940383815D54 /* CollectionViewController.swift */; };
 		62DE9991BC93742181DACED4 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91612A72CC37CE153183 /* CollectionService.swift */; };
 		62DE9A3299AB24478C8865EE /* MockImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE95B43DDB3B8D881A96E2 /* MockImageRetriever.swift */; };
+		62DE9A4024C5423A4A71AE43 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9E9D844C28A216E57910 /* Resources.swift */; };
 		62DE9A4603073D6A01BEE2FD /* ImageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9DAC925D362CC43E0D2D /* ImageServiceTests.swift */; };
 		62DE9AF96A475DAE79B11988 /* CollectionServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A231DA5DDF0BDC315B7 /* CollectionServiceFactory.swift */; };
 		62DE9B5043367EC1273AFECA /* LocalCollectionRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DE90CF0AFC6B289F0132C2 /* LocalCollectionRetriever.swift */; };
@@ -122,10 +123,11 @@
 		62DE9D3A7417557FF79F594D /* MockCollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCollectionPresenter.swift; sourceTree = "<group>"; };
 		62DE9D4A54443759559D1902 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		62DE9D5AF3D4E4875E0FA926 /* CollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPresenter.swift; sourceTree = "<group>"; };
-		62DE9D8534FE823C8C4AF079 /* CardCellFactory.dart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellFactory.dart.swift; sourceTree = "<group>"; };
+		62DE9D8534FE823C8C4AF079 /* CardCellFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellFactory.swift; sourceTree = "<group>"; };
 		62DE9DAC925D362CC43E0D2D /* ImageServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceTests.swift; sourceTree = "<group>"; };
 		62DE9E8F79FD5321A7756CFC /* MockImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockImageCache.swift; sourceTree = "<group>"; };
 		62DE9E907B793C4B1154D982 /* ImageServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceFactory.swift; sourceTree = "<group>"; };
+		62DE9E9D844C28A216E57910 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		62DE9EFF80537844F5001D8E /* Cancelable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
 		62DE9F4DE6FD4515C2F9D044 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		62DE9FFCC12A35C9115AC3C0 /* CardCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellConfigurator.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				62DE91203FF9185D13567EC6 /* Collection */,
 				62DE915455EBE97445389764 /* Details */,
 				62DE93C468F9D2BEDC85662C /* Style.swift */,
+				62DE9E9D844C28A216E57910 /* Resources.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -365,7 +368,7 @@
 				62DE9FFCC12A35C9115AC3C0 /* CardCellConfigurator.swift */,
 				62DE9CBC068A39CE28E0E664 /* CardCellInteractor.swift */,
 				62DE98CB64764AB1671661FD /* CardCellPresenter.swift */,
-				62DE9D8534FE823C8C4AF079 /* CardCellFactory.dart.swift */,
+				62DE9D8534FE823C8C4AF079 /* CardCellFactory.swift */,
 			);
 			path = CardCell;
 			sourceTree = "<group>";
@@ -584,7 +587,7 @@
 				62DE93771FEA0D926220E215 /* CardCellConfigurator.swift in Sources */,
 				62DE93B433E1B48D4A7C8E92 /* CardCellInteractor.swift in Sources */,
 				62DE92845B17ADB5DA1A0233 /* CardCellPresenter.swift in Sources */,
-				62DE9051540F13A364D209B6 /* CardCellFactory.dart.swift in Sources */,
+				62DE9051540F13A364D209B6 /* CardCellFactory.swift in Sources */,
 				62DE9675C3E56A3EDA2E0F4D /* ImageService.swift in Sources */,
 				62DE9EB6EFC211750D454246 /* NetworkImageRetriever.swift in Sources */,
 				62DE953C1F515F6851FEDB58 /* ImageRetriever.swift in Sources */,
@@ -603,6 +606,7 @@
 				62DE9BC69FA0CF7E9A85779D /* MetadataPersistence.swift in Sources */,
 				62DE981A8E819E71EFE948C3 /* MetadataService.swift in Sources */,
 				62DE965183B4DBD19232C57A /* MetadataServiceFactory.swift in Sources */,
+				62DE9A4024C5423A4A71AE43 /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

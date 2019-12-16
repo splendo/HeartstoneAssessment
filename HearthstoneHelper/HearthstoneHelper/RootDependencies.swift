@@ -13,7 +13,7 @@ final class RootDependencies {
     init() {
         let imageServiceFactory = ImageServiceFactory()
         imageService = imageServiceFactory.create()
-        
+
         let metadataServiceFactory = MetadataServiceFactory()
         metadataService = metadataServiceFactory.create()
     }
@@ -29,6 +29,8 @@ final class RootDependencies {
                 detailsFactory: detailsFactory
         )
 
-        return collectionFactory.createCollectionViewController(imageService: imageService)
+        return collectionFactory.createCollectionViewController(
+                imageService: imageService,
+                metadataService: metadataService)
     }
 }

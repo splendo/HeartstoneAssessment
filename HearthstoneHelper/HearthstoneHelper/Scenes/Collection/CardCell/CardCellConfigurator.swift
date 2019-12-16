@@ -10,15 +10,20 @@ protocol CardCellConfiguring {
 
 class CardCellConfigurator: CardCellConfiguring {
     let imageService: ImageProviding
+    let metadataService: MetadataProviding
 
-    init(imageService: ImageProviding) {
+    init(imageService: ImageProviding, metadataService: MetadataProviding) {
         self.imageService = imageService
+        self.metadataService = metadataService
     }
 
     func configure(_ cell: CardCellView) {
         if (cell.interactor == nil) {
             let presenter = CardCellPresenter(view: cell)
-            let interactor = CardCellInteractor(presenter: presenter, imageService: imageService)
+            let interactor = CardCellInteractor(
+                    presenter: presenter,
+                    imageService: imageService,
+                    metadataService: metadataService)
 
             cell.interactor = interactor
         }

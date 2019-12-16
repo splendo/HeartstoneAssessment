@@ -9,10 +9,14 @@ import class UIKit.UIImage
 
 protocol CardCellPresenting {
     func present(name: String)
+    
     func presentNoImage()
     func presentImage(from data: Data)
+    
     func presentLoading()
     func presentError()
+    
+    func present(favoriteStatus: CardMetadata.FavoriteStatus)
 }
 
 class CardCellPresenter: CardCellPresenting {
@@ -45,5 +49,9 @@ class CardCellPresenter: CardCellPresenting {
 
     func presentNoImage() {
         view?.display(state: .noImage)
+    }
+
+    func present(favoriteStatus: CardMetadata.FavoriteStatus) {
+        view?.display(favoriteStatus: favoriteStatus)
     }
 }

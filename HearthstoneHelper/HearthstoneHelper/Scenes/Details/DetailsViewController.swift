@@ -24,14 +24,6 @@ final class DetailsViewController: UIViewController {
     private let flavorLabelTopOffset: CGFloat = 10
     private let flavorLabelMargin: CGFloat = 30
 
-    private lazy var favoriteOffImage: UIImage? = {
-        UIImage(named: "favorite-off.png")
-    }()
-
-    private lazy var favoriteOnImage: UIImage? = {
-        UIImage(named: "favorite-on.png")
-    }()
-
     private lazy var favoriteBarImage: UIImageView = {
         let view = UIImageView()
 
@@ -43,7 +35,7 @@ final class DetailsViewController: UIViewController {
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
 
-        button.setBackgroundImage(favoriteOffImage, for: .normal)
+        button.setBackgroundImage(Resources.notFavoriteImage, for: .normal)
 
         return button
     }()
@@ -136,9 +128,9 @@ extension DetailsViewController: DetailsDisplaying {
     func display(favoriteStatus: CardMetadata.FavoriteStatus) {
         switch favoriteStatus {
         case .favorite:
-            favoriteButton.setBackgroundImage(favoriteOnImage, for: .normal)
+            favoriteButton.setBackgroundImage(Resources.favoriteImage, for: .normal)
         case .notFavorite:
-            favoriteButton.setBackgroundImage(favoriteOffImage, for: .normal)
+            favoriteButton.setBackgroundImage(Resources.notFavoriteImage, for: .normal)
         }
     }
 

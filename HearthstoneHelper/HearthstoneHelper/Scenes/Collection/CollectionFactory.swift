@@ -7,7 +7,8 @@
 import struct Foundation.Data
 
 protocol CollectionCreating {
-    func createCollectionViewController(imageService: ImageProviding) -> CollectionDisplaying
+    func createCollectionViewController(imageService: ImageProviding, 
+                                        metadataService: MetadataProviding) -> CollectionDisplaying
 }
 
 class CollectionFactory: CollectionCreating {
@@ -23,8 +24,11 @@ class CollectionFactory: CollectionCreating {
         self.detailsFactory = detailsFactory
     }
 
-    func createCollectionViewController(imageService: ImageProviding) -> CollectionDisplaying {
-        let dataSource = createCollectionViewDataSource(imageService: imageService)
+    func createCollectionViewController(imageService: ImageProviding,
+                                        metadataService: MetadataProviding) -> CollectionDisplaying {
+        let dataSource = createCollectionViewDataSource(
+                imageService: imageService,
+                metadataService: metadataService)
 
         let collectionService = collectionServiceFactory.create()
 
@@ -43,8 +47,10 @@ class CollectionFactory: CollectionCreating {
         return viewController
     }
 
-    private func createCollectionViewDataSource(imageService: ImageProviding) -> CollectionViewDataSourcing {
-        let cellConfigurator = cardCellFactory.createCellConfigurator(imageService: imageService)
+    private func createCollectionViewDataSource(imageService: ImageProviding,
+                                                metadataService: MetadataProviding) -> CollectionViewDataSourcing {
+        let cellConfigurator =
+                cardCellFactory.createCellConfigurator(imageService: imageService, metadataService: metadataService)
 
         return CollectionViewDataSource(cellConfigurator: cellConfigurator)
     }

@@ -12,17 +12,22 @@ protocol CardCellInteracting {
 
 class CardCellInteractor: CardCellInteracting {
     private let presenter: CardCellPresenting
-    private var imageService: ImageProviding
+    private let imageService: ImageProviding
+    private let metadataService: MetadataProviding
 
     private var imageTask: Cancelable?
 
-    init(presenter: CardCellPresenting, imageService: ImageProviding) {
+    init(presenter: CardCellPresenting, imageService: ImageProviding, metadataService: MetadataProviding) {
         self.presenter = presenter
         self.imageService = imageService
+        self.metadataService = metadataService
     }
 
     func updateCard(from info: Card) {
         presenter.present(name: info.name)
+
+        let metadata = metadataService.fetchMetadata(forCardWithId: info.cardId)
+        presenter.present(favoriteStatus: metadata?.favorite ?? .notFavorite)
 
         loadImage(for: info.img)
     }

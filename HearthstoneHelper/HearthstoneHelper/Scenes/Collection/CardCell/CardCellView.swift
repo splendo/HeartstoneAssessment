@@ -15,6 +15,7 @@ enum CardCellState {
 protocol CardCellDisplaying: class {
     func display(name: String)
     func display(state: CardCellState)
+    func display(favoriteStatus: CardMetadata.FavoriteStatus)
 }
 
 class CardCellView: UICollectionViewCell {
@@ -23,10 +24,19 @@ class CardCellView: UICollectionViewCell {
 
     var interactor: CardCellInteracting?
 
+    private let favoriteImageSize: CGFloat = 30
     private let placeholderNameLabelMargin = 10
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
+
+        view.contentMode = .scaleAspectFit
+
+        return view
+    }()
+
+    private lazy var favoriteImageView: UIImageView = {
+        let view = UIImageView(image: Resources.favoriteImage)
 
         view.contentMode = .scaleAspectFit
 
@@ -80,8 +90,19 @@ class CardCellView: UICollectionViewCell {
         setupPlaceholderView()
         setupImageView()
         setupLoadingIndicator()
+        setupFavoriteImageView()
 
         layout()
+    }
+    
+    private func setupFavoriteImageView() {
+        addSubview(favoriteImageView)
+        
+        favoriteImageView.translatesAutoresizingMaskIntoConstraints = false
+        favoriteImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        favoriteImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        favoriteImageView.widthAnchor.constraint(equalToConstant: favoriteImageSize).isActive = true
+        favoriteImageView.heightAnchor.constraint(equalToConstant: favoriteImageSize).isActive = true
     }
 
     private func setupPlaceholderView() {
@@ -136,6 +157,13 @@ extension CardCellView: CardCellDisplaying {
             placeholderNameLabel.isHidden = true
             imageView.isHidden = false
             imageView.image = image
+        }
+    }
+
+    func display(favoriteStatus: CardMetadata.FavoriteStatus) {
+        switch favoriteStatus {
+        case .favorite: favoriteImageView.isHidden = false
+        case .notFavorite: favoriteImageView.isHidden = true
         }
     }
 }
