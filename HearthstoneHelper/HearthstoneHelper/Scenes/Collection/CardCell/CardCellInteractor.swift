@@ -27,7 +27,7 @@ class CardCellInteractor: CardCellInteracting {
         presenter.present(name: info.name)
 
         let metadata = metadataService.fetchMetadata(forCardWithId: info.cardId)
-        presenter.present(favoriteStatus: metadata?.favorite ?? .notFavorite)
+        presenter.present(favoriteStatus: metadata.favorite)
 
         loadImage(for: info.img)
     }

@@ -15,6 +15,8 @@ class MockCardCellPresenter: CardCellPresenting {
     private(set) var presentLoadingCallCount: Int = 0
     private(set) var presentErrorCallCount: Int = 0
     private(set) var presentNoImageCallCount: Int = 0
+    private(set) var presentFavoriteStatusCallCount: Int = 0
+    private(set) var presentFavoriteStatusCallArgument: CardMetadata.FavoriteStatus?
 
     func present(name: String) {
         presentNameCallCount += 1
@@ -36,5 +38,10 @@ class MockCardCellPresenter: CardCellPresenting {
 
     func presentNoImage() {
         presentNoImageCallCount += 1
+    }
+
+    func present(favoriteStatus: CardMetadata.FavoriteStatus) {
+        presentFavoriteStatusCallCount += 1
+        presentFavoriteStatusCallArgument = favoriteStatus
     }
 } 

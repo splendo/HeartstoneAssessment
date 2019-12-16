@@ -15,14 +15,10 @@ class MockImageService: ImageProviding {
     var fetchReturnValue: Cancelable?
 
     func fetch(from url: URL, completion: @escaping ImageRetriever.Completion) -> Cancelable? {
-        guard let fetchResult = fetchResult else {
-            fatalError("fetchResult expectation was not set")
-        }
-        
         fetchCallCount += 1
         fetchCallUrlArgument = url
 
-        completion(fetchResult)
+        completion(fetchResult ?? .success(Data()))
 
         return fetchReturnValue ?? MockCancelable()
     }

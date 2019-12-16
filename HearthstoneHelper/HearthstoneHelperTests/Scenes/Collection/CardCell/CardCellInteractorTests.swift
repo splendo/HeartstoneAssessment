@@ -11,6 +11,7 @@ import XCTest
 class CardCellInteractorTests: XCTestCase {
     var presenter: MockCardCellPresenter!
     var imageService: MockImageService!
+    var metadataService: MockMetadataService!
 
     var sut: CardCellInteractor!
 
@@ -19,8 +20,9 @@ class CardCellInteractorTests: XCTestCase {
 
         presenter = MockCardCellPresenter()
         imageService = MockImageService()
+        metadataService = MockMetadataService()
 
-        sut = CardCellInteractor(presenter: presenter, imageService: imageService)
+        sut = CardCellInteractor(presenter: presenter, imageService: imageService, metadataService: metadataService)
     }
 
     func test_updateCard_presentsName() {
@@ -31,7 +33,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: nil,
-                playerClass: nil)
+                playerClass: nil,
+                flavor: nil)
 
         sut.updateCard(from: card)
 
@@ -47,7 +50,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: nil,
-                playerClass: nil))
+                playerClass: nil,
+                flavor: nil))
 
         XCTAssertEqual(presenter.presentLoadingCallCount, 1)
     }
@@ -60,7 +64,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: nil,
-                playerClass: nil))
+                playerClass: nil,
+                flavor: nil))
 
         XCTAssertEqual(presenter.presentNoImageCallCount, 1)
     }
@@ -74,7 +79,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: imageUrl,
-                playerClass: nil)
+                playerClass: nil,
+                flavor: nil)
 
         let fetchedData = Data()
         imageService.fetchResult = .success(fetchedData)
@@ -100,7 +106,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: imageUrl,
-                playerClass: nil)
+                playerClass: nil,
+                flavor: nil)
 
         imageService.fetchResult = .failure(FetchError.error)
 
@@ -122,7 +129,8 @@ class CardCellInteractorTests: XCTestCase {
                 rarity: nil,
                 mechanics: nil,
                 img: URL(string: "www.image.com"),
-                playerClass: nil)
+                playerClass: nil,
+                flavor: nil)
 
         imageService.fetchResult = .success(Data())
         imageService.fetchReturnValue = imageTask
@@ -132,5 +140,27 @@ class CardCellInteractorTests: XCTestCase {
 
         XCTAssertEqual(imageService.fetchCallCount, 2)
         XCTAssertEqual(imageTask.cancelCallCount, 1)
+    }
+
+    func test_updateCard_metadataIsStored_presentsMetadata() {
+        let card = Card(
+                cardId: "id",
+                name: "name",
+                type: "type",
+                rarity: nil,
+                mechanics: nil,
+                img: URL(string: "www.image.com"),
+                playerClass: nil,
+                flavor: nil)
+        
+        let metadata = CardMetadata(favorite: .favorite)
+
+        imageService.fetchResult = .success(Data())
+        metadataService.fetchMetadataResult = metadata
+
+        sut.updateCard(from: card)
+
+        XCTAssertEqual(presenter.presentFavoriteStatusCallCount, 1)
+        XCTAssertEqual(presenter.presentFavoriteStatusCallArgument, metadata.favorite)
     }
 }

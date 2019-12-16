@@ -22,7 +22,8 @@ class CollectionServiceTests: XCTestCase {
 
     func test_getCollection_defaultOrder_sortsAscending() {
         let cardWithName: (String) -> Card = { name in
-            Card(cardId: "id", name: name, type: "type", rarity: nil, mechanics: nil, img: nil, playerClass: nil)
+            Card(cardId: "id", name: name, type: "type", rarity: nil, 
+                    mechanics: nil, img: nil, playerClass: nil, flavor: nil)
         }
 
         let fetchingExpectation = expectation(description: "Wait for collection fetching")

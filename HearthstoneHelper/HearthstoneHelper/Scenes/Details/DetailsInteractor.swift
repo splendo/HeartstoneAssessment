@@ -19,8 +19,6 @@ class DetailsInteractor: DetailsInteracting, DetailsDataStore {
     let imageService: ImageProviding
     let metadataService: MetadataProviding
 
-    var cardMetadata: CardMetadata
-
     init(withInfoFrom card: Card,
          presenter: DetailsPresenting,
          imageService: ImageProviding,
@@ -29,8 +27,6 @@ class DetailsInteractor: DetailsInteracting, DetailsDataStore {
         self.presenter = presenter
         self.imageService = imageService
         self.metadataService = metadataService
-
-        self.cardMetadata = CardMetadata(favorite: .notFavorite)
     }
 
     func loadDetails() {
@@ -52,17 +48,16 @@ class DetailsInteractor: DetailsInteracting, DetailsDataStore {
     }
 
     func toggleFavoriteStatus() {
-        let newToggledState = cardMetadata.favorite.toggled()
-
-        cardMetadata = CardMetadata(favorite: newToggledState)
+        let metadata = metadataService.fetchMetadata(forCardWithId: card.cardId)
+        let newToggledState = metadata.favorite.toggled()
 
         presenter.present(favoriteStatus: newToggledState)
-        metadataService.update(metadata: cardMetadata, forCardWithId: card.cardId)
+        metadataService.update(metadata: CardMetadata(favorite: newToggledState), forCardWithId: card.cardId)
     }
 
     private func loadMetadata() {
-        cardMetadata = metadataService.fetchMetadata(forCardWithId: card.cardId) ?? cardMetadata
-        
-        presenter.present(favoriteStatus: cardMetadata.favorite)
+        let metadata = metadataService.fetchMetadata(forCardWithId: card.cardId)
+
+        presenter.present(favoriteStatus: metadata.favorite)
     }
 }
