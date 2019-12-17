@@ -40,7 +40,9 @@ class CollectionFactory: CollectionCreating {
         let router = CollectionRouter(detailsFactory: detailsFactory)
 
         let viewController = CollectionViewController(
-                dataSource: dataSource, interactor: interactor, router: router)
+                dataSource: dataSource, 
+                interactor: interactor, 
+                router: router)
         presenter.view = viewController
         router.sourceVC = viewController
 

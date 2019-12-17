@@ -32,9 +32,8 @@ final class CollectionInteractor: CollectionInteracting {
         }
     }
 
-    private var cardFilter: (Card) -> Bool =
-            { card in
-                card.mechanics?.first { $0.name == "Deathrattle" } != nil
-                        && card.rarity == "Legendary"
-            }
+    private var cardFilter: (Card) -> Bool = { card in
+        card.mechanics?.first { $0.name == "Deathrattle" } != nil
+                && card.rarity == "Legendary"
+    }
 }

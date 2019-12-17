@@ -33,9 +33,7 @@ class CardCellInteractor: CardCellInteracting {
     }
 
     private func loadImage(for url: URL?) {
-        if let imageTask = imageTask {
-            imageTask.cancel()
-        }
+        imageTask?.cancel()
         imageTask = nil
 
         presenter.presentLoading()
