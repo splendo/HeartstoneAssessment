@@ -1,11 +1,9 @@
 package com.krayem.hearthstone.model
 
-open class DefaultApiResponse(val status: ReponseStatus) {
-
-    lateinit var message: String
+open class DefaultApiResponse(val status: ResponseStatus, val errorMessage : String? = null) {
 
     companion object {
-        fun getLoading() = DefaultApiResponse(ReponseStatus.LOADING)
-        fun getError() = DefaultApiResponse(ReponseStatus.ERROR)
+        fun getLoading() = DefaultApiResponse(ResponseStatus.LOADING)
+        fun getError(it:Throwable) = DefaultApiResponse(ResponseStatus.ERROR,it.message)
     }
 }

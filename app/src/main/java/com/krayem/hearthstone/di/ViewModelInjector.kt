@@ -5,6 +5,7 @@ import com.krayem.hearthstone.network.FakeServer
 import com.krayem.hearthstone.network.NetworkModule
 import com.krayem.hearthstone.network.RequestInterceptor
 import com.krayem.hearthstone.ui.main.MainViewModel
+import com.krayem.hearthstone.ui.main.grid.CardGridViewModel
 import dagger.Component
 import javax.inject.Singleton
 

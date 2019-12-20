@@ -20,4 +20,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="CardDetailsTitle">
+        <item name="android:textSize">21sp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

@@ -2,19 +2,19 @@ package com.krayem.hearthstone.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.krayem.hearthstone.objectbox.ObjectBoxMechanicListConverter
 import com.krayem.hearthstone.objectbox.ObjectBoxStringListConverter
 import com.squareup.moshi.JsonClass
 import io.objectbox.annotation.Convert
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
+import io.objectbox.annotation.Transient
 
 //@JsonClass(generateAdapter = true)
 @Entity
 data class Card(
     @Id var id: Long = 0,
     val cardId: String? = null,
-    val name: String? = null,
+    val name: String = "",
     val cardSet: String? = null,
     val type: String? = null,
     val rarity: String? = null,
@@ -28,14 +28,14 @@ data class Card(
     val elite: Boolean? = false,
     val playerClass: String? = null,
     val multiClassGroup: String? = null,
-    @Convert(converter = ObjectBoxStringListConverter::class, dbType = String::class)
+    @Transient
     val classes: List<String>? = null,
     val howToGet: String? = null,
     val howToGetGold: String? = null,
     val img: String? = null,
     val imgGold: String? = null,
     val locale: String? = null,
-    @Convert(converter = ObjectBoxMechanicListConverter::class, dbType = String::class)
+    @Transient
     val mechanics: List<Mechanic>? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(

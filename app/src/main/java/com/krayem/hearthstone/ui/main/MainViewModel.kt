@@ -19,9 +19,11 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import io.objectbox.Box
+import io.objectbox.annotation.Id
 import io.objectbox.kotlin.boxFor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.Disposables
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,6 +37,7 @@ class MainViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 
     val allResponse: MutableLiveData<DefaultApiResponse> = MutableLiveData()
+    val cardSetResponse: MutableLiveData<DefaultApiResponse> = MutableLiveData()
 
     @Inject
     lateinit var cardApi: CardApi
@@ -49,120 +52,88 @@ class MainViewModel : ViewModel() {
             .inject(this)
     }
 
-
-    fun getAll() {
-        subscription = cardApi.getAll()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe {
-                allResponse.postValue(DefaultApiResponse.getLoading())
-            }
-            .doOnTerminate {
-            }
-            .subscribe(
-                { cardList ->
-                    val typesBox: Box<SectionFilter> = ObjectBox.boxStore.boxFor()
-                    val filter = typesBox.query().equal(SectionFilter_.index, 1).build().findFirst()
-                    var selectedTypes: Set<String>? = null
-                    var selectedClasses: Set<String>? = null
-                    var selectedMechanics: Set<String>? = null
-                    val anotherMutableList = mutableListOf<Card>()
-
-                    if (filter != null) {
-                        val filtersJSONObject = JSONObject(filter.typesJsonArray)
-
-                        val typesFilter = filtersJSONObject.getJSONArray("types")
-                        if (typesFilter != null) {
-                            selectedTypes = fromJsonArray(typesFilter)
-                        }
-
-                        val classesFilter = filtersJSONObject.getJSONArray("classes")
-                        if (classesFilter != null) {
-                            selectedClasses = fromJsonArray(classesFilter)
-                        }
-
-                        val mechanicsFilter = filtersJSONObject.getJSONArray("mechanics")
-                        if (mechanicsFilter != null) {
-                            selectedMechanics = fromJsonArray(mechanicsFilter)
-                        }
-
-                        if (selectedTypes != null && selectedTypes.isNotEmpty()) {
-                            cardList.forEach {
-                                if (selectedTypes.contains(it.type)) {
-                                    anotherMutableList.add(it)
-                                }
-                            }
-                        }else{
-                            anotherMutableList.addAll(cardList)
-                        }
-
-                        val rarityPair = getRarityPair(filtersJSONObject)
-                    }
-                    allResponse.postValue(
-                        ListApiResponse.getList(
-                            anotherMutableList.sortedWith(
-                                CardComparator()
-                            )
-                        )
-                    )
-                },
-                {
-                    allResponse.postValue(DefaultApiResponse.getError())
-                }
-            )
-    }
-
-//    fun parseWithMoshi(context: Context){
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO){
-//
-//                val jsonfile: String =
-//                    context.assets.open("cards.json").bufferedReader().use { it.readText() }
-//                val all = JSONObject(jsonfile)
-//
-//                val basics = all.getJSONArray("Basic").toString()
-//
-//                val moshi: Moshi = Moshi.Builder().build()
-//
-//                val type = Types.newParameterizedType(
-//                    MutableList::class.java,
-//                    Card::class.java
-//                )
-//                val adapter: JsonAdapter<List<Card>> = moshi.adapter(type)
-//
-//                val cards: List<Card>? = adapter.fromJson(basics)
-//                Log.e("done", cards?.size.toString())
-//
-//
+//    fun getCardSet(cardSet: String) {
+//        subscription = cardApi.getCardSet(cardSet)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .doOnSubscribe {
+//                cardSetResponse.postValue(DefaultApiResponse.getLoading())
 //            }
-//        }
-//    }
-//    fun parseJson(context: Context) {
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                val jsonfile: String =
-//                    context.assets.open("cards.json").bufferedReader().use { it.readText() }
-//                val all = JSONObject(jsonfile)
-//
-//                val basics = all.getJSONArray("Basic").toString()
-//
-//
-//                val klaxon = Klaxon()
-//                JsonReader(StringReader(basics)).use { reader ->
-//                    val result = arrayListOf<Card>()
-//                    reader.beginArray {
-//                        while (reader.hasNext()) {
-//                            val card = klaxon.parse<Card>(reader)
-//                            card?.let {
-//                                result.add(it)
-//                                allResponse.postValue(result)
-//                                Log.e("added", it.name)
-//                            }
-//                        }
-//                        Log.e("done",result.size.toString())
-//                    }
+//            .subscribe(
+//                { cardList ->
+//                    cardSetResponse.postValue(ListApiResponse.getList(cardList))
+//                },
+//                {
+//                    it.printStackTrace()
+//                    cardSetResponse.postValue(DefaultApiResponse.getError(it))
 //                }
-//            }
-//        }
+//            )
 //    }
+
+//    fun getAll() {
+//        subscription = cardApi.getAll()
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .doOnSubscribe {
+//                allResponse.postValue(DefaultApiResponse.getLoading())
+//            }
+//            .subscribe(
+//                { cardList ->
+//                    val typesBox: Box<SectionFilter> = ObjectBox.boxStore.boxFor()
+//                    val filter = typesBox.query().equal(SectionFilter_.index, 1).build().findFirst()
+//                    var selectedTypes: Set<String>? = null
+//                    var selectedClasses: Set<String>? = null
+//                    var selectedMechanics: Set<String>? = null
+//                    val anotherMutableList = mutableListOf<Card>()
+//
+//                    if (filter != null) {
+//                        val filtersJSONObject = JSONObject(filter.typesJsonArray)
+//
+//                        val typesFilter = filtersJSONObject.getJSONArray("types")
+//                        if (typesFilter != null) {
+//                            selectedTypes = fromJsonArray(typesFilter)
+//                        }
+//
+//                        val classesFilter = filtersJSONObject.getJSONArray("classes")
+//                        if (classesFilter != null) {
+//                            selectedClasses = fromJsonArray(classesFilter)
+//                        }
+//
+//                        val mechanicsFilter = filtersJSONObject.getJSONArray("mechanics")
+//                        if (mechanicsFilter != null) {
+//                            selectedMechanics = fromJsonArray(mechanicsFilter)
+//                        }
+//
+//                        if (selectedTypes != null && selectedTypes.isNotEmpty()) {
+//                            cardList.forEach {
+//                                if (selectedTypes.contains(it.type)) {
+//                                    anotherMutableList.add(it)
+//                                }
+//                            }
+//                        } else {
+//                            anotherMutableList.addAll(cardList)
+//                        }
+//
+//                        val rarityPair = getRarityPair(filtersJSONObject)
+//                    }
+//                    allResponse.postValue(
+//                        ListApiResponse.getList(
+//                            anotherMutableList.sortedWith(
+//                                CardComparator()
+//                            )
+//                        )
+//                    )
+//                },
+//                {
+//                    allResponse.postValue(DefaultApiResponse.getError(it))
+//                }
+//            )
+//    }
+
+//    override fun onCleared() {
+//        super.onCleared()
+//        subscription.dispose()
+//    }
+
+
 }

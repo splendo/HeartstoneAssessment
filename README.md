@@ -1,3 +1,23 @@
+## COMMENTS:
+
+I wrote the app using kotlin. I used MVVM as my design pattern (Android architectural components), and Dagger2 to inject dependencies into my ViewModels.
+
+My initial idea was to mock a server inside the app using an intereceptor to intercept api calls.
+In this scenario, the app would launch a request through retrofit, the mock server would intercept it, read the response from the database directly, and return it in the body.
+The approach worked for getting all cards until I realised I couldn't read the request body that way since it can only be read once (according to the internet). That limitation would prevent me from deciding responses based on the passed filters in the request body so I decided to drop the approach and read directly from the database in my ViewModels. I left the code for the retrofit implementation in the app anyway since it is relevant to the assignment (in MainViewModel.kt and NetworkModule.kt) .
+
+
+When the app is launched for the first time, it populates the local database(https://objectbox.io/) with data from the JSON file.
+After that, the main fragment has a ViewPager with tabs contaning a grid for each card set, with filtering available through a toolbar button.
+
+Filtering and sorting works through objectbox as you would expect in a relational database, with the benefit of not having to write queries explicitly. I used the same library to save filters and favourite cards.
+
+
+
+
+PS: one used library that I felt needed justification was the RangeSeekBar used to filter by rarity. The official android "Slider" class is only included in the alpha material designn library and seems to still be lacking features compared to others, so I decided to use a 3rd party library.
+
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))

@@ -2,6 +2,7 @@ package com.krayem.hearthstone.network
 
 import android.util.Log
 import com.krayem.hearthstone.App
+import com.krayem.hearthstone.R
 import com.krayem.hearthstone.db.DatabaseManager
 import com.krayem.hearthstone.db.DatabaseModule
 import com.krayem.hearthstone.di.DaggerComponentInjector
@@ -32,13 +33,18 @@ class RequestInterceptor : Interceptor {
     @Inject
     lateinit var fakeServer: FakeServer
 
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val uri = chain.request().url().uri().toString()
-        val responseString = when {
-            uri.endsWith("cards/all") -> fakeServer.getAll().toString()
-            else -> ""
-        }
+        val cardSets = App.instance.resources.getStringArray(R.array.card_sets_array)
 
+        var responseString = ""
+
+        if (uri.endsWith("cards/all")) {
+            responseString = fakeServer.getAll().toString()
+        } else if (uri.endsWith("cards")) {
+
+        }
         return chain.proceed(chain.request())
             .newBuilder()
             .code(200)

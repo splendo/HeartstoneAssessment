@@ -1,9 +1,9 @@
 package com.krayem.hearthstone.model
 
 
-class ListApiResponse<T>(status: ReponseStatus,val items:List<T>): DefaultApiResponse(status) {
+class ListApiResponse<T>(status: ResponseStatus, val items:List<T>): DefaultApiResponse(status) {
 
     companion object{
-        fun <T> getList(items:List<T>) = ListApiResponse(ReponseStatus.SUCCESS,items)
+        fun <T> getList(items:List<T>) = ListApiResponse(ResponseStatus.SUCCESS,items)
     }
 }

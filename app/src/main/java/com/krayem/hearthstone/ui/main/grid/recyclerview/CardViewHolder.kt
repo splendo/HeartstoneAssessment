@@ -1,4 +1,4 @@
-package com.krayem.hearthstone.ui.main.recyclerview
+package com.krayem.hearthstone.ui.main.grid.recyclerview
 
 import android.view.View
 import android.widget.ImageView
@@ -15,4 +15,5 @@ class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val image: ImageView = itemView.card_grid_item_image
     val name: MaterialTextView = itemView.card_grid_item_name
     val favourite: MaterialCheckBox = itemView.card_grid_item_favourite
+    val clickableView:View = itemView.card_list_item_clickable_view
 }

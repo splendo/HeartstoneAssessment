@@ -6,25 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.CompoundButton
-import android.widget.RadioButton
-import android.widget.Toast
-import com.jaygoo.widget.OnRangeChangedListener
+import android.widget.*
+import androidx.lifecycle.Observer
+import com.google.android.material.textfield.TextInputLayout
 
 import com.krayem.hearthstone.R
-import com.krayem.hearthstone.model.SectionFilter
-import com.krayem.hearthstone.model.SectionFilter_
-import com.krayem.hearthstone.objectbox.ObjectBox
-import com.krayem.hearthstone.utils.fromJsonArray
-import com.krayem.hearthstone.utils.getRarityPair
-import com.krayem.hearthstone.utils.toJsonObject
-import io.objectbox.Box
-import io.objectbox.BoxStore
-import io.objectbox.kotlin.boxFor
+import com.krayem.hearthstone.model.*
+
 import kotlinx.android.synthetic.main.filters_fragment.*
-import org.json.JSONArray
-import org.json.JSONObject
 
 class FiltersFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
@@ -41,10 +30,121 @@ class FiltersFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         return inflater.inflate(R.layout.filters_fragment, container, false)
     }
 
+    private fun handleSpinner(
+        apiResponse: DefaultApiResponse,
+        selectedItems: MutableSet<String>,
+        label: String,
+        autoCompleteTextView: AutoCompleteTextView,
+        textInputLayout: TextInputLayout
+    ) {
+        when (apiResponse.status) {
+            ResponseStatus.SUCCESS -> {
+                autoCompleteTextView.isEnabled = true
+                textInputLayout.isEnabled = true
+
+                @Suppress("UNCHECKED_CAST")
+                if (apiResponse is ListApiResponse<*>) {
+                    val adapter = SpinnerArrayAdapter(
+                        context!!,
+                        R.layout.spinner_item,
+                        (apiResponse.items as List<String>).toTypedArray(),
+                        selectedItems
+                    )
+                    autoCompleteTextView.setAdapter(adapter)
+                    autoCompleteTextView.setOnDismissListener {
+                        autoCompleteTextView.setText(
+                            String.format(
+                                label,
+                                selectedItems.size
+                            ), false
+                        )
+                    }
+                }
+            }
+            ResponseStatus.ERROR -> {
+                autoCompleteTextView.isEnabled = false
+                textInputLayout.isEnabled = false
+            }
+            ResponseStatus.LOADING -> {
+                autoCompleteTextView.isEnabled = false
+                textInputLayout.isEnabled = false
+            }
+        }
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FiltersViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.typesResponse.observe(this, Observer {
+            handleSpinner(
+                it,
+                selectedTypes,
+                getString(R.string.type_selected_label),
+                type_tv,
+                type_til
+            )
+        })
+
+        viewModel.classesResponse.observe(this, Observer {
+            handleSpinner(
+                it,
+                selectedClasses,
+                getString(R.string.class_selected_label),
+                class_tv,
+                class_til
+            )
+        })
+
+        viewModel.mechanicsResponse.observe(this, Observer {
+            handleSpinner(
+                it,
+                selectedMechanics,
+                getString(R.string.mechanic_selected_label),
+                mechanic_tv,
+                mechanic_til
+            )
+        })
+
+        viewModel.filtersResponse.observe(this, Observer {
+            selectedTypes.addAll(it.types)
+            selectedClasses.addAll(it.classes)
+            selectedMechanics.addAll(it.mechanics)
+            type_tv.setText(
+                String.format(
+                    getString(R.string.type_selected_label),
+                    selectedTypes.size
+                ), false
+            )
+            class_tv.setText(
+                String.format(
+                    getString(R.string.class_selected_label),
+                    selectedClasses.size
+                ), false
+            )
+            mechanic_tv.setText(
+                String.format(
+                    getString(R.string.mechanic_selected_label),
+                    selectedMechanics.size
+                ), false
+            )
+
+            rarity_seek_bar.setProgress(it.minRarity.toFloat(),it.maxRarity.toFloat())
+            if(it.sortBy == SectionFilter.SORT_BY_ALPHABETICAL){
+                sort_alphabetic_rb.isChecked = true
+                sort_alphabetic_cb.isChecked = it.descending
+            }else{
+                sort_rarity_rb.isChecked = true
+                sort_rarity_cb.isChecked = it.descending
+            }
+        })
+
+        viewModel.getTypes()
+        viewModel.getClasses()
+        viewModel.getMechanics()
+        viewModel.getFilters()
+
     }
 
     var selectedTypes: MutableSet<String> = mutableSetOf()
@@ -58,152 +158,60 @@ class FiltersFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity?.supportFragmentManager?.popBackStack()
         }
 
-        filters_toolbar.menu?.findItem(R.id.filters_button)?.setOnMenuItemClickListener {
-            applyFilter()
-            true
-        }
-
         sort_alphabetic_rb.setOnCheckedChangeListener(this)
         sort_rarity_rb.setOnCheckedChangeListener(this)
 
+        apply_filters_button.setOnClickListener { applyFilters() }
+        clear_filters_button.setOnClickListener { clearFilters() }
 
-        val types = arrayOf(
-            getString(R.string.type_minion_label),
-            getString(R.string.type_spell_label),
-            getString(R.string.type_weapon_label),
-            getString(R.string.type_hero_label)
-        )
-        val classes = arrayOf(
-            getString(R.string.class_druid_label),
-            getString(R.string.class_hunter_label),
-            getString(R.string.class_mage_label),
-            getString(R.string.class_paladin_label),
-            getString(R.string.class_priest_label),
-            getString(R.string.class_rogue_label),
-            getString(R.string.class_shaman_label),
-            getString(R.string.class_warlock_label),
-            getString(R.string.class_warrior_label)
-        )
+    }
 
-        val mechanics = arrayOf(
-            getString(R.string.ability_adapt_label),
-            getString(R.string.ability_battlecry_label),
-            getString(R.string.ability_casts_when_drawn_label),
-            getString(R.string.ability_charge_label),
-            getString(R.string.ability_choose_one_label),
-            getString(R.string.ability_choose_twice_label),
-            getString(R.string.ability_combo_label),
-            getString(R.string.ability_counter_label),
-            getString(R.string.ability_deathrattle_label)
-        )
-
-        val typesBox: Box<SectionFilter> = ObjectBox.boxStore.boxFor()
-        val filter = typesBox.query().equal(SectionFilter_.index, 1).build().findFirst()
-        if (filter != null) {
-            val filtersJSONObject = JSONObject(filter.typesJsonArray)
-
-            val typesFilter = filtersJSONObject.getJSONArray("types")
-            if (typesFilter != null) {
-                selectedTypes = fromJsonArray(typesFilter)
-            }
-
-            val classesFilter = filtersJSONObject.getJSONArray("classes")
-            if (classesFilter != null) {
-                selectedClasses = fromJsonArray(classesFilter)
-            }
-
-            val mechanicsFilter = filtersJSONObject.getJSONArray("mechanics")
-            if (mechanicsFilter != null) {
-                selectedMechanics = fromJsonArray(mechanicsFilter)
-            }
-
-            val rarityPair = getRarityPair(filtersJSONObject)
-            rarity_seek_bar.setProgress(rarityPair.first.toFloat(), rarityPair.second.toFloat())
-        } else {
-            rarity_seek_bar.setProgress(0f, 0f)
-        }
-
-
-
-
-        type_tv.setText(
-            String.format(getString(R.string.type_selected_label), selectedTypes.size),
-            false
-        )
-        val typesAdapter =
-            SpinnerArrayAdapter(context!!, R.layout.spinner_item, types, selectedTypes)
-        type_tv.setAdapter(typesAdapter)
-        type_tv.setOnDismissListener {
-            type_tv.setText(
-                String.format(
-                    getString(R.string.type_selected_label),
-                    selectedTypes.size
-                ), false
-            )
-        }
-
-        class_tv.setText(
-            String.format(
-                getString(R.string.class_selected_label),
-                selectedClasses.size
-            ), false
-        )
-        val classesAdapter =
-            SpinnerArrayAdapter(context!!, R.layout.spinner_item, classes, selectedClasses)
-        class_tv.setAdapter(classesAdapter)
-        class_tv.setOnDismissListener {
-            class_tv.setText(
-                String.format(
-                    getString(R.string.class_selected_label),
-                    selectedClasses.size
-                ), false
-            )
-        }
-
+    private fun clearFilters() {
+        selectedTypes.clear()
+        selectedClasses.clear()
+        selectedMechanics.clear()
+        viewModel.clearFilters()
         mechanic_tv.setText(
             String.format(
                 getString(R.string.mechanic_selected_label),
                 selectedMechanics.size
             ), false
         )
-        val mechanicsAdapter =
-            SpinnerArrayAdapter(context!!, R.layout.spinner_item, mechanics, selectedMechanics)
-        mechanic_tv.setAdapter(mechanicsAdapter)
-        mechanic_tv.setOnDismissListener {
-            mechanic_tv.setText(
-                String.format(
-                    getString(R.string.mechanic_selected_label),
-                    selectedMechanics.size
-                ), false
-            )
-        }
+        class_tv.setText(
+            String.format(
+                getString(R.string.class_selected_label),
+                selectedClasses.size
+            ), false
+        )
+        type_tv.setText(
+            String.format(
+                getString(R.string.type_selected_label),
+                selectedTypes.size
+            ), false
+        )
+        rarity_seek_bar.setProgress(0f,4f)
+        sort_alphabetic_cb.isChecked = false
+        sort_rarity_cb.isChecked = false
+        sort_alphabetic_rb.isChecked = true
     }
 
-    private fun applyFilter() {
-        val typesBox: Box<SectionFilter> = ObjectBox.boxStore.boxFor()
-        typesBox.query().equal(SectionFilter_.index, 1).build().remove()
-        typesBox.put(
-            SectionFilter(
-                0,
-                1,
-                toJsonObject(
-                    selectedTypes,
-                    selectedClasses,
-                    selectedMechanics,
-                    Pair(
-                        rarity_seek_bar.leftSeekBar.progress.toInt(),
-                        rarity_seek_bar.rightSeekBar.progress.toInt()
-                    )
-                ).toString()
-            )
+    private fun applyFilters() {
+        viewModel.saveFilters(
+            selectedTypes.toList(),
+            selectedMechanics.toList(),
+            selectedClasses.toList(),
+            rarity_seek_bar.leftSeekBar.progress.toInt(),
+            rarity_seek_bar.rightSeekBar.progress.toInt(),
+            if (sort_alphabetic_rb.isChecked) SectionFilter.SORT_BY_ALPHABETICAL else SectionFilter.SORT_BY_RARITY,
+            if (sort_alphabetic_rb.isChecked) sort_alphabetic_cb.isChecked else sort_rarity_cb.isChecked
         )
         activity?.supportFragmentManager?.popBackStack()
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-        if(isChecked){
+        if (isChecked) {
             radioButtonIds.forEach {
-                if(it != buttonView?.id){
+                if (it != buttonView?.id) {
                     filters_root.findViewById<RadioButton>(it).isChecked = false
                 }
             }

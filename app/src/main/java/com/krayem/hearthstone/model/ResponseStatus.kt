@@ -1,6 +1,6 @@
 package com.krayem.hearthstone.model
 
-enum class ReponseStatus {
+enum class ResponseStatus {
     ERROR,
     LOADING,
     SUCCESS

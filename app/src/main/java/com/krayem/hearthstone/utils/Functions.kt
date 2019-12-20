@@ -1,5 +1,6 @@
 package com.krayem.hearthstone.utils
 
+import com.krayem.hearthstone.model.Mechanic
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -34,6 +35,22 @@ fun fromJsonArray(json: JSONArray) : MutableSet<String>{
     val set = mutableSetOf<String>()
     for (i in 0 until json.length()){
         set.add(json.getString(i))
+    }
+    return set
+}
+
+fun fromJsonArrayToArrayList(json: JSONArray) : List<String>{
+    val set = arrayListOf<String>()
+    for (i in 0 until json.length()){
+        set.add(json.getString(i))
+    }
+    return set
+}
+
+fun fromJsonArrayToMechanicsList(json: JSONArray) : List<Mechanic>{
+    val set = arrayListOf<Mechanic>()
+    for (i in 0 until json.length()){
+        set.add(Mechanic(json.getJSONObject(i).getString("name")))
     }
     return set
 }

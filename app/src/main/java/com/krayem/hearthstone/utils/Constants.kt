@@ -3,6 +3,11 @@ package com.krayem.hearthstone.utils
 //todo
 const val BASE_URL: String = "https://google.com/"
 
+const val CARDSET_INTENT_EXTRA = "cardset.intent.extra"
+const val FAVOURITES_INTENT_EXTRA = "favourites.intent.extra"
+
+
+
 const val JSON_TEST = "[{\n" +
         "   \"cardId\": \"CFM_902\",\n" +
         "   \"name\": \"Aya Blackpaw\",\n" +

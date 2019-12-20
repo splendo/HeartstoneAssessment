@@ -21,7 +21,6 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="top"
             app:layout_collapseMode="pin"
-            app:menu="@menu/filters_menu"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         </androidx.appcompat.widget.Toolbar>
@@ -38,6 +37,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/filtering_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="32dp"
+                style="@style/BoldLabel"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="@string/filtering"/>
+
             <com.jaygoo.widget.RangeSeekBar
                 android:id="@+id/rarity_seek_bar"
                 android:layout_width="match_parent"
@@ -45,7 +56,7 @@
                 android:layout_margin="16dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filtering_label"
                 app:rsb_indicator_height="wrap_content"
                 app:rsb_indicator_width="wrap_content"
                 app:rsb_max="4"
@@ -59,6 +70,7 @@
                 app:rsb_step_width="5dp"
                 app:rsb_steps="4"
                 app:rsb_tick_mark_text_array="@array/rarity_array"
+                app:rsb_progress_color="@color/colorAccent"
                 app:rsb_tick_mark_mode="other"
                 app:rsb_tick_mark_text_color="@android:color/black"
                 app:rsb_tick_mark_text_margin="20dp"/>
@@ -125,13 +137,26 @@
                     android:editable="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sorting_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="32dp"
+                style="@style/BoldLabel"
+                app:layout_constraintTop_toBottomOf="@id/mechanic_til"
+
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="@string/sorting"/>
+
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:id="@+id/sort_alphabetic_rb"
-                app:layout_constraintTop_toBottomOf="@id/mechanic_til"
+                app:layout_constraintTop_toBottomOf="@id/sorting_label"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/sort_alphabetic_cb"
                 android:text="@string/sort_alphabetical_label"
@@ -170,7 +195,27 @@
                 android:button="@drawable/sorting_switch_selector"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/clear_filters_button"
+                android:text="@string/clear_filters_label"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@id/sort_rarity_rb"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/apply_filters_button"/>
 
+            <com.google.android.material.button.MaterialButton
+                android:layout_margin="16dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/apply_filters_button"
+                android:text="@string/apply_filters_label"
+                app:layout_constraintTop_toBottomOf="@id/sort_rarity_rb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/clear_filters_button"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
