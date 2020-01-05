@@ -18,7 +18,7 @@ import io.objectbox.kotlin.boxFor
 
 class CardGridAdapter(
     private val context: Context,
-    private val objects: ArrayList<Card>,
+    val objects: ArrayList<Card>,
     private val adapterOnClick: (Card, ImageView) -> Unit
 ) :
     RecyclerView.Adapter<CardViewHolder>() {

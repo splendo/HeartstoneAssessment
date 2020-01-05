@@ -15,7 +15,7 @@ import io.objectbox.kotlin.boxFor
 import org.json.JSONArray
 import org.json.JSONObject
 
-class DefaultDatabaseManager : DatabaseManager {
+open class DefaultDatabaseManager : DatabaseManager {
 
 
     override fun getAll(): List<Card> {

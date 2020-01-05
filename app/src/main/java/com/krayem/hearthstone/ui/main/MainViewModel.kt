@@ -6,8 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.beust.klaxon.JsonReader
-import com.beust.klaxon.Klaxon
 import com.krayem.hearthstone.di.DaggerViewModelInjector
 import com.krayem.hearthstone.model.*
 import com.krayem.hearthstone.network.CardApi

@@ -29,11 +29,13 @@
 
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/filters_fragment_scrollview"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filters_fragment_scroll_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
