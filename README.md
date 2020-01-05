@@ -18,6 +18,8 @@ Filtering and sorting works through objectbox as you would expect in a relationa
 PS: one used library that I felt needed justification was the RangeSeekBar used to filter by rarity. The official android "Slider" class is only included in the alpha material designn library and seems to still be lacking features compared to others, so I decided to use a 3rd party library.
 
 
+I also added some UI tests for checking favourites, sorting, and filtering. (Espresso and JUnit)
+
 ## Introduction
 
 Hsiao here at Splendo is a very enthusiastic casual Hearthstone player. He is also a user of the KLM houses apps ([iOS](https://itunes.apple.com/nl/app/klm-houses/id371664245?l=en&mt=8) / [Android](https://play.google.com/store/apps/details?id=com.klm.mobile.houses&hl=en))
