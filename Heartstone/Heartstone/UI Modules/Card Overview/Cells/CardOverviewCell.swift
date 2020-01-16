@@ -106,18 +106,26 @@ extension CardOverviewCell {
             activityIndicatorView.isHidden = false
             activityIndicatorView.startAnimating()
             
-            dataRequest = Alamofire.request(imageURL).responseImage { [imageView, activityIndicatorView] response in
-                activityIndicatorView.stopAnimating()
-                activityIndicatorView.isHidden = true
-                
-                if let image = response.result.value {
-                    imageView.image = image
-                } else {
-                    imageView.image = UIImage(named: "cardPlaceholder")
-                }
+            dataRequest = Alamofire.request(imageURL).responseImage { [weak self] response in
+                self?.loadedImage(response.result.value, for: imageURL)
             }
         } else {
-            imageView.image = UIImage(named: "cardPlaceholder")
+            setPlaceholderImage()
         }
+    }
+    
+    private func loadedImage(_ image: UIImage?, for url: URL) {
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = true
+        
+        if let image = image, viewModel?.imageURL == url {
+            imageView.image = image
+        } else {
+            setPlaceholderImage()
+        }
+    }
+    
+    private func setPlaceholderImage() {
+        imageView.image = UIImage(named: "cardPlaceholder")
     }
 }
