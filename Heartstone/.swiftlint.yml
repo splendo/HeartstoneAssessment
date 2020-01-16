@@ -1,0 +1,202 @@
+# full list of available rules: https://github.com/realm/SwiftLint/blob/master/Rules.md
+
+disabled_rules:
+    - trailing_whitespace
+    - statement_position
+    - type_name
+    - identifier_name
+    - function_parameter_count
+    - cyclomatic_complexity
+    - large_tuple
+    - let_var_whitespace
+
+opt_in_rules:
+    - anyobject_protocol
+    - array_init
+    - closure_end_indentation
+    - closure_spacing
+    - collection_alignment
+    - contains_over_first_not_nil
+    - discouraged_object_literal
+    - empty_count
+    - empty_string
+    - explicit_init
+    - file_header
+    - first_where
+    - identical_operands
+    - joined_default_parameter
+    - last_where
+    - legacy_random
+    - let_var_whitespace
+    - literal_expression_end_indentation
+    - lower_acl_than_parent
+    - operator_usage_whitespace
+    - redundant_nil_coalescing
+    - sorted_first_last
+    - trailing_closure
+    - unused_import
+    - unused_private_declaration
+    - vertical_parameter_alignment_on_call
+    - vertical_whitespace_closing_braces
+    - yoda_condition
+
+excluded:
+    - Carthage
+    - Pods
+
+anyobject_protocol:
+    severity: warning
+
+nesting:
+    type_level:
+        warning: 4
+    statement_level:
+        warning: 4
+    
+line_length:
+    warning: 200
+    error: 300
+
+type_body_length:
+    warning: 1000
+
+file_length:
+    warning: 1000
+
+function_body_length:
+    warning: 100
+    error: 300
+
+weak_delegate:
+    severity: error
+
+colon:
+    severity: warning
+
+trailing_semicolon:
+    severity: error
+
+array_init:
+    severity: warning
+
+collection_alignment:
+    severity: warning
+
+closure_end_indentation:
+    severity: warning
+
+closure_spacing:
+    severity: warning
+
+contains_over_first_not_nil:
+    severity: warning
+
+discouraged_object_literal:
+    severity: warning
+
+empty_count:
+    severity: warning
+
+empty_string:
+    severity: warning
+
+empty_xctest_method:
+    severity: warning
+
+explicit_init:
+    severity: warning
+
+fatal_error_message:
+    severity: warning
+
+file_header:
+    severity: warning
+
+first_where:
+    severity: warning
+
+identical_operands:
+    severity: warning
+
+joined_default_parameter:
+    severity: warning
+
+last_where:
+    severity: warning
+
+legacy_random:
+    severity: warning
+
+let_var_whitespace:
+    severity: warning
+
+literal_expression_end_indentation:
+    severity: warning
+
+lower_acl_than_parent:
+    severity: warning
+
+number_separator:
+    severity: warning
+
+operator_usage_whitespace:
+    severity: warning
+
+redundant_nil_coalescing:
+    severity: warning
+
+sorted_first_last:
+    severity: warning
+
+trailing_closure:
+    severity: warning
+
+trailing_whitespace:
+    severity: warning
+
+unused_import:
+    severity: warning
+
+unused_private_declaration:
+    severity: warning
+
+vertical_parameter_alignment_on_call:
+    severity: warning
+
+vertical_whitespace_closing_braces:
+    severity: warning
+
+yoda_condition:
+    severity: warning
+
+custom_rules:
+    unbound_selector:
+        name: "Unbound selector"
+        message: "Selectors should always reference their target to ensure the function exists on the target"
+        regex: "(selector\\([a-zA-Z0-9]+\\))|(selector\\([a-zA-Z0-9]+\\([a-zA-Z0-9:]+\\)\\))"
+        severity: warning
+
+    comments_space:
+        name: "Space After Comment"
+        regex: "(^ *//\\w+)"
+        message: "There should be a space after //"
+        severity: warning
+
+    force_https:
+        name: "Force HTTPS over HTTP"
+        regex: "((?i)http(?!s))://"
+        match_kinds: string
+        message: "HTTPS should be favored over HTTP"
+        severity: warning
+
+    empty_line_after_guard:
+        name: "Empty Line After Guard"
+        regex: "(^ *guard[ a-zA-Z0-9=?.\\(\\),><!]*\\{[ a-zA-Z0-9=?.\\(\\),><!]*\\}\n *(?!(?:return|guard))\\S+)"
+        message: "There should be an empty line after a guard"
+        severity: warning
+
+    empty_line_after_super:
+        name: "Empty Line After Super"
+        regex: "(^ *super\\.[ a-zA-Z0-9=?.\\(\\)\\{\\}:,><!]*\n *(?!(?:\\}|return))\\S+)"
+        message: "There should be an empty line after super"
+        severity: warning
