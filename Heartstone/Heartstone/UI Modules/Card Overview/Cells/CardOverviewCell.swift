@@ -116,7 +116,6 @@ extension CardOverviewCell {
                     imageView.image = UIImage(named: "cardPlaceholder")
                 }
             }
-            imageView.af_setImage(withURL: imageURL)
         } else {
             imageView.image = UIImage(named: "cardPlaceholder")
         }
