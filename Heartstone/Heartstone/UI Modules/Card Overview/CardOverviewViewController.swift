@@ -20,7 +20,7 @@ internal final class CardOverviewViewController: UIViewController {
     }
     
     private func configureNavigationItem() {
-        navigationItem.titleView = UIImageView(image: UIImage(named: "nav_main_icon"))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "nav_mainIcon"))
     }
     
     private func configureCollectionAdapter() {

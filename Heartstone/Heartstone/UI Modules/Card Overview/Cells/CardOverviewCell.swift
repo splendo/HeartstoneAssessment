@@ -1,4 +1,6 @@
 import UIKit
+import Alamofire
+import AlamofireImage
 
 extension CardOverviewCell {
     internal struct ViewModel {
@@ -10,6 +12,9 @@ extension CardOverviewCell {
 internal final class CardOverviewCell: UICollectionViewCell {
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
+    private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
+    
+    private var dataRequest: DataRequest?
     
     internal var viewModel: ViewModel? {
         didSet { viewModelUpdated() }
@@ -29,6 +34,12 @@ internal final class CardOverviewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         viewModel = nil
+        
+        dataRequest?.cancel()
+        dataRequest = nil
+        
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
     }
 }
 
@@ -42,10 +53,13 @@ extension CardOverviewCell {
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
         
+        imageView.addSubview(activityIndicatorView.disableTranslateAutoresizingMask())
+        
         configureBackgroundView()
         configureSelectedBackgroundView()
         configureImageView()
         configureTitleLabel()
+        configureActivityIndicatorView()
     }
     
     private func configureBackgroundView() {
@@ -72,11 +86,39 @@ extension CardOverviewCell {
         titleLabel.pin(height: 32)
         titleLabel.textAlignment = .center
     }
+    
+    private func configureActivityIndicatorView() {
+        activityIndicatorView.pinCenterToSuperview()
+    }
 }
 
 // MARK: Misc
 extension CardOverviewCell {
     private func viewModelUpdated() {
         titleLabel.text = viewModel?.title
+        
+        guard let viewModel = viewModel else {
+            imageView.image = nil
+            return
+        }
+        
+        if let imageURL = viewModel.imageURL {
+            activityIndicatorView.isHidden = false
+            activityIndicatorView.startAnimating()
+            
+            dataRequest = Alamofire.request(imageURL).responseImage { [imageView, activityIndicatorView] response in
+                activityIndicatorView.stopAnimating()
+                activityIndicatorView.isHidden = true
+                
+                if let image = response.result.value {
+                    imageView.image = image
+                } else {
+                    imageView.image = UIImage(named: "cardPlaceholder")
+                }
+            }
+            imageView.af_setImage(withURL: imageURL)
+        } else {
+            imageView.image = UIImage(named: "cardPlaceholder")
+        }
     }
 }

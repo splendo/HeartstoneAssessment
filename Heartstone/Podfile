@@ -6,15 +6,17 @@ use_frameworks!
 
 
 install! 'cocoapods',
-    :generate_multiple_pod_projects => true,
-    :incremental_installation => true
+:generate_multiple_pod_projects => true,
+:incremental_installation => true
 
 workspace 'Heartstone'
 
 target 'Heartstone' do
     pod 'SwiftLint'
-
-  target 'HeartstoneTests' do
-    inherit! :search_paths
-  end
+    
+    pod 'AlamofireImage'
+    
+    target 'HeartstoneTests' do
+        inherit! :search_paths
+    end
 end
