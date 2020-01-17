@@ -21,6 +21,13 @@ internal final class CardOverviewViewController: UIViewController {
     
     private func configureNavigationItem() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "nav_mainIcon"))
+        
+        let filterBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "tag"),
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(self.tappedFilter(_:)))
+        
+        navigationItem.rightBarButtonItems = [filterBarButtonItem]
     }
     
     private func configureCollectionAdapter() {
@@ -73,4 +80,10 @@ extension CardOverviewViewController {
         
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+}
+
+// MARK: User Interaction
+extension CardOverviewViewController {
+    @objc
+    private func tappedFilter(_ barButton: UIBarButtonItem) {}
 }

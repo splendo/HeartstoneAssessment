@@ -72,8 +72,8 @@ extension CardOverviewViewController.View {
     
     private func configureErrorLabel() {
         errorLabel.pinCenterToSuperview(layoutArea: .safeArea)
-        errorLabel.pinWidth(with: self, extraWidth: -30, relation: .lessThanOrEqual)
-        errorLabel.pinHeight(with: self, extraHeight: -200, relation: .lessThanOrEqual)
+        errorLabel.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.widthAnchor, multiplier: 1).activate()
+        errorLabel.heightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor, multiplier: 1).activate()
         
         errorLabel.numberOfLines = 0
         errorLabel.textAlignment = .center
@@ -94,7 +94,7 @@ extension CardOverviewViewController.View {
         
         let itemWidth = floor(availableWidth / 3)
         
-        collectionFlowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 32)
+        collectionFlowLayout.itemSize = CGSize(width: itemWidth, height: ceil(1.5 * itemWidth) + 50)
     }
 }
 

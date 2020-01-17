@@ -10,11 +10,8 @@ extension CardOverviewCell {
 }
 
 internal final class CardOverviewCell: UICollectionViewCell {
-    private let imageView = UIImageView()
+    private let imageView = CardImageView()
     private let titleLabel = UILabel()
-    private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
-    
-    private var dataRequest: DataRequest?
     
     internal var viewModel: ViewModel? {
         didSet { viewModelUpdated() }
@@ -35,11 +32,7 @@ internal final class CardOverviewCell: UICollectionViewCell {
         
         viewModel = nil
         
-        dataRequest?.cancel()
-        dataRequest = nil
-        
-        activityIndicatorView.isHidden = true
-        activityIndicatorView.stopAnimating()
+        imageView.prepareForReuse()
     }
 }
 
@@ -53,13 +46,10 @@ extension CardOverviewCell {
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
         
-        imageView.addSubview(activityIndicatorView.disableTranslateAutoresizingMask())
-        
         configureBackgroundView()
         configureSelectedBackgroundView()
         configureImageView()
         configureTitleLabel()
-        configureActivityIndicatorView()
     }
     
     private func configureBackgroundView() {
@@ -76,19 +66,19 @@ extension CardOverviewCell {
     
     private func configureImageView() {
         imageView.pinEdgesToSuperview(layoutArea: .layoutMargins, excludeEdges: .bottom)
-        imageView.pin(above: titleLabel, padding: 10)
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.5).activate()
         
         imageView.contentMode = .scaleAspectFit
     }
     
     private func configureTitleLabel() {
-        titleLabel.pinEdgesToSuperview(layoutArea: .layoutMargins, excludeEdges: .top)
-        titleLabel.pin(height: 32)
+        titleLabel.pin(below: imageView, padding: 10)
+        titleLabel.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins)
+        titleLabel.pinBottomToSuperview(layoutArea: .layoutMargins, relation: .lessThanOrEqual)?.set(priority: .defaultLow)
+        
         titleLabel.textAlignment = .center
-    }
-    
-    private func configureActivityIndicatorView() {
-        activityIndicatorView.pinCenterToSuperview()
+        titleLabel.numberOfLines = 0
+        titleLabel.setContentHuggingPriority(.required, for: .vertical)
     }
 }
 
@@ -102,30 +92,6 @@ extension CardOverviewCell {
             return
         }
         
-        if let imageURL = viewModel.imageURL {
-            activityIndicatorView.isHidden = false
-            activityIndicatorView.startAnimating()
-            
-            dataRequest = Alamofire.request(imageURL).responseImage { [weak self] response in
-                self?.loadedImage(response.result.value, for: imageURL)
-            }
-        } else {
-            setPlaceholderImage()
-        }
-    }
-    
-    private func loadedImage(_ image: UIImage?, for url: URL) {
-        activityIndicatorView.stopAnimating()
-        activityIndicatorView.isHidden = true
-        
-        if let image = image, viewModel?.imageURL == url {
-            imageView.image = image
-        } else {
-            setPlaceholderImage()
-        }
-    }
-    
-    private func setPlaceholderImage() {
-        imageView.image = UIImage(named: "cardPlaceholder")
+        imageView.loadURL(viewModel.imageURL)
     }
 }

@@ -1,9 +1,15 @@
 import UIKit
+import Alamofire
 
 extension CardDetailsViewController {
     @objc(CardDetailsViewControllerView) 
     internal final class View: UIView {
-        internal init() {
+        private let tableView = UITableView()
+        private let tableAdapter: CardDetailTableAdapter
+                
+        internal init(tableAdapter: CardDetailTableAdapter) {
+            self.tableAdapter = tableAdapter
+            
             super.init(frame: UIScreen.main.bounds)
             
             configureViews()
@@ -17,12 +23,18 @@ extension CardDetailsViewController {
 
 // MARK: Configure Views
 extension CardDetailsViewController.View {
-    private func configureViews() {}
-}
-
-// MARK: Layout Views
-extension CardDetailsViewController.View {
-    internal override func layoutSubviews() {
-        super.layoutSubviews()
+    private func configureViews() {
+        addSubview(tableView.disableTranslateAutoresizingMask())
+        
+        backgroundColor = .systemGroupedBackground
+        
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        tableAdapter.configure(tableView)
+        
+        tableView.pinEdgesToSuperview()
+        tableView.tableFooterView = UIView()
     }
 }

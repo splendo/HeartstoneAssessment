@@ -8,7 +8,7 @@ extension NSDirectionalEdgeInsets {
         self.init(top: vertical, leading: horizontal, bottom: vertical, trailing: horizontal)
     }
     
-    public init(value: CGFloat) {
-        self.init(top: value, leading: value, bottom: value, trailing: value)
+    public init(all: CGFloat) {
+        self.init(top: all, leading: all, bottom: all, trailing: all)
     }
 }
