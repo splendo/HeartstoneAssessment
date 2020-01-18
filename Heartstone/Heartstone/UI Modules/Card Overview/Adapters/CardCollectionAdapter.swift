@@ -2,20 +2,17 @@ import UIKit
 
 internal final class CardCollectionAdapter: NSObject {
     private let favoritesManager: FavoritesManager
-    internal private(set) var sets: [HeartStoneCardSet] = []
+    private let dataSource = CardSetDataSource()
     
-    internal var sectionCount: Int { sets.count }
     internal var didSelect: ((IndexPath) -> Void)?
+    internal var sets: [HeartStoneCardSet] {
+        get { dataSource.sets }
+        set { dataSource.sets = newValue }
+    }
     
     internal init(favoritesManager: FavoritesManager) {
         self.favoritesManager = favoritesManager
     }
-    
-    internal func numberOfItems(inSection section: Int) -> Int { setAtSection(section)?.cards.count ?? 0 }
-    internal func setAtSection(_ section: Int) -> HeartStoneCardSet? { sets[safe: section] }
-    internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? { setAtSection(indexPath.section)?.cards[safe: indexPath.item] }
-    
-    internal func setSets(_ sets: [HeartStoneCardSet]) { self.sets = sets }
     
     internal func softReload(_ collectionView: UICollectionView) {
         collectionView.visibleCells
@@ -31,9 +28,9 @@ internal final class CardCollectionAdapter: NSObject {
 // MARK: - CollectionAdapter
 extension CardCollectionAdapter: CollectionAdapter {
     internal func configure(_ collectionView: UICollectionView) {
-        collectionView.register(cell: CardOverviewCell.self)
-        
         collectionView.register(view: CardOverviewSectionHeader.self, for: .header)
+        
+        collectionView.register(cell: CardOverviewCell.self)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -52,17 +49,19 @@ extension CardCollectionAdapter: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension CardCollectionAdapter: UICollectionViewDataSource {
     private func viewModel(at indexPath: IndexPath) -> CardOverviewCell.ViewModel? {
-        guard let item = itemAt(indexPath) else {
+        guard let card = dataSource.cardAt(indexPath) else {
             return nil
         }
         
-        return CardOverviewCell.ViewModel(title: item.name, imageURL: item.imageURL, isFavorite: favoritesManager.isFavorite(item))
+        return CardOverviewCell.ViewModel(title: card.name, imageURL: card.imageURL, isFavorite: favoritesManager.isFavorite(card))
     }
     
-    internal func numberOfSections(in collectionView: UICollectionView) -> Int { sectionCount }
+    internal func numberOfSections(in collectionView: UICollectionView) -> Int {
+        dataSource.sectionCount
+    }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numberOfItems(inSection: section)
+        dataSource.numberOfItems(inSection: section)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,7 +81,7 @@ extension CardCollectionAdapter: UICollectionViewDataSource {
                 
         let header = collectionView.dequeueReusableSupplementaryView(for: CardOverviewSectionHeader.self, kind: kind, indexPath: indexPath)
         
-        if let section = setAtSection(indexPath.section) {
+        if let section = dataSource.setAtSection(indexPath.section) {
             header.title = section.title
         }
         

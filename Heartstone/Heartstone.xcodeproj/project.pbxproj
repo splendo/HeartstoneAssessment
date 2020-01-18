@@ -64,6 +64,7 @@
 		606366CD23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366BB23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift */; };
 		606366D123CFA79400CA91ED /* HeartStoneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366D023CFA79400CA91ED /* HeartStoneCard.swift */; };
 		606366D323CFA7BA00CA91ED /* HeartStoneCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366D223CFA7BA00CA91ED /* HeartStoneCardManager.swift */; };
+		60A9A03123D386EE00A9B92C /* CardSetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A9A03023D386EE00A9B92C /* CardSetDataSource.swift */; };
 		60DA1A6423D3341900FFEB29 /* CardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A6323D3341900FFEB29 /* CardRouter.swift */; };
 		60DA1A7323D3414400FFEB29 /* CardDetailCollectionViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7123D3414400FFEB29 /* CardDetailCollectionViewController.View.swift */; };
 		60DA1A7423D3414400FFEB29 /* CardDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7223D3414400FFEB29 /* CardDetailCollectionViewController.swift */; };
@@ -148,6 +149,7 @@
 		606366BB23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinRelative.swift"; sourceTree = "<group>"; };
 		606366D023CFA79400CA91ED /* HeartStoneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCard.swift; sourceTree = "<group>"; };
 		606366D223CFA7BA00CA91ED /* HeartStoneCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCardManager.swift; sourceTree = "<group>"; };
+		60A9A03023D386EE00A9B92C /* CardSetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetDataSource.swift; sourceTree = "<group>"; };
 		60DA1A6323D3341900FFEB29 /* CardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRouter.swift; sourceTree = "<group>"; };
 		60DA1A7123D3414400FFEB29 /* CardDetailCollectionViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewController.View.swift; sourceTree = "<group>"; };
 		60DA1A7223D3414400FFEB29 /* CardDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 		6043D7CC23D0E999001F9FF3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				60A9A02F23D386E000A9B92C /* Data sources */,
 				6009B78023D2387400A8AE61 /* Adapters */,
 				6009B77923D2242D00A8AE61 /* CardImageView.swift */,
 			);
@@ -534,6 +537,14 @@
 				6009B7A323D3136300A8AE61 /* HeartStoneCardSet.swift */,
 			);
 			path = "Heartstone cards";
+			sourceTree = "<group>";
+		};
+		60A9A02F23D386E000A9B92C /* Data sources */ = {
+			isa = PBXGroup;
+			children = (
+				60A9A03023D386EE00A9B92C /* CardSetDataSource.swift */,
+			);
+			path = "Data sources";
 			sourceTree = "<group>";
 		};
 		60DA1A6223D333FD00FFEB29 /* Routing */ = {
@@ -779,6 +790,7 @@
 				60DA1A7323D3414400FFEB29 /* CardDetailCollectionViewController.View.swift in Sources */,
 				606366CD23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift in Sources */,
 				606366C023CFA6DE00CA91ED /* NSLayoutConstraint+AutoLayout.swift in Sources */,
+				60A9A03123D386EE00A9B92C /* CardSetDataSource.swift in Sources */,
 				606366C723CFA6DE00CA91ED /* UIView+AutoLayoutPinEdges.swift in Sources */,
 				606366BD23CFA6DE00CA91ED /* UIView.Edge.swift in Sources */,
 				6009B79323D24DF300A8AE61 /* FilterViewController.swift in Sources */,

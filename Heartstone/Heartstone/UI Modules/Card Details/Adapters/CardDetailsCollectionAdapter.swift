@@ -2,20 +2,17 @@ import UIKit
 
 internal final class CardDetailsCollectionAdapter: NSObject {
     private let favoritesManager: FavoritesManager
-    private var sets: [HeartStoneCardSet] = []
+    private let dataSource = CardSetDataSource()
     
-    internal var sectionCount: Int { sets.count }
     internal var didSelect: ((IndexPath) -> Void)?
+    internal var sets: [HeartStoneCardSet] {
+        get { dataSource.sets }
+        set { dataSource.sets = newValue }
+    }
     
     internal init(favoritesManager: FavoritesManager) {
         self.favoritesManager = favoritesManager
     }
-    
-    internal func numberOfItems(inSection section: Int) -> Int { setAtSection(section)?.cards.count ?? 0 }
-    internal func setAtSection(_ section: Int) -> HeartStoneCardSet? { sets[safe: section] }
-    internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? { setAtSection(indexPath.section)?.cards[safe: indexPath.item] }
-    
-    internal func setSets(_ sets: [HeartStoneCardSet]) { self.sets = sets }
 }
 
 // MARK: - CollectionAdapter
@@ -41,16 +38,18 @@ extension CardDetailsCollectionAdapter: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 extension CardDetailsCollectionAdapter: UICollectionViewDataSource {
-    internal func numberOfSections(in collectionView: UICollectionView) -> Int { sectionCount }
+    internal func numberOfSections(in collectionView: UICollectionView) -> Int {
+        dataSource.sectionCount
+    }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numberOfItems(inSection: section)
+        dataSource.numberOfItems(inSection: section)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeReusableCell(for: CardCollectionCell.self, indexPath: indexPath)
         
-        guard let card = itemAt(indexPath) else {
+        guard let card = dataSource.cardAt(indexPath) else {
             return cell
         }
         
@@ -82,9 +81,7 @@ extension CardDetailsCollectionAdapter: UICollectionViewDataSource {
                 
         let header = collectionView.dequeueReusableSupplementaryView(for: CardDetailSectionHeader.self, kind: kind, indexPath: indexPath)
         
-        if let section = setAtSection(indexPath.section) {
-            header.title = section.title
-        }
+        header.title = dataSource.setAtSection(indexPath.section)?.title
         
         return header
     }

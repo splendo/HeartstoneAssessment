@@ -13,7 +13,7 @@ internal final class CardDetailCollectionViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        collectionAdapter.setSets(cardSets)
+        collectionAdapter.sets = cardSets
     }
 
     internal required init?(coder aDecoder: NSCoder) {
