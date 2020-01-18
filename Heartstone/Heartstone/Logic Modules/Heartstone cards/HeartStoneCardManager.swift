@@ -2,6 +2,7 @@ import Foundation
 
 internal final class HeartStoneCardManager {
     internal struct Request {
+        internal let sortNamesAscending: Bool
         internal let activeFilters: HeartStoneActiveFilters?
     }
     
@@ -45,9 +46,10 @@ internal final class HeartStoneCardManager {
                 }
                 
                 let filteredCardSets = HeartStoneCardManager.filter(cardSets, with: request)
-
+                let sortedCardSets = HeartStoneCardManager.sort(filteredCardSets, with: request)
+                
                 DispatchQueue.main.async {
-                    completion(Result(sets: filteredCardSets), nil)
+                    completion(Result(sets: sortedCardSets), nil)
                 }
             } catch {
                 print("Failed to parse json: \(error)")
@@ -62,7 +64,7 @@ internal final class HeartStoneCardManager {
     private static func cardsSetsFrom(_ dictionary: [String: [Any]]) -> [HeartStoneCardSet]? {
         let decoder = JSONDecoder()
         
-        return dictionary.compactMap { key, cardDictionaries -> HeartStoneCardSet? in
+        let sets = dictionary.compactMap { key, cardDictionaries -> HeartStoneCardSet? in
             guard cardDictionaries.isNotEmpty, let data = try? JSONSerialization.data(withJSONObject: cardDictionaries, options: []) else {
                 return nil
             }
@@ -78,6 +80,26 @@ internal final class HeartStoneCardManager {
             } catch {
                 return nil
             }
+        }
+        
+        let sortedSets = sets.sorted { left, right -> Bool in
+            left.title < right.title
+        }
+        
+        return sortedSets
+    }
+    
+    private static func sort(_ cardSets: [HeartStoneCardSet], with request: Request) -> [HeartStoneCardSet] {
+        return cardSets.map { cardSet in
+            let cards = cardSet.cards.sorted { left, right -> Bool in
+                if request.sortNamesAscending {
+                    return left.name < right.name
+                } else {
+                    return left.name > right.name
+                }
+            }
+            
+            return HeartStoneCardSet(title: cardSet.title, cards: cards)
         }
     }
     

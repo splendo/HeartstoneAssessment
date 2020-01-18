@@ -10,10 +10,11 @@ extension CardOverviewViewController.View {
 extension CardOverviewViewController {
     @objc(CardOverviewViewControllerView) 
     internal final class View: UIView {
-        private let collectionView: UICollectionView
         private let collectionFlowLayout = UICollectionViewFlowLayout()
         private let activityIndicator = UIActivityIndicatorView(style: .medium)
         private let errorLabel = UILabel()
+        
+        internal let collectionView: UICollectionView
         
         private let adapter: CollectionAdapter
         

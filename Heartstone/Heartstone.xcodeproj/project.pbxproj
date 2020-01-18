@@ -38,6 +38,7 @@
 		6009B7A023D2FEA100A8AE61 /* HeartStoneActiveFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79423D2E7A500A8AE61 /* HeartStoneActiveFilters.swift */; };
 		6009B7A423D3136300A8AE61 /* HeartStoneCardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B7A323D3136300A8AE61 /* HeartStoneCardSet.swift */; };
 		6009B7A623D31E5900A8AE61 /* CardOverviewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B7A523D31E5900A8AE61 /* CardOverviewSectionHeader.swift */; };
+		6009B7AA23D323DC00A8AE61 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B7A923D323DC00A8AE61 /* FavoritesManager.swift */; };
 		6043D7CB23D0E955001F9FF3 /* CardCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7CA23D0E955001F9FF3 /* CardCollectionAdapter.swift */; };
 		6043D7CE23D0E9AB001F9FF3 /* CollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7CD23D0E9AB001F9FF3 /* CollectionAdapter.swift */; };
 		6043D7D123D0EA27001F9FF3 /* UICollectionView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7D023D0EA27001F9FF3 /* UICollectionView+Tools.swift */; };
@@ -117,6 +118,8 @@
 		6009B79A23D2E9B200A8AE61 /* FilterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableCell.swift; sourceTree = "<group>"; };
 		6009B7A323D3136300A8AE61 /* HeartStoneCardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCardSet.swift; sourceTree = "<group>"; };
 		6009B7A523D31E5900A8AE61 /* CardOverviewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOverviewSectionHeader.swift; sourceTree = "<group>"; };
+		6009B7A723D3228800A8AE61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6009B7A923D323DC00A8AE61 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		6043D7CA23D0E955001F9FF3 /* CardCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionAdapter.swift; sourceTree = "<group>"; };
 		6043D7CD23D0E9AB001F9FF3 /* CollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAdapter.swift; sourceTree = "<group>"; };
 		6043D7D023D0EA27001F9FF3 /* UICollectionView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Tools.swift"; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 		6002E9D123CF9CE400FF7BE7 = {
 			isa = PBXGroup;
 			children = (
+				6009B7A723D3228800A8AE61 /* README.md */,
 				6002EA0523CF9D6E00FF7BE7 /* Misc */,
 				6002E9DC23CF9CE400FF7BE7 /* Heartstone */,
 				6002E9F323CF9CE500FF7BE7 /* HeartstoneTests */,
@@ -267,6 +271,7 @@
 		6002EA0423CF9D2B00FF7BE7 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				6009B76823D0EED400A8AE61 /* AppDependencies.swift */,
 				6002E9DD23CF9CE400FF7BE7 /* AppDelegate.swift */,
 				6002E9DF23CF9CE400FF7BE7 /* SceneDelegate.swift */,
 			);
@@ -380,6 +385,14 @@
 				6009B79423D2E7A500A8AE61 /* HeartStoneActiveFilters.swift */,
 			);
 			path = "Heart Stone Filters";
+			sourceTree = "<group>";
+		};
+		6009B7A823D323CF00A8AE61 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				6009B7A923D323DC00A8AE61 /* FavoritesManager.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		6043D7C823D0D7F3001F9FF3 /* Collection Subviews */ = {
@@ -505,8 +518,8 @@
 		606366CE23CFA76600CA91ED /* Logic Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6009B7A823D323CF00A8AE61 /* Favorites */,
 				6009B79D23D2FE4400A8AE61 /* Heart Stone Filters */,
-				6009B76823D0EED400A8AE61 /* AppDependencies.swift */,
 				606366CF23CFA77700CA91ED /* Heartstone cards */,
 			);
 			path = "Logic Modules";
@@ -745,6 +758,7 @@
 				606366C523CFA6DE00CA91ED /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				6009B79823D2E97F00A8AE61 /* FilterTableAdapter.swift in Sources */,
 				6009B7A623D31E5900A8AE61 /* CardOverviewSectionHeader.swift in Sources */,
+				6009B7AA23D323DC00A8AE61 /* FavoritesManager.swift in Sources */,
 				6009B76923D0EED400A8AE61 /* AppDependencies.swift in Sources */,
 				606366CB23CFA6DE00CA91ED /* UIView+AutoLayout.swift in Sources */,
 				6063669F23CFA49D00CA91ED /* CardOverviewViewController.swift in Sources */,

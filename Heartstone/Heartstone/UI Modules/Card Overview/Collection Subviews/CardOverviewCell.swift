@@ -6,12 +6,14 @@ extension CardOverviewCell {
     internal struct ViewModel {
         internal let title: String
         internal let imageURL: URL?
+        internal let isFavorite: Bool
     }
 }
 
 internal final class CardOverviewCell: UICollectionViewCell {
     private let imageView = CardImageView()
     private let titleLabel = UILabel()
+    private let favoriteIconView = UIImageView()
     
     internal var viewModel: ViewModel? {
         didSet { viewModelUpdated() }
@@ -42,7 +44,7 @@ extension CardOverviewCell {
         insetsLayoutMarginsFromSafeArea = false
         directionalLayoutMargins = NSDirectionalEdgeInsets(horizontal: 10, vertical: 5)
         
-        [imageView, titleLabel]
+        [imageView, titleLabel, favoriteIconView]
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
         
@@ -50,6 +52,7 @@ extension CardOverviewCell {
         configureSelectedBackgroundView()
         configureImageView()
         configureTitleLabel()
+        configureFavoriteIconView()
     }
     
     private func configureBackgroundView() {
@@ -80,6 +83,11 @@ extension CardOverviewCell {
         titleLabel.numberOfLines = 0
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
     }
+    
+    private func configureFavoriteIconView() {
+        favoriteIconView.image = UIImage(systemName: "star.fill")
+        favoriteIconView.pinEdgesToSuperview(layoutArea: .layoutMargins, excludeEdges: [.bottom, .leading])
+    }
 }
 
 // MARK: Misc
@@ -93,5 +101,6 @@ extension CardOverviewCell {
         }
         
         imageView.loadURL(viewModel.imageURL)
+        favoriteIconView.isHidden = viewModel.isFavorite == false
     }
 }

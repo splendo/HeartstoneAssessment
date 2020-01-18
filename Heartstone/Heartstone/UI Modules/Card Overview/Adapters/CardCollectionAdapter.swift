@@ -1,16 +1,31 @@
 import UIKit
 
 internal final class CardCollectionAdapter: NSObject {
+    private let favoritesManager: FavoritesManager
     private var sets: [HeartStoneCardSet] = []
     
     internal var sectionCount: Int { sets.count }
     internal var didSelect: ((IndexPath) -> Void)?
+    
+    internal init(favoritesManager: FavoritesManager) {
+        self.favoritesManager = favoritesManager
+    }
     
     internal func numberOfItems(inSection section: Int) -> Int { setAtSection(section)?.cards.count ?? 0 }
     internal func setAtSection(_ section: Int) -> HeartStoneCardSet? { sets[safe: section] }
     internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? { setAtSection(indexPath.section)?.cards[safe: indexPath.item] }
     
     internal func setSets(_ sets: [HeartStoneCardSet]) { self.sets = sets }
+    
+    internal func softReload(_ collectionView: UICollectionView) {
+        collectionView.visibleCells
+            .compactMap { $0 as? CardOverviewCell }
+            .forEach {
+                if let indexPath = collectionView.indexPath(for: $0) {
+                    $0.viewModel = viewModel(at: indexPath)
+                }
+            }
+    }
 }
 
 // MARK: - CollectionAdapter
@@ -41,7 +56,7 @@ extension CardCollectionAdapter: UICollectionViewDataSource {
             return nil
         }
         
-        return CardOverviewCell.ViewModel(title: item.name, imageURL: item.imageURL)
+        return CardOverviewCell.ViewModel(title: item.name, imageURL: item.imageURL, isFavorite: favoritesManager.isFavorite(item))
     }
     
     internal func numberOfSections(in collectionView: UICollectionView) -> Int { sectionCount }
