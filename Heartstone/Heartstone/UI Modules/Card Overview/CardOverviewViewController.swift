@@ -69,9 +69,13 @@ extension CardOverviewViewController {
         
         appDependencies.heartStoneCardManager.retrieveCards(request) { [weak self] result, error in
             if let result = result {
-                self?.receivedCardResult(result)
+                if result.isEmpty {
+                    self?.received(error, message: "Couldn't find any content matching current filters")
+                } else {
+                    self?.receivedCardResult(result)
+                }
             } else {
-                self?.received(error)
+                self?.received(error, message: "Failed to load content. Please try again later")
             }
         }
     }
@@ -82,8 +86,9 @@ extension CardOverviewViewController {
         rootView.reloadData()
     }
     
-    private func received(_ error: Error?) {
+    private func received(_ error: Error?, message: String) {
         rootView.state = .error
+        rootView.errorMessage = message
     }
     
     private func loadFilters() {

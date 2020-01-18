@@ -8,6 +8,8 @@ internal final class HeartStoneCardManager {
     
     internal struct Result {
         internal let sets: [HeartStoneCardSet]
+        
+        internal var isEmpty: Bool { sets.isEmpty }
     }
         
     internal init() {}

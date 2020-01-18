@@ -10,16 +10,21 @@ extension CardOverviewViewController.View {
 extension CardOverviewViewController {
     @objc(CardOverviewViewControllerView) 
     internal final class View: UIView {
+        private let adapter: CollectionAdapter
+        
         private let collectionFlowLayout = UICollectionViewFlowLayout()
         private let activityIndicator = UIActivityIndicatorView(style: .medium)
         private let errorLabel = UILabel()
         
         internal let collectionView: UICollectionView
         
-        private let adapter: CollectionAdapter
-        
         internal var state: State = .loading {
             didSet { stateUpdated() }
+        }
+        
+        internal var errorMessage: String? {
+            set { errorLabel.text = newValue }
+            get { errorLabel.text }
         }
         
         internal init(adapter: CollectionAdapter) {
@@ -54,6 +59,7 @@ extension CardOverviewViewController.View {
         
         configureCollectionView()
         configureActivityIndicator()
+        configureErrorLabel()
     }
     
     private func configureCollectionView() {
@@ -78,7 +84,6 @@ extension CardOverviewViewController.View {
         
         errorLabel.numberOfLines = 0
         errorLabel.textAlignment = .center
-        errorLabel.text = Localization.failedToLoadContentMessage
     }
 }
 
