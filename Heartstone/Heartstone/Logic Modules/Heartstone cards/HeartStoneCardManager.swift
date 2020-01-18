@@ -1,7 +1,9 @@
 import Foundation
 
 internal final class HeartStoneCardManager {
-    internal struct Request {}
+    internal struct Request {
+        internal let activeFilters: HeartStoneActiveFilters?
+    }
     
     internal struct Result {
         internal let cards: [HeartStoneCard]
@@ -33,9 +35,10 @@ internal final class HeartStoneCardManager {
                 let decoder = JSONDecoder()
                 
                 let result = try decoder.decode(ParseResult.self, from: data)
+                let cards = HeartStoneCardManager.filter(result, with: request)
                 
                 DispatchQueue.main.async {
-                    completion(Result(cards: result.cards), nil)
+                    completion(Result(cards: cards), nil)
                 }
             } catch {
                 print("Failed to parse json: \(error)")
@@ -44,6 +47,37 @@ internal final class HeartStoneCardManager {
                     completion(nil, nil)
                 }
             }
+        }
+    }
+    
+    private static func filter(_ result: ParseResult, with request: Request) -> [HeartStoneCard] {
+        guard let activeFilters = request.activeFilters, activeFilters.isEmpty == false else {
+            return result.cards
+        }
+        
+        return result.cards.filter { card -> Bool in
+            for (key, value) in activeFilters.activeFilters {
+                switch key {
+                case "rarity":
+                    if value.contains(where: { $0.key == card.rarity }) == false {
+                        return false
+                    }
+                case "mechanis":
+                    guard let mechanics = card.mechanics else {
+                        return false
+                    }
+                    
+                    for mechanic in mechanics {
+                        if value.contains(where: { $0.key == mechanic.name }) == false {
+                            return false
+                        }
+                    }
+                default:
+                    break
+                }
+            }
+            
+            return true
         }
     }
 }

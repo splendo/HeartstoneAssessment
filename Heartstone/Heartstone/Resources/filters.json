@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Rarity",
+    "key": "rarity",
+    "type": "multi",
+    "items": [
+        { "key": "Free", "title": "Free" },
+        { "key": "Common", "title": "Common" }
+    ]
+  },
+  {
+    "name": "Mechanis",
+    "key": "mechanis",
+    "type": "multi",
+    "items": [
+        { "key": "Taunt", "title": "Taunt" },
+        { "key": "Freeze", "title": "Freeze" },
+        { "key": "Spell Damage", "title": "Spell Damage" },
+        { "key": "Charge", "title": "Charge" },
+        { "key": "Battlecry", "title": "Battlecry" },
+        { "key": "Morph", "title": "Morph" },
+        { "key": "Aura", "title": "Aura" },
+        { "key": "AdjacentBuff", "title": "Adjacent Buff" },
+        { "key": "OneTurnEffect", "title": "One Turn Effect" },
+        { "key": "Divine Shield", "title": "Divine Shield" },
+        { "key": "ImmuneToSpellpower", "title": "Immune to Spellpower" },
+        { "key": "Windfury", "title": "Windfury" }
+    ]
+  }
+]

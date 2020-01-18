@@ -6,6 +6,9 @@ internal final class CardOverviewViewController: UIViewController {
     
     private lazy var rootView = View(adapter: self.collectionAdapter)
     
+    private var availableFilters: [HeartStoneFilter]?
+    private var activeFilters = HeartStoneActiveFilters()
+    
     internal init(appDependencies: AppDependencies) {
         self.appDependencies = appDependencies
         
@@ -21,13 +24,6 @@ internal final class CardOverviewViewController: UIViewController {
     
     private func configureNavigationItem() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "nav_mainIcon"))
-        
-        let filterBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "tag"),
-                                                  style: .plain,
-                                                  target: self,
-                                                  action: #selector(self.tappedFilter(_:)))
-        
-        navigationItem.rightBarButtonItems = [filterBarButtonItem]
     }
     
     private func configureCollectionAdapter() {
@@ -43,22 +39,25 @@ extension CardOverviewViewController {
         view = rootView
         
         loadCards()
+        loadFilters()
     }
 }
 
 // MARK: Content Loading
 extension CardOverviewViewController {
     private func loadCards() {
-        appDependencies.heartStoneCardManager.retrieveCards(.init()) { [weak self] result, error in
+        let request = HeartStoneCardManager.Request(activeFilters: activeFilters)
+        
+        appDependencies.heartStoneCardManager.retrieveCards(request) { [weak self] result, error in
             if let result = result {
-                self?.received(result)
+                self?.receivedCardResult(result)
             } else {
                 self?.received(error)
             }
         }
     }
     
-    private func received(_ result: HeartStoneCardManager.Result) {
+    private func receivedCardResult(_ result: HeartStoneCardManager.Result) {
         collectionAdapter.setItems(result.cards)
         rootView.state = .content
         rootView.reloadData()
@@ -66,6 +65,31 @@ extension CardOverviewViewController {
     
     private func received(_ error: Error?) {
         rootView.state = .error
+    }
+    
+    private func loadFilters() {
+        appDependencies.heartStoneFilterManager.retrieveFilters { [weak self] result, error in
+            if let result = result {
+                self?.receivedFiltersResult(result)
+            } else {
+                print("Could not receive filters with error \(String(describing: error))")
+            }
+        }
+    }
+    
+    private func receivedFiltersResult(_ result: HeartStoneFilterManager.Result) {
+        guard result.filters.isNotEmpty else {
+            return
+        }
+        
+        availableFilters = result.filters
+        
+        let filterBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "tag"),
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(self.tappedFilter(_:)))
+        
+        navigationItem.rightBarButtonItems = [filterBarButtonItem]
     }
 }
 
@@ -85,5 +109,30 @@ extension CardOverviewViewController {
 // MARK: User Interaction
 extension CardOverviewViewController {
     @objc
-    private func tappedFilter(_ barButton: UIBarButtonItem) {}
+    private func tappedFilter(_ barButton: UIBarButtonItem) {
+        guard let availableFilters = availableFilters else {
+            return assertionFailure("Should not be called when available filters is nil")
+        }
+        
+        let viewController = FilterViewController(availableFilters: availableFilters, activeFilters: activeFilters)
+        viewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        present(navigationController, animated: true, completion: nil)
+    }
+}
+
+// MARK: FilterViewControllerDelegate
+extension CardOverviewViewController: FilterViewControllerDelegate {
+    internal func filterViewController(_ viewController: FilterViewController, finishedWithFilters activeFilters: HeartStoneActiveFilters) {
+        self.activeFilters = activeFilters
+        
+        loadCards()
+        
+        viewController.dismiss(animated: true)
+    }
+    
+    internal func filterViewControllerCancelled(_ viewController: FilterViewController) {
+        viewController.dismiss(animated: true)
+    }
 }

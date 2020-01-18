@@ -28,8 +28,14 @@
 		6009B78523D23A9900A8AE61 /* UITableView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78423D23A9900A8AE61 /* UITableView+Tools.swift */; };
 		6009B78723D23DDA00A8AE61 /* CardItemDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78623D23DDA00A8AE61 /* CardItemDetailTableCell.swift */; };
 		6009B78923D242C500A8AE61 /* CardTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78823D242C500A8AE61 /* CardTextTableCell.swift */; };
-		6009B78C23D2498100A8AE61 /* HeartStoneFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78B23D2498100A8AE61 /* HeartStoneFilter.swift */; };
-		6009B78E23D24A8D00A8AE61 /* HeartStoneFilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78D23D24A8D00A8AE61 /* HeartStoneFilterManager.swift */; };
+		6009B79223D24DF300A8AE61 /* FilterViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79023D24DF300A8AE61 /* FilterViewController.View.swift */; };
+		6009B79323D24DF300A8AE61 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79123D24DF300A8AE61 /* FilterViewController.swift */; };
+		6009B79823D2E97F00A8AE61 /* FilterTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79723D2E97F00A8AE61 /* FilterTableAdapter.swift */; };
+		6009B79B23D2E9B200A8AE61 /* FilterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79A23D2E9B200A8AE61 /* FilterTableCell.swift */; };
+		6009B79C23D2F87D00A8AE61 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = 6009B78A23D248A400A8AE61 /* filters.json */; };
+		6009B79E23D2FEA100A8AE61 /* HeartStoneFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78B23D2498100A8AE61 /* HeartStoneFilter.swift */; };
+		6009B79F23D2FEA100A8AE61 /* HeartStoneFilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B78D23D24A8D00A8AE61 /* HeartStoneFilterManager.swift */; };
+		6009B7A023D2FEA100A8AE61 /* HeartStoneActiveFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B79423D2E7A500A8AE61 /* HeartStoneActiveFilters.swift */; };
 		6043D7CB23D0E955001F9FF3 /* CardCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7CA23D0E955001F9FF3 /* CardCollectionAdapter.swift */; };
 		6043D7CE23D0E9AB001F9FF3 /* CollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7CD23D0E9AB001F9FF3 /* CollectionAdapter.swift */; };
 		6043D7D123D0EA27001F9FF3 /* UICollectionView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043D7D023D0EA27001F9FF3 /* UICollectionView+Tools.swift */; };
@@ -102,6 +108,11 @@
 		6009B78A23D248A400A8AE61 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
 		6009B78B23D2498100A8AE61 /* HeartStoneFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneFilter.swift; sourceTree = "<group>"; };
 		6009B78D23D24A8D00A8AE61 /* HeartStoneFilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneFilterManager.swift; sourceTree = "<group>"; };
+		6009B79023D24DF300A8AE61 /* FilterViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.View.swift; sourceTree = "<group>"; };
+		6009B79123D24DF300A8AE61 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		6009B79423D2E7A500A8AE61 /* HeartStoneActiveFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneActiveFilters.swift; sourceTree = "<group>"; };
+		6009B79723D2E97F00A8AE61 /* FilterTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableAdapter.swift; sourceTree = "<group>"; };
+		6009B79A23D2E9B200A8AE61 /* FilterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableCell.swift; sourceTree = "<group>"; };
 		6043D7CA23D0E955001F9FF3 /* CardCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionAdapter.swift; sourceTree = "<group>"; };
 		6043D7CD23D0E9AB001F9FF3 /* CollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAdapter.swift; sourceTree = "<group>"; };
 		6043D7D023D0EA27001F9FF3 /* UICollectionView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Tools.swift"; sourceTree = "<group>"; };
@@ -210,6 +221,7 @@
 		6002E9FF23CF9CF400FF7BE7 /* UI Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6009B78F23D24DE100A8AE61 /* Filter */,
 				6043D7CC23D0E999001F9FF3 /* Shared */,
 				6002EA0323CF9D2200FF7BE7 /* Card Details */,
 				6002EA0223CF9D1300FF7BE7 /* Card Overview */,
@@ -327,6 +339,43 @@
 				6009B78823D242C500A8AE61 /* CardTextTableCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		6009B78F23D24DE100A8AE61 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				6009B79923D2E9AB00A8AE61 /* Cells */,
+				6009B79623D2E97500A8AE61 /* Adapters */,
+				6009B79023D24DF300A8AE61 /* FilterViewController.View.swift */,
+				6009B79123D24DF300A8AE61 /* FilterViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		6009B79623D2E97500A8AE61 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				6009B79723D2E97F00A8AE61 /* FilterTableAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		6009B79923D2E9AB00A8AE61 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6009B79A23D2E9B200A8AE61 /* FilterTableCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6009B79D23D2FE4400A8AE61 /* Heart Stone Filters */ = {
+			isa = PBXGroup;
+			children = (
+				6009B78B23D2498100A8AE61 /* HeartStoneFilter.swift */,
+				6009B78D23D24A8D00A8AE61 /* HeartStoneFilterManager.swift */,
+				6009B79423D2E7A500A8AE61 /* HeartStoneActiveFilters.swift */,
+			);
+			path = "Heart Stone Filters";
 			sourceTree = "<group>";
 		};
 		6043D7C823D0D7F3001F9FF3 /* Cells */ = {
@@ -451,6 +500,7 @@
 		606366CE23CFA76600CA91ED /* Logic Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6009B79D23D2FE4400A8AE61 /* Heart Stone Filters */,
 				6009B76823D0EED400A8AE61 /* AppDependencies.swift */,
 				606366CF23CFA77700CA91ED /* Heartstone cards */,
 			);
@@ -462,8 +512,6 @@
 			children = (
 				606366D023CFA79400CA91ED /* HeartStoneCard.swift */,
 				606366D223CFA7BA00CA91ED /* HeartStoneCardManager.swift */,
-				6009B78B23D2498100A8AE61 /* HeartStoneFilter.swift */,
-				6009B78D23D24A8D00A8AE61 /* HeartStoneFilterManager.swift */,
 			);
 			path = "Heartstone cards";
 			sourceTree = "<group>";
@@ -567,6 +615,7 @@
 				6002E9EA23CF9CE500FF7BE7 /* LaunchScreen.storyboard in Resources */,
 				6002E9E723CF9CE500FF7BE7 /* Assets.xcassets in Resources */,
 				6002EA0823CF9D7E00FF7BE7 /* Podfile in Resources */,
+				6009B79C23D2F87D00A8AE61 /* filters.json in Resources */,
 				606366A123CFA54E00CA91ED /* cards.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +721,7 @@
 				6063669E23CFA49D00CA91ED /* CardOverviewViewController.View.swift in Sources */,
 				6009B76623D0EDE800A8AE61 /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
 				606366C823CFA6DE00CA91ED /* UIView+AutoLayoutArea.swift in Sources */,
+				6009B7A023D2FEA100A8AE61 /* HeartStoneActiveFilters.swift in Sources */,
 				6009B78323D2391400A8AE61 /* CardDetailImageTableCell.swift in Sources */,
 				606366BC23CFA6DE00CA91ED /* UIView+LayoutAreaType.swift in Sources */,
 				606366C223CFA6DE00CA91ED /* Array+NSLayoutConstraint.swift in Sources */,
@@ -679,11 +729,14 @@
 				606366C923CFA6DE00CA91ED /* UIView+AutoLayoutPinDimensions.swift in Sources */,
 				6009B76423D0EDB600A8AE61 /* UIEdgeInsets+Tools.swift in Sources */,
 				6009B77A23D2242D00A8AE61 /* CardImageView.swift in Sources */,
+				6009B79E23D2FEA100A8AE61 /* HeartStoneFilter.swift in Sources */,
 				6043D7CB23D0E955001F9FF3 /* CardCollectionAdapter.swift in Sources */,
 				6009B77F23D2386C00A8AE61 /* TableAdapter.swift in Sources */,
 				6002E9DE23CF9CE400FF7BE7 /* AppDelegate.swift in Sources */,
+				6009B79B23D2E9B200A8AE61 /* FilterTableCell.swift in Sources */,
 				606366A323CFA64F00CA91ED /* CardOverviewCell.swift in Sources */,
 				606366C523CFA6DE00CA91ED /* NSLayoutDimension+AutoLayout.swift in Sources */,
+				6009B79823D2E97F00A8AE61 /* FilterTableAdapter.swift in Sources */,
 				6009B76923D0EED400A8AE61 /* AppDependencies.swift in Sources */,
 				606366CB23CFA6DE00CA91ED /* UIView+AutoLayout.swift in Sources */,
 				6063669F23CFA49D00CA91ED /* CardOverviewViewController.swift in Sources */,
@@ -694,17 +747,18 @@
 				606366CD23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift in Sources */,
 				6009B77023D0F9F300A8AE61 /* CardDetailsViewController.swift in Sources */,
 				606366C023CFA6DE00CA91ED /* NSLayoutConstraint+AutoLayout.swift in Sources */,
-				6009B78C23D2498100A8AE61 /* HeartStoneFilter.swift in Sources */,
 				606366C723CFA6DE00CA91ED /* UIView+AutoLayoutPinEdges.swift in Sources */,
 				606366BD23CFA6DE00CA91ED /* UIView.Edge.swift in Sources */,
-				6009B78E23D24A8D00A8AE61 /* HeartStoneFilterManager.swift in Sources */,
+				6009B79323D24DF300A8AE61 /* FilterViewController.swift in Sources */,
 				6009B76C23D0F12500A8AE61 /* Localization.swift in Sources */,
 				6043D7D923D0EB4D001F9FF3 /* Collection+Tools.swift in Sources */,
 				6009B77D23D2385100A8AE61 /* CardDetailTableAdapter.swift in Sources */,
 				606366CC23CFA6DE00CA91ED /* UIView+AutoLayoutPinAlign.swift in Sources */,
 				606366CA23CFA6DE00CA91ED /* UIView+AutoLayoutPinCenter.swift in Sources */,
+				6009B79F23D2FEA100A8AE61 /* HeartStoneFilterManager.swift in Sources */,
 				6002E9E023CF9CE400FF7BE7 /* SceneDelegate.swift in Sources */,
 				6043D7CE23D0E9AB001F9FF3 /* CollectionAdapter.swift in Sources */,
+				6009B79223D24DF300A8AE61 /* FilterViewController.View.swift in Sources */,
 				606366BF23CFA6DE00CA91ED /* UIView+ConstraintRelationsAround.swift in Sources */,
 				606366D323CFA7BA00CA91ED /* HeartStoneCardManager.swift in Sources */,
 				606366D123CFA79400CA91ED /* HeartStoneCard.swift in Sources */,
