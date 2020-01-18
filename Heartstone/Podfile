@@ -9,14 +9,14 @@ install! 'cocoapods',
 :generate_multiple_pod_projects => true,
 :incremental_installation => true
 
-workspace 'Heartstone'
+workspace 'Hearthstone'
 
-target 'Heartstone' do
+target 'Hearthstone' do
     pod 'SwiftLint'
     
     pod 'AlamofireImage'
     
-    target 'HeartstoneTests' do
+    target 'HearthstoneTests' do
         inherit! :search_paths
     end
 end
