@@ -4,6 +4,13 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     internal var window: UIWindow?
     
     private let appDependencies = AppDependencies()
+    private let router: CardRouter
+    
+    override init() {
+         router = CardRouter(appDependencies: self.appDependencies)
+        
+        super.init()
+    }
 
     internal func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else {
@@ -11,9 +18,8 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let window = UIWindow(windowScene: windowScene)
-        let viewController = CardOverviewViewController(appDependencies: self.appDependencies)
         
-        window.rootViewController = UINavigationController(rootViewController: viewController)
+        window.rootViewController = router.rootViewController
         window.makeKeyAndVisible()
         
         self.window = window

@@ -1,16 +1,13 @@
 import UIKit
 
-internal protocol FilterViewControllerDelegate: AnyObject {
-    func filterViewController(_ viewController: FilterViewController, finishedWithFilters activeFilters: HeartStoneActiveFilters)
-    func filterViewControllerCancelled(_ viewController: FilterViewController)
-}
-
 internal final class FilterViewController: UIViewController {
+    internal typealias Completion = (HeartStoneActiveFilters?) -> Void
+    
     private lazy var rootView = View(tableAdapter: tableAdapter)
     private let tableAdapter: FilterTableAdapter
     
-    internal weak var delegate: FilterViewControllerDelegate?
-    
+    internal var completion: Completion?
+        
     internal init(availableFilters: [HeartStoneFilter], activeFilters: HeartStoneActiveFilters) {
         self.tableAdapter = FilterTableAdapter(availableFilters: availableFilters, activeFilters: activeFilters)
         
@@ -45,11 +42,11 @@ extension FilterViewController {
 extension FilterViewController {
     @objc
     private func tappedDone(with sender: UIBarButtonItem) {
-        delegate?.filterViewController(self, finishedWithFilters: tableAdapter.activeFilters)
+        completion?(tableAdapter.activeFilters)
     }
     
     @objc
     private func tappedCancel(with sender: UIBarButtonItem) {
-        delegate?.filterViewControllerCancelled(self)
+        completion?(nil)
     }
 }

@@ -67,6 +67,7 @@
 		606366CD23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366BB23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift */; };
 		606366D123CFA79400CA91ED /* HeartStoneCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366D023CFA79400CA91ED /* HeartStoneCard.swift */; };
 		606366D323CFA7BA00CA91ED /* HeartStoneCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606366D223CFA7BA00CA91ED /* HeartStoneCardManager.swift */; };
+		60DA1A6423D3341900FFEB29 /* CardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A6323D3341900FFEB29 /* CardRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		606366BB23CFA6DE00CA91ED /* UIView+AutoLayoutPinRelative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinRelative.swift"; sourceTree = "<group>"; };
 		606366D023CFA79400CA91ED /* HeartStoneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCard.swift; sourceTree = "<group>"; };
 		606366D223CFA7BA00CA91ED /* HeartStoneCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartStoneCardManager.swift; sourceTree = "<group>"; };
+		60DA1A6323D3341900FFEB29 /* CardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRouter.swift; sourceTree = "<group>"; };
 		F3E132D55AABC8B877AE31CC /* Pods_HeartstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F762F555D82A015414340334 /* Pods-HeartstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneTests.debug.xcconfig"; path = "Target Support Files/Pods-HeartstoneTests/Pods-HeartstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F769166EC4F0ED5259C73ECE /* Pods_Heartstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heartstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +242,7 @@
 		6002EA0023CF9CF900FF7BE7 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				60DA1A6223D333FD00FFEB29 /* Routing */,
 				6009B76A23D0F11A00A8AE61 /* Localization */,
 				6002EA0423CF9D2B00FF7BE7 /* System */,
 			);
@@ -535,6 +538,14 @@
 			path = "Heartstone cards";
 			sourceTree = "<group>";
 		};
+		60DA1A6223D333FD00FFEB29 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				60DA1A6323D3341900FFEB29 /* CardRouter.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		C79E47D6C83B0E6BABFD0D24 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,6 +785,7 @@
 				6009B79323D24DF300A8AE61 /* FilterViewController.swift in Sources */,
 				6009B76C23D0F12500A8AE61 /* Localization.swift in Sources */,
 				6043D7D923D0EB4D001F9FF3 /* Collection+Tools.swift in Sources */,
+				60DA1A6423D3341900FFEB29 /* CardRouter.swift in Sources */,
 				6009B77D23D2385100A8AE61 /* CardDetailTableAdapter.swift in Sources */,
 				606366CC23CFA6DE00CA91ED /* UIView+AutoLayoutPinAlign.swift in Sources */,
 				606366CA23CFA6DE00CA91ED /* UIView+AutoLayoutPinCenter.swift in Sources */,

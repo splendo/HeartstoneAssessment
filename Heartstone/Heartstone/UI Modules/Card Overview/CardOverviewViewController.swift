@@ -6,12 +6,15 @@ internal final class CardOverviewViewController: UIViewController {
     
     private lazy var rootView = View(adapter: self.collectionAdapter)
     
+    private weak var router: CardRouter?
+    
     private var availableFilters: [HeartStoneFilter]?
     private var activeFilters = HeartStoneActiveFilters()
     private var sortNamesAscending: Bool = true
     
-    internal init(appDependencies: AppDependencies) {
+    internal init(router: CardRouter, appDependencies: AppDependencies) {
         self.appDependencies = appDependencies
+        self.router = router
         self.collectionAdapter = CardCollectionAdapter(favoritesManager: appDependencies.favoritesManager)
         
         super.init(nibName: nil, bundle: nil)
@@ -116,9 +119,7 @@ extension CardOverviewViewController {
             return assertionFailure("Could not find card for \(indexPath)")
         }
         
-        let detailViewController = CardDetailsViewController(appDependencies: appDependencies, card: card)
-        
-        navigationController?.pushViewController(detailViewController, animated: true)
+        router?.routeToCardDetails(card)
     }
 }
 
@@ -130,36 +131,17 @@ extension CardOverviewViewController {
             return assertionFailure("Should not be called when available filters is nil")
         }
         
-        let viewController = FilterViewController(availableFilters: availableFilters, activeFilters: activeFilters)
-        viewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: viewController)
-        
-        present(navigationController, animated: true, completion: nil)
+        router?.routeToFilters(availableFilters: availableFilters, activeFilters: activeFilters) { [weak self] newActiveFilters in
+            self?.activeFilters = newActiveFilters
+            self?.loadCards()
+        }
     }
     
     @objc
     private func tappedSort(from sender: UIBarButtonItem) {
-        let actionSheet = UIAlertController(title: "Sort order", message: nil, preferredStyle: .actionSheet)
-        
-        let sortAscendingAction = UIAlertAction(title: "Names ascending", style: .default) { [weak self] _ in
-            self?.setSortNamesAscending(true)
+        router?.routeToSort(from: sender) { [weak self] sortNamesAscending in
+            self?.setSortNamesAscending(sortNamesAscending)
         }
-        
-        let sortDescendingAction = UIAlertAction(title: "Names descending", style: .default) { [weak self] _ in
-            self?.setSortNamesAscending(false)
-        }
-        
-        actionSheet.addAction(sortAscendingAction)
-        actionSheet.addAction(sortDescendingAction)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        if sortNamesAscending {
-            actionSheet.preferredAction = sortAscendingAction
-        } else {
-            actionSheet.preferredAction = sortDescendingAction
-        }
-        
-        present(actionSheet, animated: true, completion: nil)
     }
     
     private func setSortNamesAscending(_ value: Bool) {
@@ -170,20 +152,5 @@ extension CardOverviewViewController {
         sortNamesAscending = value
         
         loadCards()
-    }
-}
-
-// MARK: FilterViewControllerDelegate
-extension CardOverviewViewController: FilterViewControllerDelegate {
-    internal func filterViewController(_ viewController: FilterViewController, finishedWithFilters activeFilters: HeartStoneActiveFilters) {
-        self.activeFilters = activeFilters
-        
-        loadCards()
-        
-        viewController.dismiss(animated: true)
-    }
-    
-    internal func filterViewControllerCancelled(_ viewController: FilterViewController) {
-        viewController.dismiss(animated: true)
     }
 }
