@@ -1,5 +1,6 @@
 import UIKit
 import Alamofire
+import AlamofireImage
 
 internal final class CardImageView: UIImageView {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
@@ -29,6 +30,9 @@ internal final class CardImageView: UIImageView {
     
     private func setup() {
         contentMode = .scaleAspectFit
+        
+        addSubview(activityIndicatorView.disableTranslateAutoresizingMask())
+        activityIndicatorView.pinCenterToSuperview()
     }
     
     internal func prepareForReuse() {

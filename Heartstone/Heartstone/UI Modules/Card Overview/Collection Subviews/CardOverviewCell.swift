@@ -1,6 +1,5 @@
 import UIKit
 import Alamofire
-import AlamofireImage
 
 extension CardOverviewCell {
     internal struct ViewModel {
