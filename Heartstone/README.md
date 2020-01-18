@@ -6,6 +6,8 @@ The assignments mentions a way to navigate between the detail pages to the next 
 
 I'm not really happy myself with the way I parsed the `cards.json` file, this is due to the default way json decoding works via the Decodable protocol, I would preferred to have a json source file that would have had an array of card sets instead of a json object with multiple name referenced card sets in it which would be more flexible if more card set are added and easier to parse. 
 
+I made a naming error calling many classes `Heartstone` since I forked from a repository that was named this way, I noticed later that this misses a `h` in the name.
+
 #  External libraries
 
 ## AlamoFire 
@@ -14,3 +16,5 @@ used this third party library for web calls, it is widely used in many apps and 
 ## Frameworks folder
 this folder contains some files from my own library to just simplify some code, these repositories are private and as such I copied in the code 
 
+### Sidenote
+Not sure if it does matter but since it is a public repo any existing fork can be viewed at any time by candidates.
