@@ -1,8 +1,8 @@
 import UIKit
 
-internal final class CardCollectionAdapter: NSObject {
+internal final class CardDetailsCollectionAdapter: NSObject {
     private let favoritesManager: FavoritesManager
-    internal private(set) var sets: [HeartStoneCardSet] = []
+    private var sets: [HeartStoneCardSet] = []
     
     internal var sectionCount: Int { sets.count }
     internal var didSelect: ((IndexPath) -> Void)?
@@ -16,22 +16,12 @@ internal final class CardCollectionAdapter: NSObject {
     internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? { setAtSection(indexPath.section)?.cards[safe: indexPath.item] }
     
     internal func setSets(_ sets: [HeartStoneCardSet]) { self.sets = sets }
-    
-    internal func softReload(_ collectionView: UICollectionView) {
-        collectionView.visibleCells
-            .compactMap { $0 as? CardOverviewCell }
-            .forEach {
-                if let indexPath = collectionView.indexPath(for: $0) {
-                    $0.viewModel = viewModel(at: indexPath)
-                }
-            }
-    }
 }
 
 // MARK: - CollectionAdapter
-extension CardCollectionAdapter: CollectionAdapter {
+extension CardDetailsCollectionAdapter: CollectionAdapter {
     internal func configure(_ collectionView: UICollectionView) {
-        collectionView.register(cell: CardOverviewCell.self)
+        collectionView.register(cell: CardCollectionCell.self)
         
         collectionView.register(view: CardOverviewSectionHeader.self, for: .header)
         
@@ -41,7 +31,7 @@ extension CardCollectionAdapter: CollectionAdapter {
 }
 
 // MARK: - UICollectionViewDelegate
-extension CardCollectionAdapter: UICollectionViewDelegate {
+extension CardDetailsCollectionAdapter: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
@@ -50,15 +40,7 @@ extension CardCollectionAdapter: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension CardCollectionAdapter: UICollectionViewDataSource {
-    private func viewModel(at indexPath: IndexPath) -> CardOverviewCell.ViewModel? {
-        guard let item = itemAt(indexPath) else {
-            return nil
-        }
-        
-        return CardOverviewCell.ViewModel(title: item.name, imageURL: item.imageURL, isFavorite: favoritesManager.isFavorite(item))
-    }
-    
+extension CardDetailsCollectionAdapter: UICollectionViewDataSource {
     internal func numberOfSections(in collectionView: UICollectionView) -> Int { sectionCount }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,9 +48,27 @@ extension CardCollectionAdapter: UICollectionViewDataSource {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeReusableCell(for: CardOverviewCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeReusableCell(for: CardCollectionCell.self, indexPath: indexPath)
         
-        cell.viewModel = viewModel(at: indexPath)
+        guard let card = itemAt(indexPath) else {
+            return cell
+        }
+        
+        let isFavorite = { [favoritesManager] () -> Bool in
+            favoritesManager.isFavorite(card)
+        }
+        
+        let toggleFavorite = { [favoritesManager] () -> Void in
+            if favoritesManager.isFavorite(card) {
+                favoritesManager.removeFavorite(card)
+            } else {
+                favoritesManager.addFavorite(card)
+            }
+        }
+        
+        let viewModel = CardCollectionCell.ViewModel(card: card, isFavorite: isFavorite, toggleFavorite: toggleFavorite)
+        
+        cell.setViewModel(viewModel)
         
         return cell
     }

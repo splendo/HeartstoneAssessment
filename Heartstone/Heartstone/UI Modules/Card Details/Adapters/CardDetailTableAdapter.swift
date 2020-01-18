@@ -1,6 +1,8 @@
 import UIKit
 
 internal final class CardDetailTableAdapter: NSObject {
+    internal typealias ViewModel = CardCollectionCell.ViewModel
+    
     fileprivate struct Section {
         fileprivate let sectionTitle: String?
         fileprivate let items: [Item]
@@ -24,23 +26,18 @@ internal final class CardDetailTableAdapter: NSObject {
     }
     
     private var sections: [Section] = []
+    private var viewModel: ViewModel?
     
     internal var sectionCount: Int { sections.count }
     
     internal func numberOfItemsInSection(_ section: Int) -> Int { sectionForIndex(section)?.count ?? 0 }
     
-    internal var card: HeartStoneCard? {
-        didSet { cardUpdated() }
-    }
-    
-    private func sectionForIndex(_ index: Int) -> Section? { sections[safe: index] }
-    
-    private func item(at indexPath: IndexPath) -> Item? { sectionForIndex(indexPath.section)?.itemAtIndex(indexPath.item) }
-    
-    private func cardUpdated() {
+    internal func setViewModel(_ viewModel: ViewModel?) {
+        self.viewModel = viewModel
+        
         sections.removeAll()
         
-        guard card != nil else {
+        guard viewModel != nil else {
             return
         }
         
@@ -51,14 +48,18 @@ internal final class CardDetailTableAdapter: NSObject {
             .forEach { sections.append($0) }
     }
     
+    private func sectionForIndex(_ index: Int) -> Section? { sections[safe: index] }
+    
+    private func item(at indexPath: IndexPath) -> Item? { sectionForIndex(indexPath.section)?.itemAtIndex(indexPath.item) }
+    
     private func createTextSection() -> Section? {
         var items: [Item] = []
         
-        if let text = card?.text, text.isEmpty == false {
+        if let text = viewModel?.card.text, text.isEmpty == false {
             items.append(.textItem(text))
         }
         
-        if let flavor = card?.flavor, flavor.isEmpty == false {
+        if let flavor = viewModel?.card.flavor, flavor.isEmpty == false {
             items.append(.textItem(flavor))
         }
         
@@ -72,27 +73,27 @@ internal final class CardDetailTableAdapter: NSObject {
     private func createDetailsSection() -> Section? {
         var items: [Item] = []
         
-        if let cardSet = card?.cardSet, cardSet.isEmpty == false {
+        if let cardSet = viewModel?.card.cardSet, cardSet.isEmpty == false {
             items.append(.detailItem(.init(title: "Card Set", detail: cardSet)))
         }
         
-        if let type = card?.type, type.isEmpty == false {
+        if let type = viewModel?.card.type, type.isEmpty == false {
             items.append(.detailItem(.init(title: "Type", detail: type)))
         }
         
-        if let faction = card?.faction, faction.isEmpty == false {
+        if let faction = viewModel?.card.faction, faction.isEmpty == false {
             items.append(.detailItem(.init(title: "Faction", detail: faction)))
         }
         
-        if let rarity = card?.rarity, rarity.isEmpty == false {
+        if let rarity = viewModel?.card.rarity, rarity.isEmpty == false {
             items.append(.detailItem(.init(title: "Rarity", detail: rarity)))
         }
         
-        if let artist = card?.artist, artist.isEmpty == false {
+        if let artist = viewModel?.card.artist, artist.isEmpty == false {
             items.append(.detailItem(.init(title: "Artist", detail: artist)))
         }
         
-        if let playerClass = card?.playerClass, playerClass.isEmpty == false {
+        if let playerClass = viewModel?.card.playerClass, playerClass.isEmpty == false {
             items.append(.detailItem(.init(title: "Class", detail: playerClass)))
         }
     
@@ -106,15 +107,15 @@ internal final class CardDetailTableAdapter: NSObject {
     private func createSpecsSection() -> Section? {
         var items: [Item] = []
             
-        if let health = card?.health {
+        if let health = viewModel?.card.health {
             items.append(.detailItem(.init(title: "Health", detail: "\(health)")))
         }
             
-        if let attack = card?.attack {
+        if let attack = viewModel?.card.attack {
             items.append(.detailItem(.init(title: "Attack", detail: "\(attack)")))
         }
             
-        if let cost = card?.cost {
+        if let cost = viewModel?.card.cost {
             items.append(.detailItem(.init(title: "Cost", detail:" \(cost)")))
         }
         
@@ -126,11 +127,11 @@ internal final class CardDetailTableAdapter: NSObject {
     }
     
     private func createMechanicsSection() -> Section? {
-        guard let mechanics = card?.mechanics, mechanics.isEmpty == false else {
+        guard let mechanics = viewModel?.card.mechanics, mechanics.isEmpty == false else {
             return nil
         }
         
-        let items: [Item] = card?.mechanics?.map { Item.textItem($0.name) } ?? []
+        let items: [Item] = viewModel?.card.mechanics?.map { Item.textItem($0.name) } ?? []
         
         return Section(items: items, sectionTitle: "Mechanics")
     }
@@ -176,7 +177,7 @@ extension CardDetailTableAdapter: UITableViewDataSource {
         case .headerImage:
             let cell = tableView.dequeueReusableCell(for: CardDetailImageTableCell.self, indexPath: indexPath)
             
-            cell.loadURL(card?.imageURL)
+            cell.setViewModel(viewModel)
             
             return cell
         case .textItem(let text):

@@ -115,11 +115,7 @@ extension CardOverviewViewController {
 // MARK: Content Loading
 extension CardOverviewViewController {
     private func selectedItem(at indexPath: IndexPath) {
-        guard let card = collectionAdapter.itemAt(indexPath) else {
-            return assertionFailure("Could not find card for \(indexPath)")
-        }
-        
-        router?.routeToCardDetails(card)
+        router?.routeToCardDetails(cardSets: collectionAdapter.sets, selectedIndexPath: indexPath)
     }
 }
 

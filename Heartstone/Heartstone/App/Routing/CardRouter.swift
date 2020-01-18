@@ -15,10 +15,10 @@ internal final class CardRouter {
         navigationController.viewControllers = [cardOverviewController]
     }
     
-    internal func routeToCardDetails(_ card: HeartStoneCard) {
-        let detailViewController = CardDetailsViewController(appDependencies: appDependencies, card: card)
+    internal func routeToCardDetails(cardSets: [HeartStoneCardSet], selectedIndexPath: IndexPath) {
+        let viewController = CardDetailCollectionViewController(appDependencies: appDependencies, indexPath: selectedIndexPath, cardSets: cardSets)
         
-        rootViewController.pushViewController(detailViewController, animated: true)
+        rootViewController.pushViewController(viewController, animated: true)
     }
     
     internal func routeToFilters(availableFilters: [HeartStoneFilter],
