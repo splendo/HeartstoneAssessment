@@ -18,7 +18,6 @@
 		6009B76423D0EDB600A8AE61 /* UIEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B76323D0EDB600A8AE61 /* UIEdgeInsets+Tools.swift */; };
 		6009B76623D0EDE800A8AE61 /* NSDirectionalEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B76523D0EDE800A8AE61 /* NSDirectionalEdgeInsets+Tools.swift */; };
 		6009B76923D0EED400A8AE61 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B76823D0EED400A8AE61 /* AppDependencies.swift */; };
-		6009B76F23D0F9F300A8AE61 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B76D23D0F9F300A8AE61 /* CardDetailsView.swift */; };
 		6009B77A23D2242D00A8AE61 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B77923D2242D00A8AE61 /* CardImageView.swift */; };
 		6009B77D23D2385100A8AE61 /* CardDetailTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B77C23D2385100A8AE61 /* CardDetailTableAdapter.swift */; };
 		6009B77F23D2386C00A8AE61 /* TableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009B77E23D2386C00A8AE61 /* TableAdapter.swift */; };
@@ -102,7 +101,6 @@
 		6009B76323D0EDB600A8AE61 /* UIEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
 		6009B76523D0EDE800A8AE61 /* NSDirectionalEdgeInsets+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
 		6009B76823D0EED400A8AE61 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
-		6009B76D23D0F9F300A8AE61 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 		6009B77923D2242D00A8AE61 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		6009B77C23D2385100A8AE61 /* CardDetailTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTableAdapter.swift; sourceTree = "<group>"; };
 		6009B77E23D2386C00A8AE61 /* TableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAdapter.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 			children = (
 				6009B78123D2390400A8AE61 /* Collection Subviews */,
 				6009B77B23D2384500A8AE61 /* Adapters */,
-				6009B76D23D0F9F300A8AE61 /* CardDetailsView.swift */,
 				60DA1A7123D3414400FFEB29 /* CardDetailCollectionViewController.View.swift */,
 				60DA1A7223D3414400FFEB29 /* CardDetailCollectionViewController.swift */,
 			);
@@ -776,7 +773,6 @@
 				6009B76923D0EED400A8AE61 /* AppDependencies.swift in Sources */,
 				606366CB23CFA6DE00CA91ED /* UIView+AutoLayout.swift in Sources */,
 				6063669F23CFA49D00CA91ED /* CardOverviewViewController.swift in Sources */,
-				6009B76F23D0F9F300A8AE61 /* CardDetailsView.swift in Sources */,
 				606366C323CFA6DE00CA91ED /* NSLayoutXAxisAnchor+AutoLayout.swift in Sources */,
 				606366C623CFA6DE00CA91ED /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
 				6009B78523D23A9900A8AE61 /* UITableView+Tools.swift in Sources */,

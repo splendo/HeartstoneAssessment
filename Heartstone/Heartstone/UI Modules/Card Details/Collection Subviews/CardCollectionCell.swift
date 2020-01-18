@@ -8,11 +8,9 @@ internal final class CardCollectionCell: UICollectionViewCell {
     }
     
     private let tableAdapter = CardDetailTableAdapter()
-    private let cardView: CardDetailsView
+    private let tableView = UITableView()
     
     internal override init(frame: CGRect) {
-        self.cardView = CardDetailsView(tableAdapter: self.tableAdapter)
-        
         super.init(frame: frame)
         
         configureViews()
@@ -23,17 +21,32 @@ internal final class CardCollectionCell: UICollectionViewCell {
     }
     
     internal func setViewModel(_ viewModel: ViewModel?) {
-        cardView.prepareForReuse()
-        
         tableAdapter.setViewModel(viewModel)
-        cardView.reloadData()
+        tableView.reloadData()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        tableView.contentOffset = CGPoint(x: 0, y: -(tableView.contentInset.top + tableView.adjustedContentInset.top))
     }
 }
 
 // MARK: Configure Views
 extension CardCollectionCell {
     private func configureViews() {
-        contentView.addSubview(cardView.disableTranslateAutoresizingMask())
-        cardView.pinEdgesToSuperview()
+        contentView.addSubview(tableView.disableTranslateAutoresizingMask())
+        
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = .systemGroupedBackground
+        
+        configureTableView()
+    }
+    
+    private func configureTableView() {
+        tableAdapter.configure(tableView)
+        
+        tableView.pinEdgesToSuperview()
+        tableView.tableFooterView = UIView()
     }
 }
