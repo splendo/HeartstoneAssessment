@@ -71,6 +71,7 @@
 		60DA1A7423D3414400FFEB29 /* CardDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7223D3414400FFEB29 /* CardDetailCollectionViewController.swift */; };
 		60DA1A7623D3415E00FFEB29 /* CardDetailsCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7523D3415E00FFEB29 /* CardDetailsCollectionAdapter.swift */; };
 		60DA1A7823D3444F00FFEB29 /* CardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7723D3444F00FFEB29 /* CardCollectionCell.swift */; };
+		60DA1A7A23D351F000FFEB29 /* CardDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA1A7923D351F000FFEB29 /* CardDetailSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		60DA1A7223D3414400FFEB29 /* CardDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		60DA1A7523D3415E00FFEB29 /* CardDetailsCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsCollectionAdapter.swift; sourceTree = "<group>"; };
 		60DA1A7723D3444F00FFEB29 /* CardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCell.swift; sourceTree = "<group>"; };
+		60DA1A7923D351F000FFEB29 /* CardDetailSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSectionHeader.swift; sourceTree = "<group>"; };
 		F3E132D55AABC8B877AE31CC /* Pods_HeartstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F762F555D82A015414340334 /* Pods-HeartstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartstoneTests.debug.xcconfig"; path = "Target Support Files/Pods-HeartstoneTests/Pods-HeartstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F769166EC4F0ED5259C73ECE /* Pods_Heartstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heartstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,7 +271,7 @@
 		6002EA0323CF9D2200FF7BE7 /* Card Details */ = {
 			isa = PBXGroup;
 			children = (
-				6009B78123D2390400A8AE61 /* Cells */,
+				6009B78123D2390400A8AE61 /* Collection Subviews */,
 				6009B77B23D2384500A8AE61 /* Adapters */,
 				6009B76D23D0F9F300A8AE61 /* CardDetailsView.swift */,
 				60DA1A7123D3414400FFEB29 /* CardDetailCollectionViewController.View.swift */,
@@ -351,15 +353,16 @@
 			path = Adapters;
 			sourceTree = "<group>";
 		};
-		6009B78123D2390400A8AE61 /* Cells */ = {
+		6009B78123D2390400A8AE61 /* Collection Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				6009B78223D2391400A8AE61 /* CardDetailImageTableCell.swift */,
 				6009B78623D23DDA00A8AE61 /* CardItemDetailTableCell.swift */,
 				6009B78823D242C500A8AE61 /* CardTextTableCell.swift */,
 				60DA1A7723D3444F00FFEB29 /* CardCollectionCell.swift */,
+				60DA1A7923D351F000FFEB29 /* CardDetailSectionHeader.swift */,
 			);
-			path = Cells;
+			path = "Collection Subviews";
 			sourceTree = "<group>";
 		};
 		6009B78F23D24DE100A8AE61 /* Filter */ = {
@@ -779,6 +782,7 @@
 				606366C523CFA6DE00CA91ED /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				6009B79823D2E97F00A8AE61 /* FilterTableAdapter.swift in Sources */,
 				6009B7A623D31E5900A8AE61 /* CardOverviewSectionHeader.swift in Sources */,
+				60DA1A7A23D351F000FFEB29 /* CardDetailSectionHeader.swift in Sources */,
 				6009B7AA23D323DC00A8AE61 /* FavoritesManager.swift in Sources */,
 				6009B76923D0EED400A8AE61 /* AppDependencies.swift in Sources */,
 				606366CB23CFA6DE00CA91ED /* UIView+AutoLayout.swift in Sources */,

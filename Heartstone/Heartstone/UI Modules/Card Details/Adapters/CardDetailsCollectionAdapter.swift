@@ -23,7 +23,7 @@ extension CardDetailsCollectionAdapter: CollectionAdapter {
     internal func configure(_ collectionView: UICollectionView) {
         collectionView.register(cell: CardCollectionCell.self)
         
-        collectionView.register(view: CardOverviewSectionHeader.self, for: .header)
+        collectionView.register(view: CardDetailSectionHeader.self, for: .header)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -80,7 +80,7 @@ extension CardDetailsCollectionAdapter: UICollectionViewDataSource {
             fatalError("Unsupported supplementary view: \(kind)")
         }
                 
-        let header = collectionView.dequeueReusableSupplementaryView(for: CardOverviewSectionHeader.self, kind: kind, indexPath: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(for: CardDetailSectionHeader.self, kind: kind, indexPath: indexPath)
         
         if let section = setAtSection(indexPath.section) {
             header.title = section.title
