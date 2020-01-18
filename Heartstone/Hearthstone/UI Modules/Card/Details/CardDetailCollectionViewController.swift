@@ -32,13 +32,13 @@ extension CardDetailCollectionViewController {
 
 // MARK: Lifecycle
 extension CardDetailCollectionViewController {
-    override func viewWillAppear(_ animated: Bool) {
+    internal override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    internal override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -47,7 +47,7 @@ extension CardDetailCollectionViewController {
 
 // MARK: Layout view
 extension CardDetailCollectionViewController {
-    override func viewDidLayoutSubviews() {
+    internal override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         if hasPerformedInitialLayout == false {

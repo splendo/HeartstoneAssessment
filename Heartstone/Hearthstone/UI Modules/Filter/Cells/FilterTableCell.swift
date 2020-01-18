@@ -24,7 +24,7 @@ internal final class FilterTableCell: UITableViewCell {
         imageView?.alpha = 0
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    internal override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         imageView?.alpha = selected ? 1 : 0

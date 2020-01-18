@@ -63,7 +63,7 @@ extension CardDetailCollectionViewController.View {
 
 // MARK: Layout views
 extension CardDetailCollectionViewController.View {
-    override func layoutSubviews() {
+    internal override func layoutSubviews() {
         super.layoutSubviews()
         
         flowLayout.itemSize = bounds.size

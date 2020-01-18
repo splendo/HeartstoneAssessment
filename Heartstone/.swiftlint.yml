@@ -11,6 +11,7 @@ disabled_rules:
     - let_var_whitespace
 
 opt_in_rules:
+    - explicit_acl
     - anyobject_protocol
     - array_init
     - closure_end_indentation

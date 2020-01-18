@@ -13,6 +13,9 @@ I made a naming error calling many classes `Heartstone` since I forked from a re
 ## AlamoFire 
 used this third party library for web calls, it is widely used in many apps and for that is often a safe bet to use in basic apps.
 
+## Swiftlint
+a 
+
 ## Frameworks folder
 this folder contains some files from my own library to just simplify some code, these repositories are private and as such I copied in the code 
 

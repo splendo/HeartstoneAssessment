@@ -6,7 +6,7 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let appDependencies = AppDependencies()
     private let router: CardRouter
     
-    override init() {
+    internal override init() {
          router = CardRouter(appDependencies: self.appDependencies)
         
         super.init()

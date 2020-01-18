@@ -8,7 +8,7 @@ internal final class CardImageView: UIImageView {
     private var dataRequest: DataRequest?
     private var url: URL?
     
-    override var image: UIImage? {
+    internal override var image: UIImage? {
         didSet { stopActivityIndicatorView() }
     }
     
@@ -16,13 +16,13 @@ internal final class CardImageView: UIImageView {
         self.init(frame: .zero)
     }
     
-    override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    internal required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setup()
@@ -59,9 +59,7 @@ internal final class CardImageView: UIImageView {
         }
     }
     
-    private func loadedImage(_ image: UIImage?, for url: URL) {
-        stopActivityIndicatorView()
-        
+    private func loadedImage(_ image: UIImage?, for url: URL) {        
         if let image = image, self.url == url {
             self.image = image
         } else {

@@ -25,7 +25,7 @@ internal final class CardCollectionCell: UICollectionViewCell {
         tableView.reloadData()
     }
     
-    override func prepareForReuse() {
+    internal override func prepareForReuse() {
         super.prepareForReuse()
         
         tableView.contentOffset = CGPoint(x: 0, y: -(tableView.contentInset.top + tableView.adjustedContentInset.top))

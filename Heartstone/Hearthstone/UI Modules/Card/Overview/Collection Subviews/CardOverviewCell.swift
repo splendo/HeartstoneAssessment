@@ -28,7 +28,7 @@ internal final class CardOverviewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
+    internal override func prepareForReuse() {
         super.prepareForReuse()
         
         viewModel = nil

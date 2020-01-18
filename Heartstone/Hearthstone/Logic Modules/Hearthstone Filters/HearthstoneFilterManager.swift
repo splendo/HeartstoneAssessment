@@ -11,7 +11,6 @@ internal final class HearthstoneFilterManager {
         DispatchQueue.global(qos: .background).async {
             guard let url = Bundle.main.url(forResource: "filters", withExtension: "json")  else {
                 DispatchQueue.main.async {
-                    #warning("TODO: Add error")
                     completion(nil, nil)
                 }
                 

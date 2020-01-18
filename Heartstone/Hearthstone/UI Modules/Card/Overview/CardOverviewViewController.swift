@@ -55,7 +55,7 @@ extension CardOverviewViewController {
 
 // MARK: Load view
 extension CardOverviewViewController {
-    override func viewWillAppear(_ animated: Bool) {
+    internal override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         collectionAdapter.softReload(rootView.collectionView)
