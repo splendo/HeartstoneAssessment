@@ -1,30 +1,202 @@
-[
-  {
-    "name": "Rarity",
-    "key": "rarity",
-    "type": "multi",
-    "items": [
-        { "key": "Free", "title": "Free" },
-        { "key": "Common", "title": "Common" }
-    ]
-  },
-  {
-    "name": "Mechanis",
-    "key": "mechanis",
-    "type": "multi",
-    "items": [
-        { "key": "Taunt", "title": "Taunt" },
-        { "key": "Freeze", "title": "Freeze" },
-        { "key": "Spell Damage", "title": "Spell Damage" },
-        { "key": "Charge", "title": "Charge" },
-        { "key": "Battlecry", "title": "Battlecry" },
-        { "key": "Morph", "title": "Morph" },
-        { "key": "Aura", "title": "Aura" },
-        { "key": "AdjacentBuff", "title": "Adjacent Buff" },
-        { "key": "OneTurnEffect", "title": "One Turn Effect" },
-        { "key": "Divine Shield", "title": "Divine Shield" },
-        { "key": "ImmuneToSpellpower", "title": "Immune to Spellpower" },
-        { "key": "Windfury", "title": "Windfury" }
-    ]
-  }
+[{
+        "name": "Type",
+        "key": "type",
+        "type": "multi",
+        "items": [{
+                "key": "Hero",
+                "title": "Hero"
+            },
+            {
+                "key": "Spell",
+                "title": "Spell"
+            },
+            {
+                "key": "Weapon",
+                "title": "Weapon"
+            },
+            {
+                "key": "Minion",
+                "title": "Minion"
+            },
+            {
+                "key": "Hero Power",
+                "title": "Hero Power"
+            },
+            {
+                "key": "Enchantment",
+                "title": "Enchantment"
+            }
+
+        ]
+
+    },
+    {
+        "name": "Rarity",
+        "key": "rarity",
+        "type": "multi",
+        "items": [{
+                "key": "Free",
+                "title": "Free"
+            },
+            {
+                "key": "Common",
+                "title": "Common"
+            },
+            {
+                "key": "Rare",
+                "title": "Rare"
+            },
+            {
+                "key": "Epic",
+                "title": "Epic"
+            },
+            {
+                "key": "Legendary",
+                "title": "Legendary"
+            }
+        ]
+    },
+    {
+        "name": "Player Classes",
+        "key": "playerClasses",
+        "type": "multi",
+        "items": [{
+                "key": "Druid",
+                "title": "Druid"
+            },
+            {
+                "key": "Hunter",
+                "title": "Hunter"
+            },
+            {
+                "key": "Rogue",
+                "title": "Rogue"
+            },
+            {
+                "key": "Dream",
+                "title": "Dream"
+            },
+            {
+                "key": "Priest",
+                "title": "Priest"
+            },
+            {
+                "key": "Warlock",
+                "title": "Warlock"
+            },
+            {
+                "key": "Mage",
+                "title": "Mage"
+            },
+            {
+                "key": "Paladin",
+                "title": "Paladin"
+            },
+            {
+                "key": "Neutral",
+                "title": "Neutral"
+            },
+            {
+                "key": "Warrior",
+                "title": "Warrior"
+            },
+            {
+                "key": "Shaman",
+                "title": "Shaman"
+            }
+        ]
+    },
+    {
+        "name": "Mechanis",
+        "key": "mechanis",
+        "type": "multi",
+        "items": [{
+            "key": "Silence",
+            "title": "Silence"
+        }, {
+            "key": "Enrage",
+            "title": "Enrage"
+        }, {
+            "key": "Inspire",
+            "title": "Inspire"
+        }, {
+            "key": "Aura",
+            "title": "Aura"
+        }, {
+            "key": "Spell Damage",
+            "title": "Spell Damage"
+        }, {
+            "key": "Charge",
+            "title": "Charge"
+        }, {
+            "key": "Combo",
+            "title": "Combo"
+        }, {
+            "key": "OneTurnEffect",
+            "title": "OneTurnEffect"
+        }, {
+            "key": "AffectedBySpellPower",
+            "title": "AffectedBySpellPower"
+        }, {
+            "key": "Poisonous",
+            "title": "Poisonous"
+        }, {
+            "key": "Windfury",
+            "title": "Windfury"
+        }, {
+            "key": "InvisibleDeathrattle",
+            "title": "InvisibleDeathrattle"
+        }, {
+            "key": "Freeze",
+            "title": "Freeze"
+        }, {
+            "key": "Secret",
+            "title": "Secret"
+        }, {
+            "key": "Summoned",
+            "title": "Summoned"
+        }, {
+            "key": "Jade Golem",
+            "title": "Jade Golem"
+        }, {
+            "key": "ImmuneToSpellpower",
+            "title": "ImmuneToSpellpower"
+        }, {
+            "key": "Deathrattle",
+            "title": "Deathrattle"
+        }, {
+            "key": "Morph",
+            "title": "Morph"
+        }, {
+            "key": "AIMustPlay",
+            "title": "AIMustPlay"
+        }, {
+            "key": "Quest",
+            "title": "Quest"
+        }, {
+            "key": "AdjacentBuff",
+            "title": "AdjacentBuff"
+        }, {
+            "key": "Taunt",
+            "title": "Taunt"
+        }, {
+            "key": "Adapt",
+            "title": "Adapt"
+        }, {
+            "key": "Discover",
+            "title": "Discover"
+        }, {
+            "key": "Battlecry",
+            "title": "Battlecry"
+        }, {
+            "key": "Overload",
+            "title": "Overload"
+        }, {
+            "key": "Stealth",
+            "title": "Stealth"
+        }, {
+            "key": "Divine Shield",
+            "title": "Divine Shield"
+        }]
+    }
 ]

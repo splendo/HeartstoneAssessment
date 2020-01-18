@@ -58,7 +58,7 @@ extension CardOverviewViewController {
     }
     
     private func receivedCardResult(_ result: HeartStoneCardManager.Result) {
-        collectionAdapter.setItems(result.cards)
+        collectionAdapter.setSets(result.sets)
         rootView.state = .content
         rootView.reloadData()
     }

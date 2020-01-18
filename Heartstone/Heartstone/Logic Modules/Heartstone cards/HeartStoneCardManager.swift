@@ -6,24 +6,15 @@ internal final class HeartStoneCardManager {
     }
     
     internal struct Result {
-        internal let cards: [HeartStoneCard]
+        internal let sets: [HeartStoneCardSet]
     }
-    
-    private struct ParseResult: Codable {
-        fileprivate let cards: [HeartStoneCard]
         
-        private enum CodingKeys: String, CodingKey {
-            case cards = "Basic"
-        }
-    }
-    
     internal init() {}
     
     internal func retrieveCards(_ request: Request, completion: @escaping (Result?, Error?) -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let url = Bundle.main.url(forResource: "cards", withExtension: "json")  else {
                 DispatchQueue.main.async {
-                    #warning("TODO: Add error")
                     completion(nil, nil)
                 }
                 
@@ -32,13 +23,31 @@ internal final class HeartStoneCardManager {
             
             do {
                 let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
                 
-                let result = try decoder.decode(ParseResult.self, from: data)
-                let cards = HeartStoneCardManager.filter(result, with: request)
+                guard let cardSetDictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: [Any]] else {
+                    print("Failed to cast to [String: Any]")
+                    
+                    DispatchQueue.main.async {
+                        completion(nil, nil)
+                    }
+                    
+                    return
+                }
                 
+                guard let cardSets = HeartStoneCardManager.cardsSetsFrom(cardSetDictionary) else {
+                    print("Failed to parse to card sets [String: Any]")
+                    
+                    DispatchQueue.main.async {
+                        completion(nil, nil)
+                    }
+                    
+                    return
+                }
+                
+                let filteredCardSets = HeartStoneCardManager.filter(cardSets, with: request)
+
                 DispatchQueue.main.async {
-                    completion(Result(cards: cards), nil)
+                    completion(Result(sets: filteredCardSets), nil)
                 }
             } catch {
                 print("Failed to parse json: \(error)")
@@ -50,34 +59,74 @@ internal final class HeartStoneCardManager {
         }
     }
     
-    private static func filter(_ result: ParseResult, with request: Request) -> [HeartStoneCard] {
-        guard let activeFilters = request.activeFilters, activeFilters.isEmpty == false else {
-            return result.cards
-        }
+    private static func cardsSetsFrom(_ dictionary: [String: [Any]]) -> [HeartStoneCardSet]? {
+        let decoder = JSONDecoder()
         
-        return result.cards.filter { card -> Bool in
-            for (key, value) in activeFilters.activeFilters {
-                switch key {
-                case "rarity":
-                    if value.contains(where: { $0.key == card.rarity }) == false {
-                        return false
-                    }
-                case "mechanis":
-                    guard let mechanics = card.mechanics else {
-                        return false
-                    }
-                    
-                    for mechanic in mechanics {
-                        if value.contains(where: { $0.key == mechanic.name }) == false {
-                            return false
-                        }
-                    }
-                default:
-                    break
-                }
+        return dictionary.compactMap { key, cardDictionaries -> HeartStoneCardSet? in
+            guard cardDictionaries.isNotEmpty, let data = try? JSONSerialization.data(withJSONObject: cardDictionaries, options: []) else {
+                return nil
             }
             
-            return true
+            do {
+                let cards = try decoder.decode([HeartStoneCard].self, from: data)
+                
+                guard cards.isNotEmpty else {
+                    return nil
+                }
+                
+                return HeartStoneCardSet(title: key, cards: cards)
+            } catch {
+                return nil
+            }
         }
+    }
+    
+    private static func filter(_ cardSets: [HeartStoneCardSet], with request: Request) -> [HeartStoneCardSet] {
+        guard let activeFilters = request.activeFilters, activeFilters.isEmpty == false else {
+            return cardSets
+        }
+        
+        let results = cardSets.compactMap { cardSet -> HeartStoneCardSet? in
+            let cards = cardSet.cards.filter { card -> Bool in
+                for (key, value) in activeFilters.activeFilters {
+                    switch key {
+                    case "rarity":
+                        if value.contains(where: { $0.key == card.rarity }) == false {
+                            return false
+                        }
+                    case "mechanis":
+                        guard let mechanics = card.mechanics else {
+                            return false
+                        }
+                        
+                        for mechanic in mechanics {
+                            if value.contains(where: { $0.key == mechanic.name }) == false {
+                                return false
+                            }
+                        }
+                    case "type":
+                        if value.contains(where: { $0.key == card.type }) == false {
+                            return false
+                        }
+                    case "playerClasses":
+                        if value.contains(where: { $0.key == card.playerClass }) == false {
+                            return false
+                        }
+                    default:
+                        assertionFailure("Unsupported filter")
+                    }
+                }
+                
+                return true
+            }
+
+            guard cards.isNotEmpty else {
+                return nil
+            }
+            
+            return HeartStoneCardSet(title: cardSet.title, cards: cards)
+        }
+        
+        return results
     }
 }

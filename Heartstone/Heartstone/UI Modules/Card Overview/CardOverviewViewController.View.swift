@@ -86,15 +86,16 @@ extension CardOverviewViewController.View {
     internal override func layoutSubviews() {
         super.layoutSubviews()
         
-        updateItemSize()
+        updateFlowLayoutSizes()
     }
     
-    private func updateItemSize() {
+    private func updateFlowLayoutSizes() {
         let availableWidth = collectionView.bounds.width - collectionView.contentInset.width - 2 * collectionFlowLayout.minimumInteritemSpacing
         
         let itemWidth = floor(availableWidth / 3)
         
         collectionFlowLayout.itemSize = CGSize(width: itemWidth, height: ceil(1.5 * itemWidth) + 50)
+        collectionFlowLayout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 32)
     }
 }
 

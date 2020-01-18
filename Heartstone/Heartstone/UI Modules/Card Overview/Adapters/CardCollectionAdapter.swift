@@ -1,36 +1,24 @@
 import UIKit
 
 internal final class CardCollectionAdapter: NSObject {
-    private var items: [HeartStoneCard] = []
+    private var sets: [HeartStoneCardSet] = []
     
-    internal var sectionCount: Int { 0 }
+    internal var sectionCount: Int { sets.count }
     internal var didSelect: ((IndexPath) -> Void)?
     
-    internal func numberOfItems(inSection section: Int) -> Int {
-        if section == 0 {
-            return items.count
-        } else {
-            return 0
-        }
-    }
+    internal func numberOfItems(inSection section: Int) -> Int { setAtSection(section)?.cards.count ?? 0 }
+    internal func setAtSection(_ section: Int) -> HeartStoneCardSet? { sets[safe: section] }
+    internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? { setAtSection(indexPath.section)?.cards[safe: indexPath.item] }
     
-    internal func itemAt(_ indexPath: IndexPath) -> HeartStoneCard? {
-        if indexPath.section == 0 {
-            return items[safe: indexPath.item]
-        } else {
-            return nil
-        }
-    }
-    
-    internal func setItems(_ items: [HeartStoneCard]) {
-        self.items = items
-    }
+    internal func setSets(_ sets: [HeartStoneCardSet]) { self.sets = sets }
 }
 
 // MARK: - CollectionAdapter
 extension CardCollectionAdapter: CollectionAdapter {
     internal func configure(_ collectionView: UICollectionView) {
         collectionView.register(cell: CardOverviewCell.self)
+        
+        collectionView.register(view: CardOverviewSectionHeader.self, for: .header)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -56,6 +44,8 @@ extension CardCollectionAdapter: UICollectionViewDataSource {
         return CardOverviewCell.ViewModel(title: item.name, imageURL: item.imageURL)
     }
     
+    internal func numberOfSections(in collectionView: UICollectionView) -> Int { sectionCount }
+    
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         numberOfItems(inSection: section)
     }
@@ -66,5 +56,21 @@ extension CardCollectionAdapter: UICollectionViewDataSource {
         cell.viewModel = viewModel(at: indexPath)
         
         return cell
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView,
+                                 viewForSupplementaryElementOfKind kind: String,
+                                 at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            fatalError("Unsupported supplementary view: \(kind)")
+        }
+                
+        let header = collectionView.dequeueReusableSupplementaryView(for: CardOverviewSectionHeader.self, kind: kind, indexPath: indexPath)
+        
+        if let section = setAtSection(indexPath.section) {
+            header.title = section.title
+        }
+        
+        return header
     }
 }

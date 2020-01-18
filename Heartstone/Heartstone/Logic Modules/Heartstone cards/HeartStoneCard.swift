@@ -9,15 +9,21 @@ internal struct HeartStoneCard: Codable {
     internal let name: String
     internal let cardSet: String
     internal let type: String
+    internal let playerClass: String
+    internal let locale: String
+    
     internal let faction: String?
     internal let rarity: String?
+    
     internal let cost: Int?
+    internal let attack: Int?
+    internal let health: Int?
+    
     internal let text: String?
     internal let flavor: String?
     internal let artist: String?
     internal let collectible: Bool?
-    internal let playerClass: String
-    internal let locale: String
+    
     internal let imageUrlString: String?
     internal let mechanics: [Mechanic]?
     
@@ -32,6 +38,7 @@ internal struct HeartStoneCard: Codable {
     private enum CodingKeys: String, CodingKey {
         case cardId, name, cardSet, type, text, playerClass, locale
         case faction, rarity, flavor, artist, collectible, cost, mechanics
+        case attack, health
         case imageUrlString = "img"
     }
 }

@@ -46,17 +46,9 @@ internal final class CardDetailTableAdapter: NSObject {
         
         sections.append(Section(items: [.headerImage]))
         
-        if let textSection = createTextSection() {
-            sections.append(textSection)
-        }
-        
-        if let detailsSection = createDetailsSection() {
-            sections.append(detailsSection)
-        }
-        
-        if let mechanicsSection = createMechanicsSection() {
-            sections.append(mechanicsSection)
-        }
+        [createTextSection(), createDetailsSection(), createSpecsSection(), createMechanicsSection()]
+            .compactMap { $0 }
+            .forEach { sections.append($0) }
     }
     
     private func createTextSection() -> Section? {
@@ -108,6 +100,28 @@ internal final class CardDetailTableAdapter: NSObject {
             return nil
         } else {
             return Section(items: items, sectionTitle: "Details")
+        }
+    }
+    
+    private func createSpecsSection() -> Section? {
+        var items: [Item] = []
+            
+        if let health = card?.health {
+            items.append(.detailItem(.init(title: "Health", detail: "\(health)")))
+        }
+            
+        if let attack = card?.attack {
+            items.append(.detailItem(.init(title: "Attack", detail: "\(attack)")))
+        }
+            
+        if let cost = card?.cost {
+            items.append(.detailItem(.init(title: "Cost", detail:" \(cost)")))
+        }
+        
+        if items.isEmpty {
+            return nil
+        } else {
+            return Section(items: items, sectionTitle: "Specifications")
         }
     }
     
