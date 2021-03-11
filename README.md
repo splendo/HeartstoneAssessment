@@ -84,18 +84,18 @@ You are free to choose the patterns and architectures to create this web app, th
 
 ### Backend
 
-* Create an API using a Java (plain java or Groovy/Cotlin) backend allowing you to get card information for at least legendary deathrattle cards
+* Create an API backend (Java, Kotlin or TypeScript) allowing you to get card information for at least legendary deathrattle cards.
 * The API should also support filtering based on relevant request parameters. Ideally, the API should enable the following, listed from easy to hard:
-  * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`
-  * return sorted results (for example, alphabetically sorted), supporting both ascending and descending
-  * (optional) return the results by pages (based on a page size request parameter), iterating over the pages are maintained by a cursor which is included in the response, this cursor is used in the subsequent request
+  * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`;
+  * return sorted results (for example, alphabetically sorted), supporting both ascending and descending;
+  * (optional) return the results by pages (based on a page size request parameter), iterating over the pages are maintained by a cursor which is included in the response, this cursor is used in the subsequent request.
 
 ### Web Application
 
-* Create the web app using JavaScript. You can use either plain JavaScript or a Framework of your choice
-* Show the card images in a grid like the houses app
-* when user click on a grid item , navigate to the card detail view where you can display more information regarding the card ( what you would like to show and how is up to you ), when in detail view the navigation to the next and previous card should be the same as the Houses App
-* The user should be able to set a card as favourite and this info should be persisted when the app closes, how to show cards that are tagged as favourites and how to persist that information is up to you
+* Create the web app using React + TypeScript.
+* Show the card images in a grid like the houses app.
+* when user click on a grid item , navigate to the card detail view where you can display more information regarding the card ( what you would like to show and how is up to you ), when in detail view the navigation to the next and previous card should be the same as the Houses App.
+* The user should be able to set a card as favourite and this info should be persisted when the app closes, how to show cards that are tagged as favourites and how to persist that information is up to you.
 
 
 ## What we would like to see
@@ -103,10 +103,11 @@ You are free to choose the patterns and architectures to create this web app, th
 * Proper handling of asynchonous calls
 * Clean code
 * Relevant design patterns
-* Javascript best practices
+* React + TypeScript best practices
 * UI should remain responsive during content loading
 * Should you use 3rd party libraries and frameworks please motivate your choice
-* Unit tests
+* Well-written unit tests 
+* High code coverage
 * Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls
 
 ## Finally
