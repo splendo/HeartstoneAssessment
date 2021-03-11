@@ -108,7 +108,7 @@ You are free to choose the patterns and architectures to create this web app, th
 * Should you use 3rd party libraries and frameworks please motivate your choice
 * Well-written unit tests 
 * High code coverage
-* Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls
+* Serve the backend in Google Cloud Platform using Cloud Functions is a plus
 
 ## Finally
 
