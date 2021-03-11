@@ -84,7 +84,7 @@ You are free to choose the patterns and architectures to create this web app, th
 
 ### Backend
 
-* Create an API backend (Java or Kotlin or TypeScript) allowing you to get card information for at least legendary deathrattle cards.
+* Create an API backend (Java, Kotlin or TypeScript) allowing you to get card information for at least legendary deathrattle cards.
 * The API should also support filtering based on relevant request parameters. Ideally, the API should enable the following, listed from easy to hard:
   * filter by least the following fields: `type`, `rarity`, `classes`, and `mechanics`;
   * return sorted results (for example, alphabetically sorted), supporting both ascending and descending;
@@ -106,7 +106,8 @@ You are free to choose the patterns and architectures to create this web app, th
 * React + TypeScript best practices
 * UI should remain responsive during content loading
 * Should you use 3rd party libraries and frameworks please motivate your choice
-* Unit tests
+* Well-written unit tests 
+* High code coverage
 * Writing the backend using Google AppEngine is a plus, but feel free to use Amazon AWS, Tomcat or anything you prefer for handling your API calls
 
 ## Finally
