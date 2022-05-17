@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">Hearthstone</string>
+
+    <string name="filters_label">Filters</string>
+    <string name="show_list">Show List</string>
+    <string name="show_grid">Show Grid</string>
+
+    <string name="card_details_set_label">Set</string>
+    <string name="card_details_name_label">Name</string>
+    <string name="card_details_type_label">Type</string>
+    <string name="card_details_rarity_label">Rarity</string>
+    <string name="card_details_cost_label">Cost</string>
+    <string name="card_details_attack_label">Attack</string>
+    <string name="card_details_health_label">Health</string>
+    <string name="card_details_flavor_label">Flavor</string>
+    <string name="card_details_text_label">Text</string>
+    <string name="card_details_artist_label">Artist: %s</string>
+    <string name="card_details_player_class_label">Player Class</string>
+    <string name="card_details_multi_class_group_label">Multiclass Group</string>
+    <string name="card_details_mechanics_label">Mechanics: </string>
+    <string name="card_details_classes_label">Classes: </string>
+
+
+    <string name="type_minion_label">Minion</string>
+    <string name="type_spell_label">Spell</string>
+    <string name="type_weapon_label">Weapon</string>
+    <string name="type_hero_label">Hero</string>
+
+
+    <string name="class_druid_label">Druid</string>
+    <string name="class_hunter_label">Hunter</string>
+    <string name="class_mage_label">Mage</string>
+    <string name="class_paladin_label">Paladin</string>
+    <string name="class_priest_label">Priest</string>
+    <string name="class_rogue_label">Rogue</string>
+    <string name="class_shaman_label">Shaman</string>
+    <string name="class_warlock_label">Warlock</string>
+    <string name="class_warrior_label">Warrior</string>
+
+    <string name="class_spinner_label">Classes</string>
+    <string name="type_spinner_label">Types</string>
+    <string name="mechanic_spinner_label">Mechanics</string>
+
+    <string name="class_selected_label">%d Class(es) selected</string>
+    <string name="type_selected_label">%d Type(s) selected</string>
+    <string name="mechanic_selected_label">%d Mechanic(s) selected</string>
+
+    <string name="ability_adapt_label">Adapt</string>
+    <string name="ability_battlecry_label">Battlecry</string>
+    <string name="ability_casts_when_drawn_label">Casts When Drawn</string>
+    <string name="ability_charge_label">Charge</string>
+    <string name="ability_choose_one_label">Choose One</string>
+    <string name="ability_choose_twice_label">Choose Twice</string>
+    <string name="ability_combo_label">Combo</string>
+    <string name="ability_counter_label">Counter</string>
+    <string name="ability_deathrattle_label">Deathrattle</string>
+
+    <string name="apply_filters_label">Apply Filters</string>
+    <string name="clear_filters_label">Clear Filters</string>
+
+    <string name="sort_alphabetical_label">Alphabetical</string>
+    <string name="sort_rarity_label">Rarity</string>
+    <string name="no_cards_here">No cards here!</string>
+    <string name="loading">Loading</string>
+
+    <string name="checking_db">Checking database</string>
+    <string name="populating_db">Populating database, please wait…</string>
+
+    <string name="filtering">Filtering</string>
+    <string name="sorting">Sorting</string>
+
+
+    <array name="rarity_array">
+        <item>Free</item>
+        <item>Common</item>
+        <item>Rare</item>
+        <item>Epic</item>
+        <item>Legendary</item>
+    </array>
+
+    <array name="card_sets_array">
+        <item>Favourites</item>
+        <item>Basic</item>
+        <item>Classic</item>
+        <item>Promo</item>
+        <item>Hall of Fame</item>
+        <item>Naxxramas</item>
+        <item>Goblins vs Gnomes</item>
+        <item>Blackrock Mountain</item>
+        <item>The Grand Tournament</item>
+        <item>The League of Explorers</item>
+        <item>Whispers of the Old Gods</item>
+        <item>One Night in Karazhan</item>
+        <item>Mean Streets of Gadgetzan</item>
+        <item>Journey to Un\'Goro</item>
+        <item>Tavern Brawl</item>
+        <item>Hero Skins</item>
+        <item>Missions</item>
+        <item>Credits</item>
+        <item>System</item>
+        <item>Debug</item>
+    </array>
+</resources>
