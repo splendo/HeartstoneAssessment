@@ -1,0 +1,11 @@
+{
+  "library": "retrofit2",
+  "groupId": "com.kapanen.scheme.generated",
+  "artifactId": "heartstone-models",
+  "artifactVersion": "2.0",
+  "serializableModel": "true",
+  "additionalProperties": {
+    "autoPublish": "false"
+  },
+  "gson": "true"
+}

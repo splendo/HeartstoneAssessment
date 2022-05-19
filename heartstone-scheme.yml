@@ -1,0 +1,119 @@
+swagger: '2.0'
+
+info:
+  title: Heartstone API
+  version: '1.0.0'
+
+paths:
+
+  # Configuration
+  # - source: Static
+
+  /cards.json:
+    get:
+      summary: Retrieves cards
+      tags:
+        - card
+      operationId: cards
+      responses:
+        '200':
+          description: Heartstone cards
+          schema:
+            $ref: '#/definitions/cards'
+            
+definitions:
+
+    mechanic:
+      type: object
+      properties:
+        name:
+          type:  string
+      required:
+        - name
+
+    card:
+      type: object
+      properties:
+        cardId:
+          type:  string
+        name:
+          type:  string
+        cardSet:
+          type:  string
+        type:
+          type:  string
+        rarity:
+          type:  string
+        cost:
+          type:  integer
+        attack:
+          type:  integer
+        health:
+          type:  integer
+        htmlText:
+          type:  string
+        flavour:
+          type:  string
+        artist:
+          type:  string
+        elite:
+          type:  boolean
+        playerClass:
+          type:  array
+          items:
+            type: string
+        multiClassGroup:
+          type:  string
+        img:
+          type:  string
+        imgGold:
+          type:  string
+        mechanics:
+          type:  array
+          items:
+            $ref: '#/definitions/mechanic'
+      required:
+        - cardId
+
+    cardGroup:
+      type: array
+      items:
+        $ref: '#/definitions/card'
+
+    cards:
+      type: object
+      properties:
+        Basic:
+          $ref: '#/definitions/cardGroup'
+        Classic:
+          $ref: '#/definitions/cardGroup'
+        Hall of Fame:
+          $ref: '#/definitions/cardGroup'
+        Promo:
+          $ref: '#/definitions/cardGroup'
+        Naxxramas:
+          $ref: '#/definitions/cardGroup'
+        Goblins vs Gnomes:
+          $ref: '#/definitions/cardGroup'
+        Blackrock Mountain:
+          $ref: '#/definitions/cardGroup'
+        The Grand Tournament:
+          $ref: '#/definitions/cardGroup'
+        The League of Explorers:
+          $ref: '#/definitions/cardGroup'
+        Whispers of the Old Gods:
+          $ref: '#/definitions/cardGroup'
+        One Night in Karazhan:
+          $ref: '#/definitions/cardGroup'
+        Mean Streets of Gadgetzan:
+          $ref: '#/definitions/cardGroup'
+        Journey to Un'Goro:
+          $ref: '#/definitions/cardGroup'
+        Tavern Brawl:
+          $ref: '#/definitions/cardGroup'
+        Hero Skins:
+          $ref: '#/definitions/cardGroup'
+        Missions:
+          $ref: '#/definitions/cardGroup'
+        Credits:
+          $ref: '#/definitions/cardGroup'
