@@ -3,4 +3,25 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="card_type_basic">Basic</string>
+    <string name="card_type_classic">Classic</string>
+    <string name="card_type_hall_of_fame">Hall of Fame</string>
+    <string name="card_type_promo">Promo</string>
+    <string name="card_type_naxxramas">Naxxramas</string>
+    <string name="card_type_goblin_vs_gnomes">Goblins vs Gnomes</string>
+    <string name="card_type_blackrock_mountain">Blackrock Mountain</string>
+    <string name="card_type_the_grand_tournament">The Grand Tournament</string>
+    <string name="card_type_the_league_of_explorers">The League of Explorers"</string>
+    <string name="card_type_whispers_of_the_old_gods">Whispers of the Old Gods</string>
+    <string name="card_type_one_night_in_karazhan">One Night in Karazhan</string>
+    <string name="card_type_main_streets_of_gadgetzan">Mean Streets of Gadgetzan</string>
+    <string name="card_type_jorney_to_un_apostrophe_goro">Journey to Un\'Goro</string>
+    <string name="card_type_tavern_brawl">Tavern Brawl</string>
+    <string name="card_type_hero_skins">Hero Skins</string>
+    <string name="card_type_missions">Missions</string>
+    <string name="card_type_credits">Credits</string>
+    <string name="card_type_favourites">Favourites</string>
+
+    <string name="no_data_item">No data</string>
 </resources>

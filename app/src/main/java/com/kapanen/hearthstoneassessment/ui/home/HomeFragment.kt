@@ -31,10 +31,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val homeMainBtn: Button = binding.homeMainBtn
-        homeMainBtn.setOnClickListener { homeViewModel.onTapMainBtn() }
         homeViewModel.text.observe(viewLifecycleOwner) {
         }
+
+        val viewPager = binding.homeViewPager
+
+
         return root
     }
 
