@@ -52,6 +52,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinReflectVersion"
     implementation "androidx.multidex:multidex:$multidexVersion"
+    implementation "androidx.viewpager2:viewpager2:$viewpager2Version"
 
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
@@ -62,6 +63,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timberVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "com.facebook.fresco:fresco:$frescoVersion"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"

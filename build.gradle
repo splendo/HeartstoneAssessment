@@ -29,6 +29,8 @@ project.ext {
     kotlinxCoroutinesVersion = '1.6.0'
     kotlinReflectVersion = '1.6.10'
     retrofit2Version = '2.9.0'
+    viewpager2Version = '1.0.0'
+    frescoVersion = '2.6.0'
 
     okHttpVersion = '4.9.3'
     gsonVersion = '2.9.0'
