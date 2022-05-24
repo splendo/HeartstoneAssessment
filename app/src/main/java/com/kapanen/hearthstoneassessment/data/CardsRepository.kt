@@ -7,7 +7,7 @@ interface CardsRepository {
 
     fun observeCards(): LiveData<Result<List<Card>>>
 
-    fun observeCards(cardGroupName: String): LiveData<Result<List<Card>>>
+    fun observeCards(cardType: String): LiveData<Result<List<Card>>>
 
     fun observeFavouriteCards(): LiveData<Result<List<Card>>>
 

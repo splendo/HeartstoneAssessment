@@ -15,8 +15,8 @@ class DefaultCardsRepository(
     override fun observeCards(): LiveData<Result<List<Card>>> =
         localDataSource.observeCards()
 
-    override fun observeCards(cardGroupName: String): LiveData<Result<List<Card>>> =
-        localDataSource.observeCards(cardGroupName)
+    override fun observeCards(cardType: String): LiveData<Result<List<Card>>> =
+        localDataSource.observeCards(cardType)
 
     override fun observeFavouriteCards(): LiveData<Result<List<Card>>> =
         localDataSource.observeFavouriteCards()
