@@ -60,11 +60,11 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="It is said that some shaman can say Floatin totem 10 times, fast." />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/card_item_favourite_icon"
             android:layout_width="@dimen/card_item_favourite_icon_size"
             android:layout_height="@dimen/card_item_favourite_icon_size"
-            android:button="@drawable/ic_favourite_selector"
+            android:src="@drawable/ic_favourite"
             android:buttonTint="@color/favourite_icon"
             app:layout_constraintBottom_toBottomOf="@id/card_item_text"
             app:layout_constraintEnd_toEndOf="parent"

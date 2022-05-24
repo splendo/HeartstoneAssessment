@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_favourite.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_favourite_selector.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_filled_favourite.xml" value="0.1235" />
+        <entry key="app/src/main/res/drawable/ic_unfilled_favourite.xml" value="0.195" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4282034611356431" />
         <entry key="app/src/main/res/layout/card_item.xml" value="0.2735562310030395" />
         <entry key="app/src/main/res/layout/fragment_cards_tab.xml" value="0.3591485507246377" />
