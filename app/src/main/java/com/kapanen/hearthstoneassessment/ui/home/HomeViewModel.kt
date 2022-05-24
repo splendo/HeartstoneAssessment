@@ -27,13 +27,18 @@ class HomeViewModel @Inject constructor(
     }
     val text: LiveData<String> = _text
 
+    init {
+        loadCards()
+    }
+
     fun getCardTabs() = cardTabs
     fun getCardTabsLabelRes(position: Int) =
         cardTabs.getOrNull(position)?.cardType?.label ?: R.string.card_type_favourites
 
-    fun onTapMainBtn() {
+    private fun loadCards() {
         viewModelScope.launch {
-            val cards = cardsRepository.getCards()
+            cardsRepository.getCards()
         }
     }
+
 }
