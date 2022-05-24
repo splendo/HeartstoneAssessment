@@ -23,5 +23,5 @@
     <string name="card_type_credits">Credits</string>
     <string name="card_type_favourites">Favourites</string>
 
-    <string name="no_data_item">No data</string>
+    <string name="no_data_item">Empty list</string>
 </resources>

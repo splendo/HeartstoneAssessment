@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
@@ -37,16 +38,24 @@ class CardsTabFragment : Fragment() {
         val cardsTabViewModel =
             ViewModelProvider(this)[CardsTabViewModel::class.java]
         val recyclerView = view.findViewById<RecyclerView>(R.id.cards_recycler_view)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
+
         val cardsListAdapter = CardsListAdapter(adapterDelegatesManager)
         recyclerView.adapter = cardsListAdapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.itemAnimator = null
         cardsListAdapter.setItems(listOf(LoadingItem()))
         (arguments?.get(ARGS_KEY) as CardsTab?)?.let { cardsTab ->
             cardsTabViewModel.observeCards(cardsTab).observe(viewLifecycleOwner) { cards ->
                 if (cards.isNotEmpty()) {
+                    if (recyclerView.layoutManager !is GridLayoutManager) {
+                        recyclerView.layoutManager =
+                            GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
+                    }
                     cardsListAdapter.setItems(cards)
                 } else {
+                    if (recyclerView.layoutManager !is LinearLayoutManager) {
+                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    }
                     cardsListAdapter.setItems(listOf(NoDataItem()))
                 }
             }
