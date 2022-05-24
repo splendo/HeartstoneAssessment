@@ -1,7 +1,7 @@
 package com.kapanen.hearthstoneassessment.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import com.kapanen.hearthstoneassessment.data.CardType
 
 @Parcelize

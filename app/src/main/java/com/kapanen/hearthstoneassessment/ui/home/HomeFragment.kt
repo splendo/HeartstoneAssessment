@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayoutMediator
 import com.kapanen.hearthstoneassessment.databinding.FragmentHomeBinding
+import com.kapanen.hearthstoneassessment.ui.home.tab.CardsTabAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +35,10 @@ class HomeFragment : Fragment() {
         }
 
         val viewPager = binding.homeViewPager
-
+        viewPager.adapter = CardsTabAdapter(this, homeViewModel.getCardTabs())
+        TabLayoutMediator(binding.homeTabBar, viewPager) { tab, position ->
+            tab.text = resources.getText(homeViewModel.getCardTabsLabelRes(position))
+        }.attach()
 
         return root
     }
@@ -44,4 +47,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

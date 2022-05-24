@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/home_tab_bar"
+        style="@style/TabsStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabMode="scrollable"
+        app:tabMinWidth="0dp"
+        app:tabPadding="0dp"
+        app:tabPaddingEnd="10dp"
+        app:tabPaddingStart="10dp"
+        app:tabTextAppearance="@style/TabsTextStyle" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/home_view_pager"
         android:layout_width="0dp"
@@ -13,6 +31,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/home_tab_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

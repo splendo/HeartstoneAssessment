@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="favourite_icon">#FFFF0000</color>
-    <color name="card_item_bg">#D1D2D5</color>
-    <color name="card_item_text_color">#474b56</color>
+    <color name="card_item_bg">#FFD1D2D5</color>
+    <color name="card_item_text_color">#FF474b56</color>
+    <color name="tab_indicator">#FFC8102E</color>
+    <color name="tab_text">#FF003865</color>
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabsTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TabsStyle" parent="Widget.AppCompat.ActionBar.TabBar">
+        <item name="tabBackground">@color/white</item>
+        <item name="tabIndicatorColor">@color/tab_indicator</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabSelectedTextColor">@color/tab_indicator</item>
+        <item name="tabTextColor">@color/tab_text</item>
+        <item name="tabTextAppearance">@style/TabsTextStyle</item>
+    </style>
+
+</resources>

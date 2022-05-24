@@ -2,11 +2,13 @@ package com.kapanen.hearthstoneassessment.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kapanen.hearthstoneassessment.BuildConfig
 import com.kapanen.hearthstoneassessment.api.CardsApiService
+import com.kapanen.hearthstoneassessment.data.CardType
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.data.DefaultCardsRepository
 import com.kapanen.hearthstoneassessment.data.local.DefaultLocalCardsDataSource
@@ -14,9 +16,17 @@ import com.kapanen.hearthstoneassessment.data.local.HearthstoneDatabase
 import com.kapanen.hearthstoneassessment.data.local.LocalCardsDataSource
 import com.kapanen.hearthstoneassessment.data.remote.DefaultRemoteCardsDataSource
 import com.kapanen.hearthstoneassessment.data.remote.RemoteCardsDataSource
+import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
+import com.kapanen.hearthstoneassessment.delegate.DefaultDelegatesManager
+import com.kapanen.hearthstoneassessment.delegate.RecyclerViewAdapterDelegate
+import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.setting.SharedPreferencesStorage
 import com.kapanen.hearthstoneassessment.setting.Storage
+import com.kapanen.hearthstoneassessment.ui.delegate.CardDelegate
+import com.kapanen.hearthstoneassessment.ui.delegate.LoadingItemDelegate
+import com.kapanen.hearthstoneassessment.ui.delegate.NoDataItemDelegate
+import com.kapanen.hearthstoneassessment.ui.delegate.UnknownItemDelegate
 import com.kapanen.hearthstoneassessment.util.withTrailingSlash
 import dagger.Module
 import dagger.Provides
@@ -47,6 +57,10 @@ object AppModule {
     @Qualifier
     @Retention(AnnotationRetention.RUNTIME)
     annotation class BaseHearthstoneUrl
+
+    @Qualifier
+    @Retention(AnnotationRetention.RUNTIME)
+    annotation class HomeCardTabs
 
     @BaseHearthstoneUrl
     @Provides
@@ -152,6 +166,24 @@ object AppModule {
             DB_NAME
         ).build()
     }
+
+    @Suppress("UNCHECKED_CAST")
+    @Singleton
+    @Provides
+    fun provideDelegateManager(): AdapterDelegatesManager {
+        return DefaultDelegatesManager().apply {
+            addDelegate(LoadingItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(NoDataItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(CardDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(UnknownItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+        }
+    }
+
+    @Singleton
+    @HomeCardTabs
+    @Provides
+    fun provideCardsTabs() =
+        listOf(CardsTab(isFavourites = true)) + CardType.values().map { CardsTab(it) }
 }
 
 @Module

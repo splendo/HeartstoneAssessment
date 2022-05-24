@@ -3,7 +3,7 @@ package com.kapanen.hearthstoneassessment.data
 import androidx.annotation.StringRes
 import com.kapanen.hearthstoneassessment.R
 
-enum class CardType(val typeName: String, @StringRes label: Int) {
+enum class CardType(val typeName: String, @StringRes val label: Int) {
     BASIC("Basic", R.string.card_type_basic),
     CLASSIC("Classic", R.string.card_type_classic),
     HALL_OF_FAME("Hall of Fame", R.string.card_type_hall_of_fame),

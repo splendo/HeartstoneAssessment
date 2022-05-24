@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.20339412360688958" />
         <entry key="app/src/main/res/drawable/ic_favourite.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_favourite_selector.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_filled_favourite.xml" value="0.1235" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/loading_item.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/no_data_item.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/unknown_item.xml" value="0.3591485507246377" />
       </map>
     </option>
   </component>

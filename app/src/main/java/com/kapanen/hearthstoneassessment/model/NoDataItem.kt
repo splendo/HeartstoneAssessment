@@ -1,4 +1,3 @@
 package com.kapanen.hearthstoneassessment.model
 
-class NoDataItem {
-}
+class NoDataItem
