@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/no_data_item_vertical_padding">
 
-
     <ImageView
         android:id="@+id/no_data_item_icon"
         android:layout_width="wrap_content"

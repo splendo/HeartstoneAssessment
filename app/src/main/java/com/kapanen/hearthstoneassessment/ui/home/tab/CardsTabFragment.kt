@@ -40,6 +40,7 @@ class CardsTabFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
         val cardsListAdapter = CardsListAdapter(adapterDelegatesManager)
         recyclerView.adapter = cardsListAdapter
+        recyclerView.itemAnimator = null
         cardsListAdapter.setItems(listOf(LoadingItem()))
         (arguments?.get(ARGS_KEY) as CardsTab?)?.let { cardsTab ->
             cardsTabViewModel.observeCards(cardsTab).observe(viewLifecycleOwner) { cards ->

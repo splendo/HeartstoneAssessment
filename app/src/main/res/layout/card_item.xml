@@ -6,6 +6,7 @@
     android:id="@+id/card_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="2dp"
     app:cardCornerRadius="@dimen/card_item_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
