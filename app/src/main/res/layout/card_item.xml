@@ -64,7 +64,8 @@
             android:id="@+id/card_item_favourite_icon"
             android:layout_width="@dimen/card_item_favourite_icon_size"
             android:layout_height="@dimen/card_item_favourite_icon_size"
-            android:src="@drawable/ic_favourite_selector"
+            android:button="@drawable/ic_favourite_selector"
+            android:buttonTint="@color/favourite_icon"
             app:layout_constraintBottom_toBottomOf="@id/card_item_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/card_item_text" />

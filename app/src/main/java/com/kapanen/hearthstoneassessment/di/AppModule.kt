@@ -167,23 +167,12 @@ object AppModule {
         ).build()
     }
 
-    @Suppress("UNCHECKED_CAST")
-    @Singleton
-    @Provides
-    fun provideDelegateManager(): AdapterDelegatesManager {
-        return DefaultDelegatesManager().apply {
-            addDelegate(LoadingItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
-            addDelegate(NoDataItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
-            addDelegate(CardDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
-            addDelegate(UnknownItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
-        }
-    }
-
     @Singleton
     @HomeCardTabs
     @Provides
     fun provideCardsTabs() =
         listOf(CardsTab(isFavourites = true)) + CardType.values().map { CardsTab(it) }
+
 }
 
 @Module
@@ -200,4 +189,28 @@ object CardsRepositoryModule {
         return DefaultCardsRepository(remoteCardsDataSource, localCardsDataSource, appSettings)
     }
 
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object DelegatesModule {
+    @Suppress("UNCHECKED_CAST")
+    @Singleton
+    @Provides
+    fun provideDelegateManager(
+        cardsRepository: CardsRepository,
+        ioDispatcher: CoroutineDispatcher
+    ): AdapterDelegatesManager {
+        return DefaultDelegatesManager().apply {
+            addDelegate(LoadingItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(NoDataItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(
+                CardDelegate(
+                    cardsRepository,
+                    ioDispatcher
+                ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
+            )
+            addDelegate(UnknownItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+        }
+    }
 }
