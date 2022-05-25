@@ -17,8 +17,8 @@
 
     <fragment
         android:id="@+id/card_details"
-        android:name="com.kapanen.hearthstoneassessment.ui.notifications.CardDetailsFragment"
+        android:name="com.kapanen.hearthstoneassessment.ui.carddetails.CardDetailsFragment"
         android:label="@string/title_card_details"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_card_details" />
 
 </navigation>

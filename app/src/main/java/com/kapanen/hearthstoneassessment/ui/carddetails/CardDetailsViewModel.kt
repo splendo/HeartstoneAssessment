@@ -1,9 +1,8 @@
-package com.kapanen.hearthstoneassessment.ui.notifications
+package com.kapanen.hearthstoneassessment.ui.carddetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 class CardDetailsViewModel : ViewModel() {
 
