@@ -12,7 +12,15 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_card_details"
-            app:destination="@id/card_details" />
+            app:destination="@id/card_details">
+            <argument
+                android:name="cardId"
+                app:argType="string" />
+            <argument
+                android:name="cardType"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
 
     <fragment

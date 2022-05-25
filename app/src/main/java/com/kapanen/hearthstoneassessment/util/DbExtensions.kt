@@ -11,7 +11,7 @@ private const val ITEM_DELIMITER = "|"
 
 fun DbCard.toCard() = Card(
     cardId = this.cardId,
-    cardType = CardType.values().firstOrNull { it.typeName.equals(this.cardType, ignoreCase = true) },
+    cardType = CardType.values().first { it.typeName.equals(this.cardType, ignoreCase = true) },
     name = this.name,
     cardSet = this.cardSet,
     type = this.type,

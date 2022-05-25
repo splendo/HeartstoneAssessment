@@ -20,10 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/home_toolbar"
+            app:theme="@style/ToolbarColoredBackArrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:title="@string/title_home"
+            app:titleTextColor="@color/white"
             app:layout_scrollFlags="scroll|enterAlways" />
 
         <com.google.android.material.tabs.TabLayout

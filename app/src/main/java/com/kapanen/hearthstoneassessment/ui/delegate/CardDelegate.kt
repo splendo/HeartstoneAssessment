@@ -2,7 +2,6 @@ package com.kapanen.hearthstoneassessment.ui.delegate
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -58,12 +57,15 @@ class CardDelegate(
             }
             root.setOnClickListener {
                 root.findNavController().navigate(
-                    HomeFragmentDirections.actionNavigationHomeToNavigationCardDetails()
+                    HomeFragmentDirections.actionNavigationHomeToNavigationCardDetails(
+                        data.cardId,
+                        data.cardType?.typeName
+                    )
                 )
             }
         }
     }
 
     class ViewHolder(val binding: CardItemBinding) : RecyclerView.ViewHolder(binding.root)
-
 }
+
