@@ -11,7 +11,7 @@ import com.kapanen.hearthstoneassessment.databinding.FragmentNotificationsBindin
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NotificationsFragment : Fragment() {
+class CardDetailsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
 
@@ -25,7 +25,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(CardDetailsViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root

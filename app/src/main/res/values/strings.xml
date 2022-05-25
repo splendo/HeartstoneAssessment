@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">HearthstoneAssessment</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_card_details">Details</string>
 
     <string name="card_type_basic">Basic</string>
     <string name="card_type_classic">Classic</string>

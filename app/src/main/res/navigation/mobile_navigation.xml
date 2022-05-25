@@ -9,17 +9,16 @@
         android:id="@+id/navigation_home"
         android:name="com.kapanen.hearthstoneassessment.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_card_details"
+            app:destination="@id/card_details" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.kapanen.hearthstoneassessment.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.kapanen.hearthstoneassessment.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:id="@+id/card_details"
+        android:name="com.kapanen.hearthstoneassessment.ui.notifications.CardDetailsFragment"
+        android:label="@string/title_card_details"
         tools:layout="@layout/fragment_notifications" />
+
 </navigation>

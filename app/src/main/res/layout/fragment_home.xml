@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/home_tab_bar"
         style="@style/TabsStyle"
@@ -15,10 +23,10 @@
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_toolbar"
         app:tabGravity="fill"
-        app:tabMode="scrollable"
         app:tabMinWidth="0dp"
+        app:tabMode="scrollable"
         app:tabPadding="0dp"
         app:tabPaddingEnd="10dp"
         app:tabPaddingStart="10dp"
