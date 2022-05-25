@@ -1,7 +1,8 @@
 package com.kapanen.hearthstoneassessment.model
 
-import androidx.room.Entity
+import android.os.Parcelable
 import com.kapanen.hearthstoneassessment.data.CardType
+import kotlinx.parcelize.Parcelize
 
 /**
  *
@@ -24,6 +25,7 @@ import com.kapanen.hearthstoneassessment.data.CardType
  * @param imgGold
  * @param mechanics
  */
+@Parcelize
 data class Card(
     val cardId: String,
     val cardType: CardType? = null,
@@ -44,4 +46,4 @@ data class Card(
     val imgGold: String? = null,
     val mechanics: List<Mechanic>? = null,
     val isFavorite: Boolean = false
-)
+) : Parcelable

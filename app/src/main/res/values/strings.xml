@@ -23,4 +23,7 @@
     <string name="card_type_favourites">Favourites</string>
 
     <string name="no_data_item">Empty list</string>
+
+    <string name="arg_card_id">cardId</string>
+    <string name="arg_card_type">cardType</string>
 </resources>

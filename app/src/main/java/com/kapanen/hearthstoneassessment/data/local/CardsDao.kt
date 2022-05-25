@@ -13,11 +13,17 @@ interface CardsDao {
     @Query("SELECT * FROM Cards WHERE cardType = :cardType")
     fun observeDbCardsByType(cardType: String): LiveData<List<DbCard>>
 
+    @Query("SELECT * FROM Cards WHERE cardId = :cardId")
+    fun observeDbCardById(cardId: String): LiveData<DbCard>
+
     @Query("SELECT * FROM Cards")
     suspend fun getDbCards(): List<DbCard>
 
     @Query("SELECT * FROM Cards WHERE cardType = :cardType")
     suspend fun getDbCardByType(cardType: String): List<DbCard>
+
+    @Query("SELECT * FROM Cards WHERE cardId = :cardId")
+    suspend fun getDbCardById(cardId: String): DbCard
 
     @Query("SELECT * FROM Cards WHERE isFavorite = :isFavorite")
     fun observeFavouriteDbCards(isFavorite: Boolean = true): LiveData<List<DbCard>>

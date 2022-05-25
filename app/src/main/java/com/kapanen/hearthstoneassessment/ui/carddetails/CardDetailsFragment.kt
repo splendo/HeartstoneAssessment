@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,9 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class CardDetailsFragment : Fragment() {
 
     private var _binding: FragmentCardDetailsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,11 +22,24 @@ class CardDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentCardDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val cardDetailsViewModel =
             ViewModelProvider(this)[CardDetailsViewModel::class.java]
-        _binding = FragmentCardDetailsBinding.inflate(inflater, container, false)
-
-        return binding.root
+        val viewPager = binding.cardDetailsViewPager
+        val cardId = arguments?.getString(resources.getString(R.string.arg_card_id))
+        val cardType = arguments?.getString(resources.getString(R.string.arg_card_type))
+        cardId?.let { cardDetailsViewModel.init(cardId = it, cardType = cardType) }
+        cardDetailsViewModel.cardsLiveData.observe(viewLifecycleOwner) { cards ->
+            viewPager.adapter = CardViewPagerAdapter(this, cards)
+            cards.indexOfFirst { card -> card.cardId == cardId }
+                .takeIf { it > 0 }
+                ?.let { index -> viewPager.currentItem = index }
+        }
     }
 
     override fun onResume() {
@@ -43,4 +52,5 @@ class CardDetailsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

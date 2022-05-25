@@ -10,6 +10,7 @@ import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.di.AppModule
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val cardsRepository: CardsRepository,
     @AppModule.HomeCardTabs
-    private var cardTabs: List<CardsTab>
+    private var cardTabs: List<CardsTab>,
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
@@ -36,7 +38,7 @@ class HomeViewModel @Inject constructor(
         cardTabs.getOrNull(position)?.cardType?.label ?: R.string.card_type_favourites
 
     private fun loadCards() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             cardsRepository.getCards()
         }
     }

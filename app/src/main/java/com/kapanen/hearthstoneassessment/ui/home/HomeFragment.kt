@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.databinding.FragmentHomeBinding
 import com.kapanen.hearthstoneassessment.ui.home.tab.CardsTabAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,11 +24,6 @@ class HomeFragment : Fragment() {
     ): View {
         val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.homeToolbar)
-        (requireActivity() as AppCompatActivity).actionBar?.setTitle(R.string.title_home)
-        (requireActivity() as AppCompatActivity).actionBar?.setDisplayHomeAsUpEnabled(true)
-        //binding.homeToolbar.setTitle(R.string.title_home)
 
         val viewPager = binding.homeViewPager
         viewPager.adapter = CardsTabAdapter(this, homeViewModel.getCardTabs())

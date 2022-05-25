@@ -6,8 +6,6 @@ import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.util.toCard
 import com.kapanen.hearthstoneassessment.util.toCards
 import com.kapanen.hearthstoneassessment.util.toDbCard
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 class DefaultLocalCardsDataSource(private val cardsDao: CardsDao) : LocalCardsDataSource {
 
@@ -17,11 +15,17 @@ class DefaultLocalCardsDataSource(private val cardsDao: CardsDao) : LocalCardsDa
     override fun observeCards(cardType: String): LiveData<Result<List<Card>>> =
         cardsDao.observeDbCardsByType(cardType).toCards()
 
+    override fun observeCard(cardId: String): LiveData<Result<Card>> =
+        cardsDao.observeDbCardById(cardId).map { dbCard -> Result.success(dbCard.toCard()) }
+
     override suspend fun getCards(): Result<List<Card>> = cardsDao.getDbCards().toCards()
 
 
     override suspend fun getCards(cardType: String): Result<List<Card>> =
         cardsDao.getDbCardByType(cardType).toCards()
+
+    override suspend fun getCard(cardId: String): Result<Card> =
+        Result.success(cardsDao.getDbCardById(cardId).toCard())
 
     override fun observeFavouriteCards(): LiveData<Result<List<Card>>> =
         cardsDao.observeFavouriteDbCards().toCards()
