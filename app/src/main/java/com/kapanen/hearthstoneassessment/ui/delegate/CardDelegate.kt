@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.databinding.CardItemBinding
 import com.kapanen.hearthstoneassessment.delegate.SimpleDelegate
 import com.kapanen.hearthstoneassessment.model.Card
+import com.kapanen.hearthstoneassessment.ui.home.HomeFragmentDirections
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -53,6 +55,11 @@ class CardDelegate(
                         cardsRepository.addFavouriteCard(data)
                     }
                 }
+            }
+            root.setOnClickListener {
+                root.findNavController().navigate(
+                    HomeFragmentDirections.actionNavigationHomeToNavigationCardDetails()
+                )
             }
         }
     }
