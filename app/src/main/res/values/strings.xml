@@ -22,6 +22,23 @@
     <string name="card_type_credits">Credits</string>
     <string name="card_type_favourites">Favourites</string>
 
+    <string name="card_stat_card_set">Card set</string>
+    <string name="card_stat_type">Type</string>
+    <string name="card_stat_faction">Faction</string>
+    <string name="card_stat_rarity">Rarity</string>
+    <string name="card_stat_cost">Cost</string>
+    <string name="card_stat_attack">Attack</string>
+    <string name="card_stat_health">Health</string>
+    <string name="card_stat_text">Text</string>
+    <string name="card_stat_flavor">Flavor</string>
+    <string name="card_stat_artist">Artist</string>
+    <string name="card_stat_collectible">Collectible</string>
+    <string name="card_stat_elite">Elite</string>
+    <string name="card_stat_race">Race</string>
+    <string name="card_stat_player_class">Player class</string>
+    <string name="card_stat_multi_class_group">Multi class group</string>
+    <string name="card_stat_mechanics">Mechanics</string>
+
     <string name="no_data_item">Empty list</string>
 
     <string name="arg_card_id">cardId</string>

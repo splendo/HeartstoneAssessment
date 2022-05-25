@@ -19,14 +19,12 @@ import com.kapanen.hearthstoneassessment.data.remote.RemoteCardsDataSource
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
 import com.kapanen.hearthstoneassessment.delegate.DefaultDelegatesManager
 import com.kapanen.hearthstoneassessment.delegate.RecyclerViewAdapterDelegate
+import com.kapanen.hearthstoneassessment.model.CardStringStatItem
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.setting.SharedPreferencesStorage
 import com.kapanen.hearthstoneassessment.setting.Storage
-import com.kapanen.hearthstoneassessment.ui.delegate.CardDelegate
-import com.kapanen.hearthstoneassessment.ui.delegate.LoadingItemDelegate
-import com.kapanen.hearthstoneassessment.ui.delegate.NoDataItemDelegate
-import com.kapanen.hearthstoneassessment.ui.delegate.UnknownItemDelegate
+import com.kapanen.hearthstoneassessment.ui.delegate.*
 import com.kapanen.hearthstoneassessment.util.withTrailingSlash
 import dagger.Module
 import dagger.Provides
@@ -204,6 +202,14 @@ object DelegatesModule {
         return DefaultDelegatesManager().apply {
             addDelegate(LoadingItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(NoDataItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(CardStringStatItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(CardIntStatItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(
+                CardImageDelegate(
+                    cardsRepository,
+                    ioDispatcher
+                ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
+            )
             addDelegate(
                 CardDelegate(
                     cardsRepository,

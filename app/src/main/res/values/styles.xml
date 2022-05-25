@@ -14,4 +14,11 @@
         <item name="tabTextAppearance">@style/TabsTextStyle</item>
     </style>
 
+    <style name="StatItemLabel">
+        <item name="android:textSize">@dimen/card_stat_item_label_text_size</item>
+        <item name="android:textColor">@color/card_stat_item_text_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 </resources>

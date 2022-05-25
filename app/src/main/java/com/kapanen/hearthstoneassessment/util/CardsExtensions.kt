@@ -1,12 +1,9 @@
 package com.kapanen.hearthstoneassessment.util
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
 import com.kapanen.hearthstoneassessment.data.CardType
 import com.kapanen.hearthstoneassessment.model.BeCard
 import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.Cards
-import com.kapanen.hearthstoneassessment.model.DbCard
 
 fun Cards.toList(): List<Card> {
     val cardsList = mutableListOf<Card>()
@@ -80,14 +77,16 @@ private fun BeCard.toCard(cardType: CardType) = Card(
     name = this.name,
     cardSet = this.cardSet,
     type = this.type,
+    faction = this.faction,
     rarity = this.rarity,
     cost = this.cost,
     attack = this.attack,
     health = this.health,
     htmlText = this.htmlText,
-    flavour = this.flavour,
+    flavor = this.flavor,
     artist = this.artist,
     elite = this.elite,
+    collectible = this.collectible,
     playerClass = this.playerClass,
     multiClassGroup = this.multiClassGroup,
     img = this.img,

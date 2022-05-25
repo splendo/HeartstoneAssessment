@@ -40,7 +40,7 @@ class DefaultRemoteCardsDataSource(
                 )
             }
         }
-        return result.also { observableCards.value = it }
+        return result.also { observableCards.postValue(it) }
     }
 
 }

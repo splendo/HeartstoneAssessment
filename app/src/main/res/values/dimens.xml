@@ -11,4 +11,16 @@
     <dimen name="card_item_image_height">100dp</dimen>
     <dimen name="no_data_item_vertical_padding">40dp</dimen>
     <dimen name="loading_item_vertical_padding">40dp</dimen>
+
+    <dimen name="card_img_item_padding">15dp</dimen>
+    <dimen name="card_img_item_title_text_size">16sp</dimen>
+    <dimen name="card_img_item_image_height">150dp</dimen>
+    <dimen name="card_img_item_favourite_icon_size">24dp</dimen>
+    <dimen name="card_stat_item_vertical_padding">20dp</dimen>
+    <dimen name="card_stat_item_horizontal_padding">15dp</dimen>
+    <dimen name="card_stat_item_label_text_size">14sp</dimen>
+    <dimen name="card_stat_item_int_value_text_size">18sp</dimen>
+    <dimen name="card_stat_item_string_value_text_size">14sp</dimen>
+    <dimen name="card_details_arrow_top_spacing">80sp</dimen>
+
 </resources>

@@ -21,7 +21,7 @@ class CardDelegate(
     SimpleDelegate<Card, CardDelegate.ViewHolder>(R.layout.card_item), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main
+        get() = dispatcher
 
     override fun suitFor(position: Int, data: Any) = data is Card
     override fun onCreateViewHolder(parent: ViewGroup) = ViewHolder(

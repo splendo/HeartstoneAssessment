@@ -1,9 +1,7 @@
 package com.kapanen.hearthstoneassessment.ui.delegate
 
 import androidx.recyclerview.widget.DiffUtil
-import com.kapanen.hearthstoneassessment.model.Card
-import com.kapanen.hearthstoneassessment.model.LoadingItem
-import com.kapanen.hearthstoneassessment.model.NoDataItem
+import com.kapanen.hearthstoneassessment.model.*
 
 class DiffCallback(
     private val oldItems: List<Any>,
@@ -30,10 +28,30 @@ class DiffCallback(
         return (oldItem is LoadingItem && newItem is LoadingItem)
                 || (oldItem is NoDataItem && newItem is NoDataItem)
                 || compareCards(oldItem, newItem)
+                || compareIntStat(oldItem, newItem)
+                || compareStringStat(oldItem, newItem)
+                || compareCardImageItem(oldItem, newItem)
     }
 
     private fun compareCards(oldItem: Any, newItem: Any): Boolean {
         return oldItem is Card && newItem is Card && oldItem.cardId == newItem.cardId
+    }
+
+    private fun compareIntStat(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is CardIntStatItem && newItem is CardIntStatItem
+                && oldItem.label == newItem.label
+                && oldItem.value == newItem.value
+    }
+
+    private fun compareStringStat(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is CardStringStatItem && newItem is CardStringStatItem
+                && oldItem.label == newItem.label
+                && oldItem.value == newItem.value
+    }
+
+    private fun compareCardImageItem(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is CardImageItem && newItem is CardImageItem
+                && compareCards(oldItem, newItem)
     }
 
 }

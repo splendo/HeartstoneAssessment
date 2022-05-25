@@ -11,7 +11,7 @@ package com.kapanen.hearthstoneassessment.model
  * @param attack
  * @param health
  * @param htmlText
- * @param flavour
+ * @param flavor
  * @param artist
  * @param elite
  * @param playerClass
@@ -25,13 +25,15 @@ data class BeCard(
     val name: String? = null,
     val cardSet: String? = null,
     val type: String? = null,
+    val faction: String? = null,
     val rarity: String? = null,
     val cost: Int? = null,
     val attack: Int? = null,
     val health: Int? = null,
     val htmlText: String? = null,
-    val flavour: String? = null,
+    val flavor: String? = null,
     val artist: String? = null,
+    val collectible: Boolean? = null,
     val elite: Boolean? = null,
     val playerClass: String? = null,
     val multiClassGroup: String? = null,
