@@ -8,12 +8,15 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.databinding.FragmentCardsTabBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
+import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.NoDataItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 private const val ARGS_KEY = "TAB"
 private const val GRID_NUMBER_OF_COLUMNS = 3
@@ -41,22 +44,29 @@ class CardsTabFragment : Fragment() {
             ViewModelProvider(this)[CardsTabViewModel::class.java]
         binding.apply {
             val cardsListAdapter = CardsListAdapter(adapterDelegatesManager)
+            val layoutManager = GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
             cardsRecyclerView.adapter = cardsListAdapter
-            cardsRecyclerView.layoutManager =
-                GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
+            cardsRecyclerView.layoutManager = layoutManager
             cardsRecyclerView.itemAnimator = null
             showLoading()
             (arguments?.get(ARGS_KEY) as CardsTab?)?.let { cardsTab ->
-                cardsTabViewModel.observeCards(cardsTab).observe(viewLifecycleOwner) { cards ->
-                    if (cards.isNotEmpty()) {
-                        showCards()
-                        cardsListAdapter.setItems(cards)
-                    } else {
-                        showNoData()
-                        cardsListAdapter.setItems(listOf(NoDataItem()))
-                    }
+                cardsTabViewModel.loadCards(cardsTab).observe(viewLifecycleOwner) { cards ->
+                    updateUi(cards, cardsListAdapter)
                 }
             }
+            cardsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        val visibleItemCount: Int = layoutManager.childCount
+                        val totalItemCount: Int = layoutManager.itemCount
+                        val firstVisibleItem: Int = layoutManager.findFirstVisibleItemPosition()
+                        if (firstVisibleItem + visibleItemCount >= totalItemCount) {
+                            cardsListAdapter.setItems(cardsTabViewModel.addNextPage(totalItemCount))
+                        }
+                    }
+                }
+            })
         }
     }
 
@@ -70,6 +80,19 @@ class CardsTabFragment : Fragment() {
             binding.cardsNoDataContainer.noDataContainer.isVisible = false
             binding.cardsProgressContainer.progressContainer.isVisible = false
             cardsRecyclerView.isVisible = true
+        }
+    }
+
+    private fun updateUi(
+        cards: List<Card>,
+        cardsListAdapter: CardsListAdapter
+    ) {
+        if (cards.isNotEmpty()) {
+            showCards()
+            cardsListAdapter.setItems(cards)
+        } else {
+            showNoData()
+            cardsListAdapter.setItems(listOf(NoDataItem()))
         }
     }
 
