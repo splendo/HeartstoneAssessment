@@ -39,13 +39,4 @@
         fresco:placeholderImage="@drawable/ic_placeholder_card"
         fresco:placeholderImageScaleType="centerInside" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/card_image_item_favourite_icon"
-        android:layout_width="@dimen/card_img_item_favourite_icon_size"
-        android:layout_height="@dimen/card_img_item_favourite_icon_size"
-        android:buttonTint="@color/favourite_icon"
-        android:src="@drawable/ic_favourite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

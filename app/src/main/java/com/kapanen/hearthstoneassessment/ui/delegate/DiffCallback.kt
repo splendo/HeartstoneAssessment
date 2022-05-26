@@ -31,6 +31,7 @@ class DiffCallback(
                 || compareIntStat(oldItem, newItem)
                 || compareStringStat(oldItem, newItem)
                 || compareCardImageItem(oldItem, newItem)
+                || compareFavouriteItem(oldItem, newItem)
     }
 
     private fun compareCards(oldItem: Any, newItem: Any): Boolean {
@@ -51,7 +52,12 @@ class DiffCallback(
 
     private fun compareCardImageItem(oldItem: Any, newItem: Any): Boolean {
         return oldItem is CardImageItem && newItem is CardImageItem
-                && compareCards(oldItem, newItem)
+                && oldItem.title == newItem.title
+                && oldItem.img == newItem.img
     }
 
+    private fun compareFavouriteItem(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is FavouriteItem && newItem is FavouriteItem
+                && oldItem.card.isFavorite == newItem.card.isFavorite
+    }
 }

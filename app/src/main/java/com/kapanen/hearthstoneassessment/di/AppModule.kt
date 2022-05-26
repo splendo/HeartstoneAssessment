@@ -204,8 +204,9 @@ object DelegatesModule {
             addDelegate(NoDataItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(CardStringStatItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(CardIntStatItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(CardImageDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(
-                CardImageDelegate(
+                FavouriteItemDelegate(
                     cardsRepository,
                     ioDispatcher
                 ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>

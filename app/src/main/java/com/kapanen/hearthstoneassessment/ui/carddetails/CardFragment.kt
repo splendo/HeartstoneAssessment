@@ -38,12 +38,11 @@ class CardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.getParcelable<Card>(CARD_KEY)?.let { card ->
-            binding.cardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             val cardViewModel = ViewModelProvider(this)[CardViewModel::class.java]
-            val adapter = CardsListAdapter(adapterDelegatesManager).apply {
-                setItems(cardViewModel.getItems(card, resources))
-                binding.cardRecyclerView.adapter = this
-            }
+            val adapter = CardsListAdapter(adapterDelegatesManager)
+            binding.cardRecyclerView.adapter = adapter
+            binding.cardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            adapter.setItems(cardViewModel.getItems(card, resources))
             cardViewModel.observeItems(card, resources).observe(viewLifecycleOwner) { items ->
                 adapter.setItems(items)
             }

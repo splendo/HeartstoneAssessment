@@ -6,10 +6,7 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.*
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardsRepository
-import com.kapanen.hearthstoneassessment.model.Card
-import com.kapanen.hearthstoneassessment.model.CardImageItem
-import com.kapanen.hearthstoneassessment.model.CardIntStatItem
-import com.kapanen.hearthstoneassessment.model.CardStringStatItem
+import com.kapanen.hearthstoneassessment.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
@@ -36,7 +33,7 @@ class CardViewModel @Inject constructor(
         resources: Resources
     ): List<Any> {
         val items = mutableListOf<Any>()
-        items.add(CardImageItem(card))
+        items.add(CardImageItem(title = card.name, img = card.img))
         items.addStringItem(R.string.card_stat_card_set, card.cardSet, resources)
         items.addStringItem(R.string.card_stat_type, card.type, resources)
         items.addStringItem(R.string.card_stat_faction, card.faction, resources)
@@ -65,9 +62,10 @@ class CardViewModel @Inject constructor(
         )
         items.addStringItem(
             R.string.card_stat_mechanics,
-            card.mechanics?.joinToString { MECHANICS_ITEM_DELIMITER },
+            card.mechanics?.map { it.name }?.joinToString { MECHANICS_ITEM_DELIMITER },
             resources
         )
+        items.add(FavouriteItem(card))
         return items.toList()
     }
 
