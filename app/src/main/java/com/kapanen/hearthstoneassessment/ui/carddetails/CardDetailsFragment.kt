@@ -47,13 +47,13 @@ class CardDetailsFragment : Fragment() {
                 } ?: updateCardArrows(position = 0, itemsCount = cards.size)
             binding.cardDetailsArrowBack.setOnClickListener {
                 if (viewPager.currentItem > 0) {
-                    viewPager.currentItem = viewPager.currentItem--
+                    viewPager.currentItem = viewPager.currentItem - 1
                 }
             }
             binding.cardDetailsArrowForward.setOnClickListener {
                 val itemCount = viewPager.adapter?.itemCount ?: 0
                 if (itemCount > 0 && viewPager.currentItem != itemCount - 1) {
-                    viewPager.currentItem = viewPager.currentItem++
+                    viewPager.currentItem = viewPager.currentItem + 1
                 }
             }
         }

@@ -30,7 +30,7 @@ data class BeCard(
     val cost: Int? = null,
     val attack: Int? = null,
     val health: Int? = null,
-    val htmlText: String? = null,
+    val text: String? = null,
     val flavor: String? = null,
     val artist: String? = null,
     val collectible: Boolean? = null,
