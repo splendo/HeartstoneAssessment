@@ -42,6 +42,7 @@ class CardFragment : Fragment() {
             val adapter = CardsListAdapter(adapterDelegatesManager)
             binding.cardRecyclerView.adapter = adapter
             binding.cardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.cardRecyclerView.itemAnimator = null
             adapter.setItems(cardViewModel.getItems(card, resources))
             cardViewModel.observeItems(card, resources).observe(viewLifecycleOwner) { items ->
                 adapter.setItems(items)
