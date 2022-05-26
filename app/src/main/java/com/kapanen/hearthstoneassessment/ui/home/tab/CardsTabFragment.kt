@@ -13,6 +13,7 @@ import com.kapanen.hearthstoneassessment.databinding.FragmentCardsTabBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.NoDataItem
+import com.kapanen.hearthstoneassessment.setting.AppSettings
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +26,8 @@ class CardsTabFragment : Fragment() {
 
     @Inject
     lateinit var adapterDelegatesManager: AdapterDelegatesManager
+    @Inject
+    lateinit var appSettings: AppSettings
 
     private var _binding: FragmentCardsTabBinding? = null
     private val binding get() = _binding!!
@@ -67,6 +70,9 @@ class CardsTabFragment : Fragment() {
                     }
                 }
             })
+            appSettings.favoriteUpdates.observe(viewLifecycleOwner) { card ->
+                cardsTabViewModel.onCardUpdate(card, cardsListAdapter.itemCount)
+            }
         }
     }
 

@@ -34,7 +34,9 @@ class DiffCallback(
     }
 
     private fun compareCards(oldItem: Any, newItem: Any): Boolean {
-        return oldItem is Card && newItem is Card && oldItem.cardId == newItem.cardId
+        return oldItem is Card && newItem is Card
+                && oldItem.cardId == newItem.cardId
+                && oldItem.isFavorite == newItem.isFavorite
     }
 
     private fun compareIntStat(oldItem: Any, newItem: Any): Boolean {

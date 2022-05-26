@@ -25,13 +25,48 @@ class CardsTabViewModel @Inject constructor(
     val items: LiveData<List<Any>> = _items
 
     private var cards: List<Card> = emptyList()
+    private var isFavorite: Boolean = false
+
+    fun onCardUpdate(card: Card, currentItemsCount: Int) {
+        viewModelScope.launch(dispatcher) {
+            cards.toMutableList().let { newCards ->
+                var isUpdated = false
+                cards.indexOfFirst { it.cardId == card.cardId }.takeIf { it >= 0 }
+                    ?.let { index ->
+                        if (!isFavorite) {
+                            isUpdated = true
+                            newCards[index] = card
+                        }
+                        if (isFavorite && !card.isFavorite) {
+                            isUpdated = true
+                            newCards.removeAt(index)
+                        }
+                    }
+                if (isFavorite && card.isFavorite) {
+                    isUpdated = true
+                    newCards.add(card)
+                }
+                if (isUpdated) {
+                    cards = if (currentItemsCount < newCards.size) {
+                        newCards.subList(0, currentItemsCount).toList()
+                    } else {
+                        newCards.toList()
+                    }
+                    _items.postValue(cards)
+                }
+            }
+
+        }
+    }
 
     fun loadCards(cardsTab: CardsTab) {
         viewModelScope.launch(dispatcher) {
             cardsTab.cardType?.let {
+                isFavorite = false
                 cards =
                     cardsRepository.getCards(cardsTab.cardType.typeName).getOrDefault(emptyList())
             } ?: run {
+                isFavorite = true
                 cards =
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }

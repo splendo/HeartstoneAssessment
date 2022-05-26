@@ -31,11 +31,11 @@ class DefaultCardsRepository(
         return localDataSource.getCards()
     }
 
-    override suspend fun getCards(cardGroupName: String): Result<List<Card>> {
+    override suspend fun getCards(cardType: String): Result<List<Card>> {
         if (!appSettings.isDataInitiallyLoaded) {
             updateCardsFromRemoteDataSource()
         }
-        return localDataSource.getCards(cardGroupName)
+        return localDataSource.getCards(cardType)
     }
 
     override suspend fun getCard(cardId: String): Result<Card> = localDataSource.getCard(cardId)
@@ -45,10 +45,12 @@ class DefaultCardsRepository(
 
     override suspend fun addFavouriteCard(card: Card) {
         localDataSource.addFavouriteCard(card)
+        appSettings.notifyFavoriteUpdate(card.copy(isFavorite = true))
     }
 
     override suspend fun removeFavouriteCard(card: Card) {
         localDataSource.removeFavouriteCard(card)
+        appSettings.notifyFavoriteUpdate(card.copy(isFavorite = false))
     }
 
     override suspend fun refresh() {
