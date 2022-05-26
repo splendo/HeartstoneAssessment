@@ -24,7 +24,7 @@
             android:singleLine="true"
             android:textAllCaps="true"
             android:textColor="@color/card_item_text_color"
-            android:textSize="@dimen/card_item_text_size"
+            android:textSize="@dimen/card_item_title_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,16 +51,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_items_top_spacing"
             android:ellipsize="end"
-            android:gravity="start"
-            android:minLines="2"
-            android:maxLines="4"
+            android:gravity="start|center_vertical"
+            android:lines="3"
             android:textAllCaps="false"
             android:textColor="@color/card_item_text_color"
             android:textSize="@dimen/card_item_text_size"
+            android:layout_marginRight="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/card_item_favourite_icon"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="It is said that some shaman can say Floatin totem 10 times, fast." />
+            tools:text="It is said that some shaman can say Floatin totem 10 times, fast."
+            tools:ignore="RtlHardcoded" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/card_item_favourite_icon"
