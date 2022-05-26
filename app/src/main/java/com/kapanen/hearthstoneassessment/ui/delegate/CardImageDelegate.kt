@@ -10,7 +10,6 @@ import com.kapanen.hearthstoneassessment.delegate.SimpleDelegate
 import com.kapanen.hearthstoneassessment.model.CardImageItem
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -45,13 +44,6 @@ class CardImageDelegate(
             )
 
             cardImageItemFavouriteIcon.setOnClickListener {
-                cardImageItemFavouriteIcon.setBackgroundResource(
-                    if (data.card.isFavorite) {
-                        R.drawable.ic_favourite
-                    } else {
-                        R.drawable.ic_filled_favourite
-                    }
-                )
                 launch(dispatcher) {
                     if (data.card.isFavorite) {
                         cardsRepository.removeFavouriteCard(data.card)

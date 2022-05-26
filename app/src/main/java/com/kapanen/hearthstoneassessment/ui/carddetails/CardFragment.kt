@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.databinding.FragmentCardBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
 import com.kapanen.hearthstoneassessment.model.Card
@@ -42,11 +40,12 @@ class CardFragment : Fragment() {
         arguments?.getParcelable<Card>(CARD_KEY)?.let { card ->
             binding.cardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             val cardViewModel = ViewModelProvider(this)[CardViewModel::class.java]
-            cardViewModel.init(card, resources)
-            cardViewModel.itemsLiveData.observe(viewLifecycleOwner) { items ->
-                binding.cardRecyclerView.adapter = CardsListAdapter(adapterDelegatesManager).apply {
-                    setItems(items)
-                }
+            val adapter = CardsListAdapter(adapterDelegatesManager).apply {
+                setItems(cardViewModel.getItems(card, resources))
+                binding.cardRecyclerView.adapter = this
+            }
+            cardViewModel.observeItems(card, resources).observe(viewLifecycleOwner) { items ->
+                adapter.setItems(items)
             }
         } ?: Timber.e(IllegalStateException("No card"))
     }
