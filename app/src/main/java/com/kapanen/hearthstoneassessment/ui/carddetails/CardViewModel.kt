@@ -8,15 +8,13 @@ import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 private const val MECHANICS_ITEM_DELIMITER = ", "
 
 @HiltViewModel
 class CardViewModel @Inject constructor(
-    private val cardsRepository: CardsRepository,
-    private val dispatcher: CoroutineDispatcher
+    private val cardsRepository: CardsRepository
 ) : ViewModel() {
 
     fun observeItems(card: Card, resources: Resources): LiveData<List<Any>> {

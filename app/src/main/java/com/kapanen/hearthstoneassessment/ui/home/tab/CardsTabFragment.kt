@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.databinding.FragmentCardsTabBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
-import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.NoDataItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,10 +48,11 @@ class CardsTabFragment : Fragment() {
             cardsRecyclerView.layoutManager = layoutManager
             cardsRecyclerView.itemAnimator = null
             showLoading()
+            cardsTabViewModel.items.observe(viewLifecycleOwner) { cards ->
+                updateUi(cards, cardsListAdapter)
+            }
             (arguments?.get(ARGS_KEY) as CardsTab?)?.let { cardsTab ->
-                cardsTabViewModel.loadCards(cardsTab).observe(viewLifecycleOwner) { cards ->
-                    updateUi(cards, cardsListAdapter)
-                }
+                cardsTabViewModel.loadCards(cardsTab)
             }
             cardsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -62,7 +62,7 @@ class CardsTabFragment : Fragment() {
                         val totalItemCount: Int = layoutManager.itemCount
                         val firstVisibleItem: Int = layoutManager.findFirstVisibleItemPosition()
                         if (firstVisibleItem + visibleItemCount >= totalItemCount) {
-                            cardsListAdapter.setItems(cardsTabViewModel.addNextPage(totalItemCount))
+                            cardsTabViewModel.loadNextPage(totalItemCount)
                         }
                     }
                 }
@@ -84,7 +84,7 @@ class CardsTabFragment : Fragment() {
     }
 
     private fun updateUi(
-        cards: List<Card>,
+        cards: List<Any>,
         cardsListAdapter: CardsListAdapter
     ) {
         if (cards.isNotEmpty()) {
