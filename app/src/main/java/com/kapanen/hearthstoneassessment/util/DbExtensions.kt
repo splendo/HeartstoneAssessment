@@ -53,7 +53,7 @@ fun Card.toDbCard() = DbCard(
     multiClassGroup = this.multiClassGroup,
     img = this.img,
     imgGold = this.imgGold,
-    mechanics = this.mechanics?.map { it.name }?.joinToString { ITEM_DELIMITER },
+    mechanics = this.mechanics?.map { it.name }?.joinToString(separator = ITEM_DELIMITER),
     isFavorite = this.isFavorite
 )
 

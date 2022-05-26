@@ -62,7 +62,7 @@ class CardViewModel @Inject constructor(
         )
         items.addStringItem(
             R.string.card_stat_mechanics,
-            card.mechanics?.map { it.name }?.joinToString { MECHANICS_ITEM_DELIMITER },
+            card.mechanics?.map { it.name }?.joinToString(separator = MECHANICS_ITEM_DELIMITER),
             resources
         )
         items.add(FavouriteItem(card))
