@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:maxLines="2"
+        android:maxLines="4"
         android:singleLine="false"
         android:textColor="@color/card_stat_item_text_color"
         android:textSize="@dimen/card_stat_item_string_value_text_size"
