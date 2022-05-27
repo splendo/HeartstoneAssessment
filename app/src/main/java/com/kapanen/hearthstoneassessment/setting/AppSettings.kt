@@ -11,6 +11,11 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
 
     var isDataInitiallyLoaded: Boolean by default(false)
 
+    var types: String by default("")
+    var rarities: String by default("")
+    var classes: String by default("")
+    var mechanics: String by default("")
+
     fun notifyFavoriteUpdate(card: Card) {
         _favoriteUpdates.postValue(card)
     }

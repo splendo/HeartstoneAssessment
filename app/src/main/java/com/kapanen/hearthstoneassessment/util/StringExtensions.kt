@@ -12,3 +12,5 @@ fun String.withTrailingSlash() = if (this.endsWith("/")) this else "$this/"
 fun List<String>.toItemsString(): String = this.joinToString(separator = ITEM_DELIMITER)
 
 fun String.toStringList(): List<String> = this.split(ITEM_DELIMITER)
+
+fun Set<String>.toItemsString(): String = this.joinToString(separator = ITEM_DELIMITER)
