@@ -41,8 +41,12 @@ class CardViewModel @Inject constructor(
         items.addIntItem(R.string.card_stat_health, card.health, resources)
         items.addStringItem(
             R.string.card_stat_text,
-            HtmlCompat.fromHtml(card.htmlText.orEmpty(), HtmlCompat.FROM_HTML_MODE_LEGACY)
-                .toString(),
+            if (!card.htmlText.isNullOrBlank()) {
+                HtmlCompat.fromHtml(card.htmlText.orEmpty(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                    .toString()
+            } else {
+                null
+            },
             resources
         )
         items.addStringItem(R.string.card_stat_flavor, card.flavor, resources)
