@@ -33,6 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_image_item_title"
+        fresco:fadeDuration="0"
         fresco:actualImageScaleType="centerInside"
         fresco:failureImage="@drawable/ic_placeholder_card"
         fresco:failureImageScaleType="centerInside"
