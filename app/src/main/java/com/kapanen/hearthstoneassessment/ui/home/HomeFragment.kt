@@ -28,6 +28,8 @@ class HomeFragment : Fragment() {
         val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        homeViewModel.loadCards()
+
         val viewPager = binding.homeViewPager
         viewPager.adapter = CardsTabAdapter(this, homeViewModel.getCardTabs())
         TabLayoutMediator(binding.homeTabBar, viewPager) { tab, position ->

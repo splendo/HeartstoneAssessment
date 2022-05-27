@@ -22,10 +22,6 @@ class HomeViewModel @Inject constructor(
     private val appSettings: AppSettings
 ) : ViewModel() {
 
-    init {
-        loadCards()
-    }
-
     fun isAscendingSorting() = appSettings.isAscendingSorting
 
     fun switchSortingOrder() {
@@ -36,7 +32,7 @@ class HomeViewModel @Inject constructor(
     fun getCardTabsLabelRes(position: Int) =
         cardTabs.getOrNull(position)?.cardType?.label ?: R.string.card_type_favourites
 
-    private fun loadCards() {
+    fun loadCards() {
         viewModelScope.launch(dispatcher) {
             val typeSet = mutableSetOf<String>()
             val raritySet = mutableSetOf<String>()
