@@ -47,7 +47,7 @@ class CardsTabViewModel @Inject constructor(
                     newCards.add(card)
                 }
                 if (isUpdated) {
-                    cards = if (currentItemsCount < newCards.size) {
+                    cards = if (!isFavorite && currentItemsCount < newCards.size) {
                         newCards.subList(0, currentItemsCount).toList()
                     } else {
                         newCards.toList()
