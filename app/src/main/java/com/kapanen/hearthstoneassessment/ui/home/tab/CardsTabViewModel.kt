@@ -49,12 +49,19 @@ class CardsTabViewModel @Inject constructor(
                     newCards.add(card)
                 }
                 if (isUpdated) {
-                    cards = if (!isFavorite && currentItemsCount < newCards.size) {
-                        newCards.subList(0, currentItemsCount).toList()
+                    val resultCards: List<Card> = if (isFavorite) {
+                        newCards.toList().sort()
                     } else {
                         newCards.toList()
                     }
-                    _items.postValue(cards)
+                    cards = resultCards
+                    _items.postValue(
+                        if (!isFavorite && currentItemsCount < newCards.size) {
+                            resultCards.subList(0, currentItemsCount).toList()
+                        } else {
+                            resultCards.toList()
+                        }
+                    )
                 }
             }
 
@@ -72,7 +79,7 @@ class CardsTabViewModel @Inject constructor(
                 cards =
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }
-            sort()
+            cards = cards.sort()
             _items.postValue(cards.take(PAGE_SIZE))
         }
     }
@@ -94,16 +101,16 @@ class CardsTabViewModel @Inject constructor(
 
     fun updateSorting() {
         viewModelScope.launch(dispatcher) {
-            sort()
+            cards = cards.sort()
             loadNextPage(0)
         }
     }
 
-    private fun sort() {
-        cards = if (appSettings.isAscendingSorting) {
-            cards.sortedBy { it.name }
+    private fun List<Card>.sort(): List<Card> {
+        return if (appSettings.isAscendingSorting) {
+            this.sortedBy { it.name }
         } else {
-            cards.sortedByDescending { it.name }
+            this.sortedByDescending { it.name }
         }
     }
 
