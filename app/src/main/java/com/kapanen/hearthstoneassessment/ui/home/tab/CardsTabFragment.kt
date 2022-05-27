@@ -73,6 +73,9 @@ class CardsTabFragment : Fragment() {
             appSettings.favoriteUpdates.observe(viewLifecycleOwner) { card ->
                 cardsTabViewModel.onCardUpdate(card, cardsListAdapter.itemCount)
             }
+            appSettings.sortingUpdates.observe(viewLifecycleOwner) {
+                cardsTabViewModel.updateSorting()
+            }
         }
     }
 

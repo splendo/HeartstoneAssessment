@@ -5,6 +5,7 @@ import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.LoadingItem
+import com.kapanen.hearthstoneassessment.setting.AppSettings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -15,7 +16,8 @@ private const val PAGE_SIZE = 20
 @HiltViewModel
 class CardsTabViewModel @Inject constructor(
     private val cardsRepository: CardsRepository,
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
+    private val appSettings: AppSettings
 ) :
     ViewModel() {
 
@@ -70,6 +72,7 @@ class CardsTabViewModel @Inject constructor(
                 cards =
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }
+            sort()
             _items.postValue(cards.take(PAGE_SIZE))
         }
     }
@@ -86,6 +89,21 @@ class CardsTabViewModel @Inject constructor(
                     }
                 )
             }
+        }
+    }
+
+    fun updateSorting() {
+        viewModelScope.launch(dispatcher) {
+            sort()
+            loadNextPage(0)
+        }
+    }
+
+    private fun sort() {
+        cards = if (appSettings.isAscendingSorting) {
+            cards.sortedBy { it.name }
+        } else {
+            cards.sortedByDescending { it.name }
         }
     }
 
