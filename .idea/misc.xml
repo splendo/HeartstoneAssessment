@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.20339412360688958" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/ic_arrow_forward.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_arrow_up.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/ic_favourite.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_favourite_large.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_favourite_selector.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_filled_favourite.xml" value="0.1235" />
         <entry key="app/src/main/res/drawable/ic_filled_favourite_large.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/ic_unfilled_favourite.xml" value="0.195" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4282034611356431" />
         <entry key="app/src/main/res/layout/card_image_item.xml" value="0.21048632218844984" />

@@ -26,6 +26,12 @@ class HomeViewModel @Inject constructor(
         loadCards()
     }
 
+    fun isAscendingSorting() = appSettings.isAscendingSorting
+
+    fun switchSortingOrder() {
+        appSettings.setSorting(!appSettings.isAscendingSorting)
+    }
+
     fun getCardTabs() = cardTabs
     fun getCardTabsLabelRes(position: Int) =
         cardTabs.getOrNull(position)?.cardType?.label ?: R.string.card_type_favourites

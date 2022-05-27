@@ -3,6 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_card_details">Details</string>
 
+    <string name="menu_filtering">Filter</string>
+    <string name="menu_sorting">Sort</string>
+
     <string name="card_type_basic">Basic</string>
     <string name="card_type_classic">Classic</string>
     <string name="card_type_hall_of_fame">Hall of Fame</string>

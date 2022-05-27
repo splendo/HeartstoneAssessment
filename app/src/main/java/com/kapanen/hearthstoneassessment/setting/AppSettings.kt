@@ -9,7 +9,12 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
     private val _favoriteUpdates = MutableLiveData<Card>()
     val favoriteUpdates: LiveData<Card> = _favoriteUpdates
 
+    private val _sortingUpdates = MutableLiveData<Boolean>()
+    val sortingUpdates: LiveData<Boolean> = _sortingUpdates
+
     var isDataInitiallyLoaded: Boolean by default(false)
+    var isAscendingSorting: Boolean by default(true)
+        private set
 
     var types: String by default("")
     var rarities: String by default("")
@@ -18,6 +23,11 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
 
     fun notifyFavoriteUpdate(card: Card) {
         _favoriteUpdates.postValue(card)
+    }
+
+    fun setSorting(isAscendingSorting: Boolean) {
+        this.isAscendingSorting = isAscendingSorting
+        _sortingUpdates.postValue(isAscendingSorting)
     }
 
 }
