@@ -5,6 +5,7 @@ import com.kapanen.hearthstoneassessment.data.local.LocalCardsDataSource
 import com.kapanen.hearthstoneassessment.data.remote.RemoteCardsDataSource
 import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.setting.AppSettings
+import com.kapanen.hearthstoneassessment.util.toItemsString
 
 class DefaultCardsRepository(
     private val remoteDataSource: RemoteCardsDataSource,
@@ -61,9 +62,40 @@ class DefaultCardsRepository(
         val remoteCardsResult = remoteDataSource.getCards()
 
         if (remoteCardsResult.isSuccess) {
+            val cards = remoteCardsResult.getOrDefault(emptyList())
+            updateFilterSettings(cards, isFirstLoading = !appSettings.isDataInitiallyLoaded)
             appSettings.isDataInitiallyLoaded = true
-            localDataSource.saveCards(remoteCardsResult.getOrDefault(emptyList()))
+            localDataSource.saveCards(cards)
         }
+    }
+
+    private fun updateFilterSettings(cards: List<Card>, isFirstLoading: Boolean) {
+        val typeSet = mutableSetOf<String>()
+        val raritySet = mutableSetOf<String>()
+        val classSet = mutableSetOf<String>()
+        val mechanicSet = mutableSetOf<String>()
+
+        cards.forEach { card ->
+            typeSet.addItem(card.type)
+            raritySet.addItem(card.rarity)
+            classSet.addItem(card.playerClass)
+            card.mechanics?.forEach { mechanicSet.addItem(it.name) }
+        }
+
+        appSettings.types = typeSet.toItemsString()
+        appSettings.rarities = raritySet.toItemsString()
+        appSettings.classes = classSet.toItemsString()
+        appSettings.mechanics = mechanicSet.toItemsString()
+        if (isFirstLoading) {
+            appSettings.typyFilter = appSettings.types
+            appSettings.rarityFilter = appSettings.rarities
+            appSettings.classFilter = appSettings.classes
+            appSettings.mechanicFilter = appSettings.mechanics
+        }
+    }
+
+    private fun MutableSet<String>.addItem(item: String?) {
+        item?.let { this.add(it) }
     }
 
 }
