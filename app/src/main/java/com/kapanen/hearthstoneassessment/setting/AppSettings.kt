@@ -12,6 +12,9 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
     private val _sortingUpdates = MutableLiveData<Boolean>()
     val sortingUpdates: LiveData<Boolean> = _sortingUpdates
 
+    private val _filteringUpdates = MutableLiveData<Long>()
+    val filteringUpdates: LiveData<Long> = _filteringUpdates
+
     var isDataInitiallyLoaded: Boolean by default(false)
     var isAscendingSorting: Boolean by default(true)
         private set
@@ -33,6 +36,10 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
     fun setSorting(isAscendingSorting: Boolean) {
         this.isAscendingSorting = isAscendingSorting
         _sortingUpdates.postValue(isAscendingSorting)
+    }
+
+    fun notifyFilteringUpdate() {
+        _filteringUpdates.postValue(System.currentTimeMillis())
     }
 
 }
