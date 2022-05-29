@@ -5,18 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.model.FilterHeader
 import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.model.FilterType
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.util.toStringList
 import com.kapanen.hearthstoneassessment.util.toStringSet
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
+@HiltViewModel
 class FilteringViewModel @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
     private val appSettings: AppSettings
@@ -54,6 +55,8 @@ class FilteringViewModel @Inject constructor(
                 filterType = FilterType.MECHANIC,
                 resources = resources
             )
+
+            _items.postValue(itemList.toList())
         }
     }
 

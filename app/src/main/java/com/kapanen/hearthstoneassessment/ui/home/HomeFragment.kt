@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.databinding.FragmentHomeBinding
@@ -39,7 +41,9 @@ class HomeFragment : Fragment() {
         val menu = binding.homeToolbar.menu
         updateSortingIcon(menu, homeViewModel.isAscendingSorting())
         menu.findItem(R.id.menu_item_filtering)?.setOnMenuItemClickListener {
-            //todo open filtering screen
+            findNavController(binding.root).navigate(
+                HomeFragmentDirections.actionNavigationHomeToNavigationFiltering()
+            )
             true
         }
         menu.findItem(R.id.menu_item_sorting)?.setOnMenuItemClickListener {

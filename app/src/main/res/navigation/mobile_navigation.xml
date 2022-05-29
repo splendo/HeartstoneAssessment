@@ -21,6 +21,10 @@
                 app:argType="string"
                 app:nullable="true" />
         </action>
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_filtering"
+            app:destination="@id/filtering" />
     </fragment>
 
     <fragment
@@ -28,5 +32,11 @@
         android:name="com.kapanen.hearthstoneassessment.ui.carddetails.CardDetailsFragment"
         android:label="@string/title_card_details"
         tools:layout="@layout/fragment_card_details" />
+
+    <fragment
+        android:id="@+id/filtering"
+        android:name="com.kapanen.hearthstoneassessment.ui.filtering.FilteringFragment"
+        android:label="@string/title_card_filtering"
+        tools:layout="@layout/fragment_filtering" />
 
 </navigation>

@@ -218,7 +218,7 @@ object DelegatesModule {
                     ioDispatcher
                 ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
             )
-            addDelegate(FilteringItemDelegate(appSettings) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(FilteringItemDelegate(appSettings, ioDispatcher) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(FilteringHeaderDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(UnknownItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
         }

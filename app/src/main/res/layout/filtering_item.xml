@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/filter_list_bg"
     android:paddingStart="@dimen/filtering_item_horizontal_padding"
     android:paddingTop="5dp"
     android:paddingEnd="@dimen/filtering_item_horizontal_padding"
