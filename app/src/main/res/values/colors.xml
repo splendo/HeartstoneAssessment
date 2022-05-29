@@ -16,4 +16,5 @@
     <color name="card_image_item_text_color">#FF474b56</color>
     <color name="card_stat_item_text_color">#FF474b56</color>
     <color name="card_stat_item_bg">#FFD1D2D5</color>
+    <color name="filter_list_bg">#FFD1D2D5</color>
 </resources>

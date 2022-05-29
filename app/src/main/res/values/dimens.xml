@@ -26,4 +26,5 @@
     <dimen name="favourite_icon_size">24dp</dimen>
     <dimen name="large_favourite_icon_size">64dp</dimen>
 
+    <dimen name="filtering_item_horizontal_padding">16dp</dimen>
 </resources>

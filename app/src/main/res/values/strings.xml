@@ -2,10 +2,12 @@
     <string name="app_name">HearthstoneAssessment</string>
     <string name="title_home">Home</string>
     <string name="title_card_details">Details</string>
+    <string name="title_card_filtering">Filtering</string>
 
     <string name="menu_filtering">Filter</string>
     <string name="menu_sorting">Sort</string>
 
+    <!-- Card types -->
     <string name="card_type_basic">Basic</string>
     <string name="card_type_classic">Classic</string>
     <string name="card_type_hall_of_fame">Hall of Fame</string>
@@ -24,7 +26,9 @@
     <string name="card_type_missions">Missions</string>
     <string name="card_type_credits">Credits</string>
     <string name="card_type_favourites">Favourites</string>
+    <!-- Card types -->
 
+    <!-- Card stats -->
     <string name="card_stat_card_set">Card set</string>
     <string name="card_stat_type">Type</string>
     <string name="card_stat_faction">Faction</string>
@@ -41,9 +45,17 @@
     <string name="card_stat_player_class">Player class</string>
     <string name="card_stat_multi_class_group">Multi class group</string>
     <string name="card_stat_mechanics">Mechanics</string>
+    <!-- Card stats -->
 
     <string name="no_data_item">Empty list</string>
 
     <string name="arg_card_id">cardId</string>
     <string name="arg_card_type">cardType</string>
+
+    <!-- Filters -->
+    <string name="filter_header_type">Type</string>
+    <string name="filter_header_rarity">Rarity</string>
+    <string name="filter_header_class">Class</string>
+    <string name="filter_header_mechanic">Mechanics</string>
+    <!-- Filters -->
 </resources>

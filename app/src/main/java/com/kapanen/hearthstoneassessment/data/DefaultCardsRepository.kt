@@ -87,7 +87,7 @@ class DefaultCardsRepository(
         appSettings.classes = classSet.toItemsString()
         appSettings.mechanics = mechanicSet.toItemsString()
         if (isFirstLoading) {
-            appSettings.typyFilter = appSettings.types
+            appSettings.typeFilter = appSettings.types
             appSettings.rarityFilter = appSettings.rarities
             appSettings.classFilter = appSettings.classes
             appSettings.mechanicFilter = appSettings.mechanics

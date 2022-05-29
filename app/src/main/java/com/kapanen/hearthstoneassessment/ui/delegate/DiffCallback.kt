@@ -31,6 +31,8 @@ class DiffCallback(
                 || compareIntStat(oldItem, newItem)
                 || compareStringStat(oldItem, newItem)
                 || compareFavouriteItem(oldItem, newItem)
+                || compareFilterHeaderItem(oldItem, newItem)
+                || compareFilterItem(oldItem, newItem)
     }
 
     private fun compareCards(oldItem: Any, newItem: Any): Boolean {
@@ -55,4 +57,17 @@ class DiffCallback(
         return oldItem is FavouriteItem && newItem is FavouriteItem
                 && oldItem.card.isFavorite == newItem.card.isFavorite
     }
+
+    private fun compareFilterHeaderItem(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is FilterHeader && newItem is FilterHeader
+                && oldItem.title == newItem.title
+    }
+
+    private fun compareFilterItem(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is FilterItem && newItem is FilterItem
+                && oldItem.value == newItem.value
+                && oldItem.filterType == newItem.filterType
+                && oldItem.isEnabled == newItem.isEnabled
+    }
+
 }

@@ -5,7 +5,7 @@ import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
 import com.kapanen.hearthstoneassessment.delegate.DelegateAdapter
 import com.kapanen.hearthstoneassessment.ui.delegate.DiffCallback
 
-class CardsListAdapter(delegatesManager: AdapterDelegatesManager) :
+class ListAdapter(delegatesManager: AdapterDelegatesManager) :
     DelegateAdapter<Any>(delegatesManager) {
 
     private var items: List<Any> = emptyList()

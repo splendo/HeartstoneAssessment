@@ -24,7 +24,7 @@ class AppSettings constructor(storage: Storage) : StoragePropertyDelegate(storag
     var classes: String by default("")
     var mechanics: String by default("")
 
-    var typyFilter: String by default("")
+    var typeFilter: String by default("")
     var rarityFilter: String by default("")
     var classFilter: String by default("")
     var mechanicFilter: String by default("")

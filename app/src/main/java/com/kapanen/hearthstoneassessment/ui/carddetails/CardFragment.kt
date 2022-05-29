@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kapanen.hearthstoneassessment.databinding.FragmentCardBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
 import com.kapanen.hearthstoneassessment.model.Card
-import com.kapanen.hearthstoneassessment.ui.home.tab.CardsListAdapter
+import com.kapanen.hearthstoneassessment.ui.home.tab.ListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.IllegalStateException
@@ -39,7 +39,7 @@ class CardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.getParcelable<Card>(CARD_KEY)?.let { card ->
             val cardViewModel = ViewModelProvider(this)[CardViewModel::class.java]
-            val adapter = CardsListAdapter(adapterDelegatesManager)
+            val adapter = ListAdapter(adapterDelegatesManager)
             binding.cardRecyclerView.adapter = adapter
             binding.cardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.cardRecyclerView.itemAnimator = null

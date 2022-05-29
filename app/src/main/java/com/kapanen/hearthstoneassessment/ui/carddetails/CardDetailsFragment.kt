@@ -25,6 +25,8 @@ class CardDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCardDetailsBinding.inflate(inflater, container, false)
+        (activity as AppCompatActivity).setSupportActionBar(binding.cardDetailsToolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         return binding.root
     }
 
@@ -66,12 +68,6 @@ class CardDetailsFragment : Fragment() {
                 )
             }
         })
-    }
-
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity).setSupportActionBar(binding.cardDetailsToolbar)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onDestroyView() {

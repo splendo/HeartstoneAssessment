@@ -45,14 +45,14 @@ class CardsTabFragment : Fragment() {
         val cardsTabViewModel =
             ViewModelProvider(this)[CardsTabViewModel::class.java]
         binding.apply {
-            val cardsListAdapter = CardsListAdapter(adapterDelegatesManager)
+            val listAdapter = ListAdapter(adapterDelegatesManager)
             val layoutManager = GridLayoutManager(requireContext(), GRID_NUMBER_OF_COLUMNS)
-            cardsRecyclerView.adapter = cardsListAdapter
+            cardsRecyclerView.adapter = listAdapter
             cardsRecyclerView.layoutManager = layoutManager
             cardsRecyclerView.itemAnimator = null
             showLoading()
             cardsTabViewModel.items.observe(viewLifecycleOwner) { cards ->
-                updateUi(cards, cardsListAdapter)
+                updateUi(cards, listAdapter)
             }
             (arguments?.get(ARGS_KEY) as CardsTab?)?.let { cardsTab ->
                 cardsTabViewModel.loadCards(cardsTab)
@@ -71,7 +71,7 @@ class CardsTabFragment : Fragment() {
                 }
             })
             appSettings.favoriteUpdates.observe(viewLifecycleOwner) { card ->
-                cardsTabViewModel.onCardUpdate(card, cardsListAdapter.itemCount)
+                cardsTabViewModel.onCardUpdate(card, listAdapter.itemCount)
             }
             appSettings.sortingUpdates.observe(viewLifecycleOwner) {
                 cardsTabViewModel.updateSorting()
@@ -94,14 +94,14 @@ class CardsTabFragment : Fragment() {
 
     private fun updateUi(
         cards: List<Any>,
-        cardsListAdapter: CardsListAdapter
+        listAdapter: ListAdapter
     ) {
         if (cards.isNotEmpty()) {
             showCards()
-            cardsListAdapter.setItems(cards)
+            listAdapter.setItems(cards)
         } else {
             showNoData()
-            cardsListAdapter.setItems(listOf(NoDataItem()))
+            listAdapter.setItems(listOf(NoDataItem()))
         }
     }
 

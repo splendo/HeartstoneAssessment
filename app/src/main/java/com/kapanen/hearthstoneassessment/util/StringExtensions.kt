@@ -13,4 +13,6 @@ fun List<String>.toItemsString(): String = this.joinToString(separator = ITEM_DE
 
 fun String.toStringList(): List<String> = this.split(ITEM_DELIMITER)
 
+fun String.toStringSet(): Set<String> = this.split(ITEM_DELIMITER).toSet()
+
 fun Set<String>.toItemsString(): String = this.joinToString(separator = ITEM_DELIMITER)
