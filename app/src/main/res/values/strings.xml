@@ -60,4 +60,7 @@
     <string name="filter_header_mechanic">Mechanics</string>
     <string name="filter_undefined_item">Undefined</string>
     <!-- Filters -->
+
+    <string name="loading_error_dialog_title">Error!</string>
+    <string name="loading_error_dialog_msg">Couldn\'t loads cards!</string>
 </resources>

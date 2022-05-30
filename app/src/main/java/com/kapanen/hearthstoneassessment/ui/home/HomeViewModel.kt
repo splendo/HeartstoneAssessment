@@ -1,5 +1,7 @@
 package com.kapanen.hearthstoneassessment.ui.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapanen.hearthstoneassessment.R
@@ -21,6 +23,11 @@ class HomeViewModel @Inject constructor(
     private val appSettings: AppSettings
 ) : ViewModel() {
 
+    private val _error = MutableLiveData<Boolean>().apply {
+        value = false
+    }
+    val error: LiveData<Boolean> = _error
+
     fun isAscendingSorting() = appSettings.isAscendingSorting
 
     fun switchSortingOrder() {
@@ -34,7 +41,9 @@ class HomeViewModel @Inject constructor(
     fun loadCards() {
         viewModelScope.launch(dispatcher) {
             if (!appSettings.isDataInitiallyLoaded) {
-                cardsRepository.getCards()
+                if (cardsRepository.getCards().isFailure) {
+                    _error.postValue(true)
+                }
             }
         }
     }

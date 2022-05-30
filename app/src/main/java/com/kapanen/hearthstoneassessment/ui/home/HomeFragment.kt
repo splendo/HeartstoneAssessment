@@ -2,6 +2,7 @@ package com.kapanen.hearthstoneassessment.ui.home
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
@@ -17,12 +18,14 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var homeViewModel: HomeViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         homeViewModel.loadCards()
@@ -47,12 +50,29 @@ class HomeFragment : Fragment() {
             true
         }
 
+        homeViewModel.error.observe(viewLifecycleOwner) { isError ->
+            if (isError) {
+                showLoadingErrorDialog()
+            }
+        }
+
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showLoadingErrorDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(resources.getString(R.string.loading_error_dialog_title))
+            .setMessage(resources.getString(R.string.loading_error_dialog_msg))
+            .setCancelable(false)
+            .setNeutralButton(android.R.string.ok) { _, _ ->
+                requireActivity().finish()
+            }
+            .show()
     }
 
     private fun updateSortingIcon(menu: Menu, isAscendingSorting: Boolean) {

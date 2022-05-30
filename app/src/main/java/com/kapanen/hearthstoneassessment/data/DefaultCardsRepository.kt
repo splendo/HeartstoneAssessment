@@ -29,15 +29,16 @@ class DefaultCardsRepository(
         localDataSource.observeFavouriteCards()
 
     override suspend fun getCards(): Result<List<Card>> {
-        if (!appSettings.isDataInitiallyLoaded) {
-            updateCardsFromRemoteDataSource()
+        return if (appSettings.isDataInitiallyLoaded) {
+            localDataSource.getCards()
+        } else {
+            getCardsFromRemoteDataSource()
         }
-        return localDataSource.getCards()
     }
 
     override suspend fun getCards(cardType: String): Result<List<Card>> {
         if (!appSettings.isDataInitiallyLoaded) {
-            updateCardsFromRemoteDataSource()
+            getCardsFromRemoteDataSource()
         }
         return localDataSource.getCards(cardType)
     }
@@ -58,10 +59,10 @@ class DefaultCardsRepository(
     }
 
     override suspend fun refresh() {
-        updateCardsFromRemoteDataSource()
+        getCardsFromRemoteDataSource()
     }
 
-    private suspend fun updateCardsFromRemoteDataSource() {
+    private suspend fun getCardsFromRemoteDataSource(): Result<List<Card>> {
         val remoteCardsResult = remoteDataSource.getCards()
 
         if (remoteCardsResult.isSuccess) {
@@ -70,6 +71,7 @@ class DefaultCardsRepository(
             appSettings.isDataInitiallyLoaded = true
             localDataSource.saveCards(cards)
         }
+        return remoteCardsResult
     }
 
     private fun updateFilterSettings(cards: List<Card>, isFirstLoading: Boolean) {
