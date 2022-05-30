@@ -53,9 +53,9 @@ class CardsTabViewModel @Inject constructor(
                 }
                 if (isUpdated) {
                     val resultCards: List<Card> = if (isFavorite) {
-                        newCards.toList().sort(appSettings)
+                        newCards.distinctBy { it.cardId }.toList().sort(appSettings)
                     } else {
-                        newCards.toList()
+                        newCards.distinctBy { it.cardId }.toList()
                     }
                     cards = resultCards
                     val filteredCards = resultCards.filter(appSettings).toList()
