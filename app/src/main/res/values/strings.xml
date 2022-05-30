@@ -51,6 +51,7 @@
 
     <string name="arg_card_id">cardId</string>
     <string name="arg_card_type">cardType</string>
+    <string name="arg_is_favorite_feed">isFavoriteFeed</string>
 
     <!-- Filters -->
     <string name="filter_header_type">Type</string>

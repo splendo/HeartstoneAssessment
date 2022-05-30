@@ -20,6 +20,9 @@
                 android:name="cardType"
                 app:argType="string"
                 app:nullable="true" />
+            <argument
+                android:name="isFavoriteFeed"
+                app:argType="boolean" />
         </action>
 
         <action

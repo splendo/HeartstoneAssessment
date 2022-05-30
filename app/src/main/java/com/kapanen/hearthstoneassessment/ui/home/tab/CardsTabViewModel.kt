@@ -3,6 +3,7 @@ package com.kapanen.hearthstoneassessment.ui.home.tab
 import androidx.lifecycle.*
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.model.Card
+import com.kapanen.hearthstoneassessment.model.CardWrapper
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.LoadingItem
 import com.kapanen.hearthstoneassessment.setting.AppSettings
@@ -60,9 +61,9 @@ class CardsTabViewModel @Inject constructor(
                     val filteredCards = resultCards.filter(appSettings).toList()
                     _items.postValue(
                         if (!isFavorite && currentItemsCount < filteredCards.size) {
-                            filteredCards.subList(0, currentItemsCount)
+                            filteredCards.subList(0, currentItemsCount).wrap()
                         } else {
-                            filteredCards
+                            filteredCards.wrap()
                         }
                     )
                 }
@@ -83,7 +84,7 @@ class CardsTabViewModel @Inject constructor(
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }
             cards = cards.sort(appSettings)
-            _items.postValue(cards.filter(appSettings).take(PAGE_SIZE))
+            _items.postValue(cards.filter(appSettings).take(PAGE_SIZE).wrap())
         }
     }
 
@@ -95,9 +96,9 @@ class CardsTabViewModel @Inject constructor(
                 _items.postValue(
                     if (requestedPosition < filteredCards.size) {
                         filteredCards
-                            .subList(0, currentItemsCount + PAGE_SIZE) + LoadingItem()
+                            .subList(0, currentItemsCount + PAGE_SIZE).wrap() + LoadingItem()
                     } else {
-                        filteredCards
+                        filteredCards.wrap()
                     }
                 )
             }
@@ -116,5 +117,7 @@ class CardsTabViewModel @Inject constructor(
             loadNextPage(0)
         }
     }
+
+    private fun List<Card>.wrap() = this.map { CardWrapper(it, isFavorite) }
 
 }

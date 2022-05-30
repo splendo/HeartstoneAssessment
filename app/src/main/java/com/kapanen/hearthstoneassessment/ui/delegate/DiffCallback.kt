@@ -27,12 +27,19 @@ class DiffCallback(
     private fun areItemsContentTheSame(oldItem: Any, newItem: Any): Boolean {
         return (oldItem is LoadingItem && newItem is LoadingItem)
                 || (oldItem is NoDataItem && newItem is NoDataItem)
+                || compareCardWrappers(oldItem, newItem)
                 || compareCards(oldItem, newItem)
                 || compareIntStat(oldItem, newItem)
                 || compareStringStat(oldItem, newItem)
                 || compareFavouriteItem(oldItem, newItem)
                 || compareFilterHeaderItem(oldItem, newItem)
                 || compareFilterItem(oldItem, newItem)
+    }
+
+    private fun compareCardWrappers(oldItem: Any, newItem: Any): Boolean {
+        return oldItem is CardWrapper && newItem is CardWrapper
+                && oldItem.isFavoriteFeed == newItem.isFavoriteFeed
+                && compareCards(oldItem.card, newItem.card)
     }
 
     private fun compareCards(oldItem: Any, newItem: Any): Boolean {

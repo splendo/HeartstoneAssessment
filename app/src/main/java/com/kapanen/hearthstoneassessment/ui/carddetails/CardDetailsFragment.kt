@@ -37,7 +37,15 @@ class CardDetailsFragment : Fragment() {
         val viewPager = binding.cardDetailsViewPager
         val cardId = arguments?.getString(resources.getString(R.string.arg_card_id))
         val cardType = arguments?.getString(resources.getString(R.string.arg_card_type))
-        cardId?.let { cardDetailsViewModel.init(cardId = it, cardType = cardType) }
+        val isFavoriteFeed =
+            arguments?.getBoolean(resources.getString(R.string.arg_is_favorite_feed)) ?: false
+        cardId?.let {
+            cardDetailsViewModel.init(
+                cardId = it,
+                cardType = cardType,
+                isFavoriteFeed = isFavoriteFeed
+            )
+        }
         updateCardArrows(position = 0, itemsCount = 0)
         cardDetailsViewModel.cardsLiveData.observe(viewLifecycleOwner) { cards ->
             viewPager.adapter = CardViewPagerAdapter(this, cards)

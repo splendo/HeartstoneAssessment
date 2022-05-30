@@ -9,7 +9,7 @@ import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.databinding.CardItemBinding
 import com.kapanen.hearthstoneassessment.delegate.SimpleDelegate
-import com.kapanen.hearthstoneassessment.model.Card
+import com.kapanen.hearthstoneassessment.model.CardWrapper
 import com.kapanen.hearthstoneassessment.ui.home.HomeFragmentDirections
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -18,12 +18,12 @@ class CardDelegate(
     private val cardsRepository: CardsRepository,
     private val dispatcher: CoroutineDispatcher
 ) :
-    SimpleDelegate<Card, CardDelegate.ViewHolder>(R.layout.card_item), CoroutineScope {
+    SimpleDelegate<CardWrapper, CardDelegate.ViewHolder>(R.layout.card_item), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = dispatcher
 
-    override fun suitFor(position: Int, data: Any) = data is Card
+    override fun suitFor(position: Int, data: Any) = data is CardWrapper
     override fun onCreateViewHolder(parent: ViewGroup) = ViewHolder(
         CardItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -32,14 +32,15 @@ class CardDelegate(
         )
     )
 
-    override fun onBindViewHolder(holder: ViewHolder, data: Card) {
+    override fun onBindViewHolder(holder: ViewHolder, data: CardWrapper) {
+        val card = data.card
         holder.binding.apply {
-            cardItemTitle.text = data.name
-            cardItemImage.setImageURI(data.img)
+            cardItemTitle.text = card.name
+            cardItemImage.setImageURI(card.img)
             cardItemText.text =
-                HtmlCompat.fromHtml(data.htmlText.orEmpty(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                HtmlCompat.fromHtml(card.htmlText.orEmpty(), HtmlCompat.FROM_HTML_MODE_LEGACY)
             cardItemFavouriteIcon.setBackgroundResource(
-                if (data.isFavorite) {
+                if (card.isFavorite) {
                     R.drawable.ic_filled_favourite
                 } else {
                     R.drawable.ic_favourite
@@ -48,18 +49,19 @@ class CardDelegate(
 
             cardItemFavouriteIcon.setOnClickListener {
                 launch(dispatcher) {
-                    if (data.isFavorite) {
-                        cardsRepository.removeFavouriteCard(data)
+                    if (card.isFavorite) {
+                        cardsRepository.removeFavouriteCard(card)
                     } else {
-                        cardsRepository.addFavouriteCard(data)
+                        cardsRepository.addFavouriteCard(card)
                     }
                 }
             }
             root.setOnClickListener {
                 root.findNavController().navigate(
                     HomeFragmentDirections.actionNavigationHomeToNavigationCardDetails(
-                        data.cardId,
-                        data.cardType?.typeName
+                        card.cardId,
+                        card.cardType?.typeName,
+                        data.isFavoriteFeed
                     )
                 )
             }
@@ -67,5 +69,5 @@ class CardDelegate(
     }
 
     class ViewHolder(val binding: CardItemBinding) : RecyclerView.ViewHolder(binding.root)
-}
 
+}
