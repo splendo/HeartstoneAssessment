@@ -17,7 +17,6 @@ import com.kapanen.hearthstoneassessment.setting.AppSettings
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 private const val ARGS_KEY = "TAB"
 private const val GRID_NUMBER_OF_COLUMNS = 3
 
@@ -75,6 +74,9 @@ class CardsTabFragment : Fragment() {
             }
             appSettings.sortingUpdates.observe(viewLifecycleOwner) {
                 cardsTabViewModel.updateSorting()
+            }
+            appSettings.filteringUpdates.observe(viewLifecycleOwner) {
+                cardsTabViewModel.updateFiltering()
             }
         }
     }

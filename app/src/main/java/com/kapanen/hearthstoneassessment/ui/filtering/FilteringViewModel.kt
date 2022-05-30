@@ -60,6 +60,10 @@ class FilteringViewModel @Inject constructor(
         }
     }
 
+    fun onPause() {
+        appSettings.notifyFilteringUpdate()
+    }
+
     private fun MutableList<Any>.addFilterSection(
         fullFiltersListStr: String,
         filtersStr: String,
@@ -68,22 +72,33 @@ class FilteringViewModel @Inject constructor(
     ) {
         val filters = filtersStr.toStringList()
         val filterItems = mutableListOf<FilterItem>()
-        fullFiltersListStr.toStringSet().forEach { item ->
-            filterItems.add(
-                FilterItem(
-                    label = item.replaceFirstChar { firstChar ->
-                        if (firstChar.isLowerCase()) {
-                            firstChar.titlecase(Locale.getDefault())
-                        } else {
-                            firstChar.toString()
-                        }
-                    },
-                    value = item,
-                    filterType = filterType,
-                    isEnabled = filters.contains(item)
+        fullFiltersListStr
+            .toStringSet()
+            .sortedWith { left, right ->
+                when {
+                    left != FilterItem.UNDEFINED && right != FilterItem.UNDEFINED -> {
+                        left.compareTo(right)
+                    }
+                    left == FilterItem.UNDEFINED && right != FilterItem.UNDEFINED -> 1
+                    left != FilterItem.UNDEFINED && right == FilterItem.UNDEFINED -> -1
+                    else -> 0
+                }
+            }.forEach { item ->
+                filterItems.add(
+                    FilterItem(
+                        label = item.replaceFirstChar { firstChar ->
+                            if (firstChar.isLowerCase()) {
+                                firstChar.titlecase(Locale.getDefault())
+                            } else {
+                                firstChar.toString()
+                            }
+                        },
+                        value = item,
+                        filterType = filterType,
+                        isEnabled = filters.contains(item)
+                    )
                 )
-            )
-        }
+            }
 
         if (filterItems.isNotEmpty()) {
             add(FilterHeader(resources.getString(filterType.filterLabelRes)))

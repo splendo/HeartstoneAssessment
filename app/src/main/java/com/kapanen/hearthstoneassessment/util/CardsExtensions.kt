@@ -4,6 +4,8 @@ import com.kapanen.hearthstoneassessment.data.CardType
 import com.kapanen.hearthstoneassessment.model.BeCard
 import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.Cards
+import com.kapanen.hearthstoneassessment.model.FilterItem
+import com.kapanen.hearthstoneassessment.setting.AppSettings
 
 fun Cards.toList(): List<Card> {
     val cardsList = mutableListOf<Card>()
@@ -94,3 +96,39 @@ private fun BeCard.toCard(cardType: CardType) = Card(
     mechanics = this.mechanics
 )
 
+fun List<Card>.sort(appSettings: AppSettings): List<Card> {
+    return if (appSettings.isAscendingSorting) {
+        this.sortedBy { it.name }
+    } else {
+        this.sortedByDescending { it.name }
+    }
+}
+
+fun List<Card>.filter(appSettings: AppSettings): List<Card> {
+    val typeFilterSet = appSettings.typeFilter.toStringSet()
+    val rarityFilterSet = appSettings.rarityFilter.toStringSet()
+    val classFilterSet = appSettings.classFilter.toStringSet()
+    val mechanicFilterSet = appSettings.mechanicFilter.toStringSet()
+    return this.filter { card ->
+        mechanicFilterSet.checkFilter(card.mechanics?.map { it.name } ?: emptyList())
+                && typeFilterSet.checkFilter(card.type)
+                && rarityFilterSet.checkFilter(card.rarity)
+                && classFilterSet.checkFilter(card.playerClass)
+    }
+}
+
+private fun Set<String>.checkFilter(value: String?): Boolean {
+    return this.contains(value) || (value.isNullOrBlank() && this.contains(FilterItem.UNDEFINED))
+}
+
+private fun Set<String>.checkFilter(items: List<String>): Boolean {
+    for (item in items) {
+        if (this.contains(item)) {
+            return true
+        }
+    }
+    if (this.contains(FilterItem.UNDEFINED) && items.isEmpty()) {
+        return true
+    }
+    return false
+}

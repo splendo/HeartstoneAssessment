@@ -57,5 +57,6 @@
     <string name="filter_header_rarity">Rarity</string>
     <string name="filter_header_class">Class</string>
     <string name="filter_header_mechanic">Mechanics</string>
+    <string name="filter_undefined_item">Undefined</string>
     <!-- Filters -->
 </resources>

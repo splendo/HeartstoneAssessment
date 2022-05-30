@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.databinding.FilteringItemBinding
 import com.kapanen.hearthstoneassessment.delegate.SimpleDelegate
-import com.kapanen.hearthstoneassessment.model.FilterHeader
 import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.model.FilterType
 import com.kapanen.hearthstoneassessment.setting.AppSettings
@@ -39,6 +38,7 @@ class FilteringItemDelegate @Inject constructor(
     )
 
     override fun onBindViewHolder(holder: ViewHolder, data: FilterItem) {
+        holder.setIsRecyclable(false)
         holder.binding.filteringItemLabel.text = data.label
         holder.binding.filteringItemSwitch.isChecked = data.isEnabled
         holder.binding.filteringItemSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -48,6 +48,7 @@ class FilteringItemDelegate @Inject constructor(
                 } else {
                     removeFilterItem(data)
                 }
+                appSettings.notifyFilteringUpdate()
             }
         }
     }
@@ -73,7 +74,7 @@ class FilteringItemDelegate @Inject constructor(
     private fun addItemFromString(filterStr: String, filterValue: String): String {
         val filterSet = filterStr.toStringSet().toMutableSet()
         filterSet.add(filterValue)
-        return filterSet.toItemsString()
+        return filterSet.filter { it.isNotBlank() }.toItemsString()
     }
 
     private fun removeFilterItem(data: FilterItem) {
@@ -98,7 +99,7 @@ class FilteringItemDelegate @Inject constructor(
     private fun removeItemFromString(filterStr: String, filterValue: String): String {
         val filterSet = filterStr.toStringSet().toMutableSet()
         filterSet.remove(filterValue)
-        return filterSet.toItemsString()
+        return filterSet.filter { it.isNotBlank() }.toItemsString()
     }
 
     class ViewHolder(val binding: FilteringItemBinding) : RecyclerView.ViewHolder(binding.root)

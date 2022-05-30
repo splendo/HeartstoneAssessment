@@ -1,9 +1,12 @@
 package com.kapanen.hearthstoneassessment.data
 
 import androidx.lifecycle.LiveData
+import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.local.LocalCardsDataSource
 import com.kapanen.hearthstoneassessment.data.remote.RemoteCardsDataSource
 import com.kapanen.hearthstoneassessment.model.Card
+import com.kapanen.hearthstoneassessment.model.FavouriteItem
+import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.util.toItemsString
 
@@ -81,6 +84,10 @@ class DefaultCardsRepository(
             classSet.addItem(card.playerClass)
             card.mechanics?.forEach { mechanicSet.addItem(it.name) }
         }
+        typeSet.add(FilterItem.UNDEFINED)
+        raritySet.add(FilterItem.UNDEFINED)
+        classSet.add(FilterItem.UNDEFINED)
+        mechanicSet.add(FilterItem.UNDEFINED)
 
         appSettings.types = typeSet.toItemsString()
         appSettings.rarities = raritySet.toItemsString()

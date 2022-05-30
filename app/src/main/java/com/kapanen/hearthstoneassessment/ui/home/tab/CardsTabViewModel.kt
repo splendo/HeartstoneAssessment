@@ -6,6 +6,8 @@ import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.CardsTab
 import com.kapanen.hearthstoneassessment.model.LoadingItem
 import com.kapanen.hearthstoneassessment.setting.AppSettings
+import com.kapanen.hearthstoneassessment.util.sort
+import com.kapanen.hearthstoneassessment.util.filter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -50,16 +52,17 @@ class CardsTabViewModel @Inject constructor(
                 }
                 if (isUpdated) {
                     val resultCards: List<Card> = if (isFavorite) {
-                        newCards.toList().sort()
+                        newCards.toList().sort(appSettings)
                     } else {
                         newCards.toList()
                     }
                     cards = resultCards
+                    val filteredCards = resultCards.filter(appSettings).toList()
                     _items.postValue(
-                        if (!isFavorite && currentItemsCount < newCards.size) {
-                            resultCards.subList(0, currentItemsCount).toList()
+                        if (!isFavorite && currentItemsCount < filteredCards.size) {
+                            filteredCards.subList(0, currentItemsCount)
                         } else {
-                            resultCards.toList()
+                            filteredCards
                         }
                     )
                 }
@@ -79,8 +82,8 @@ class CardsTabViewModel @Inject constructor(
                 cards =
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }
-            cards = cards.sort()
-            _items.postValue(cards.take(PAGE_SIZE))
+            cards = cards.sort(appSettings)
+            _items.postValue(cards.filter(appSettings).take(PAGE_SIZE))
         }
     }
 
@@ -88,11 +91,13 @@ class CardsTabViewModel @Inject constructor(
         viewModelScope.launch(dispatcher) {
             val requestedPosition = currentItemsCount + PAGE_SIZE
             cards.let { cardList ->
+                val filteredCards = cardList.filter(appSettings)
                 _items.postValue(
-                    if (requestedPosition < cardList.size) {
-                        cardList.subList(0, currentItemsCount + PAGE_SIZE) + LoadingItem()
+                    if (requestedPosition < filteredCards.size) {
+                        filteredCards
+                            .subList(0, currentItemsCount + PAGE_SIZE) + LoadingItem()
                     } else {
-                        cardList
+                        filteredCards
                     }
                 )
             }
@@ -101,16 +106,14 @@ class CardsTabViewModel @Inject constructor(
 
     fun updateSorting() {
         viewModelScope.launch(dispatcher) {
-            cards = cards.sort()
+            cards = cards.sort(appSettings)
             loadNextPage(0)
         }
     }
 
-    private fun List<Card>.sort(): List<Card> {
-        return if (appSettings.isAscendingSorting) {
-            this.sortedBy { it.name }
-        } else {
-            this.sortedByDescending { it.name }
+    fun updateFiltering() {
+        viewModelScope.launch(dispatcher) {
+            loadNextPage(0)
         }
     }
 

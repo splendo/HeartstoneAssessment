@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kapanen.hearthstoneassessment.databinding.FragmentFilteringBinding
 import com.kapanen.hearthstoneassessment.delegate.AdapterDelegatesManager
+import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.ui.home.tab.ListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -19,6 +20,9 @@ class FilteringFragment : Fragment() {
 
     @Inject
     lateinit var adapterDelegatesManager: AdapterDelegatesManager
+    @Inject
+    lateinit var appSettings: AppSettings
+    private lateinit var filteringViewModel: FilteringViewModel
 
     private var _binding: FragmentFilteringBinding? = null
     private val binding get() = _binding!!
@@ -35,7 +39,7 @@ class FilteringFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val filteringViewModel = ViewModelProvider(this)[FilteringViewModel::class.java]
+        filteringViewModel = ViewModelProvider(this)[FilteringViewModel::class.java]
         val adapter = ListAdapter(adapterDelegatesManager)
         binding.filteringRecyclerView.adapter = adapter
         binding.filteringRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -44,6 +48,14 @@ class FilteringFragment : Fragment() {
             adapter.setItems(items)
         }
         filteringViewModel.prepareItems(resources)
+        appSettings.filteringUpdates.observe(viewLifecycleOwner) {
+            filteringViewModel.prepareItems(resources)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        filteringViewModel.onPause()
     }
 
     override fun onDestroyView() {

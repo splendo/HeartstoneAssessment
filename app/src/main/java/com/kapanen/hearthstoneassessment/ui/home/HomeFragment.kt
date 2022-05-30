@@ -2,19 +2,14 @@ package com.kapanen.hearthstoneassessment.ui.home
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.databinding.FragmentHomeBinding
-import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.ui.home.tab.CardsTabAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
