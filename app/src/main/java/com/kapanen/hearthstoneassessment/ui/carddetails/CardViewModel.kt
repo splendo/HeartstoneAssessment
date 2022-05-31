@@ -7,6 +7,7 @@ import androidx.lifecycle.*
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.model.*
+import com.kapanen.hearthstoneassessment.util.toHumanReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -52,10 +53,14 @@ class CardViewModel @Inject constructor(
         items.addStringItem(R.string.card_stat_flavor, card.flavor, resources)
         items.addStringItem(
             R.string.card_stat_collectible,
-            card.collectible?.toString(),
+            card.collectible?.toHumanReadableString(resources),
             resources
         )
-        items.addStringItem(R.string.card_stat_elite, card.elite?.toString(), resources)
+        items.addStringItem(
+            R.string.card_stat_elite,
+            card.elite?.toHumanReadableString(resources),
+            resources
+        )
         items.addStringItem(R.string.card_stat_player_class, card.playerClass, resources)
         items.addStringItem(
             R.string.card_stat_multi_class_group,
