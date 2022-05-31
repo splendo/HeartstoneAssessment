@@ -1,18 +1,17 @@
-# Implementation
+## Implementation
 App architecture is MVVM, single Activity with using fragments as screens and tabs. 
 Used Technologies: Kotlin, Coroutines, LiveData, Hilt, Retrofit, okhttp, Gson, Room, Jetpack navigation, View binding.
 
 App contains 3 screens and 1 alert dialog:
-* The Home Screen with favorite tab and tabs with card sets which are based on remote feed (cards.json). Each tab contains a list of the card items. Card view has title, card's image (or placeholder if image is missing or image can't be loaded), description and favorite icon which shows current status of card and can be tapped by user to change it. User should tap on the card view item to open the Card Details Screen. Tab also has a loading indicator and a message about an empty list. Header of the screen contains the filtering and the sorting buttons. The Filtering button opens the Filtering Screen. The tap on the Sorting button changes current sorting in all tabs. The Sorting button shows the current sorting. ![The Home Screen](./screenshots/Screenshot_20220530_192659.png)
-* The Card Details Screen is a carousel of cards from the tab from the Home Screen with applying filters and sorting. Each page of that screen contains the card's title, image (or placeholder), full information about the card, favorite button and arrows which can be tapped to open the next or the previous page. The scrolling also can be used to open the next or the previous page. ![The Card Details Screen](./screenshots/Screenshot_20220530_193413.png)
-* The Filtering Screen has a list of filters with headers of filter's groups. Each filter item contains a label and switch which applies a new value immediately. ![The Filtering Screen](./screenshots/Screenshot_20220530_193134.png)
-* The Alert dialog which are shown if remote feed isn't available and local DB is empty (not initialised). ![The Alert dialog](./screenshots/Screenshot_20220530_192506.png)
+* The Home Screen with favorite tab and tabs with card sets which are based on remote feed (cards.json). Each tab contains a list of the card items. Card view has title, card's image (or placeholder if image is missing or image can't be loaded), description and favorite icon which shows current status of card and can be tapped by user to change it. User should tap on the card view item to open the Card Details Screen. Tab also has a loading indicator and a message about an empty list. Header of the screen contains the filtering and the sorting buttons. The Filtering button opens the Filtering Screen. The tap on the Sorting button changes current sorting in all tabs. The Sorting button shows the current sorting. ![The Home Screen](./images/Screenshot_20220530_192659.png)
+* The Card Details Screen is a carousel of cards from the tab from the Home Screen with applying filters and sorting. Each page of that screen contains the card's title, image (or placeholder), full information about the card, favorite button and arrows which can be tapped to open the next or the previous page. The scrolling also can be used to open the next or the previous page. ![The Card Details Screen](./images/Screenshot_20220530_193413.png)
+* The Filtering Screen has a list of filters with headers of filter's groups. Each filter item contains a label and switch which applies a new value immediately. ![The Filtering Screen](./images/Screenshot_20220530_193134.png)
+* The Alert dialog which are shown if remote feed isn't available and local DB is empty (not initialised). ![The Alert dialog](./images/Screenshot_20220530_192506.png)
 
 App downloads remote json with cards and saves to the local database. Retrofit and okhttp are used for work with REST API. Gson parses json. Room is an ORM for sqlite database.
-![Data flow](./screenshots/data_flow.png)
+![Data flow](./images/data_flow.png)
 App uses Shared preferences (xml) to store settings.
-heartstone-scheme.yml file contains description of REST API and data models in swagger format. Classes can be generated using swagger codegen. Unfortunately the swagger code generator from Homebrew doesn't contain the coroutines plugin for Kotlin so some forks of the swagger codegen should be used for it. Also [Swagger editor](https://editor.swagger.io) can be used to quick look at swagger docs for the current REST API.
-
+[heartstone-scheme.yml](./heartstone-scheme.yml) file contains description of REST API and data models in swagger format. Classes can be generated using swagger codegen. Unfortunately the swagger code generator from Homebrew doesn't contain the coroutines plugin for Kotlin so some forks of the swagger codegen should be used for it. Also [Swagger editor](https://editor.swagger.io) can be used to quick look at swagger docs for the current REST API.
 
 ## Introduction
 
