@@ -10,9 +10,10 @@ App contains 3 screens and 1 alert dialog:
 * The Alert dialog which are shown if remote feed isn't available and local DB is empty (not initialised). ![The Alert dialog](./images/Screenshot_20220530_192506.png)
 
 ### Data flow
-App downloads remote json with cards and saves to the local database. Retrofit and okhttp are used for work with REST API. Gson parses json. Room is an ORM for sqlite database.
+App downloads remote json with cards and saves to the local database. Retrofit and okhttp are used for work with REST API. Gson parses json. Room is an ORM for sqlite database. App uses Shared preferences (xml) to store settings.
 ![Data flow](./images/data_flow.png)
-App uses Shared preferences (xml) to store settings.
+
+### Swagger scheme
 [heartstone-scheme.yml](./heartstone-scheme.yml) file contains description of REST API and data models in swagger format. Classes can be generated using swagger codegen. Unfortunately the swagger code generator from Homebrew doesn't contain the coroutines plugin for Kotlin so some forks of the swagger codegen should be used for it. Also [Swagger editor](https://editor.swagger.io) can be used to quick look at swagger docs for the current REST API.
 
 ## Introduction
