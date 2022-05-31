@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HearthstoneAssessment</string>
+    <string name="app_name">Hearthstone Assessment</string>
     <string name="title_home">Home</string>
     <string name="title_card_details">Details</string>
     <string name="title_card_filtering">Filtering</string>
