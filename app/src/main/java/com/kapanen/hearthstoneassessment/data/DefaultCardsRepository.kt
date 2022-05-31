@@ -1,19 +1,19 @@
 package com.kapanen.hearthstoneassessment.data
 
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.local.LocalCardsDataSource
 import com.kapanen.hearthstoneassessment.data.remote.RemoteCardsDataSource
 import com.kapanen.hearthstoneassessment.model.Card
-import com.kapanen.hearthstoneassessment.model.FavouriteItem
-import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 import com.kapanen.hearthstoneassessment.util.toItemsString
 
 class DefaultCardsRepository(
     private val remoteDataSource: RemoteCardsDataSource,
     private val localDataSource: LocalCardsDataSource,
-    private val appSettings: AppSettings
+    private val appSettings: AppSettings,
+    private val resources: Resources
 ) : CardsRepository {
 
     override fun observeCards(): LiveData<Result<List<Card>>> =
@@ -75,6 +75,7 @@ class DefaultCardsRepository(
     }
 
     private fun updateFilterSettings(cards: List<Card>, isFirstLoading: Boolean) {
+        val undefinedStr = resources.getString(R.string.filter_undefined_item)
         val typeSet = mutableSetOf<String>()
         val raritySet = mutableSetOf<String>()
         val classSet = mutableSetOf<String>()
@@ -86,10 +87,10 @@ class DefaultCardsRepository(
             classSet.addItem(card.playerClass)
             card.mechanics?.forEach { mechanicSet.addItem(it.name) }
         }
-        typeSet.add(FilterItem.UNDEFINED)
-        raritySet.add(FilterItem.UNDEFINED)
-        classSet.add(FilterItem.UNDEFINED)
-        mechanicSet.add(FilterItem.UNDEFINED)
+        typeSet.add(undefinedStr)
+        raritySet.add(undefinedStr)
+        classSet.add(undefinedStr)
+        mechanicSet.add(undefinedStr)
 
         appSettings.types = typeSet.toItemsString()
         appSettings.rarities = raritySet.toItemsString()

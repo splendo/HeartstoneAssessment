@@ -5,8 +5,4 @@ data class FilterItem(
     val value: String,
     val filterType: FilterType,
     val isEnabled: Boolean = false
-) {
-    companion object {
-        const val UNDEFINED = "UNDEFINED"
-    }
-}
+)

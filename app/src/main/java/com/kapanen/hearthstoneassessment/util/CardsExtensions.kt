@@ -1,5 +1,7 @@
 package com.kapanen.hearthstoneassessment.util
 
+import android.content.res.Resources
+import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.data.CardType
 import com.kapanen.hearthstoneassessment.model.BeCard
 import com.kapanen.hearthstoneassessment.model.Card
@@ -104,30 +106,31 @@ fun List<Card>.sort(appSettings: AppSettings): List<Card> {
     }
 }
 
-fun List<Card>.filter(appSettings: AppSettings): List<Card> {
+fun List<Card>.filter(appSettings: AppSettings, resources: Resources): List<Card> {
+    val undefinedStr = resources.getString(R.string.filter_undefined_item)
     val typeFilterSet = appSettings.typeFilter.toStringSet()
     val rarityFilterSet = appSettings.rarityFilter.toStringSet()
     val classFilterSet = appSettings.classFilter.toStringSet()
     val mechanicFilterSet = appSettings.mechanicFilter.toStringSet()
     return this.filter { card ->
-        mechanicFilterSet.checkFilter(card.mechanics?.map { it.name } ?: emptyList())
-                && typeFilterSet.checkFilter(card.type)
-                && rarityFilterSet.checkFilter(card.rarity)
-                && classFilterSet.checkFilter(card.playerClass)
+        mechanicFilterSet.checkFilter(card.mechanics?.map { it.name } ?: emptyList(), undefinedStr)
+                && typeFilterSet.checkFilter(card.type, undefinedStr)
+                && rarityFilterSet.checkFilter(card.rarity, undefinedStr)
+                && classFilterSet.checkFilter(card.playerClass, undefinedStr)
     }
 }
 
-private fun Set<String>.checkFilter(value: String?): Boolean {
-    return this.contains(value) || (value.isNullOrBlank() && this.contains(FilterItem.UNDEFINED))
+private fun Set<String>.checkFilter(value: String?, undefinedStr: String): Boolean {
+    return this.contains(value) || (value.isNullOrBlank() && this.contains(undefinedStr))
 }
 
-private fun Set<String>.checkFilter(items: List<String>): Boolean {
+private fun Set<String>.checkFilter(items: List<String>, undefinedStr: String): Boolean {
     for (item in items) {
         if (this.contains(item)) {
             return true
         }
     }
-    if (this.contains(FilterItem.UNDEFINED) && items.isEmpty()) {
+    if (this.contains(undefinedStr) && items.isEmpty()) {
         return true
     }
     return false

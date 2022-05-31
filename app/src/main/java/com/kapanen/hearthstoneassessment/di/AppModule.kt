@@ -2,6 +2,7 @@ package com.kapanen.hearthstoneassessment.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.gson.Gson
@@ -86,6 +87,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideAppSettings(storage: Storage) = AppSettings(storage)
+
+    @Singleton
+    @Provides
+    fun provideResources(@ApplicationContext context: Context) = context.resources
 
     @Provides
     fun provideHttpCache(@ApplicationContext context: Context): Cache? {
@@ -182,9 +187,15 @@ object CardsRepositoryModule {
     fun provideCardsRepository(
         @AppModule.RemoteDataSource remoteCardsDataSource: RemoteCardsDataSource,
         @AppModule.LocalDataSource localCardsDataSource: LocalCardsDataSource,
-        appSettings: AppSettings
+        appSettings: AppSettings,
+        resources: Resources
     ): CardsRepository {
-        return DefaultCardsRepository(remoteCardsDataSource, localCardsDataSource, appSettings)
+        return DefaultCardsRepository(
+            remoteCardsDataSource,
+            localCardsDataSource,
+            appSettings,
+            resources
+        )
     }
 
 }
@@ -218,7 +229,12 @@ object DelegatesModule {
                     ioDispatcher
                 ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
             )
-            addDelegate(FilteringItemDelegate(appSettings, ioDispatcher) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
+            addDelegate(
+                FilteringItemDelegate(
+                    appSettings,
+                    ioDispatcher
+                ) as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>
+            )
             addDelegate(FilteringHeaderDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
             addDelegate(UnknownItemDelegate() as RecyclerViewAdapterDelegate<Any, RecyclerView.ViewHolder>)
         }

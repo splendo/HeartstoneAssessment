@@ -1,5 +1,6 @@
 package com.kapanen.hearthstoneassessment.ui.home.tab
 
+import android.content.res.Resources
 import androidx.lifecycle.*
 import com.kapanen.hearthstoneassessment.data.CardsRepository
 import com.kapanen.hearthstoneassessment.model.Card
@@ -20,7 +21,8 @@ private const val PAGE_SIZE = 20
 class CardsTabViewModel @Inject constructor(
     private val cardsRepository: CardsRepository,
     private val dispatcher: CoroutineDispatcher,
-    private val appSettings: AppSettings
+    private val appSettings: AppSettings,
+    private val resources: Resources
 ) :
     ViewModel() {
 
@@ -58,7 +60,7 @@ class CardsTabViewModel @Inject constructor(
                         newCards.distinctBy { it.cardId }.toList()
                     }
                     cards = resultCards
-                    val filteredCards = resultCards.filter(appSettings).toList()
+                    val filteredCards = resultCards.filter(appSettings, resources).toList()
                     _items.postValue(
                         if (!isFavorite && currentItemsCount < filteredCards.size) {
                             filteredCards.subList(0, currentItemsCount).wrap()
@@ -84,7 +86,7 @@ class CardsTabViewModel @Inject constructor(
                     cardsRepository.getFavouriteCards().getOrDefault(emptyList()).take(PAGE_SIZE)
             }
             cards = cards.sort(appSettings)
-            _items.postValue(cards.filter(appSettings).take(PAGE_SIZE).wrap())
+            _items.postValue(cards.filter(appSettings, resources).take(PAGE_SIZE).wrap())
         }
     }
 
@@ -92,7 +94,7 @@ class CardsTabViewModel @Inject constructor(
         viewModelScope.launch(dispatcher) {
             val requestedPosition = currentItemsCount + PAGE_SIZE
             cards.let { cardList ->
-                val filteredCards = cardList.filter(appSettings)
+                val filteredCards = cardList.filter(appSettings, resources)
                 _items.postValue(
                     if (requestedPosition < filteredCards.size) {
                         filteredCards

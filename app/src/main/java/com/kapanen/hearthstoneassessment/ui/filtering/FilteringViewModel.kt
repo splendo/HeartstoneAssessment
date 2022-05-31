@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kapanen.hearthstoneassessment.R
 import com.kapanen.hearthstoneassessment.model.FilterHeader
 import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.model.FilterType
@@ -70,17 +71,18 @@ class FilteringViewModel @Inject constructor(
         filterType: FilterType,
         resources: Resources
     ) {
+        val undefinedStr = resources.getString(R.string.filter_undefined_item)
         val filters = filtersStr.toStringList()
         val filterItems = mutableListOf<FilterItem>()
         fullFiltersListStr
             .toStringSet()
             .sortedWith { left, right ->
                 when {
-                    left != FilterItem.UNDEFINED && right != FilterItem.UNDEFINED -> {
+                    left != undefinedStr && right != undefinedStr -> {
                         left.compareTo(right)
                     }
-                    left == FilterItem.UNDEFINED && right != FilterItem.UNDEFINED -> 1
-                    left != FilterItem.UNDEFINED && right == FilterItem.UNDEFINED -> -1
+                    left == undefinedStr && right != undefinedStr -> 1
+                    left != undefinedStr && right == undefinedStr -> -1
                     else -> 0
                 }
             }.forEach { item ->

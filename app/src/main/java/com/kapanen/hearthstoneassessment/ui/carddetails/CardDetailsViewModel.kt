@@ -1,5 +1,6 @@
 package com.kapanen.hearthstoneassessment.ui.carddetails
 
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class CardDetailsViewModel @Inject constructor(
     private val cardsRepository: CardsRepository,
     private val dispatcher: CoroutineDispatcher,
-    private val appSettings: AppSettings
+    private val appSettings: AppSettings,
+    private val resources: Resources
 ) : ViewModel() {
 
     private val _cardsLiveData = MutableLiveData<List<Card>>()
@@ -45,7 +47,7 @@ class CardDetailsViewModel @Inject constructor(
             }
             else -> cardsRepository.getFavouriteCards()
         }
-        return result.getOrDefault(emptyList()).sort(appSettings).filter(appSettings)
+        return result.getOrDefault(emptyList()).sort(appSettings).filter(appSettings, resources)
     }
 
 }
