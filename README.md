@@ -11,6 +11,7 @@ App contains 3 screens and 1 alert dialog:
 
 ### Data flow
 App downloads remote json with cards and saves to the local database. Retrofit and okhttp are used for work with REST API. Gson parses json. Room is an ORM for sqlite database. App uses Shared preferences (xml) to store settings.
+Build config field `BASE_HEARTHSTONE_URL` (./app/build.gradle) is used to set up base URL for remote feed.
 ![Data flow](./images/data_flow.png)
 
 ### Swagger scheme
