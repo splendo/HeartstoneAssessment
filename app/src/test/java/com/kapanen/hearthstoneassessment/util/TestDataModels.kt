@@ -128,6 +128,8 @@ object TestDataModels {
         imgGold = "http://media.services.zam.com/v1/media/byName/hs/cards/enus/animated/EX1_557_premium.gif"
     )
 
+    val cardList = listOf(mockedCard1, mockedCard2, mockedCard3)
+
     val cards = Cards(
         basic = listOf(mockedBeCard1),
         classic = listOf(mockedBeCard3),
