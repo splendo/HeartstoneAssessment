@@ -70,6 +70,28 @@ fun Cards.toList(): List<Card> {
     return cardsList.toList()
 }
 
+fun List<Card>.sort(appSettings: AppSettings): List<Card> {
+    return if (appSettings.isAscendingSorting) {
+        this.sortedBy { it.name }
+    } else {
+        this.sortedByDescending { it.name }
+    }
+}
+
+fun List<Card>.filter(appSettings: AppSettings, resources: Resources): List<Card> {
+    val undefinedStr = resources.getString(R.string.filter_undefined_item)
+    val typeFilterSet = appSettings.typeFilter.toStringSet()
+    val rarityFilterSet = appSettings.rarityFilter.toStringSet()
+    val classFilterSet = appSettings.classFilter.toStringSet()
+    val mechanicFilterSet = appSettings.mechanicFilter.toStringSet()
+    return this.filter { card ->
+        mechanicFilterSet.checkFilter(card.mechanics?.map { it.name } ?: emptyList(), undefinedStr)
+                && typeFilterSet.checkFilter(card.type, undefinedStr)
+                && rarityFilterSet.checkFilter(card.rarity, undefinedStr)
+                && classFilterSet.checkFilter(card.playerClass, undefinedStr)
+    }
+}
+
 private fun MutableList<Card>.convertAndAdd(cardType: CardType, beCards: List<BeCard>?) {
     beCards?.map { it.toCard(cardType) }?.let { this.addAll(it) }
 }
@@ -96,28 +118,6 @@ private fun BeCard.toCard(cardType: CardType) = Card(
     imgGold = this.imgGold,
     mechanics = this.mechanics
 )
-
-fun List<Card>.sort(appSettings: AppSettings): List<Card> {
-    return if (appSettings.isAscendingSorting) {
-        this.sortedBy { it.name }
-    } else {
-        this.sortedByDescending { it.name }
-    }
-}
-
-fun List<Card>.filter(appSettings: AppSettings, resources: Resources): List<Card> {
-    val undefinedStr = resources.getString(R.string.filter_undefined_item)
-    val typeFilterSet = appSettings.typeFilter.toStringSet()
-    val rarityFilterSet = appSettings.rarityFilter.toStringSet()
-    val classFilterSet = appSettings.classFilter.toStringSet()
-    val mechanicFilterSet = appSettings.mechanicFilter.toStringSet()
-    return this.filter { card ->
-        mechanicFilterSet.checkFilter(card.mechanics?.map { it.name } ?: emptyList(), undefinedStr)
-                && typeFilterSet.checkFilter(card.type, undefinedStr)
-                && rarityFilterSet.checkFilter(card.rarity, undefinedStr)
-                && classFilterSet.checkFilter(card.playerClass, undefinedStr)
-    }
-}
 
 private fun Set<String>.checkFilter(value: String?, undefinedStr: String): Boolean {
     return this.contains(value) || (value.isNullOrBlank() && this.contains(undefinedStr))
