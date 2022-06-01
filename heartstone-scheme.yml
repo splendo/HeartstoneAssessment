@@ -50,18 +50,18 @@ definitions:
           type:  integer
         health:
           type:  integer
-        htmlText:
+        text:
           type:  string
         flavour:
           type:  string
         artist:
           type:  string
+        collectible:
+          type:  boolean
         elite:
           type:  boolean
         playerClass:
-          type:  array
-          items:
-            type: string
+          type:  string
         multiClassGroup:
           type:  string
         img:
