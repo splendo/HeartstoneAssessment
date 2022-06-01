@@ -6,7 +6,6 @@ import com.kapanen.hearthstoneassessment.data.CardType
 import com.kapanen.hearthstoneassessment.model.BeCard
 import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.Cards
-import com.kapanen.hearthstoneassessment.model.FilterItem
 import com.kapanen.hearthstoneassessment.setting.AppSettings
 
 fun Cards.toList(): List<Card> {
