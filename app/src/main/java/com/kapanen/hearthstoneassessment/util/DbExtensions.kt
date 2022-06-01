@@ -7,8 +7,6 @@ import com.kapanen.hearthstoneassessment.model.Card
 import com.kapanen.hearthstoneassessment.model.DbCard
 import com.kapanen.hearthstoneassessment.model.Mechanic
 
-private const val ITEM_DELIMITER = "|"
-
 fun DbCard.toCard() = Card(
     cardId = this.cardId,
     cardType = CardType.values().first { it.typeName.equals(this.cardType, ignoreCase = true) },
@@ -58,6 +56,8 @@ fun Card.toDbCard() = DbCard(
 )
 
 fun LiveData<List<DbCard>>.toCards(): LiveData<Result<List<Card>>> =
-    this.map { dbCards -> Result.success(dbCards.map { it.toCard() }) }
+    this.map { dbCards ->
+        Result.success(dbCards.map { it.toCard() })
+    }
 
 fun List<DbCard>.toCards(): Result<List<Card>> = Result.success(this.map { it.toCard() })
