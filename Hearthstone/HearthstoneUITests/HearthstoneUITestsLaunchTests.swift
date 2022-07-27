@@ -2,7 +2,7 @@
 //  HearthstoneUITestsLaunchTests.swift
 //  HearthstoneUITests
 //
-//  Created by Epsilon User on 25/7/22.
+//  Created by Epsilon User on 27/7/22.
 //
 
 import XCTest
