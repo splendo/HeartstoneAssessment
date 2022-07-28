@@ -19,6 +19,7 @@
 		30818457288FCCCC00838205 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 30818456288FCCCB00838205 /* cards.json */; };
 		30A8D56528929D1B00849D1F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56428929D1B00849D1F /* CardViewModel.swift */; };
 		30A8D5692892A67600849D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D5682892A67600849D1F /* Extensions.swift */; };
+		30A8D56B2892AA2000849D1F /* TestCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */; };
 		30B71181288FE1BA00935D29 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71180288FE1BA00935D29 /* Card.swift */; };
 		30B71184288FE74C00935D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B71183288FE74C00935D29 /* Main.storyboard */; };
 		30B71186288FE76A00935D29 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71185288FE76A00935D29 /* MainViewController.swift */; };
@@ -58,6 +59,7 @@
 		30818456288FCCCB00838205 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cards.json; path = Hearthstone/Assets/cards.json; sourceTree = SOURCE_ROOT; };
 		30A8D56428929D1B00849D1F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		30A8D5682892A67600849D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardViewModel.swift; sourceTree = "<group>"; };
 		30B71180288FE1BA00935D29 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		30B71183288FE74C00935D29 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		30B71185288FE76A00935D29 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				30070E4228916E450062F0E6 /* TestCardsFile.swift */,
 				30070E4128916E010062F0E6 /* Helpers */,
+				30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */,
 			);
 			path = CardsTests;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				30070E4328916E450062F0E6 /* TestCardsFile.swift in Sources */,
 				3063DB78289273C100715E98 /* CardsHelper.swift in Sources */,
+				30A8D56B2892AA2000849D1F /* TestCardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
