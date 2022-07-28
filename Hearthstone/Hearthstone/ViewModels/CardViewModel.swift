@@ -16,10 +16,10 @@ struct CardViewModel {
 
 extension CardViewModel {
     
+    // In case new entries have "corrupt" data
     static var placeholderTitle: String {
         "No Name"
     }
-    
 }
 
 extension CardViewModel {
