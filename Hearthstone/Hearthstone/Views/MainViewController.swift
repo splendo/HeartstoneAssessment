@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  Hearthstone
 //
-//  Created by Epsilon User on 26/7/22.
+//  Created by Stavros Tsikinas on 26/7/22.
 //
 
 import UIKit

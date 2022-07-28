@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Hearthstone
 //
-//  Created by Epsilon User on 25/7/22.
+//  Created by Stavros Tsikinas on 25/7/22.
 //
 
 import UIKit
