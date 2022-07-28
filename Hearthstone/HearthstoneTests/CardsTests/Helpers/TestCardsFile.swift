@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import Hearthstone
 
 class TestCardsFile: XCTestCase {
 

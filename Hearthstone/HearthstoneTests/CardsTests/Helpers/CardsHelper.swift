@@ -6,14 +6,14 @@
 //
 
 import Foundation
+@testable import Hearthstone
 
 
 ///
 /// Test helper method of retrieving the json url.
 ///
 func getUrlFile(from name: String?, typed: String?) -> URL? {
-    
-    return Bundle.main.url(forResource: name, withExtension: typed)
+    Bundle.main.url(forResource: name, withExtension: typed)
 }
 
 ///

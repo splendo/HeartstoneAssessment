@@ -9,28 +9,52 @@ import Foundation
 
 struct Card {
 
-    let cardId: String?
-    let name: String?
-    let cardSet: String?
-    let type: String?
-    let rarity: String?
-    let cost: Int?
-    let attack: Int?
-    let health: Int?
-    let text: String?
-    let flavor: String?
-    let artist: String?
-    let collectible: Bool?
-    let elite: Bool?
-    let playerClass: String?
-    let multiClassGroup: String?
-    let classes: [String]?
-    let img: String?
-    let imgGold: String?
-    let locale: String?
-    let mechanics: [String]?
+    var cardId: String?
+    var name: String?
+    var cardSet: String?
+    var type: String?
+    var rarity: String?
+    var cost: Int?
+    var attack: Int?
+    var health: Int?
+    var text: String?
+    var flavor: String?
+    var artist: String?
+    var collectible: Bool?
+    var elite: Bool?
+    var playerClass: String?
+    var multiClassGroup: String?
+    var classes: [String]?
+    var img: String?
+    var imgGold: String?
+    var locale: String?
+    var mechanics: [String]?
     
-    //  JSON file returns a Dictionary in categories 
+    // Instantiation of a Card object for testing and internal purposes
+    init(cardId: String? = nil, name: String? = nil, cardSet: String? = nil, type: String? = nil, rarity: String? = nil, cost: Int? = nil, attack: Int? = nil, health: Int? = nil, text: String? = nil, flavor: String? = nil, artist: String? = nil, collectible: Bool? = nil, elite: Bool? = nil, playerClass: String? = nil, multiClassGroup: String? = nil, classes: [String]? = nil, img: String? = nil, imgGold: String? = nil, locale: String? = nil, mechanics: [String]? = nil) {
+        self.cardId = cardId
+        self.name = name
+        self.cardSet = cardSet
+        self.type = type
+        self.rarity = rarity
+        self.cost = cost
+        self.attack = attack
+        self.health = health
+        self.text = text
+        self.flavor = flavor
+        self.artist = artist
+        self.collectible = collectible
+        self.elite = elite
+        self.playerClass = playerClass
+        self.multiClassGroup = multiClassGroup
+        self.classes = classes
+        self.img = img
+        self.imgGold = imgGold
+        self.locale = locale
+        self.mechanics = mechanics
+    }
+    
+    //  JSON Serialization returns a Dictionary of card category arrays
     init(from dictionary: [String: Any]) {
         self.cardId = dictionary["cardId"] as? String
         self.name = dictionary["name"] as? String
