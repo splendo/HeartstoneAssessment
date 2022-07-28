@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30070E4328916E450062F0E6 /* TestCardsFileExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4228916E450062F0E6 /* TestCardsFileExists.swift */; };
+		30070E4328916E450062F0E6 /* TestCardsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4228916E450062F0E6 /* TestCardsFile.swift */; };
 		30070E4B289180A70062F0E6 /* HearthstoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4A289180A70062F0E6 /* HearthstoneUITests.swift */; };
 		30070E4D289180A70062F0E6 /* HearthstoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4C289180A70062F0E6 /* HearthstoneUITestsLaunchTests.swift */; };
 		305C6FEE288EED28001D4559 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C6FED288EED28001D4559 /* AppDelegate.swift */; };
@@ -15,6 +15,7 @@
 		305C6FF8288EED28001D4559 /* Hearthstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 305C6FF6288EED28001D4559 /* Hearthstone.xcdatamodeld */; };
 		305C6FFA288EED2B001D4559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305C6FF9288EED2B001D4559 /* Assets.xcassets */; };
 		305C6FFD288EED2B001D4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305C6FFB288EED2B001D4559 /* LaunchScreen.storyboard */; };
+		3063DB78289273C100715E98 /* CardsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063DB77289273C100715E98 /* CardsHelper.swift */; };
 		30818457288FCCCC00838205 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 30818456288FCCCB00838205 /* cards.json */; };
 		30B71181288FE1BA00935D29 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71180288FE1BA00935D29 /* Card.swift */; };
 		30B71184288FE74C00935D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B71183288FE74C00935D29 /* Main.storyboard */; };
@@ -39,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30070E4228916E450062F0E6 /* TestCardsFileExists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardsFileExists.swift; sourceTree = "<group>"; };
+		30070E4228916E450062F0E6 /* TestCardsFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardsFile.swift; sourceTree = "<group>"; };
 		30070E48289180A70062F0E6 /* HearthstoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearthstoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30070E4A289180A70062F0E6 /* HearthstoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneUITests.swift; sourceTree = "<group>"; };
 		30070E4C289180A70062F0E6 /* HearthstoneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		305C6FFC288EED2B001D4559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		305C6FFE288EED2B001D4559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		305C7003288EED2C001D4559 /* HearthstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearthstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3063DB77289273C100715E98 /* CardsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHelper.swift; sourceTree = "<group>"; };
 		30818456288FCCCB00838205 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cards.json; path = Hearthstone/Assets/cards.json; sourceTree = SOURCE_ROOT; };
 		30B71180288FE1BA00935D29 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		30B71183288FE74C00935D29 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -93,7 +95,8 @@
 		30070E4128916E010062F0E6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				30070E4228916E450062F0E6 /* TestCardsFileExists.swift */,
+				30070E4228916E450062F0E6 /* TestCardsFile.swift */,
+				3063DB77289273C100715E98 /* CardsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -346,7 +349,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30070E4328916E450062F0E6 /* TestCardsFileExists.swift in Sources */,
+				30070E4328916E450062F0E6 /* TestCardsFile.swift in Sources */,
+				3063DB78289273C100715E98 /* CardsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
