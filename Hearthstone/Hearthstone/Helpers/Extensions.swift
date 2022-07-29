@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 
+// - MARK: UIKit Extensions
 extension UIImageView {
     
     // Create a placeholder image, since some cards don't have "working" img paths.
@@ -41,6 +42,38 @@ extension UIImageView {
                 }
             }
         }
+    }
+    
+}
+
+extension HomeTabViewController {
+    
+    func initView() {
+        view.backgroundColor = .systemBackground
+        UITabBar.appearance().barTintColor = .systemBackground
+        tabBar.tintColor = .label
+    }
+    
+}
+
+extension HomeTabViewController {
+    
+    func createTabNavigation(for root: UIViewController, with title: String? = "Title", and icon: String? = nil) -> UIViewController {
+        let navigation = UINavigationController(rootViewController: root)
+        if let title = title {
+            navigation.tabBarItem.title = title
+        }
+        if let icon = icon {
+            navigation.tabBarItem.image = UIImage(
+                systemName: icon,
+                withConfiguration:UIImage.SymbolConfiguration(scale: .large)
+            )
+        }
+        navigation.navigationBar.prefersLargeTitles = true
+        root.navigationItem.title = title
+        root.navigationItem.largeTitleDisplayMode = .always
+        
+        return navigation
     }
     
 }

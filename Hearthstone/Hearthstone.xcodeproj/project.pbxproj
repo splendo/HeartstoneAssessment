@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3006060828939EFC00EF0BE4 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006060728939EFC00EF0BE4 /* CardsCollectionViewController.swift */; };
 		30070E4328916E450062F0E6 /* TestCardsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4228916E450062F0E6 /* TestCardsFile.swift */; };
 		30070E4B289180A70062F0E6 /* HearthstoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4A289180A70062F0E6 /* HearthstoneUITests.swift */; };
 		30070E4D289180A70062F0E6 /* HearthstoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30070E4C289180A70062F0E6 /* HearthstoneUITestsLaunchTests.swift */; };
@@ -21,8 +22,7 @@
 		30A8D5692892A67600849D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D5682892A67600849D1F /* Extensions.swift */; };
 		30A8D56B2892AA2000849D1F /* TestCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */; };
 		30B71181288FE1BA00935D29 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71180288FE1BA00935D29 /* Card.swift */; };
-		30B71184288FE74C00935D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B71183288FE74C00935D29 /* Main.storyboard */; };
-		30B71186288FE76A00935D29 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71185288FE76A00935D29 /* MainViewController.swift */; };
+		30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B88F80289319C5005D326E /* HomeTabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3006060728939EFC00EF0BE4 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		30070E4228916E450062F0E6 /* TestCardsFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardsFile.swift; sourceTree = "<group>"; };
 		30070E48289180A70062F0E6 /* HearthstoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearthstoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30070E4A289180A70062F0E6 /* HearthstoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearthstoneUITests.swift; sourceTree = "<group>"; };
@@ -61,8 +62,7 @@
 		30A8D5682892A67600849D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardViewModel.swift; sourceTree = "<group>"; };
 		30B71180288FE1BA00935D29 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		30B71183288FE74C00935D29 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		30B71185288FE76A00935D29 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		30B88F80289319C5005D326E /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,6 @@
 				305C6FEF288EED28001D4559 /* SceneDelegate.swift */,
 				3081845C288FCE2E00838205 /* ViewModels */,
 				30818459288FCE1600838205 /* Views */,
-				30B71183288FE74C00935D29 /* Main.storyboard */,
 			);
 			path = Hearthstone;
 			sourceTree = "<group>";
@@ -175,7 +174,7 @@
 		30818459288FCE1600838205 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				30B71185288FE76A00935D29 /* MainViewController.swift */,
+				30B88F8428931DC4005D326E /* ViewControllers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +201,15 @@
 				30A8D56428929D1B00849D1F /* CardViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		30B88F8428931DC4005D326E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				30B88F80289319C5005D326E /* HomeTabViewController.swift */,
+				3006060728939EFC00EF0BE4 /* CardsCollectionViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,7 +327,6 @@
 				305C6FFD288EED2B001D4559 /* LaunchScreen.storyboard in Resources */,
 				305C6FFA288EED2B001D4559 /* Assets.xcassets in Resources */,
 				30818457288FCCCC00838205 /* cards.json in Resources */,
-				30B71184288FE74C00935D29 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,9 +356,10 @@
 				305C6FF8288EED28001D4559 /* Hearthstone.xcdatamodeld in Sources */,
 				305C6FEE288EED28001D4559 /* AppDelegate.swift in Sources */,
 				30A8D56528929D1B00849D1F /* CardViewModel.swift in Sources */,
+				30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */,
 				305C6FF0288EED28001D4559 /* SceneDelegate.swift in Sources */,
 				30B71181288FE1BA00935D29 /* Card.swift in Sources */,
-				30B71186288FE76A00935D29 /* MainViewController.swift in Sources */,
+				3006060828939EFC00EF0BE4 /* CardsCollectionViewController.swift in Sources */,
 				30A8D5692892A67600849D1F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,7 +561,7 @@
 				INFOPLIST_FILE = Hearthstone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -581,7 +589,7 @@
 				INFOPLIST_FILE = Hearthstone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
