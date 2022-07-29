@@ -46,12 +46,26 @@ extension UIImageView {
     
 }
 
+extension UIColor {
+    
+    static var primaryColor: UIColor {
+        UIColor(red: 0.29, green: 0.79, blue: 0.79, alpha: 1.0)
+    }
+    
+    static var accentColor: UIColor {
+        UIColor(red: 0.28, green: 0.21, blue: 0.11, alpha: 1.0)
+    }
+    
+}
+
+
+// - MARK: HomeTabViewController extensionss
 extension HomeTabViewController {
     
     func initView() {
         view.backgroundColor = .systemBackground
-        UITabBar.appearance().barTintColor = .systemBackground
-        tabBar.tintColor = .label
+        tabBar.tintColor = .primaryColor
+        tabBar.backgroundColor = .accentColor
     }
     
 }
