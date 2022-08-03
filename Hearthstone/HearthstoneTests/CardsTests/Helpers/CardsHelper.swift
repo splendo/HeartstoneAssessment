@@ -9,14 +9,10 @@ import Foundation
 @testable import Hearthstone
 
 ///
-/// Initializers for dummy cards.
+/// Initializer for dummy cards.
 ///
-func testCard(name: String, img: String) -> Card {
-    Card(from: ["name": name, "img": img])
-}
-
-func testCard() -> Card {
-    Card(from: [:])
+func testCard(name: String? = nil, img: String? = nil) -> Card {
+    Card(from: ["name": name as Any, "img": img as Any])
 }
  
 ///

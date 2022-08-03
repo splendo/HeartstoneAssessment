@@ -29,5 +29,13 @@ class TestCardViewModel: XCTestCase {
         XCTAssertEqual(cardVM.title, CardViewModel.placeholderTitle, "Placeholder title should've been provided on an empty Card")
         
     }
+    
+    func testCardViewModelImageUrlPlaceholder() {
+        let cardVM = CardViewModel(card: testCard(name: "a Card"), select: {})
+        
+        XCTAssertEqual(cardVM.getUrl(),
+                       URL(string: "https://via.placeholder.com/500x500.png?text=No+Image+Found")!,
+                       "Placeholder Image should have a valid URL")
+    }
 
 }
