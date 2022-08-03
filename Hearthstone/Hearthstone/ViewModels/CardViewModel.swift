@@ -11,22 +11,14 @@ struct CardViewModel {
     
     let title: String
     let image: String?
+    let isFavorite: Bool = false
+    let select: () -> Void
     
-}
-
-extension CardViewModel {
-    
-    // In case new entries have "corrupt" data
-    static var placeholderTitle: String {
-        "No Name"
-    }
-}
-
-extension CardViewModel {
-    
-    init(card: Card) {
-        title = card.name ?? CardViewModel.placeholderTitle
-        image = card.img
+    init(card: Card, select: @escaping () -> Void) {
+        self.title = card.name ?? CardViewModel.placeholderTitle
+        self.image = card.img
+        // TODO: isFavorite should be initialized based on the Query in DB (Favorites table)
+        self.select = select
     }
     
 }

@@ -32,6 +32,12 @@ class CardGridViewCell: UICollectionViewCell {
         return button
     }()
     
+    var cardViewModel: CardViewModel! {
+        didSet {
+            cardName.text = cardViewModel.title
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

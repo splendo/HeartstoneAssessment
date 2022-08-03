@@ -16,7 +16,7 @@ class TestCardViewModel: XCTestCase {
     }
     
     func testCardViewModelInitialization() {
-        let cardVM = CardViewModel(card: Card(name: "a Card", img: "https://www.cardlink.card/card.png"))
+        let cardVM = CardViewModel(card: testCard(name: "a Card", img: "https://www.cardlink.card/card.png"), select: {})
         
         XCTAssertNotNil(cardVM.title, "No title found on cardVM")
         XCTAssertNotNil(cardVM.image, "No image path found on cardVM")
@@ -24,7 +24,7 @@ class TestCardViewModel: XCTestCase {
     
     func testCardViewModelTitlePlaceholder() {
         
-        let cardVM = CardViewModel(card: Card())
+        let cardVM = CardViewModel(card: testCard(), select: {})
         
         XCTAssertEqual(cardVM.title, CardViewModel.placeholderTitle, "Placeholder title should've been provided on an empty Card")
         

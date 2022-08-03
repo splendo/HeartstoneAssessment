@@ -8,7 +8,17 @@
 import Foundation
 @testable import Hearthstone
 
+///
+/// Initializers for dummy cards.
+///
+func testCard(name: String, img: String) -> Card {
+    Card(from: ["name": name, "img": img])
+}
 
+func testCard() -> Card {
+    Card(from: [:])
+}
+ 
 ///
 /// Test helper method of retrieving the json url.
 ///

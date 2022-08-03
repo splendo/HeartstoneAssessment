@@ -30,29 +30,6 @@ struct Card {
     var locale: String?
     var mechanics: [String]?
     
-    // Instantiation of a Card object for testing and internal purposes
-    init(cardId: String? = nil, name: String? = nil, cardSet: String? = nil, type: String? = nil, rarity: String? = nil, cost: Int? = nil, attack: Int? = nil, health: Int? = nil, text: String? = nil, flavor: String? = nil, artist: String? = nil, collectible: Bool? = nil, elite: Bool? = nil, playerClass: String? = nil, multiClassGroup: String? = nil, classes: [String]? = nil, img: String? = nil, imgGold: String? = nil, locale: String? = nil, mechanics: [String]? = nil) {
-        self.cardId = cardId
-        self.name = name
-        self.cardSet = cardSet
-        self.type = type
-        self.rarity = rarity
-        self.cost = cost
-        self.attack = attack
-        self.health = health
-        self.text = text
-        self.flavor = flavor
-        self.artist = artist
-        self.collectible = collectible
-        self.elite = elite
-        self.playerClass = playerClass
-        self.multiClassGroup = multiClassGroup
-        self.classes = classes
-        self.img = img
-        self.imgGold = imgGold
-        self.locale = locale
-        self.mechanics = mechanics
-    }
     
     //  JSON Serialization returns a Dictionary of card category arrays
     init(from dictionary: [String: Any]) {

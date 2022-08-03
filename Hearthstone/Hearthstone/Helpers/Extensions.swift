@@ -166,3 +166,27 @@ extension HomeTabViewController {
     }
     
 }
+
+extension CardsCollectionViewController {
+    
+    func select(_ card: Card) {
+        
+    }
+    
+}
+
+extension CardViewModel {
+    
+    // In case new entries have "corrupt" data
+    static var placeholderTitle: String {
+        "No Name"
+    }
+}
+
+extension CardGridViewCell {
+    
+    func configure() {
+        cardName.text = cardViewModel.title
+    }
+    
+}
