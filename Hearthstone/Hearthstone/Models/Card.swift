@@ -25,7 +25,7 @@ struct Card {
     var playerClass: String?
     var multiClassGroup: String?
     var classes: [String]?
-    var img: String?
+    var img: String
     var imgGold: String?
     var locale: String?
     var mechanics: [String]?
@@ -49,7 +49,8 @@ struct Card {
         self.playerClass = dictionary["playerClass"] as? String
         self.multiClassGroup = dictionary["multiClassGroup"] as? String
         self.classes = dictionary["classes"] as? [String]
-        self.img = dictionary["img"] as? String
+        // Set default value to obtain at least the placeholder image
+        self.img = dictionary["img"] as? String ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
         self.imgGold = dictionary["imgGold"] as? String
         self.locale = dictionary["locale"] as? String
         self.mechanics = dictionary["mechanics"] as? [String]

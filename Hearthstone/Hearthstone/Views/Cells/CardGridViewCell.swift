@@ -35,6 +35,7 @@ class CardGridViewCell: UICollectionViewCell {
     var cardViewModel: CardViewModel! {
         didSet {
             cardName.text = cardViewModel.title
+            cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
         }
     }
     

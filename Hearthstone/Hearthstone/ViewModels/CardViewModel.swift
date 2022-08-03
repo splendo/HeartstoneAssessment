@@ -10,7 +10,7 @@ import Foundation
 struct CardViewModel {
     
     let title: String
-    let image: String?
+    let image: String
     let isFavorite: Bool = false
     let select: () -> Void
     

@@ -12,10 +12,6 @@ import UIKit
 // - MARK: UIKit Extensions
 extension UIImageView {
     
-    // Create a placeholder image, since some cards don't have "working" img paths.
-    // Also, seems cooler ;)
-    static var placeholderImageUrl = URL(string: "https://via.placeholder.com/500x500.png?text=No+Image+Found")!
-    
     func load(from url: URL, mode: UIView.ContentMode) {
         
         URLSession.shared.dataTask(with: url) {  [weak self] data, response, error in
@@ -25,7 +21,7 @@ extension UIImageView {
                 let data = data, error == nil,
                 let image = UIImage(data: data)
                 else {
-                self?.addPlaceholderImage(with: mode)
+                self?.addPlaceholderImage(from: url, with: mode)
                     return
                 }
                 DispatchQueue.main.async() {
@@ -35,9 +31,9 @@ extension UIImageView {
             }.resume()
     }
     
-    private func addPlaceholderImage(with mode: UIView.ContentMode) {
+    private func addPlaceholderImage(from url: URL, with mode: UIView.ContentMode) {
         
-        if let imgData = try? Data(contentsOf: UIImageView.placeholderImageUrl) {
+        if let imgData = try? Data(contentsOf: url) {
             if let img = UIImage(data: imgData) {
                 DispatchQueue.main.async { [weak self] in
                     self?.image = img
@@ -135,7 +131,16 @@ extension UIView {
 }
 
 
-// - MARK: HomeTabViewController extensionss
+// - MARK: Foundation extensions
+
+extension String {
+    
+    func convertToURL() -> URL? {
+        URL(string: self)
+    }
+}
+
+// - MARK: Custom extensionss
 extension HomeTabViewController {
     
     func initView() {
@@ -181,6 +186,17 @@ extension CardViewModel {
     static var placeholderTitle: String {
         "No Name"
     }
+}
+
+extension CardViewModel {
+    
+    func getUrl() -> URL {
+        guard let url = self.image.convertToURL() else {
+            return URL(string: "https://via.placeholder.com/500x500.png?text=No+Image+Found")!
+        }
+        return url
+    }
+    
 }
 
 extension CardGridViewCell {
