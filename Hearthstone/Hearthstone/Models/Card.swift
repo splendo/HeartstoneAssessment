@@ -7,7 +7,30 @@
 
 import Foundation
 
-struct Card {
+// For the purpose of the DEMO we make the assumption that we know the Card Categories beforehand (if API requests, the setup would be different)
+struct CardsResponse: Codable {
+    var Basic: [Card] = Array()
+    var Classic: [Card] = Array()
+    var Promo: [Card] = Array()
+    var HallofFame: [Card] = Array()
+    var Naxxramas: [Card] = Array()
+    var GoblinsvsGnomes: [Card] = Array()
+    var BlackrockMountain: [Card] = Array()
+    var TheGrandTournament: [Card] = Array()
+    var TheLeagueofExplorers: [Card] = Array()
+    var WhispersoftheOldGods: [Card] = Array()
+    var OneNightinKarazhan: [Card] = Array()
+    var MeanStreetsofGadgetzan: [Card] = Array()
+    var JourneytoUnGoro: [Card] = Array()
+    var TavernBrawl: [Card] = Array()
+    var HeroSkins: [Card] = Array()
+    var Missions: [Card] = Array()
+    var Credits: [Card] = Array()
+    var System: [Card] = Array()
+    var Debug: [Card] = Array()
+}
+
+struct Card: Codable {
 
     var cardId: String?
     var name: String?
@@ -24,36 +47,10 @@ struct Card {
     var elite: Bool?
     var playerClass: String?
     var multiClassGroup: String?
-    var classes: [String]?
-    var img: String
+    var classes: [String]? = Array()
+    var img: String?
     var imgGold: String?
     var locale: String?
-    var mechanics: [String]?
-    
-    
-    //  JSON Serialization returns a Dictionary of card category arrays
-    init(from dictionary: [String: Any]) {
-        self.cardId = dictionary["cardId"] as? String
-        self.name = dictionary["name"] as? String
-        self.cardSet = dictionary["cardSet"] as? String
-        self.type = dictionary["type"] as? String
-        self.rarity = dictionary["rarity"] as? String
-        self.cost = dictionary["cost"] as? Int
-        self.attack = dictionary["attack"] as? Int
-        self.health = dictionary["health"] as? Int
-        self.text = dictionary["text"] as? String
-        self.flavor = dictionary["flavor"] as? String
-        self.artist = dictionary["artist"] as? String
-        self.collectible = dictionary["collectible"] as? Bool
-        self.elite = dictionary["elite"] as? Bool
-        self.playerClass = dictionary["playerClass"] as? String
-        self.multiClassGroup = dictionary["multiClassGroup"] as? String
-        self.classes = dictionary["classes"] as? [String]
-        // Set default value to obtain at least the placeholder image
-        self.img = dictionary["img"] as? String ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
-        self.imgGold = dictionary["imgGold"] as? String
-        self.locale = dictionary["locale"] as? String
-        self.mechanics = dictionary["mechanics"] as? [String]
-    }
+    var mechanics: [[String: String]]? = Array()
     
 }

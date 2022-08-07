@@ -141,7 +141,60 @@ extension String {
     }
 }
 
-// - MARK: Custom extensionss
+// - MARK: Custom extensions
+
+// - MARK: - Models Extensions
+
+extension CardsResponse {
+    // Ensure that decoding is successful for keys with whitespaces/special characters
+    enum CodingKeys: String, CodingKey {
+        case Basic = "Basic"
+        case Classic = "Classic"
+        case Promo = "Promo"
+        case HallofFame = "Hall of Fame"
+        case Naxxramas = "Naxxramas"
+        case GoblinsvsGnomes = "Goblins vs Gnomes"
+        case BlackrockMountain = "Blackrock Mountain"
+        case TheGrandTournament = "The Grand Tournament"
+        case TheLeagueofExplorers = "The League of Explorers"
+        case WhispersoftheOldGods = "Whispers of the Old Gods"
+        case OneNightinKarazhan = "One Night in Karazhan"
+        case MeanStreetsofGadgetzan = "Mean Streets of Gadgetzan"
+        case JourneytoUnGoro = "Journey to Un'Goro"
+        case TavernBrawl = "Tavern Brawl"
+        case HeroSkins = "Hero Skins"
+        case Missions = "Missions"
+        case Credits = "Credits"
+        case System = "System"
+        case Debug = "Debug"
+    }
+    
+    func getAllCards() -> [Card] {
+        Basic + Classic + Promo + HallofFame + Naxxramas + GoblinsvsGnomes + BlackrockMountain + TheGrandTournament + TheLeagueofExplorers + WhispersoftheOldGods + OneNightinKarazhan + MeanStreetsofGadgetzan + JourneytoUnGoro + TavernBrawl + HeroSkins + Missions + Credits + System + Debug
+    }
+}
+
+extension CardViewModel {
+    
+    // In case new entries have "corrupt" data
+    static var placeholderTitle: String {
+        "No Name"
+    }
+}
+
+extension CardViewModel {
+    
+    func getUrl() -> URL {
+        guard let url = self.image.convertToURL() else {
+            return URL(string: "https://via.placeholder.com/500x500.png?text=No+Image+Found")!
+        }
+        return url
+    }
+    
+}
+
+// - MARK: - Views Extensions
+
 extension HomeTabViewController {
     
     func initView() {
@@ -178,25 +231,6 @@ extension CardsCollectionViewController {
     
     func select(_ card: Card) {
         
-    }
-    
-}
-
-extension CardViewModel {
-    
-    // In case new entries have "corrupt" data
-    static var placeholderTitle: String {
-        "No Name"
-    }
-}
-
-extension CardViewModel {
-    
-    func getUrl() -> URL {
-        guard let url = self.image.convertToURL() else {
-            return URL(string: "https://via.placeholder.com/500x500.png?text=No+Image+Found")!
-        }
-        return url
     }
     
 }
