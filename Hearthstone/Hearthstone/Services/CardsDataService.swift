@@ -44,7 +44,6 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
             print(error)
             completion([])
         }
-        completion([])
     }
     
     func handleParsed(_ cards: [Card]) -> [CardViewModel] {

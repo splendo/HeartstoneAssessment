@@ -16,6 +16,7 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
         
         collectionView.register(CardGridViewCell.self, forCellWithReuseIdentifier: "CardCell")
+        loadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -34,6 +35,9 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as? CardGridViewCell else {
             return UICollectionViewCell()
         }
+        if cards.isEmpty {
+            return cell
+        }
         cell.cardViewModel = cards[indexPath.row]
         
         return cell
@@ -42,6 +46,18 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = cards[indexPath.row]
         card.select()
+    }
+    
+    func loadData() {
+        
+        DispatchQueue.global().async { [weak self] in
+            self?.service?.convert(from: "cards") { items in
+                self?.cards = self?.service?.handleParsed(items) ?? []
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
     }
     
 }
