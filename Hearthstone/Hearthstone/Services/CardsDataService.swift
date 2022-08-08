@@ -26,6 +26,8 @@ protocol ResultHadler {
 
 struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHadler {
     
+    let type: ServiceType
+    
     let extensionType = "json"
     
     func convert(from json: String, completion: @escaping ([Card]) -> Void) {
@@ -48,7 +50,13 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
     func handleParsed(_ cards: [Card]) -> [CardViewModel] {
         var viewModels = [CardViewModel]()
         for card in cards {
-            viewModels.append(CardViewModel(card: card, select: {}))
+            switch type {
+            case .AllCards:
+                viewModels.append(CardViewModel(card: card, select: {}))
+                break
+            default:
+                break
+            }
         }
         return viewModels
     }

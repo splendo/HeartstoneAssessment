@@ -193,6 +193,13 @@ extension CardViewModel {
     
 }
 
+extension CardsDataService {
+    enum ServiceType {
+        case AllCards
+        case Favorites
+    }
+}
+
 // - MARK: - Views Extensions
 
 extension HomeTabViewController {

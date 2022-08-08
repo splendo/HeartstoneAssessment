@@ -10,12 +10,12 @@ import UIKit
 class CardsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var cards = [CardViewModel]()
+    var service: CardsDataService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.register(CardGridViewCell.self, forCellWithReuseIdentifier: "CardCell")
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
