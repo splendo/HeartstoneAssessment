@@ -9,10 +9,19 @@ import Foundation
 @testable import Hearthstone
 
 ///
-/// Initializer for dummy cards.
+/// Initializers for dummy cards.
 ///
 func testCard(name: String? = nil, img: String? = nil) -> Card {
-    Card(from: ["name": name as Any, "img": img as Any])
+    Card(cardId: nil, name: name, cardSet: nil, type: nil, rarity: nil, cost: nil, attack: nil, health: nil, text: nil, flavor: nil, artist: nil, collectible: nil, elite: nil, playerClass: nil, multiClassGroup: nil, classes: nil, img: img, imgGold: nil, locale: nil, mechanics: nil)
+}
+
+func testCardArray() -> [Card] {
+    var cards = [Card]()
+    for i in 0...5 {
+        cards.append(testCard(name: "Card #\(i)", img: "a://whatever.image"))
+    }
+    
+    return cards
 }
  
 ///
