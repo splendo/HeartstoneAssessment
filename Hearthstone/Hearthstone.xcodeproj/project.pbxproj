@@ -18,6 +18,7 @@
 		305C6FFD288EED2B001D4559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305C6FFB288EED2B001D4559 /* LaunchScreen.storyboard */; };
 		3063DB78289273C100715E98 /* CardsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3063DB77289273C100715E98 /* CardsHelper.swift */; };
 		30818457288FCCCC00838205 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 30818456288FCCCB00838205 /* cards.json */; };
+		309EFDD328A43C1400D3F753 /* WatermarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EFDD228A43C1400D3F753 /* WatermarkView.swift */; };
 		30A0F276289C5AEA00617094 /* CardsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0F275289C5AEA00617094 /* CardsDataService.swift */; };
 		30A8D56528929D1B00849D1F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56428929D1B00849D1F /* CardViewModel.swift */; };
 		30A8D5692892A67600849D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D5682892A67600849D1F /* Extensions.swift */; };
@@ -61,6 +62,7 @@
 		305C7003288EED2C001D4559 /* HearthstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearthstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3063DB77289273C100715E98 /* CardsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsHelper.swift; sourceTree = "<group>"; };
 		30818456288FCCCB00838205 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cards.json; path = Hearthstone/Assets/cards.json; sourceTree = SOURCE_ROOT; };
+		309EFDD228A43C1400D3F753 /* WatermarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkView.swift; sourceTree = "<group>"; };
 		30A0F275289C5AEA00617094 /* CardsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDataService.swift; sourceTree = "<group>"; };
 		30A8D56428929D1B00849D1F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		30A8D5682892A67600849D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		30818459288FCE1600838205 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				309EFDD128A43BF900D3F753 /* Misc */,
 				30B596162896DF1C00253379 /* Cells */,
 				30B88F8428931DC4005D326E /* ViewControllers */,
 			);
@@ -210,6 +213,14 @@
 				30A8D56428929D1B00849D1F /* CardViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		309EFDD128A43BF900D3F753 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				309EFDD228A43C1400D3F753 /* WatermarkView.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		30A0F274289C5A0700617094 /* Services */ = {
@@ -384,6 +395,7 @@
 				30A8D56528929D1B00849D1F /* CardViewModel.swift in Sources */,
 				30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */,
 				305C6FF0288EED28001D4559 /* SceneDelegate.swift in Sources */,
+				309EFDD328A43C1400D3F753 /* WatermarkView.swift in Sources */,
 				30B596182896DF3F00253379 /* CardGridViewCell.swift in Sources */,
 				30B71181288FE1BA00935D29 /* Card.swift in Sources */,
 				3006060828939EFC00EF0BE4 /* CardsCollectionViewController.swift in Sources */,
