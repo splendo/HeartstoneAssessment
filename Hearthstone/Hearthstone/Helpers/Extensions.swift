@@ -10,6 +10,19 @@ import UIKit
 
 
 // - MARK: UIKit Extensions
+
+extension UIViewController {
+    
+    func addButtons(right: [UIBarButtonItem]? = nil, left: [UIBarButtonItem]? = nil) {
+        if let right = right {
+            navigationItem.setRightBarButtonItems(right, animated: true)
+        }
+        if let left = left {
+            navigationItem.setLeftBarButtonItems(left, animated: true)
+        }
+    }
+}
+
 extension UIImageView {
     
     // TODO: Write Unit Tests

@@ -16,7 +16,8 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
         
         collectionView.register(CardGridViewCell.self, forCellWithReuseIdentifier: "CardCell")
-        loadData()
+        setupBar()
+        refreshData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,7 +49,12 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         card.select()
     }
     
-    func loadData() {
+    private func setupBar() {
+        let hsiaoFavButton = UIBarButtonItem(image: UIImage(systemName: "list.star"), style: .plain, target: self, action: nil)
+        addButtons(right: [hsiaoFavButton])
+    }
+    
+    private func refreshData() {
         
         DispatchQueue.global().async { [weak self] in
             self?.service?.convert(from: "cards") { items in
