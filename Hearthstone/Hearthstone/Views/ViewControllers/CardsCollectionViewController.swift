@@ -54,6 +54,12 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
             self?.service?.convert(from: "cards") { items in
                 self?.cards = self?.service?.handleParsed(items) ?? []
                 DispatchQueue.main.async {
+                    if self?.cards.count == 0 {
+                        if let viewBounds = self?.view.bounds,
+                           let watermarkImage = UIImage(named: "oops") {
+                            self?.collectionView.backgroundView = WatermarkView(frame: viewBounds, with: "Oops no cards found!", image: watermarkImage)
+                        }
+                    }
                     self?.collectionView.reloadData()
                 }
             }
