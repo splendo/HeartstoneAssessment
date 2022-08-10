@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+
+// TODO: Write UITests for it
 class WatermarkView: UIView {
     
     // MARK: - Subivew Initializers
