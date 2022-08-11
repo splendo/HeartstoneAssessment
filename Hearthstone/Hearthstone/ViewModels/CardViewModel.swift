@@ -12,6 +12,7 @@ struct CardViewModel {
     let title: String
     let image: String
     let isFavorite: Bool
+    var isHsiaoFav: Bool = false
     let select: () -> Void
     
     init(card: Card, select: @escaping () -> Void) {
@@ -20,5 +21,6 @@ struct CardViewModel {
         // TODO: isFavorite should be initialized based on the Query in DB (Favorites table)
         isFavorite = false
         self.select = select
+        isHsiaoFav = isFeatured(card)
     }
 }

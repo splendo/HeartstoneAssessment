@@ -11,15 +11,17 @@ import XCTest
 class TestAllCardService: XCTestCase {
     
     var sut: CardsDataService!
+    var elements: [Card]?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = CardsDataService(type: .AllCards)
+        elements = testCardArray()
     }
 
     override func tearDownWithError() throws {
         sut = nil
-        
+        elements = nil
         try super.tearDownWithError()
     }
     
@@ -30,13 +32,23 @@ class TestAllCardService: XCTestCase {
     }
     
     func testServiceReturnsAllCards() {
-        let testArray = testCardArray()
         
-        let cardVMs = sut.handleParsed(testArray)
+        let cardVMs = sut.handleParsed(elements ?? [])
         
         XCTAssertNotEqual(cardVMs.count, 0, "Service should return value > 0")
         
-        XCTAssertEqual(cardVMs.count, testArray.count, "Service should return as many VMs as the input")
+        XCTAssertEqual(cardVMs.count, elements?.count ?? 0, "Service should return as many VMs as the input")
+        
+    }
+    
+    func testServiceReturnsFeaturedOnly() {
+        
+        let cardVMs = sut.handleParsed(elements ?? [])
+        let featured = sut.featuresFilter(is: true, for: cardVMs)
+        
+        XCTAssertNotEqual(featured.count, 0, "Dummy data have provided 3 cards with Hsiao Favorite elements")
+        
+        XCTAssertEqual(featured.count, 3, "Dummy data have provided 3 cards with Hsiao Favorite elements")
         
     }
 

@@ -9,8 +9,15 @@ import UIKit
 
 class CardsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var cards = [CardViewModel]()
-    var service: CardsDataService?
+    // MARK: - Variables
+    
+    // Public
+    public var service: CardsDataService?
+    
+    // Private
+    private var filteredCards = [CardViewModel]()
+    private var isFeatured: Bool = false
+    private var hsiaoFavButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +27,10 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         refreshData()
     }
     
+    
+    // MARK: - CollectionView Functions
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cards.count
+        filteredCards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -36,31 +45,34 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as? CardGridViewCell else {
             return UICollectionViewCell()
         }
-        if cards.isEmpty {
+        if filteredCards.isEmpty {
             return cell
         }
-        cell.cardViewModel = cards[indexPath.row]
+        cell.cardViewModel = filteredCards[indexPath.row]
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let card = cards[indexPath.row]
+        let card = filteredCards[indexPath.row]
         card.select()
     }
     
+    // MARK: - Setup Functions
     private func setupBar() {
-        let hsiaoFavButton = UIBarButtonItem(image: UIImage(systemName: "list.star"), style: .plain, target: self, action: nil)
+        hsiaoFavButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(filterFeatured))
         addButtons(right: [hsiaoFavButton])
     }
     
+    
+    // MARK: - Update Functions
     private func refreshData() {
         
         DispatchQueue.global().async { [weak self] in
             self?.service?.convert(from: "cards") { items in
-                self?.cards = self?.service?.handleParsed(items) ?? []
+                self?.filteredCards = self?.service?.handleParsed(items) ?? []
                 DispatchQueue.main.async {
-                    if self?.cards.count == 0 {
+                    if self?.filteredCards.count == 0 {
                         if let viewBounds = self?.view.bounds,
                            let watermarkImage = UIImage(named: "oops") {
                             self?.collectionView.backgroundView = WatermarkView(frame: viewBounds, with: "Oops no cards found!", image: watermarkImage)
@@ -69,6 +81,18 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
                     self?.collectionView.reloadData()
                 }
             }
+        }
+    }
+    
+    // MARK: - Obj-C Functions
+    @objc func filterFeatured() {
+        isFeatured = !isFeatured
+        hsiaoFavButton.image = UIImage(systemName: isFeatured ? "star.slash.fill" : "star.fill")
+        if isFeatured {
+            filteredCards = service?.featuresFilter(is: isFeatured, for: filteredCards) ?? []
+            collectionView.reloadData()
+        } else {
+            refreshData()
         }
     }
     

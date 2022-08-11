@@ -206,6 +206,15 @@ extension CardViewModel {
     
 }
 
+extension CardViewModel {
+    
+    func isFeatured(_ card: Card) -> Bool {
+        
+        return card.rarity == "Legendary" && ((card.mechanics?.contains(["name": "Deathrattle"])) != nil)
+    }
+    
+}
+
 extension CardsDataService {
     enum ServiceType {
         case AllCards

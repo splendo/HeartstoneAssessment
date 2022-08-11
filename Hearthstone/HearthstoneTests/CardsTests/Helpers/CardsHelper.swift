@@ -11,14 +11,19 @@ import Foundation
 ///
 /// Initializers for dummy cards.
 ///
-func testCard(name: String? = nil, img: String? = nil) -> Card {
-    Card(cardId: nil, name: name, cardSet: nil, type: nil, rarity: nil, cost: nil, attack: nil, health: nil, text: nil, flavor: nil, artist: nil, collectible: nil, elite: nil, playerClass: nil, multiClassGroup: nil, classes: nil, img: img, imgGold: nil, locale: nil, mechanics: nil)
+func testCard(name: String? = nil, img: String? = nil, rarity: String? = nil, mechanics: [[String: String]]? = nil) -> Card {
+    Card(cardId: nil, name: name, cardSet: nil, type: nil, rarity: rarity, cost: nil, attack: nil, health: nil, text: nil, flavor: nil, artist: nil, collectible: nil, elite: nil, playerClass: nil, multiClassGroup: nil, classes: nil, img: img, imgGold: nil, locale: nil, mechanics: mechanics)
 }
 
 func testCardArray() -> [Card] {
     var cards = [Card]()
     for i in 0...5 {
-        cards.append(testCard(name: "Card #\(i)", img: "a://whatever.image"))
+        
+        cards.append(testCard(name: "Card #\(i)",
+                              img: "a://whatever.image",
+                              rarity: i % 2 == 0 ? "Legendary" : "Basic",
+                              mechanics: i % 2 == 0 ? [["name": "Deathrattle"]] : nil
+                             ))
     }
     
     return cards

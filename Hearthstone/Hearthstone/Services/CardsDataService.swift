@@ -7,28 +7,33 @@
 
 import Foundation
 
+
+// MARK: - Service Protocols
 protocol LocalDownloadProtocol {
-    
     func getUrl(from name: String?, typed: String?) -> URL?
     func getJSONString(from url: URL) throws -> String?
-    
 }
 
 protocol JSONConverterProtocol {
-    
     func convert(from json: String, completion: @escaping([Card]) -> Void)
-    
 }
 
-protocol ResultHadler {
+protocol ResultHadlerProtocol {
     func handleParsed(_ cards: [Card]) -> [CardViewModel]
+    func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel]
 }
 
-struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHadler {
+
+struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHadlerProtocol {
+
     
-    let type: ServiceType
+    // MARK: - Variables
     
-    let extensionType = "json"
+    // Public
+    public let type: ServiceType
+    
+    // Private
+    private let extensionType = "json"
     
     func convert(from json: String, completion: @escaping ([Card]) -> Void) {
         do {
@@ -58,6 +63,14 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
             }
         }
         return viewModels
+    }
+    
+    func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel] {
+        if activated {
+            return cards.filter(\.isHsiaoFav)
+        } else {
+            return cards.filter { !$0.isHsiaoFav }
+        }
     }
     
     
