@@ -12,7 +12,8 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     // MARK: - Variables
     
     // Public
-    public var service: CardsDataService?
+    public var dataService: CardsDataService?
+    public var databseService: FavoritesService?
     
     // Private
     private var filteredCards = [CardViewModel]()
@@ -69,8 +70,8 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     private func refreshData() {
         
         DispatchQueue.global().async { [weak self] in
-            self?.service?.convert(from: "cards") { items in
-                self?.filteredCards = self?.service?.handleParsed(items) ?? []
+            self?.dataService?.convert(from: "cards") { items in
+                self?.filteredCards = self?.dataService?.handleParsed(items) ?? []
                 DispatchQueue.main.async {
                     if self?.filteredCards.count == 0 {
                         if let viewBounds = self?.view.bounds,
@@ -89,7 +90,7 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         isFeatured = !isFeatured
         hsiaoFavButton.image = UIImage(systemName: isFeatured ? "star.slash.fill" : "star.fill")
         if isFeatured {
-            filteredCards = service?.featuresFilter(is: isFeatured, for: filteredCards) ?? []
+            filteredCards = dataService?.featuresFilter(is: isFeatured, for: filteredCards) ?? []
             collectionView.reloadData()
         } else {
             refreshData()

@@ -256,6 +256,18 @@ extension HomeTabViewController {
     
 }
 
+extension HomeTabViewController {
+    
+    func attachFavoritesService() -> FavoritesService {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Unable to retrieve app delegate")
+        }
+        
+        return FavoritesService(with: appDelegate.persistentContainer)
+    }
+    
+}
+
 extension CardsCollectionViewController {
     
     func select(_ card: Card) {

@@ -15,6 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+    // MARK: - Core Data Stuff
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Hearthstone")
+        container.loadPersistentStores { description, error in
+            
+            if let error = error {
+                debugPrint("Unresolved error: \(error)")
+            }
+            
+        }
+        return container
+
+    }()
 
 }
 

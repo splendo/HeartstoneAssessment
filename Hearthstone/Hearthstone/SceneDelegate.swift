@@ -25,9 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
     }
-
-//    func sceneDidEnterBackground(_ scene: UIScene) {
-//
-//    }
+    
 }
 
