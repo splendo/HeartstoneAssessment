@@ -20,10 +20,12 @@
 		30818457288FCCCC00838205 /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 30818456288FCCCB00838205 /* cards.json */; };
 		309EFDD328A43C1400D3F753 /* WatermarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EFDD228A43C1400D3F753 /* WatermarkView.swift */; };
 		30A0F276289C5AEA00617094 /* CardsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0F275289C5AEA00617094 /* CardsDataService.swift */; };
+		30A128B028B3774500B66C80 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A128AF28B3774500B66C80 /* CardView.swift */; };
 		30A8D56528929D1B00849D1F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56428929D1B00849D1F /* CardViewModel.swift */; };
 		30A8D5692892A67600849D1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D5682892A67600849D1F /* Extensions.swift */; };
 		30A8D56B2892AA2000849D1F /* TestCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */; };
 		30A8DD3A28A142B800AF6A01 /* TestAllCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8DD3928A142B800AF6A01 /* TestAllCardService.swift */; };
+		30AE80A728B35A18006E0C53 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AE80A628B35A18006E0C53 /* CardViewController.swift */; };
 		30B596182896DF3F00253379 /* CardGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B596172896DF3F00253379 /* CardGridViewCell.swift */; };
 		30B71181288FE1BA00935D29 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71180288FE1BA00935D29 /* Card.swift */; };
 		30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B88F80289319C5005D326E /* HomeTabViewController.swift */; };
@@ -64,10 +66,12 @@
 		30818456288FCCCB00838205 /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cards.json; path = Hearthstone/Assets/cards.json; sourceTree = SOURCE_ROOT; };
 		309EFDD228A43C1400D3F753 /* WatermarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkView.swift; sourceTree = "<group>"; };
 		30A0F275289C5AEA00617094 /* CardsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDataService.swift; sourceTree = "<group>"; };
+		30A128AF28B3774500B66C80 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		30A8D56428929D1B00849D1F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		30A8D5682892A67600849D1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		30A8D56A2892AA2000849D1F /* TestCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardViewModel.swift; sourceTree = "<group>"; };
 		30A8DD3928A142B800AF6A01 /* TestAllCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAllCardService.swift; sourceTree = "<group>"; };
+		30AE80A628B35A18006E0C53 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		30B596172896DF3F00253379 /* CardGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridViewCell.swift; sourceTree = "<group>"; };
 		30B71180288FE1BA00935D29 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		30B88F80289319C5005D326E /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				309EFDD228A43C1400D3F753 /* WatermarkView.swift */,
+				30A128AF28B3774500B66C80 /* CardView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			children = (
 				30B88F80289319C5005D326E /* HomeTabViewController.swift */,
 				3006060728939EFC00EF0BE4 /* CardsCollectionViewController.swift */,
+				30AE80A628B35A18006E0C53 /* CardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -396,7 +402,9 @@
 				30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */,
 				305C6FF0288EED28001D4559 /* SceneDelegate.swift in Sources */,
 				309EFDD328A43C1400D3F753 /* WatermarkView.swift in Sources */,
+				30A128B028B3774500B66C80 /* CardView.swift in Sources */,
 				30B596182896DF3F00253379 /* CardGridViewCell.swift in Sources */,
+				30AE80A728B35A18006E0C53 /* CardViewController.swift in Sources */,
 				30B71181288FE1BA00935D29 /* Card.swift in Sources */,
 				3006060828939EFC00EF0BE4 /* CardsCollectionViewController.swift in Sources */,
 				30A8D5692892A67600849D1F /* Extensions.swift in Sources */,

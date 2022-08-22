@@ -259,9 +259,10 @@ extension HomeTabViewController {
 extension CardsCollectionViewController {
     
     func select(_ card: Card) {
-        
+        let destVC = CardViewController()
+        destVC.card = card
+        show(destVC, sender: self)
     }
-    
 }
 
 extension CardGridViewCell {

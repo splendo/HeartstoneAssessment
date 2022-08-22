@@ -19,7 +19,7 @@ protocol JSONConverterProtocol {
 }
 
 protocol ResultHadlerProtocol {
-    func handleParsed(_ cards: [Card]) -> [CardViewModel]
+    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?) -> [CardViewModel]
     func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel]
 }
 
@@ -51,12 +51,14 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
         }
     }
     
-    func handleParsed(_ cards: [Card]) -> [CardViewModel] {
+    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?) -> [CardViewModel] {
         var viewModels = [CardViewModel]()
         for card in cards {
             switch type {
             case .AllCards:
-                viewModels.append(CardViewModel(card: card, select: {}))
+                viewModels.append(CardViewModel(card: card, select: {
+                    view?.select(card)
+                }))
                 break
             default:
                 break
