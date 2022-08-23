@@ -23,6 +23,20 @@ extension UIViewController {
     }
 }
 
+extension UIButton.Configuration {
+    public static func typed(with text: String) -> UIButton.Configuration {
+        var config = UIButton.Configuration.filled()
+        config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        config.title = text
+        var background = UIButton.Configuration.plain().background
+        background.cornerRadius = 15
+        background.backgroundColor = .typeColor
+        config.background = background
+        
+        return config
+    }
+}
+
 extension UIImageView {
     
     // TODO: Write Unit Tests
@@ -67,6 +81,10 @@ extension UIColor {
     
     static var accentColor: UIColor {
         UIColor(red: 0.28, green: 0.21, blue: 0.11, alpha: 1.0)
+    }
+    
+    static var typeColor: UIColor {
+        UIColor(red: 0.48, green: 0.39, blue: 0.29, alpha: 1.0)
     }
     
 }
@@ -215,6 +233,19 @@ extension CardViewModel {
     
 }
 
+extension CardViewModel {
+    
+    init(card: Card) {
+        self.title = card.name ?? CardViewModel.placeholderTitle
+        self.image = card.img ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
+        // TODO: isFavorite should be initialized based on the Query in DB (Favorites table)
+        self.isFavorite = false
+        self.select = {}
+        self.description = (card.flavor?.isEmpty ?? true) ? "No Information to show" : card.flavor
+        self.type = card.type
+    }
+}
+
 extension CardsDataService {
     enum ServiceType {
         case AllCards
@@ -271,6 +302,17 @@ extension CardGridViewCell {
     func configure() {
         cardName.text = cardViewModel.title
         cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
+    }
+    
+}
+
+extension CardView {
+    
+    func configure() {
+        cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
+        cardName.text = cardViewModel.title
+        cardText.text = cardViewModel.description
+        cardType.configuration = .typed(with: cardViewModel.type ?? "")
     }
     
 }

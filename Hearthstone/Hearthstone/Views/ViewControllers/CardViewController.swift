@@ -14,7 +14,12 @@ class CardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = card?.name
+        let cardView = CardView(frame: view.bounds, for: card)
+        guard let card = card else {
+            return
+        }
+        cardView.cardViewModel = CardViewModel(card: card)
+        view.addSubview(cardView)
     }
     
 }
