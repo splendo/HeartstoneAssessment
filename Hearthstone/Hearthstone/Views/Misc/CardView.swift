@@ -47,8 +47,11 @@ class CardView: UIView {
         
         addSubview(cardImage)
         cardImage.addAnchors(wAnchor: widthAnchor, 0.7, cXAnchor: centerXAnchor, tAnchor: topAnchor, topConstant: 32)
+        
+        let separatorView = addSeparator()
+        separatorView.addAnchors(wAnchor: widthAnchor, 0.95, cXAnchor: centerXAnchor, tAnchor: cardImage.bottomAnchor, topConstant: 8, heightConstant: 1.0)
         addSubview(cardType)
-        cardType.addAnchors(lAnchor: leftAnchor, leftConstant: 12, tAnchor: cardImage.bottomAnchor, topConstant: 12)
+        cardType.addAnchors(lAnchor: leftAnchor, leftConstant: 12, tAnchor: separatorView.bottomAnchor, topConstant: 16)
         addSubview(cardName)
         cardName.addAnchors(lAnchor: leftAnchor, leftConstant: 12, tAnchor: cardType.bottomAnchor, topConstant: 4, rAnchor: rightAnchor, rightConstant: -12)
         addSubview(cardText)

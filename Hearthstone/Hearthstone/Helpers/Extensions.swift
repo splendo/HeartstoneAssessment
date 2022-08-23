@@ -99,6 +99,14 @@ extension UIColor {
 
 extension UIView {
     
+    func addSeparator() -> UIView {
+        let separatorView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        separatorView.backgroundColor = UIColor(named: "SeparatorColor")
+        addSubview(separatorView)
+        
+        return separatorView
+    }
+    
     /// Make view rounded (dashboard item)
     func cardView(of radius: CGFloat, with shadow: UIColor? = nil) {
         layer.cornerRadius = radius
@@ -164,7 +172,7 @@ extension UIView {
         }
         
         if let heightConstant = heightConstant {
-            widthAnchor.constraint(equalToConstant: heightConstant).isActive = true
+            heightAnchor.constraint(equalToConstant: heightConstant).isActive = true
         }
     }
     
