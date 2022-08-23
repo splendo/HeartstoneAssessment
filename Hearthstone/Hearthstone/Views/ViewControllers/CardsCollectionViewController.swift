@@ -71,7 +71,7 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         
         DispatchQueue.global().async { [weak self] in
             self?.dataService?.convert(from: "cards") { items in
-                self?.filteredCards = self?.dataService?.handleParsed(items) ?? []
+                self?.filteredCards = self?.dataService?.handleParsed(items, from: self) ?? []
                 DispatchQueue.main.async {
                     if self?.filteredCards.count == 0 {
                         if let viewBounds = self?.view.bounds,
