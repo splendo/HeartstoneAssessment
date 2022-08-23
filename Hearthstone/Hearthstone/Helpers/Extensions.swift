@@ -13,6 +13,12 @@ import UIKit
 
 extension UIViewController {
     
+    func showInfoAlert(with message: String) {
+        let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     func addButtons(right: [UIBarButtonItem]? = nil, left: [UIBarButtonItem]? = nil) {
         if let right = right {
             navigationItem.setRightBarButtonItems(right, animated: true)
@@ -320,6 +326,7 @@ extension CardsCollectionViewController {
     func select(_ card: Card) {
         let destVC = CardViewController()
         destVC.card = card
+        destVC.favoriteService = databseService
         show(destVC, sender: self)
     }
 }

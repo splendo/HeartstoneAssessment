@@ -4,6 +4,6 @@
         <attribute name="cardID" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Favorite" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="Favorite" positionX="-63" positionY="-18" width="128" height="44"/>
     </elements>
 </model>

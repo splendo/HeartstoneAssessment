@@ -13,6 +13,7 @@ class CardViewController: UIViewController {
     
     // Public
     public var card: Card?
+    public var favoriteService: FavoritesService?
     // Private
     private var cardViewModel: CardViewModel!
     private var isFavorite: Bool = true
@@ -37,17 +38,40 @@ class CardViewController: UIViewController {
     
     // MARK: - Setup Functions
     private func setupBar() {
-        favoriteButton = UIBarButtonItem(image: UIBarButtonItem.set(for: isFavorite, toggledName: "heart.fill", nonToggledName: "heart"), style: .plain, target: self, action: #selector(addToFavorites))
-        favoriteButton.tintColor = .red
-        addButtons(right: [favoriteButton])
+        favoriteService?.exists(with: card?.cardId ?? "") { [weak self] exists in
+            self?.isFavorite = exists
+            DispatchQueue.main.async {
+                self?.favoriteButton = UIBarButtonItem(image: UIBarButtonItem.set(for: self?.isFavorite ?? false, toggledName: "heart.fill", nonToggledName: "heart"), style: .plain, target: self, action: #selector(self?.toggleFavorite))
+                self?.favoriteButton.tintColor = .red
+                self?.addButtons(right: [self?.favoriteButton ?? UIBarButtonItem()])
+            }
+        }
     }
     
     // MARK: - Update Functions
+    private func updateFavorite(from success: Bool) {
+        isFavorite = success
+        favoriteButton.image = UIBarButtonItem.set(for: isFavorite, toggledName: "heart.fill", nonToggledName: "heart")
+    }
     
     
     // MARK: - Obj-C Functions
-    @objc func addToFavorites() {
-        isFavorite = !isFavorite
-        favoriteButton.image = UIBarButtonItem.set(for: isFavorite, toggledName: "heart.fill", nonToggledName: "heart")
+    @objc func toggleFavorite() {
+        if !isFavorite {
+            favoriteService?.save(card?.cardId ?? "") { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.showInfoAlert(with: success ? "Card added to Favorites" : "Unable to add card to Favorites")
+                    self?.updateFavorite(from: success)
+                }
+            }
+        } else {
+            favoriteService?.delete(cardID: card?.cardId ?? "") { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.showInfoAlert(with: success ? "Card deleted from Favorites" : "Unable to delete card to Favorites")
+                    self?.updateFavorite(from: !success)
+                }
+                
+            }
+        }
     }
 }

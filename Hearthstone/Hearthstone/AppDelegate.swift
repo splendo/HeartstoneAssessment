@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
+        container.viewContext.automaticallyMergesChangesFromParent = true
         return container
 
     }()
