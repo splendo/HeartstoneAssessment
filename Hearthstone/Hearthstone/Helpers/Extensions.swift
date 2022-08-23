@@ -23,6 +23,14 @@ extension UIViewController {
     }
 }
 
+extension UIBarButtonItem {
+    
+    public static func set(for expression: Bool, toggledName: String, nonToggledName: String) -> UIImage? {
+        UIImage(systemName: expression ? toggledName : nonToggledName)
+    }
+    
+}
+
 extension UIButton.Configuration {
     public static func typed(with text: String) -> UIButton.Configuration {
         var config = UIButton.Configuration.filled()
