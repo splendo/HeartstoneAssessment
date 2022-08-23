@@ -33,7 +33,7 @@ class TestAllCardService: XCTestCase {
     
     func testServiceReturnsAllCards() {
         
-        let cardVMs = sut.handleParsed(elements ?? [])
+        let cardVMs = sut.handleParsed(elements ?? [], from: nil)
         
         XCTAssertNotEqual(cardVMs.count, 0, "Service should return value > 0")
         
@@ -43,7 +43,7 @@ class TestAllCardService: XCTestCase {
     
     func testServiceReturnsFeaturedOnly() {
         
-        let cardVMs = sut.handleParsed(elements ?? [])
+        let cardVMs = sut.handleParsed(elements ?? [], from: nil)
         let featured = sut.featuresFilter(is: true, for: cardVMs)
         
         XCTAssertNotEqual(featured.count, 0, "Dummy data have provided 3 cards with Hsiao Favorite elements")

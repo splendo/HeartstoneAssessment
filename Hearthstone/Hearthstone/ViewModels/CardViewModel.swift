@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct CardViewModel {
     
@@ -13,7 +14,11 @@ struct CardViewModel {
     let image: String
     let isFavorite: Bool
     var isHsiaoFav: Bool = false
+    // MARK: - Collection View variables
     let select: () -> Void
+    // MARK: - Detail View variables
+    var description: String?
+    var type: String?
     
     init(card: Card, select: @escaping () -> Void) {
         self.title = card.name ?? CardViewModel.placeholderTitle

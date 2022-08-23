@@ -32,6 +32,7 @@ class WatermarkView: UIView {
     }()
     
     
+    // MARK: - Initializers
     init(frame: CGRect, with text: String, image: UIImage) {
         super.init(frame: frame)
         
