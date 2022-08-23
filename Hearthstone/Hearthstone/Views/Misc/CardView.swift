@@ -2,7 +2,7 @@
 //  CardView.swift
 //  Hearthstone
 //
-//  Created by Epsilon User on 22/8/22.
+//  Created by Stavros Tsikinas on 22/8/22.
 //
 
 import UIKit

@@ -9,11 +9,19 @@ import UIKit
 
 class CardViewController: UIViewController {
     
-    var card: Card?
+    // MARK: - Variables
+    
+    // Public
+    public var card: Card?
+    // Private
+    private var isFavorite: Bool = false
+    private var favoriteButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBar()
+        
         let cardView = CardView(frame: view.bounds, for: card)
         guard let card = card else {
             return
@@ -22,4 +30,9 @@ class CardViewController: UIViewController {
         view.addSubview(cardView)
     }
     
+    private func setupBar() {
+        favoriteButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: nil)
+        favoriteButton.tintColor = .red
+        addButtons(right: [favoriteButton])
+    }
 }
