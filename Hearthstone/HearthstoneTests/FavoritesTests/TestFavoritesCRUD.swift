@@ -60,4 +60,24 @@ class TestFavoritesCRUD: XCTestCase {
         }
     }
     
+    func testFavoriteExists() {
+        let cardID = "AnExistingCard_03"
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: sut.context)
+        
+        sut.context.perform { [weak self] in
+            self?.sut.save(cardID) { saved in
+                XCTAssertTrue(saved)
+                self?.sut.exists(with: cardID) { exists in
+                    XCTAssertTrue(exists)
+                }
+            }
+            
+        }
+        
+        waitForExpectations(timeout: 5.0) { error in
+            XCTAssertNil(error, "Exists unsuccessful")
+        }
+    }
+    
 }
