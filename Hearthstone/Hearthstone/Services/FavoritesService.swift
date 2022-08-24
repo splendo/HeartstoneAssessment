@@ -11,12 +11,12 @@ import CoreData
 
 protocol StoreCardProtocol {
     func save(_ cardID: String, completion: @escaping(Bool) -> Void)
-    func update(_ card: Card)
     func delete(cardID: String, completion: @escaping(Bool) -> Void)
 }
 
 protocol ReadCardProtocol {
     func exists(with id: String, completion: @escaping(Bool) -> Void)
+    func getFavorites(completion: @escaping([Card]) -> Void)
 }
 
 class FavoritesService: StoreCardProtocol, ReadCardProtocol {
@@ -50,10 +50,6 @@ class FavoritesService: StoreCardProtocol, ReadCardProtocol {
                 }
             }
         }
-    }
-    
-    func update(_ card: Card) {
-        
     }
     
     func delete(cardID: String, completion: @escaping(Bool) -> Void) {
@@ -96,8 +92,12 @@ class FavoritesService: StoreCardProtocol, ReadCardProtocol {
                 completion(false)
             }
         }
+    }
+    
+    func getFavorites(completion: @escaping([Card]) -> Void) {
         
     }
+    
     
     
 }
