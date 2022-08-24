@@ -30,6 +30,27 @@ class TestCoreDataService: FavoritesService {
         
     }
     
-    
+    /// Helper function to add multiple cards to favorites, not necessary to project though
+    func addCards(of count: Int, completion: @escaping(Bool) -> Void) {
+        var cardsArray = [String]()
+        for i in 0..<count {
+            cardsArray.append("CardToFetch_\(i)")
+        }
+        
+        context.perform { [weak self] in
+            for card in cardsArray {
+                let newFav = Favorite(context: self!.context)
+                newFav.cardID = card
+            }
+            do {
+                try self?.context.save()
+                completion(true)
+            } catch {
+                debugPrint("Unable to store cards with ID: \(cardsArray)")
+                completion(false)
+            }
+        }
+        
+    }
     
 }

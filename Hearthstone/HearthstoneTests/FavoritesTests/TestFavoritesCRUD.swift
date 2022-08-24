@@ -106,22 +106,22 @@ class TestFavoritesCRUD: XCTestCase {
     }
     
     func testFetchFavorite() {
-        let cardID1 = "CardToFetch_01"
         
-        let expectation = expectation(description: "Test getFavorites")
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: sut.context)
+        let numberOfFavsToAdd = 6
         
         sut.context.perform { [weak self] in
-            self?.sut.save(cardID1) { saved in
+            self?.sut.addCards(of: numberOfFavsToAdd) { saved in
                 XCTAssertTrue(saved)
                 self?.sut.getFavorites { favorites in
                     XCTAssertFalse(favorites.isEmpty)
-                    XCTAssertEqual(favorites.first, cardID1)
-                    expectation.fulfill()
+                    XCTAssertEqual(numberOfFavsToAdd, favorites.count)
                 }
             }
         }
         
-        waitForExpectations(timeout: 10.0) { error in
+        waitForExpectations(timeout: 3.0) { error in
             XCTAssertNil(error, "Get Favorites unsuccessful")
         }
     }
