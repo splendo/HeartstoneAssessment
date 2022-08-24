@@ -16,7 +16,7 @@ protocol StoreCardProtocol {
 
 protocol ReadCardProtocol {
     func exists(with id: String, completion: @escaping(Bool) -> Void)
-    func getFavorites(completion: @escaping([Card]) -> Void)
+    func getFavorites(completion: @escaping([String]) -> Void)
 }
 
 class FavoritesService: StoreCardProtocol, ReadCardProtocol {
@@ -94,8 +94,25 @@ class FavoritesService: StoreCardProtocol, ReadCardProtocol {
         }
     }
     
-    func getFavorites(completion: @escaping([Card]) -> Void) {
-        
+    func getFavorites(completion: @escaping([String]) -> Void) {
+        context.perform { [weak self] in
+            let request = Favorite.fetchRequest()
+            do {
+                if let favorites = try self?.context.fetch(request) {
+                    var cards = [String]()
+                    for favorite in favorites {
+                        cards.append(favorite.cardID ?? "")
+                    }
+                    completion(cards)
+                } else {
+                    completion([])
+                }
+            } catch {
+                debugPrint("Unable to fetch Favorites")
+                completion([])
+            }
+            
+        }
     }
     
     

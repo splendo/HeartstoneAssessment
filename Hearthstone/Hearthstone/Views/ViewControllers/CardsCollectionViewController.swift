@@ -13,7 +13,7 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     
     // Public
     public var dataService: CardsDataService?
-    public var databseService: FavoritesService?
+    public var databaseService: FavoritesService?
     
     // Private
     private var filteredCards = [CardViewModel]()

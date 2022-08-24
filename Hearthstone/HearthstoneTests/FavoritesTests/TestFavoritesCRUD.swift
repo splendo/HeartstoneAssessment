@@ -21,6 +21,11 @@ class TestFavoritesCRUD: XCTestCase {
         try super.tearDownWithError()
         sut = nil
     }
+    
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+    }
 
     func testNewSaveToFavorites() {
         
@@ -97,6 +102,27 @@ class TestFavoritesCRUD: XCTestCase {
         
         waitForExpectations(timeout: 5.0) { error in
             XCTAssertNil(error, "Delete unsuccessful")
+        }
+    }
+    
+    func testFetchFavorite() {
+        let cardID1 = "CardToFetch_01"
+        
+        let expectation = expectation(description: "Test getFavorites")
+        
+        sut.context.perform { [weak self] in
+            self?.sut.save(cardID1) { saved in
+                XCTAssertTrue(saved)
+                self?.sut.getFavorites { favorites in
+                    XCTAssertFalse(favorites.isEmpty)
+                    XCTAssertEqual(favorites.first, cardID1)
+                    expectation.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 10.0) { error in
+            XCTAssertNil(error, "Get Favorites unsuccessful")
         }
     }
     

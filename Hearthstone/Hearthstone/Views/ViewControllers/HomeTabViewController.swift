@@ -18,10 +18,10 @@ class HomeTabViewController: UITabBarController {
         
         let allVC = CardsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         allVC.dataService = CardsDataService(type: .AllCards)
-        allVC.databseService = favoritesService
+        allVC.databaseService = favoritesService
         let favVC = CardsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         favVC.dataService = CardsDataService(type: .Favorites)
-        favVC.databseService = favoritesService
+        favVC.databaseService = favoritesService
         
         viewControllers = [
             createTabNavigation(for: allVC, with: "Cards", and: "lanyardcard.fill"),

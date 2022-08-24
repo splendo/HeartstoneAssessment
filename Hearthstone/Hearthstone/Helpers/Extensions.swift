@@ -326,7 +326,7 @@ extension CardsCollectionViewController {
     func select(_ card: Card) {
         let destVC = CardViewController()
         destVC.card = card
-        destVC.favoriteService = databseService
+        destVC.favoriteService = databaseService
         show(destVC, sender: self)
     }
 }
