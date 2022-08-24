@@ -10,9 +10,10 @@ import UIKit
 
 struct CardViewModel {
     
+    let cardID: String
     let title: String
     let image: String
-    let isFavorite: Bool
+    var isFavorite: Bool = false
     var isHsiaoFav: Bool = false
     // MARK: - Collection View variables
     let select: () -> Void
@@ -21,10 +22,10 @@ struct CardViewModel {
     var type: String?
     
     init(card: Card, select: @escaping () -> Void) {
+        self.cardID = card.cardId ?? ""
         self.title = card.name ?? CardViewModel.placeholderTitle
         self.image = card.img ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
-        // TODO: isFavorite should be initialized based on the Query in DB (Favorites table)
-        isFavorite = false
+        self.isFavorite = false
         self.select = select
         isHsiaoFav = isFeatured(card)
     }

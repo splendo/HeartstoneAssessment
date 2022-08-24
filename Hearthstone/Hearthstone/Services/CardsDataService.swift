@@ -19,7 +19,7 @@ protocol JSONConverterProtocol {
 }
 
 protocol ResultHadlerProtocol {
-    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?) -> [CardViewModel]
+    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?, completion: @escaping ([CardViewModel]) -> Void)
     func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel]
 }
 
@@ -31,6 +31,7 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
     
     // Public
     public let type: ServiceType
+    public var favoritesService: FavoritesService?
     
     // Private
     private let extensionType = "json"
@@ -51,20 +52,29 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
         }
     }
     
-    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?) -> [CardViewModel] {
+    func handleParsed(_ cards: [Card], from view: CardsCollectionViewController? = nil, completion: @escaping ([CardViewModel]) -> Void) {
         var viewModels = [CardViewModel]()
-        for card in cards {
-            switch type {
-            case .AllCards:
+        switch type {
+        case .AllCards:
+            for card in cards {
                 viewModels.append(CardViewModel(card: card, select: {
                     view?.select(card)
                 }))
-                break
-            default:
-                break
+            }
+            completion(viewModels)
+            break
+        case .Favorites:
+            favoritesService?.getFavorites { favIDs in
+                for favID in favIDs {
+                    if let card = cards.first(where: { $0.cardId == favID }) {
+                        viewModels.append(CardViewModel(card: card, select: {
+                            view?.select(card)
+                        }))
+                    }
+                }
+                completion(viewModels)
             }
         }
-        return viewModels
     }
     
     func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel] {

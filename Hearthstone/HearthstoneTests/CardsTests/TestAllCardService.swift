@@ -33,22 +33,40 @@ class TestAllCardService: XCTestCase {
     
     func testServiceReturnsAllCards() {
         
-        let cardVMs = sut.handleParsed(elements ?? [], from: nil)
+        let expectation = expectation(description: "testServiceReturnsAllCards")
         
-        XCTAssertNotEqual(cardVMs.count, 0, "Service should return value > 0")
+        sut.handleParsed(elements ?? []) { [weak self] cardVMs in
+            XCTAssertNotEqual(cardVMs.count, 0, "Service should return value > 0")
+            XCTAssertEqual(cardVMs.count, self?.elements?.count ?? 0, "Service should return as many VMs as the input")
+            expectation.fulfill()
+        }
         
-        XCTAssertEqual(cardVMs.count, elements?.count ?? 0, "Service should return as many VMs as the input")
+        waitForExpectations(timeout: 2.0) { error in
+            XCTAssertNil(error, "testServiceReturnsAllCards unsuccessful")
+        }
         
     }
     
     func testServiceReturnsFeaturedOnly() {
         
-        let cardVMs = sut.handleParsed(elements ?? [], from: nil)
-        let featured = sut.featuresFilter(is: true, for: cardVMs)
+        let expectation = expectation(description: "testServiceReturnsFeaturedOnly")
         
-        XCTAssertNotEqual(featured.count, 0, "Dummy data have provided 3 cards with Hsiao Favorite elements")
+        sut.handleParsed(elements ?? []) { [weak self] cardVMs in
+            
+            if let featured = self?.sut.featuresFilter(is: true, for: cardVMs) {
+                XCTAssertNotEqual(featured.count, 0, "Dummy data have provided 3 cards with Hsiao Favorite elements")
+                XCTAssertEqual(featured.count, 3, "Dummy data have provided 3 cards with Hsiao Favorite elements")
+            } else {
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
         
-        XCTAssertEqual(featured.count, 3, "Dummy data have provided 3 cards with Hsiao Favorite elements")
+        waitForExpectations(timeout: 2.0) { error in
+            XCTAssertNil(error, "testServiceReturnsFeaturedOnly unsuccessful")
+        }
+        
+        
         
     }
 

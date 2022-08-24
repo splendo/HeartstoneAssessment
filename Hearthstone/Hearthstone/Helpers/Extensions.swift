@@ -37,6 +37,12 @@ extension UIBarButtonItem {
     
 }
 
+extension UIButton {
+    public static func set(for expression: Bool, toggledName: String, nonToggledName: String) -> UIImage? {
+        UIImage(systemName: expression ? toggledName : nonToggledName)
+    }
+}
+
 extension UIButton.Configuration {
     public static func typed(with text: String) -> UIButton.Configuration {
         var config = UIButton.Configuration.filled()
@@ -53,7 +59,7 @@ extension UIButton.Configuration {
 
 extension UIImageView {
     
-    // TODO: Write Unit Tests
+    // TODO: Write UI Tests
     func load(from url: URL, mode: UIView.ContentMode) {
         
         URLSession.shared.dataTask(with: url) {  [weak self] data, response, error in
@@ -258,9 +264,9 @@ extension CardViewModel {
 extension CardViewModel {
     
     init(card: Card) {
+        self.cardID = card.cardId ?? ""
         self.title = card.name ?? CardViewModel.placeholderTitle
         self.image = card.img ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
-        // TODO: isFavorite should be initialized based on the Query in DB (Favorites table)
         self.isFavorite = false
         self.select = {}
         self.description = (card.flavor?.isEmpty ?? true) ? "No Information to show" : card.flavor
@@ -326,8 +332,14 @@ extension CardsCollectionViewController {
     func select(_ card: Card) {
         let destVC = CardViewController()
         destVC.card = card
-        destVC.favoriteService = databaseService
+        destVC.favoriteService = dataService?.favoritesService
         show(destVC, sender: self)
+    }
+    
+    func showWatermark() {
+        if let watermarkImage = UIImage(named: "oops") {
+            collectionView.backgroundView = WatermarkView(frame: view.bounds, with: "Oops no cards found!", image: watermarkImage)
+        }
     }
 }
 

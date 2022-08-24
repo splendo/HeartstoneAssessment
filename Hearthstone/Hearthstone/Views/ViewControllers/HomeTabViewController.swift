@@ -17,11 +17,9 @@ class HomeTabViewController: UITabBarController {
         let favoritesService = attachFavoritesService()
         
         let allVC = CardsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        allVC.dataService = CardsDataService(type: .AllCards)
-        allVC.databaseService = favoritesService
+        allVC.dataService = CardsDataService(type: .AllCards, favoritesService: favoritesService)
         let favVC = CardsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        favVC.dataService = CardsDataService(type: .Favorites)
-        favVC.databaseService = favoritesService
+        favVC.dataService = CardsDataService(type: .Favorites, favoritesService: favoritesService)
         
         viewControllers = [
             createTabNavigation(for: allVC, with: "Cards", and: "lanyardcard.fill"),

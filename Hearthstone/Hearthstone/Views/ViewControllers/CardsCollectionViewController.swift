@@ -13,7 +13,6 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     
     // Public
     public var dataService: CardsDataService?
-    public var databaseService: FavoritesService?
     
     // Private
     private var filteredCards = [CardViewModel]()
@@ -27,7 +26,6 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         setupBar()
         refreshData()
     }
-    
     
     // MARK: - CollectionView Functions
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,15 +69,14 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         
         DispatchQueue.global().async { [weak self] in
             self?.dataService?.convert(from: "cards") { items in
-                self?.filteredCards = self?.dataService?.handleParsed(items, from: self) ?? []
-                DispatchQueue.main.async {
-                    if self?.filteredCards.count == 0 {
-                        if let viewBounds = self?.view.bounds,
-                           let watermarkImage = UIImage(named: "oops") {
-                            self?.collectionView.backgroundView = WatermarkView(frame: viewBounds, with: "Oops no cards found!", image: watermarkImage)
+                self?.dataService?.handleParsed(items, from: self) { itemsVM in
+                    self?.filteredCards = itemsVM
+                    DispatchQueue.main.async {
+                        if self?.filteredCards.count == 0 {
+                            self?.showWatermark()
                         }
+                        self?.collectionView.reloadData()
                     }
-                    self?.collectionView.reloadData()
                 }
             }
         }
