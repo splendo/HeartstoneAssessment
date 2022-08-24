@@ -80,4 +80,24 @@ class TestFavoritesCRUD: XCTestCase {
         }
     }
     
+    func testFavoriteDelete() {
+        let cardID = "CardToDelete_04"
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: sut.context)
+        
+        sut.context.perform { [weak self] in
+            self?.sut.save(cardID) { saved in
+                XCTAssertTrue(saved)
+                self?.sut.delete(cardID: cardID) { success in
+                    XCTAssertTrue(success)
+                }
+            }
+            
+        }
+        
+        waitForExpectations(timeout: 5.0) { error in
+            XCTAssertNil(error, "Delete unsuccessful")
+        }
+    }
+    
 }

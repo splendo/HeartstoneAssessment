@@ -58,25 +58,25 @@ class FavoritesService: StoreCardProtocol, ReadCardProtocol {
     
     func delete(cardID: String, completion: @escaping(Bool) -> Void) {
         context.perform { [weak self] in
-            self?.exists(with: cardID) { inDB in
-                if inDB {
-                    // Use different approach from save, since we are not have an existing NSManagedObject (Favorite)
-                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
-                    fetchRequest.predicate = NSPredicate(format: "cardID = %@", cardID)
-                    let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                    
-                    do {
-                        try self?.context.execute(request)
-                        try self?.context.save()
-                        completion(true)
-                    } catch {
-                        debugPrint("Unable to delete card with ID: \(cardID)")
-                        completion(false)
+            // Use different approach from save, since we are not have an existing NSManagedObject (Favorite)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
+            fetchRequest.predicate = NSPredicate(format: "cardID = %@", cardID)
+            fetchRequest.fetchLimit = 1
+            
+            do {
+                if let favorites = try self?.context.fetch(fetchRequest) {
+                    for favorite in favorites {
+                        self?.context.delete(favorite as? NSManagedObject ?? NSManagedObject())
                     }
+                    try self?.context.save()
+                    completion(true)
                 } else {
-                    debugPrint("\(cardID) doesn't exists in DB")
                     completion(false)
                 }
+                
+            } catch {
+                debugPrint("Unable to delete card with ID: \(cardID)")
+                completion(false)
             }
         }
     }
