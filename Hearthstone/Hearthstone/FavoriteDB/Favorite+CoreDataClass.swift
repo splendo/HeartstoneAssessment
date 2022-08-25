@@ -2,7 +2,7 @@
 //  Favorite+CoreDataClass.swift
 //  Hearthstone
 //
-//  Created by Epsilon User on 12/8/22.
+//  Created by Stavros Tsikinas on 12/8/22.
 //
 //
 

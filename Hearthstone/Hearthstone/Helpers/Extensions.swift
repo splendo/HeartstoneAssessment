@@ -343,6 +343,45 @@ extension CardsCollectionViewController {
     }
 }
 
+extension CardViewController {
+    
+    func initDetailViewModel(_ card: Card) {
+        
+        let cardView = CardView(frame: view.bounds, for: card)
+        
+        let cardViewModel = CardViewModel(card: card)
+        isFavorite = cardViewModel.isFavorite
+        
+        cardView.cardViewModel = cardViewModel
+        view.addSubview(cardView)
+    }
+    
+    func update(for favorite: Bool) {
+        if !favorite {
+            favoriteService?.save(card?.cardId ?? "") { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.showInfoAlert(with: success ? "Card added to Favorites" : "Unable to add card to Favorites")
+                    self?.updateFavorite(from: success)
+                }
+            }
+        } else {
+            favoriteService?.delete(cardID: card?.cardId ?? "") { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.showInfoAlert(with: success ? "Card deleted from Favorites" : "Unable to delete card to Favorites")
+                    self?.updateFavorite(from: !success)
+                }
+                
+            }
+        }
+    }
+    
+    private func updateFavorite(from success: Bool) {
+        isFavorite = success
+        favoriteButton.image = UIBarButtonItem.set(for: isFavorite, toggledName: "heart.fill", nonToggledName: "heart")
+    }
+    
+}
+
 extension CardGridViewCell {
     
     // TODO: Write UI Test

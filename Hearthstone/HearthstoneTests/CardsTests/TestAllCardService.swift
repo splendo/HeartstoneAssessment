@@ -66,8 +66,6 @@ class TestAllCardService: XCTestCase {
             XCTAssertNil(error, "testServiceReturnsFeaturedOnly unsuccessful")
         }
         
-        
-        
     }
 
 }
