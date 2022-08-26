@@ -26,8 +26,8 @@ class CardViewController: UIViewController {
             return
         }
         
-        setupBar()
         initDetailViewModel(card)
+        setupBar()
     }
     
     // MARK: - Setup Functions

@@ -258,19 +258,30 @@ extension CardViewModel {
         
         return card.rarity == "Legendary" && ((card.mechanics?.contains(["name": "Deathrattle"])) != nil)
     }
-    
 }
 
 extension CardViewModel {
     
-    init(card: Card) {
-        self.cardID = card.cardId ?? ""
-        self.title = card.name ?? CardViewModel.placeholderTitle
-        self.image = card.img ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
-        self.isFavorite = false
-        self.select = {}
+    convenience init(card: Card) {
+        self.init(card: card, select: {})
         self.description = (card.flavor?.isEmpty ?? true) ? "No Information to show" : card.flavor
         self.type = card.type
+    }
+}
+
+extension CardViewModel {
+    func initFavorite(completion: @escaping() -> Void) {
+        delegate?.initFavorite(for: self) { [weak self] exists in
+            self?.isFavorite = exists
+            completion()
+        }
+    }
+}
+
+extension CardViewModel {
+    func updateFavorite() {
+        isFavorite = !isFavorite
+        delegate?.updateFavorite(for: self)
     }
 }
 
@@ -283,6 +294,8 @@ extension CardsDataService {
 
 // - MARK: - Views Extensions
 
+
+// MARK: - HomeTabViewController
 extension HomeTabViewController {
     
     func initView() {
@@ -327,6 +340,7 @@ extension HomeTabViewController {
     
 }
 
+// MARK: - CardsCollectionViewController
 extension CardsCollectionViewController {
     
     func select(_ card: Card) {
@@ -343,6 +357,7 @@ extension CardsCollectionViewController {
     }
 }
 
+// MARK: - CardViewController
 extension CardViewController {
     
     func initDetailViewModel(_ card: Card) {
@@ -350,7 +365,6 @@ extension CardViewController {
         let cardView = CardView(frame: view.bounds, for: card)
         
         let cardViewModel = CardViewModel(card: card)
-        isFavorite = cardViewModel.isFavorite
         
         cardView.cardViewModel = cardViewModel
         view.addSubview(cardView)
@@ -388,8 +402,28 @@ extension CardGridViewCell {
     func configure() {
         cardName.text = cardViewModel.title
         cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
+        cardViewModel.initFavorite { [weak self] in
+            DispatchQueue.main.async {
+                self?.configureFavoriteButton()
+            }
+        }
+        favoriteButton.addTarget(self, action: #selector(updateFavorite), for: .touchUpInside)
     }
     
+}
+
+extension CardGridViewCell {
+    
+    func configureFavoriteButton() {
+        favoriteButton.setImage(UIButton.set(for: cardViewModel.isFavorite, toggledName: "heart.fill", nonToggledName: "heart"), for: .normal)
+    }
+}
+
+extension CardGridViewCell {
+    @objc func updateFavorite() {
+        cardViewModel.updateFavorite()
+        configureFavoriteButton()
+    }
 }
 
 extension CardView {

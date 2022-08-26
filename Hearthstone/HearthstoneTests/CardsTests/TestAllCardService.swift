@@ -53,7 +53,7 @@ class TestAllCardService: XCTestCase {
         
         sut.handleParsed(elements ?? []) { [weak self] cardVMs in
             
-            if let featured = self?.sut.featuresFilter(is: true, for: cardVMs) {
+            if let featured = self?.sut.featuresFilter(for: cardVMs) {
                 XCTAssertNotEqual(featured.count, 0, "Dummy data have provided 3 cards with Hsiao Favorite elements")
                 XCTAssertEqual(featured.count, 3, "Dummy data have provided 3 cards with Hsiao Favorite elements")
             } else {

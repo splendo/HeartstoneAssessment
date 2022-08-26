@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CardsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UpdateFavoritesProtocol {
     
     // MARK: - Variables
     
@@ -63,7 +63,6 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         addButtons(right: [hsiaoFavButton])
     }
     
-    
     // MARK: - Update Functions
     private func refreshData() {
         
@@ -82,12 +81,36 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
     
+    // MARK: - UpdateFavoritesProtocol functions
+    
+    func initFavorite(for card: CardViewModel, completion: @escaping(Bool) -> Void) {
+        dataService?.favoritesService?.exists(with: card.cardID) { isFavorite in
+            completion(isFavorite)
+        }
+    }
+    
+    func updateFavorite(for card: CardViewModel) {
+        if card.isFavorite {
+            dataService?.favoritesService?.save(card.cardID) { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+        } else {
+            dataService?.favoritesService?.delete(cardID: card.cardID) { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
     // MARK: - Obj-C Functions
     @objc func filterFeatured() {
         isFeatured = !isFeatured
         hsiaoFavButton.image = UIImage(systemName: isFeatured ? "star.slash.fill" : "star.fill")
         if isFeatured {
-            filteredCards = dataService?.featuresFilter(is: isFeatured, for: filteredCards) ?? []
+            filteredCards = dataService?.featuresFilter(for: filteredCards) ?? []
             collectionView.reloadData()
         } else {
             refreshData()

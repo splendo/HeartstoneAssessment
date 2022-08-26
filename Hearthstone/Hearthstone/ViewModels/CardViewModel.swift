@@ -8,7 +8,15 @@
 import Foundation
 import UIKit
 
-struct CardViewModel {
+// Write Unit/UI tests for protocol
+protocol UpdateFavoritesProtocol {
+    func initFavorite(for card: CardViewModel, completion: @escaping(Bool) -> Void)
+    func updateFavorite(for card: CardViewModel)
+}
+
+class CardViewModel {
+    
+    var delegate: UpdateFavoritesProtocol?
     
     let cardID: String
     let title: String
@@ -25,7 +33,6 @@ struct CardViewModel {
         self.cardID = card.cardId ?? ""
         self.title = card.name ?? CardViewModel.placeholderTitle
         self.image = card.img ?? "https://via.placeholder.com/500x500.png?text=No+Image+Found"
-        self.isFavorite = false
         self.select = select
         isHsiaoFav = isFeatured(card)
     }

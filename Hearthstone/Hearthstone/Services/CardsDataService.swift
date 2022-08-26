@@ -20,7 +20,7 @@ protocol JSONConverterProtocol {
 
 protocol ResultHadlerProtocol {
     func handleParsed(_ cards: [Card], from view: CardsCollectionViewController?, completion: @escaping ([CardViewModel]) -> Void)
-    func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel]
+    func featuresFilter(for cards: [CardViewModel]) -> [CardViewModel]
 }
 
 
@@ -57,9 +57,11 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
         switch type {
         case .AllCards:
             for card in cards {
-                viewModels.append(CardViewModel(card: card, select: {
+                let cardVM = CardViewModel(card: card, select: {
                     view?.select(card)
-                }))
+                })
+                cardVM.delegate = view
+                viewModels.append(cardVM)
             }
             completion(viewModels)
             break
@@ -67,9 +69,11 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
             favoritesService?.getFavorites { favIDs in
                 for favID in favIDs {
                     if let card = cards.first(where: { $0.cardId == favID }) {
-                        viewModels.append(CardViewModel(card: card, select: {
+                        let cardVM = CardViewModel(card: card, select: {
                             view?.select(card)
-                        }))
+                        })
+                        cardVM.delegate = view
+                        viewModels.append(cardVM)
                     }
                 }
                 completion(viewModels)
@@ -77,12 +81,8 @@ struct CardsDataService: LocalDownloadProtocol, JSONConverterProtocol, ResultHad
         }
     }
     
-    func featuresFilter(is activated: Bool, for cards: [CardViewModel]) -> [CardViewModel] {
-        if activated {
-            return cards.filter(\.isHsiaoFav)
-        } else {
-            return cards.filter { !$0.isHsiaoFav }
-        }
+    func featuresFilter(for cards: [CardViewModel]) -> [CardViewModel] {
+        return cards.filter(\.isHsiaoFav)
     }
     
     

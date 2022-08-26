@@ -21,11 +21,6 @@ class TestFavoritesCRUD: XCTestCase {
         try super.tearDownWithError()
         sut = nil
     }
-    
-    override func tearDown() {
-        super.tearDown()
-        sut = nil
-    }
 
     func testNewSaveToFavorites() {
         
