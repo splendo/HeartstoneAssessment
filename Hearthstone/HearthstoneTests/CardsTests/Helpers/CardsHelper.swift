@@ -11,7 +11,7 @@ import Foundation
 ///
 /// Initializers for dummy cards.
 ///
-func testCard(name: String? = nil, img: String? = nil, rarity: String? = nil, mechanics: [[String: String]]? = nil) -> Card {
+func testCard(cardID: String? = nil, name: String? = nil, img: String? = nil, rarity: String? = nil, mechanics: [[String: String]]? = nil) -> Card {
     Card(cardId: nil, name: name, cardSet: nil, type: nil, rarity: rarity, cost: nil, attack: nil, health: nil, text: nil, flavor: nil, artist: nil, collectible: nil, elite: nil, playerClass: nil, multiClassGroup: nil, classes: nil, img: img, imgGold: nil, locale: nil, mechanics: mechanics)
 }
 

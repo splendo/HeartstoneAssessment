@@ -35,6 +35,10 @@
 		30B596182896DF3F00253379 /* CardGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B596172896DF3F00253379 /* CardGridViewCell.swift */; };
 		30B71181288FE1BA00935D29 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B71180288FE1BA00935D29 /* Card.swift */; };
 		30B88F81289319C5005D326E /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B88F80289319C5005D326E /* HomeTabViewController.swift */; };
+		30D7659E28B9558600D11818 /* TestInitFavoritesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7659D28B9558600D11818 /* TestInitFavoritesProtocol.swift */; };
+		30D765A028B9562D00D11818 /* MockUpdateFavoritesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7659F28B9562D00D11818 /* MockUpdateFavoritesProtocol.swift */; };
+		30D765A328B95A0E00D11818 /* TestUpdateFavoritesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D765A228B95A0E00D11818 /* TestUpdateFavoritesProtocol.swift */; };
+		30D765A528B965A200D11818 /* CardViewModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D765A428B965A200D11818 /* CardViewModelHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,10 @@
 		30B596172896DF3F00253379 /* CardGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridViewCell.swift; sourceTree = "<group>"; };
 		30B71180288FE1BA00935D29 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		30B88F80289319C5005D326E /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
+		30D7659D28B9558600D11818 /* TestInitFavoritesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInitFavoritesProtocol.swift; sourceTree = "<group>"; };
+		30D7659F28B9562D00D11818 /* MockUpdateFavoritesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUpdateFavoritesProtocol.swift; sourceTree = "<group>"; };
+		30D765A228B95A0E00D11818 /* TestUpdateFavoritesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUpdateFavoritesProtocol.swift; sourceTree = "<group>"; };
+		30D765A428B965A200D11818 /* CardViewModelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModelHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				3063DB77289273C100715E98 /* CardsHelper.swift */,
+				30D765A428B965A200D11818 /* CardViewModelHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -146,6 +155,7 @@
 		302FF91528B5FE2F00C9D114 /* FavoritesTests */ = {
 			isa = PBXGroup;
 			children = (
+				30D7659C28B9555600D11818 /* CardViewModel+Favorites */,
 				302FF91828B6020400C9D114 /* Helpers */,
 				302FF91628B5FE7A00C9D114 /* TestFavoritesCRUD.swift */,
 			);
@@ -294,6 +304,24 @@
 				30AE80A628B35A18006E0C53 /* CardViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		30D7659C28B9555600D11818 /* CardViewModel+Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				30D765A128B9563A00D11818 /* Helpers */,
+				30D7659D28B9558600D11818 /* TestInitFavoritesProtocol.swift */,
+				30D765A228B95A0E00D11818 /* TestUpdateFavoritesProtocol.swift */,
+			);
+			path = "CardViewModel+Favorites";
+			sourceTree = "<group>";
+		};
+		30D765A128B9563A00D11818 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				30D7659F28B9562D00D11818 /* MockUpdateFavoritesProtocol.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,10 +488,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D765A028B9562D00D11818 /* MockUpdateFavoritesProtocol.swift in Sources */,
 				30070E4328916E450062F0E6 /* TestCardsFile.swift in Sources */,
+				30D765A328B95A0E00D11818 /* TestUpdateFavoritesProtocol.swift in Sources */,
+				30D765A528B965A200D11818 /* CardViewModelHelper.swift in Sources */,
 				302FF91A28B6023C00C9D114 /* TestCoreDataService.swift in Sources */,
 				3063DB78289273C100715E98 /* CardsHelper.swift in Sources */,
 				303E314228B4B5EA00A44FC8 /* TestDetailCardViewModel.swift in Sources */,
+				30D7659E28B9558600D11818 /* TestInitFavoritesProtocol.swift in Sources */,
 				302FF91728B5FE7A00C9D114 /* TestFavoritesCRUD.swift in Sources */,
 				30A8D56B2892AA2000849D1F /* TestCardViewModel.swift in Sources */,
 				30A8DD3A28A142B800AF6A01 /* TestAllCardService.swift in Sources */,
