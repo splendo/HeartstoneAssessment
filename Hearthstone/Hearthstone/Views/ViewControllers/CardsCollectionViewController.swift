@@ -24,6 +24,9 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
         
         collectionView.register(CardGridViewCell.self, forCellWithReuseIdentifier: "CardCell")
         setupBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         refreshData()
     }
     
@@ -72,7 +75,9 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
                     self?.filteredCards = itemsVM
                     DispatchQueue.main.async {
                         if self?.filteredCards.count == 0 {
-                            self?.showWatermark()
+                            self?.collectionView.showWatermark(UIImage(named: "oops"), with: "Oops no cards found!")
+                        } else {
+                            self?.collectionView.hidePlaceholderView()
                         }
                         self?.collectionView.reloadData()
                     }

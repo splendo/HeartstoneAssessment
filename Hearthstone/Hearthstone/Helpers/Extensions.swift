@@ -11,6 +11,19 @@ import UIKit
 
 // - MARK: UIKit Extensions
 
+extension UICollectionView {
+    
+    func hidePlaceholderView() {
+        backgroundView = nil
+    }
+    
+    func showWatermark(_ image: UIImage? = nil, with text: String = "") {
+        if let watermarkImage = UIImage(named: "oops") {
+            backgroundView = WatermarkView(frame: bounds, with: "Oops no cards found!", image: watermarkImage)
+        }
+    }
+}
+
 extension UIViewController {
     
     func showInfoAlert(with message: String) {
@@ -350,11 +363,6 @@ extension CardsCollectionViewController {
         show(destVC, sender: self)
     }
     
-    func showWatermark() {
-        if let watermarkImage = UIImage(named: "oops") {
-            collectionView.backgroundView = WatermarkView(frame: view.bounds, with: "Oops no cards found!", image: watermarkImage)
-        }
-    }
 }
 
 // MARK: - CardViewController
