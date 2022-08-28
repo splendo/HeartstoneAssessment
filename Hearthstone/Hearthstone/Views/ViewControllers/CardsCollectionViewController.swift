@@ -68,12 +68,13 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     
     // MARK: - Update Functions
     private func refreshData() {
-        
+        collectionView.addSpinner()
         DispatchQueue.global().async { [weak self] in
             self?.dataService?.convert(from: "cards") { items in
                 self?.dataService?.handleParsed(items, from: self) { itemsVM in
                     self?.filteredCards = itemsVM
                     DispatchQueue.main.async {
+                        self?.collectionView.hideSpinner()
                         if self?.filteredCards.count == 0 {
                             self?.collectionView.showWatermark(UIImage(named: "oops"), with: "Oops no cards found!")
                         } else {

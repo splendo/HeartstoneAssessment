@@ -24,6 +24,29 @@ extension UICollectionView {
     }
 }
 
+extension UICollectionView {
+    private var loading: UIActivityIndicatorView {
+        get {
+            let indicator = UIActivityIndicatorView(style: .medium)
+            indicator.color = .primaryColor
+            return indicator
+        }
+    }
+    
+    func addSpinner() {
+        backgroundView = loading
+        loading.startAnimating()
+    }
+    
+    func hideSpinner() {
+        if loading.isAnimating {
+            loading.stopAnimating()
+            backgroundView = nil
+        }
+    }
+    
+}
+
 extension UIViewController {
     
     func showInfoAlert(with message: String) {
