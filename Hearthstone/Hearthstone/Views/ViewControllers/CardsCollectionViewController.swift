@@ -73,6 +73,11 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
             self?.dataService?.convert(from: "cards") { items in
                 self?.dataService?.handleParsed(items, from: self) { itemsVM in
                     self?.filteredCards = itemsVM
+                    if let isFeatured = self?.isFeatured {
+                        if isFeatured {
+                            self?.filteredCards = self?.dataService?.featuresFilter(for: self?.filteredCards ?? []) ?? []
+                        }
+                    }
                     DispatchQueue.main.async {
                         self?.collectionView.hideSpinner()
                         if self?.filteredCards.count == 0 {
@@ -97,30 +102,18 @@ class CardsCollectionViewController: UICollectionViewController, UICollectionVie
     
     func updateFavorite(for card: CardViewModel) {
         if card.isFavorite {
-            dataService?.favoritesService?.save(card.cardID) { [weak self] _ in
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            }
+            dataService?.favoritesService?.save(card.cardID) { _ in }
         } else {
-            dataService?.favoritesService?.delete(cardID: card.cardID) { [weak self] _ in
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            }
+            dataService?.favoritesService?.delete(cardID: card.cardID) { _ in }
         }
+        refreshData()
     }
     
     // MARK: - Obj-C Functions
     @objc func filterFeatured() {
         isFeatured = !isFeatured
         hsiaoFavButton.image = UIImage(systemName: isFeatured ? "star.slash.fill" : "star.fill")
-        if isFeatured {
-            filteredCards = dataService?.featuresFilter(for: filteredCards) ?? []
-            collectionView.reloadData()
-        } else {
-            refreshData()
-        }
+        refreshData()
     }
     
 }
