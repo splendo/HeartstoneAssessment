@@ -37,6 +37,7 @@ class CardViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.favoriteButton = UIBarButtonItem(image: UIBarButtonItem.set(for: self?.isFavorite ?? false, toggledName: "heart.fill", nonToggledName: "heart"), style: .plain, target: self, action: #selector(self?.toggleFavorite))
                 self?.favoriteButton.tintColor = .red
+                self?.favoriteButton.accessibilityIdentifier = "addToFavorites"
                 self?.addButtons(right: [self?.favoriteButton ?? UIBarButtonItem()])
             }
         }

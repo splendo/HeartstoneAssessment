@@ -22,7 +22,6 @@ extension UICollectionView {
         backgroundView = nil
     }
     
-    // TODO: Write UI Tests
     func showWatermark(_ image: UIImage? = nil, with text: String = "") {
         if let watermarkImage = UIImage(named: "oops") {
             backgroundView = WatermarkView(frame: bounds, with: "Oops no cards found!", image: watermarkImage)
@@ -39,13 +38,11 @@ extension UICollectionView {
         }
     }
     
-    // TODO: Write UI Tests
     func addSpinner() {
         backgroundView = loading
         loading.startAnimating()
     }
     
-    // TODO: Write UI Tests
     func hideSpinner() {
         if loading.isAnimating {
             loading.stopAnimating()
@@ -329,7 +326,6 @@ extension HomeTabViewController {
 
 extension HomeTabViewController {
     
-    // TODO: Write UI Tests
     func createTabNavigation(for root: UIViewController, with title: String? = "Title", and icon: String? = nil) -> UIViewController {
         let navigation = UINavigationController(rootViewController: root)
         if let title = title {
@@ -415,7 +411,6 @@ extension CardViewController {
 
 extension CardGridViewCell {
     
-    // TODO: Write UI Test
     func configure() {
         cardName.text = cardViewModel.title
         cardImage.load(from: cardViewModel.getUrl(), with: .scaleAspectFit)
