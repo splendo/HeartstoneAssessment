@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+// - MARK: - Constants
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+
+// - MARK: - Hepers
 
 // - MARK: UIKit Extensions
 
@@ -17,6 +22,7 @@ extension UICollectionView {
         backgroundView = nil
     }
     
+    // TODO: Write UI Tests
     func showWatermark(_ image: UIImage? = nil, with text: String = "") {
         if let watermarkImage = UIImage(named: "oops") {
             backgroundView = WatermarkView(frame: bounds, with: "Oops no cards found!", image: watermarkImage)
@@ -33,11 +39,13 @@ extension UICollectionView {
         }
     }
     
+    // TODO: Write UI Tests
     func addSpinner() {
         backgroundView = loading
         loading.startAnimating()
     }
     
+    // TODO: Write UI Tests
     func hideSpinner() {
         if loading.isAnimating {
             loading.stopAnimating()
@@ -94,28 +102,7 @@ extension UIButton.Configuration {
 }
 
 extension UIImageView {
-    
-    // TODO: Write UI Tests
-    func load(from url: URL, mode: UIView.ContentMode) {
-        
-        URLSession.shared.dataTask(with: url) {  [weak self] data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse,
-                    httpURLResponse.statusCode == 200,
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else {
-                self?.addPlaceholderImage(from: url, with: mode)
-                    return
-                }
-                DispatchQueue.main.async() {
-                    self?.image = image
-                    self?.contentMode = mode
-                }
-            }.resume()
-    }
-    
-    private func addPlaceholderImage(from url: URL, with mode: UIView.ContentMode) {
+    func addPlaceholderImage(from url: URL, with mode: UIView.ContentMode) {
         
         if let imgData = try? Data(contentsOf: url) {
             if let img = UIImage(data: imgData) {
@@ -126,7 +113,6 @@ extension UIImageView {
             }
         }
     }
-    
 }
 
 extension UIColor {
@@ -432,7 +418,7 @@ extension CardGridViewCell {
     // TODO: Write UI Test
     func configure() {
         cardName.text = cardViewModel.title
-        cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
+        cardImage.load(from: cardViewModel.getUrl(), with: .scaleAspectFit)
         cardViewModel.initFavorite { [weak self] in
             DispatchQueue.main.async {
                 self?.configureFavoriteButton()
@@ -460,7 +446,7 @@ extension CardGridViewCell {
 extension CardView {
     
     func configure() {
-        cardImage.load(from: cardViewModel.getUrl(), mode: .scaleAspectFit)
+        cardImage.load(from: cardViewModel.getUrl(), with: .scaleAspectFit)
         cardName.text = cardViewModel.title
         cardText.text = cardViewModel.description
         cardType.configuration = .typed(with: cardViewModel.type ?? "")

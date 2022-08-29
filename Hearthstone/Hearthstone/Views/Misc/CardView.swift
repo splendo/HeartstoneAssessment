@@ -10,8 +10,8 @@ import UIKit
 class CardView: UIView {
 
     // MARK: - Subivew Initializers
-    lazy var cardImage: UIImageView = {
-        let imageView = UIImageView()
+    lazy var cardImage: LoadingImage = {
+        let imageView = LoadingImage()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

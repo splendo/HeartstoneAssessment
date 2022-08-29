@@ -20,8 +20,8 @@ class CardGridViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var cardImage: UIImageView = {
-        let imageView = UIImageView()
+    lazy var cardImage: LoadingImage = {
+        let imageView = LoadingImage()
         return imageView
     }()
     
