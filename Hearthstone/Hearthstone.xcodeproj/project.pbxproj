@@ -65,6 +65,7 @@
 		3006060728939EFC00EF0BE4 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		30070E4228916E450062F0E6 /* TestCardsFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardsFile.swift; sourceTree = "<group>"; };
 		30070E48289180A70062F0E6 /* HearthstoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HearthstoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30243DD128BCE5C300D1EC57 /* README-TSIKINAS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README-TSIKINAS.md"; sourceTree = "<group>"; };
 		302FF91628B5FE7A00C9D114 /* TestFavoritesCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoritesCRUD.swift; sourceTree = "<group>"; };
 		302FF91928B6023C00C9D114 /* TestCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataService.swift; sourceTree = "<group>"; };
 		303E314128B4B5EA00A44FC8 /* TestDetailCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailCardViewModel.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		305C6FE1288EED28001D4559 = {
 			isa = PBXGroup;
 			children = (
+				30243DD128BCE5C300D1EC57 /* README-TSIKINAS.md */,
 				305C6FEC288EED28001D4559 /* Hearthstone */,
 				305C7006288EED2C001D4559 /* HearthstoneTests */,
 				30070E49289180A70062F0E6 /* HearthstoneUITests */,
