@@ -40,6 +40,7 @@
 		30D765A528B965A200D11818 /* CardViewModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D765A428B965A200D11818 /* CardViewModelHelper.swift */; };
 		30ECBEB628BCA6F300A2805C /* TestNavigationToCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEB528BCA6F300A2805C /* TestNavigationToCard.swift */; };
 		30ECBEB928BCAA2900A2805C /* NavigationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEB828BCAA2900A2805C /* NavigationExtensions.swift */; };
+		30ECBEBB28BCD4AC00A2805C /* TestTabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEBA28BCD4AC00A2805C /* TestTabNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		30D765A428B965A200D11818 /* CardViewModelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModelHelper.swift; sourceTree = "<group>"; };
 		30ECBEB528BCA6F300A2805C /* TestNavigationToCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigationToCard.swift; sourceTree = "<group>"; };
 		30ECBEB828BCAA2900A2805C /* NavigationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtensions.swift; sourceTree = "<group>"; };
+		30ECBEBA28BCD4AC00A2805C /* TestTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		30070E49289180A70062F0E6 /* HearthstoneUITests */ = {
 			isa = PBXGroup;
 			children = (
+				30ECBEBC28BCD87000A2805C /* ViewsTests */,
 				30ECBEB428BCA6C900A2805C /* NavigationTests */,
 			);
 			path = HearthstoneUITests;
@@ -331,6 +334,7 @@
 			children = (
 				30ECBEB728BCAA1800A2805C /* Helpers */,
 				30ECBEB528BCA6F300A2805C /* TestNavigationToCard.swift */,
+				30ECBEBA28BCD4AC00A2805C /* TestTabNavigation.swift */,
 			);
 			path = NavigationTests;
 			sourceTree = "<group>";
@@ -341,6 +345,13 @@
 				30ECBEB828BCAA2900A2805C /* NavigationExtensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		30ECBEBC28BCD87000A2805C /* ViewsTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30ECBEB628BCA6F300A2805C /* TestNavigationToCard.swift in Sources */,
+				30ECBEBB28BCD4AC00A2805C /* TestTabNavigation.swift in Sources */,
 				30ECBEB928BCAA2900A2805C /* NavigationExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
