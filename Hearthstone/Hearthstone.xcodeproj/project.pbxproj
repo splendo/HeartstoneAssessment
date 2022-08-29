@@ -41,6 +41,7 @@
 		30ECBEB628BCA6F300A2805C /* TestNavigationToCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEB528BCA6F300A2805C /* TestNavigationToCard.swift */; };
 		30ECBEB928BCAA2900A2805C /* NavigationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEB828BCAA2900A2805C /* NavigationExtensions.swift */; };
 		30ECBEBB28BCD4AC00A2805C /* TestTabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEBA28BCD4AC00A2805C /* TestTabNavigation.swift */; };
+		30ECBEBE28BCD89200A2805C /* TestWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ECBEBD28BCD89200A2805C /* TestWatermark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		30ECBEB528BCA6F300A2805C /* TestNavigationToCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigationToCard.swift; sourceTree = "<group>"; };
 		30ECBEB828BCAA2900A2805C /* NavigationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtensions.swift; sourceTree = "<group>"; };
 		30ECBEBA28BCD4AC00A2805C /* TestTabNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabNavigation.swift; sourceTree = "<group>"; };
+		30ECBEBD28BCD89200A2805C /* TestWatermark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWatermark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +352,7 @@
 		30ECBEBC28BCD87000A2805C /* ViewsTests */ = {
 			isa = PBXGroup;
 			children = (
+				30ECBEBD28BCD89200A2805C /* TestWatermark.swift */,
 			);
 			path = ViewsTests;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30ECBEBE28BCD89200A2805C /* TestWatermark.swift in Sources */,
 				30ECBEB628BCA6F300A2805C /* TestNavigationToCard.swift in Sources */,
 				30ECBEBB28BCD4AC00A2805C /* TestTabNavigation.swift in Sources */,
 				30ECBEB928BCAA2900A2805C /* NavigationExtensions.swift in Sources */,

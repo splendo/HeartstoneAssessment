@@ -26,7 +26,7 @@ class WatermarkView: UIView {
     lazy var imageview: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .center
-        
+        imageView.accessibilityIdentifier = "oops"
         return imageView
     }()
     
